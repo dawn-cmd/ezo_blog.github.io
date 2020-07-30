@@ -7,7 +7,7 @@
 <meta name="description" content="People who know nothing repeat it.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dawn-cmd.github.io/favicon.ico?v=1596122512342">
+<link rel="shortcut icon" href="https://dawn-cmd.github.io/favicon.ico?v=1596122644293">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -158,7 +158,7 @@ The input is guaranteed to be valid according to the rules described in the stat
 <p>O(n to n!) solution:<s>this is the stupid way</s>When I was solving the problem, I used DFS technique(Deep-First-Search) to address it. Specifically, I imitated the process of setting polyomino: I determined which polyomino I should put one by one, when there exist problems, we back to the previous step and try another way. Because N is specially small, this solution can be accepted narrowly.</p>
 </li>
 <li>
-<p>O(R * C) solution:So this is the best solution. Literally, when a polyomino is totally or partly above another polyomino, the upper one should be set after the lower one restrictly. When it happpens, we can consider these two polyominos as two vertexs, and build an edge directed from the lower one to the upper one. We proceed all the polyominos by this way, in the end, we can get a graph. All we need to do is to find a topological sort of the graph. About topological sort, if you do not know it very well, I will write another blog and share the link here to explain it soon.</p>
+<p>O(R * C) solution:So this is the best solution. Literally, when a polyomino is totally or partly above another polyomino, the upper one should be set after the lower one restrictly. When it happpens, we can consider these two polyominos as two vertexs, and build an edge directed from the lower one to the upper one. We proceed all the polyominos by this way, in the end, we can get a graph. All we need to do is to find a topological sort of the graph. About topological sort, if you do not know it very well, <a href="https://dawn-cmd.github.io/o_E2mKnup/">this passage</a> may help you.</p>
 </li>
 </ol>
 <h2 id="code-of-my-solution">Code of my solution</h2>
@@ -313,7 +313,7 @@ int main(){
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://dawn-cmd.github.io/images/avatar.png?v=1596122512342" class="no-responsive avatar">
+    <img src="https://dawn-cmd.github.io/images/avatar.png?v=1596122644293" class="no-responsive avatar">
     <div class="text-muted">People who know nothing repeat it.</div>
     <div class="social-container">
       
@@ -363,7 +363,7 @@ int main(){
     </div>
     <div class="row">
       
-        <a href="https://dawn-cmd.github.io/T9dinVrg_/" class="badge secondary">
+        <a href="https://dawn-cmd.github.io/T9dinVrg_/" class="badge warning">
           Note
         </a>
       
