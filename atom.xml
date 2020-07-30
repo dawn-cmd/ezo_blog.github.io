@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Gridea</title>
-    <updated>2020-07-30T10:58:08.279Z</updated>
+    <updated>2020-07-30T10:59:12.446Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -10,6 +10,73 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[Kick Start 2020 Round C T1 Countdown Analysis]]></title>
+        <id>https://dawn-cmd.github.io/post/kick-start-2020-round-c-t1-countdown-analysis/</id>
+        <link href="https://dawn-cmd.github.io/post/kick-start-2020-round-c-t1-countdown-analysis/">
+        </link>
+        <updated>2020-07-30T10:58:22.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="official-link">Official link</h2>
+<p><a href="https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff43/00000000003380d2">Here</a></p>
+<h2 id="problem">Problem</h2>
+<p>Avery has an array of N positive integers. The i-th integer of the array is Ai.</p>
+<p>A contiguous subarray is an m-countdown if it is of length m and contains the integers m, m-1, m-2, ..., 2, 1 in that order. For example, [3, 2, 1] is a 3-countdown.</p>
+<p>Can you help Avery count the number of K-countdowns in her array?</p>
+<h2 id="input">Input</h2>
+<p>The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the integers N and K. The second line contains N integers. The i-th integer is Ai.</p>
+<h2 id="output">Output</h2>
+<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of K-countdowns in her array.</p>
+<h2 id="limits">Limits</h2>
+<p>Time limit: 20 seconds per test set.<br>
+Memory limit: 1GB.<br>
+1 ≤ T ≤ 100.<br>
+2 ≤ K ≤ N.<br>
+1 ≤ Ai ≤ 2 × 10^5, for all i.</p>
+<h2 id="test-set-1">Test set 1</h2>
+<p>2 ≤ N ≤ 1000.</p>
+<h2 id="test-set-2">Test set 2</h2>
+<p>2 ≤ N ≤ 2 × 10^5 for at most 10 test cases.<br>
+For the remaining cases, 2 ≤ N ≤ 1000.</p>
+<h2 id="analysis">Analysis</h2>
+<ol>
+<li>O(nk) solution:for each A[i to i+k], we can check it whether meets the requirement in the problem or not.</li>
+<li>O(n) solution: We can set a variation &quot;head&quot;. At first, head equals to k. If A[i] equals to head, head minus one, otherwise reset head. When head equals to 0, we find a countdown, and then we need to add it to the answer and reset head.</li>
+</ol>
+<h2 id="code-of-the-best-solution">Code of the best solution</h2>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n;
+int k;
+int main(){
+    int T;
+    cin&gt;&gt;T;
+    for(int P=1;P&lt;=T;++P){
+        cin&gt;&gt;n&gt;&gt;k;
+        int head=k;
+        int ans=0;
+        for(int i=1;i&lt;=n;++i){
+            int now;
+            cin&gt;&gt;now;
+            if(now==head){
+                --head;
+            }
+            else{
+                head=now==k?k-1:k;
+            }
+            if(head==0){
+                ++ans;
+                head=k;
+            }
+        }
+        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;P&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="ps">P.S.</h2>
+<p>When you reset head, checking adjacent number is necessary.&gt;line 19</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Kick Start 2020 Round C T2 Stable_Wall Analysis]]></title>
         <id>https://dawn-cmd.github.io/post/kick-start-2020-round-c-t2-stable_wall-analysis/</id>
