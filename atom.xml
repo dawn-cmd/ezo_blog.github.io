@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
-    <title>Gridea</title>
-    <updated>2020-07-30T11:16:03.291Z</updated>
+    <title>ezo&apos;s blog</title>
+    <updated>2020-07-30T11:58:00.281Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>People who know nothing repeats it.</subtitle>
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
+    <rights>All rights reserved 2020, ezo&apos;s blog</rights>
     <entry>
         <title type="html"><![CDATA[Kick Start 2020 Round C T1 Countdown Analysis]]></title>
         <id>https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/</id>
