@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://ezo.github.io</id>
+    <id>https://ezo.github.io</id>
     <title>Gridea</title>
-    <updated>2020-07-30T10:40:40.684Z</updated>
+    <updated>2020-07-30T10:42:24.984Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://ezo.github.io"/>
-    <link rel="self" href="http://ezo.github.io/atom.xml"/>
+    <link rel="alternate" href="https://ezo.github.io"/>
+    <link rel="self" href="https://ezo.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>http://ezo.github.io/images/avatar.png</logo>
-    <icon>http://ezo.github.io/favicon.ico</icon>
+    <logo>https://ezo.github.io/images/avatar.png</logo>
+    <icon>https://ezo.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[sdf]]></title>
-        <id>http://ezo.github.io/post/sdf/</id>
-        <link href="http://ezo.github.io/post/sdf/">
+        <id>https://ezo.github.io/post/sdf/</id>
+        <link href="https://ezo.github.io/post/sdf/">
         </link>
         <updated>2020-07-30T10:00:41.000Z</updated>
         <content type="html"><![CDATA[<p>sdfsdf</p>
