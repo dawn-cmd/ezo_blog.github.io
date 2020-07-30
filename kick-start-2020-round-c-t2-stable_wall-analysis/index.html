@@ -1,89 +1,98 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://dawn-cmd.github.io</id>
-    <title>Gridea</title>
-    <updated>2020-07-30T11:09:24.831Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://dawn-cmd.github.io"/>
-    <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
-    <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
-    <icon>https://dawn-cmd.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
-    <entry>
-        <title type="html"><![CDATA[Kick Start 2020 Round C T1 Countdown Analysis]]></title>
-        <id>https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/</id>
-        <link href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/">
-        </link>
-        <updated>2020-07-30T10:58:22.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="official-link">Official link</h2>
-<p><a href="https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff43/00000000003380d2">Here</a></p>
-<h2 id="problem">Problem</h2>
-<p>Avery has an array of N positive integers. The i-th integer of the array is Ai.</p>
-<p>A contiguous subarray is an m-countdown if it is of length m and contains the integers m, m-1, m-2, ..., 2, 1 in that order. For example, [3, 2, 1] is a 3-countdown.</p>
-<p>Can you help Avery count the number of K-countdowns in her array?</p>
-<h2 id="input">Input</h2>
-<p>The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the integers N and K. The second line contains N integers. The i-th integer is Ai.</p>
-<h2 id="output">Output</h2>
-<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of K-countdowns in her array.</p>
-<h2 id="limits">Limits</h2>
-<p>Time limit: 20 seconds per test set.<br>
-Memory limit: 1GB.<br>
-1 ≤ T ≤ 100.<br>
-2 ≤ K ≤ N.<br>
-1 ≤ Ai ≤ 2 × 10^5, for all i.</p>
-<h2 id="test-set-1">Test set 1</h2>
-<p>2 ≤ N ≤ 1000.</p>
-<h2 id="test-set-2">Test set 2</h2>
-<p>2 ≤ N ≤ 2 × 10^5 for at most 10 test cases.<br>
-For the remaining cases, 2 ≤ N ≤ 1000.</p>
-<h2 id="analysis">Analysis</h2>
-<ol>
-<li>O(nk) solution:for each A[i to i+k], we can check it whether meets the requirement in the problem or not.</li>
-<li>O(n) solution: We can set a variation &quot;head&quot;. At first, head equals to k. If A[i] equals to head, head minus one, otherwise reset head. When head equals to 0, we find a countdown, and then we need to add it to the answer and reset head.</li>
-</ol>
-<h2 id="code-of-the-best-solution">Code of the best solution</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int n;
-int k;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    for(int P=1;P&lt;=T;++P){
-        cin&gt;&gt;n&gt;&gt;k;
-        int head=k;
-        int ans=0;
-        for(int i=1;i&lt;=n;++i){
-            int now;
-            cin&gt;&gt;now;
-            if(now==head){
-                --head;
-            }
-            else{
-                head=now==k?k-1:k;
-            }
-            if(head==0){
-                ++ans;
-                head=k;
-            }
-        }
-        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;P&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre>
-<h2 id="ps">P.S.</h2>
-<p>When you reset head, checking adjacent number is necessary.&gt;line 19</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Kick Start 2020 Round C T2 Stable_Wall Analysis]]></title>
-        <id>https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/</id>
-        <link href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/">
-        </link>
-        <updated>2020-07-30T10:50:13.000Z</updated>
-        <content type="html"><![CDATA[<!-- more -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Kick Start 2020 Round C T2 Stable_Wall Analysis | Gridea</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://dawn-cmd.github.io/favicon.ico?v=1596107362537">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://dawn-cmd.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://dawn-cmd.github.io">Gridea</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://dawn-cmd.github.io" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Kick Start 2020 Round C T2 Stable_Wall Analysis</h1>
+            <p class="article-meta">
+              2020-07-30
+              
+                <a href="https://dawn-cmd.github.io/OPRCr9F-Y/" class="badge secondary">
+                  Solution
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <!-- more -->
 <h2 id="before-the-passage">Before the passage</h2>
 <p>I think the data of this problem should be strengthened. Because of the weak data, many people can solve the problem via a very stupid way(<s>me</s>). the details will be furnished in the following passage. However, the ratio of people who passed the problem is lower than the one in other contemporary rounds, it is unbelievable.</p>
 <h2 id="official-link">Official link</h2>
@@ -292,6 +301,88 @@ int main(){
     return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-</feed>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://dawn-cmd.github.io/images/avatar.png?v=1596107362537" class="no-responsive avatar">
+    <div class="text-muted">温故而知新</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/">Kick Start 2020 Round C T1 Countdown Analysis</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/">Kick Start 2020 Round C T2 Stable_Wall Analysis</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://dawn-cmd.github.io/OPRCr9F-Y/" class="badge secondary">
+          Solution
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://dawn-cmd.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
