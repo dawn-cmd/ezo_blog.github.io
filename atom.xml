@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>ezo&apos;s blog</title>
-    <updated>2020-07-30T12:00:50.732Z</updated>
+    <updated>2020-07-30T15:14:42.516Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -10,6 +10,109 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, ezo&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Topological Sort]]></title>
+        <id>https://dawn-cmd.github.io/o_E2mKnup/</id>
+        <link href="https://dawn-cmd.github.io/o_E2mKnup/">
+        </link>
+        <updated>2020-07-30T12:40:56.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>Many times, the sort of our works are fixed in some degrees: you may be able to change the order of washing your face and brushing your teeth, but you cannot change the order of getting out and dressing up. Yes, many things have a comparative order, which means that they are neither totally fixed nor sheer random. So it is very difficult to determine the sort by normal ways, as a result, here comes the Topological Sort.</p>
+<h2 id="defination">Defination</h2>
+<p>Topological Sort is linear sort of a Directed Acyclic Graph(DAG). The DAG is often used to represent a complicated dependancy relationship.</p>
+<h2 id="implementation">Implementation</h2>
+<p>We can use either DFS or BFS to solve it. But the core mechanisms of these two algorithms are same -- find the 0-in-degree vertaxs, add them to the answer, eliminate all the edges from it, and then repeats it until there is no 0-in-degree vertaxs.</p>
+<h3 id="dfs-code">DFS code:</h3>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n;
+int m;
+vector&lt;int&gt; mp[200];
+int incnt[200];
+vector&lt;int&gt; ans;
+void Topo(int now){
+    ans.push_back(now);
+    for(int i=0;i&lt;mp[now].size();++i){
+        int y=mp[now][i];
+        --incnt[y];
+        if(incnt[y]==0){
+            Topo(y);
+        }
+    }
+    return;
+}
+int main(){
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=m;++i){
+        int x;
+        int y;
+        cin&gt;&gt;x&gt;&gt;y;
+        mp[x].push_back(y);
+        incnt[y]++;
+    }
+    for(int i=1;i&lt;=n;++i){
+        mp[0].push_back(i);
+        incnt[i]++;
+    }
+    Topo(0);
+    for(int i=1;i&lt;ans.size();++i){
+        cout&lt;&lt;ans[i]&lt;&lt;' ';
+    }
+    cout&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h3 id="bfs-code">BFS code:</h3>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n;
+int m;
+vector&lt;int&gt; mp[200];
+vector&lt;int&gt; ans;
+int incnt[200];
+void Topo(){
+    queue&lt;int&gt; q;
+    q.push(0);
+    while(!q.empty()){
+        int x=q.front();
+        ans.push_back(x);
+        q.pop();
+        int y;
+        for(int i=0;i&lt;mp[x].size();++i){
+            y=mp[x][i];
+            incnt[y]--;
+            if(incnt[y]==0){
+                q.push(y);
+            }
+        }
+    }
+    return;
+}
+int main(){
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=m;++i){
+        int x;
+        int y;
+        cin&gt;&gt;x&gt;&gt;y;
+        mp[x].push_back(y);
+        incnt[y]++;
+    }
+    for(int i=1;i&lt;=n;++i){
+        mp[0].push_back(i);
+        incnt[i]++;
+    }
+    Topo();
+    for(int i=1;i&lt;ans.size();++i){
+        cout&lt;&lt;ans[i]&lt;&lt;' ';
+    }
+    cout&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h2 id="in-the-end">In the end</h2>
+<p>Topological sort is one of the basic graph algorithms. I will appreciate you if you think this blog is beneficial.</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Kick Start 2020 Round C T1 Countdown Analysis]]></title>
         <id>https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/</id>
