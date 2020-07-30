@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Topological Sort | ezo&#39;s blog</title>
+<title>Ezo | ezo&#39;s blog</title>
 <meta name="description" content="People who know nothing repeat it.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -81,128 +81,35 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>Topological Sort</h1>
+            <h1>Ezo</h1>
             <p class="article-meta">
               2020-07-30
-              
-                <a href="https://dawn-cmd.github.io/T9dinVrg_/" class="badge secondary">
-                  Note
-                </a>
               
             </p>
             
             <div class="post-content">
-              <h2 id="introduction">Introduction</h2>
-<p>Many times, the sort of our works are fixed in some degrees: you may be able to change the order of washing your face and brushing your teeth, but you cannot change the order of getting out and dressing up. Yes, many things have a comparative order, which means that they are neither totally fixed nor sheer random. So it is very difficult to determine the sort by normal ways, as a result, here comes the Topological Sort.</p>
-<h2 id="defination">Defination</h2>
-<p>Topological Sort is linear sort of a Directed Acyclic Graph(DAG). The DAG is often used to represent a complicated dependancy relationship.</p>
-<h2 id="implementation">Implementation</h2>
-<p>We can use either DFS or BFS to solve it. But the core mechanisms of these two algorithms are same -- find the 0-in-degree vertaxs, add them to the answer, eliminate all the edges from it, and then repeats it until there is no 0-in-degree vertaxs.</p>
-<h3 id="dfs-code">DFS code:</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int n;
-int m;
-vector&lt;int&gt; mp[200];
-int incnt[200];
-vector&lt;int&gt; ans;
-void Topo(int now){
-    ans.push_back(now);
-    for(int i=0;i&lt;mp[now].size();++i){
-        int y=mp[now][i];
-        --incnt[y];
-        if(incnt[y]==0){
-            Topo(y);
-        }
-    }
-    return;
-}
-int main(){
-    cin&gt;&gt;n&gt;&gt;m;
-    for(int i=1;i&lt;=m;++i){
-        int x;
-        int y;
-        cin&gt;&gt;x&gt;&gt;y;
-        mp[x].push_back(y);
-        incnt[y]++;
-    }
-    for(int i=1;i&lt;=n;++i){
-        mp[0].push_back(i);
-        incnt[i]++;
-    }
-    Topo(0);
-    for(int i=1;i&lt;ans.size();++i){
-        cout&lt;&lt;ans[i]&lt;&lt;' ';
-    }
-    cout&lt;&lt;endl;
-    return 0;
-}
-</code></pre>
-<h3 id="bfs-code">BFS code:</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int n;
-int m;
-vector&lt;int&gt; mp[200];
-vector&lt;int&gt; ans;
-int incnt[200];
-void Topo(){
-    queue&lt;int&gt; q;
-    q.push(0);
-    while(!q.empty()){
-        int x=q.front();
-        ans.push_back(x);
-        q.pop();
-        int y;
-        for(int i=0;i&lt;mp[x].size();++i){
-            y=mp[x][i];
-            incnt[y]--;
-            if(incnt[y]==0){
-                q.push(y);
-            }
-        }
-    }
-    return;
-}
-int main(){
-    cin&gt;&gt;n&gt;&gt;m;
-    for(int i=1;i&lt;=m;++i){
-        int x;
-        int y;
-        cin&gt;&gt;x&gt;&gt;y;
-        mp[x].push_back(y);
-        incnt[y]++;
-    }
-    for(int i=1;i&lt;=n;++i){
-        mp[0].push_back(i);
-        incnt[i]++;
-    }
-    Topo();
-    for(int i=1;i&lt;ans.size();++i){
-        cout&lt;&lt;ans[i]&lt;&lt;' ';
-    }
-    cout&lt;&lt;endl;
-    return 0;
-}
-</code></pre>
-<h2 id="in-the-end">In the end</h2>
-<p>Topological sort is one of the basic graph algorithms. I will appreciate you if you think this blog is beneficial. Moreover, <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/">this problem</a> can serve as a good case in point.</p>
+              <ul>
+<li>is a boy</li>
+<li>lives in China(for now)</li>
+<li>is familiar with c++</li>
+<li>is learning JAVA and JAVAscript</li>
+<li>knows a little bit CSS&amp;HTML</li>
+<li>uses VIM to edit everything</li>
+<li>is a fan of Metroidvania</li>
+<li>plays Arknights</li>
+<li>has particpated NOIP for 3 times</li>
+<li>has particpated CSP-S</li>
+<li>hates bugs</li>
+<li>enjoys nap</li>
+<li>loves each of you</li>
+<li>'s <a href="https://github.com/dawn-cmd">github account</a></li>
+<li>'s number: +8613376173601</li>
+</ul>
 
             </div>
           </article>
         </div>
         <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                Next Passage
-              </div>
-              <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/">
-                <h3 class="post-title">
-                  Kick Start 2020 Round C T1 Countdown Analysis
-                </h3>
-              </a>
-            </div>
           
         </div>
         
