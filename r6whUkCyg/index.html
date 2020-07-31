@@ -2,20 +2,17 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kick Start 2020 Round C T1 Countdown Analysis | ezo&#39;s blog</title>
+<title>Kick Start 2020 Round C T3 Perfect Subarray Analysis | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="https://dawn-cmd.github.io/favicon.ico?v=1596208485428">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://dawn-cmd.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Kick Start 2020 Round C T1 Countdown Analysis | ezo&#39;s blog - Atom Feed" href="https://dawn-cmd.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Kick Start 2020 Round C T3 Perfect Subarray Analysis | ezo&#39;s blog - Atom Feed" href="https://dawn-cmd.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="Official link
-Here
-Problem
-Avery has an array of N positive integers. The i-th integer of the array is Ai.
-A contiguous ..." />
+    <meta name="description" content="Problem
+Cristobal has an array of N (possibly negative) integers. The i-th integer in his array is Ai. A contiguous non-..." />
     <meta name="keywords" content="Solution" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -78,14 +75,14 @@ A contiguous ..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Kick Start 2020 Round C T1 Countdown Analysis
+              Kick Start 2020 Round C T3 Perfect Subarray Analysis
             </h2>
             <div class="post-info">
               <span>
-                2020-07-30
+                2020-07-31
               </span>
               <span>
-                3 min read
+                5 min read
               </span>
               
                 <a href="https://dawn-cmd.github.io/OPRCr9F-Y/" class="post-tag">
@@ -98,80 +95,128 @@ A contiguous ..." />
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="official-link">Official link</h2>
-<p><a href="https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff43/00000000003380d2">Here</a></p>
-<h2 id="problem">Problem</h2>
-<p>Avery has an array of N positive integers. The i-th integer of the array is Ai.</p>
-<p>A contiguous subarray is an m-countdown if it is of length m and contains the integers m, m-1, m-2, ..., 2, 1 in that order. For example, [3, 2, 1] is a 3-countdown.</p>
-<p>Can you help Avery count the number of K-countdowns in her array?</p>
+                <h2 id="problem">Problem</h2>
+<p>Cristobal has an array of N (possibly negative) integers. The i-th integer in his array is Ai. A contiguous non-empty subarray of Cristobal's array is perfect if its total sum is a perfect square. A perfect square is a number that is the product of a non-negative integer with itself. For example, the first five perfect squares are 0, 1, 4, 9 and 16.</p>
+<p>How many subarrays are perfect? Two subarrays are different if they start or end at different indices in the array, even if the subarrays contain the same values in the same order.</p>
 <h2 id="input">Input</h2>
-<p>The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the integers N and K. The second line contains N integers. The i-th integer is Ai.</p>
+<p>The first line of the input gives the number of test cases, T. T test cases follow. The first line of each test case contains the integer N. The second line contains N integers describing Cristobal's array. The i-th integer is Ai.</p>
 <h2 id="output">Output</h2>
-<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of K-countdowns in her array.</p>
+<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of perfect subarrays.</p>
 <h2 id="limits">Limits</h2>
-<p>Time limit: 20 seconds per test set.<br>
-Memory limit: 1GB.<br>
+<p>Memory limit: 1GB.<br>
 1 ≤ T ≤ 100.<br>
-2 ≤ K ≤ N.<br>
-1 ≤ Ai ≤ 2 × 10^5, for all i.</p>
-<h2 id="test-set-1">Test set 1</h2>
-<p>2 ≤ N ≤ 1000.</p>
-<h2 id="test-set-2">Test set 2</h2>
-<p>2 ≤ N ≤ 2 × 10^5 for at most 10 test cases.<br>
-For the remaining cases, 2 ≤ N ≤ 1000.</p>
-<h2 id="analysis">Analysis</h2>
+-100 ≤ Ai ≤ 100, for all i.</p>
+<h3 id="test-set-1">Test set 1</h3>
+<p>Time limit: 20 seconds.<br>
+1 ≤ N ≤ 1000.</p>
+<h3 id="test-set-2">Test set 2</h3>
+<p>Time limit: 30 seconds.<br>
+For up to 5 cases, 1 ≤ N ≤ 105.<br>
+For the remaining cases, 1 ≤ N ≤ 1000.</p>
+<h2 id="sample">Sample</h2>
+<h3 id="input-2">Input</h3>
+<p>3</p>
+<p>3</p>
+<p>2 2 6</p>
+<p>5</p>
+<p>30 30 9 1 30</p>
+<p>4</p>
+<p>4 0 0 16</p>
+<h3 id="output-2">Output</h3>
+<p>Case #1: 1</p>
+<p>Case #2: 3</p>
+<p>Case #3: 9</p>
+<h3 id="explanation">Explanation</h3>
+<p>In sample case #1, there is one perfect subarray: [2 2] whose sum is 22.</p>
+<p>In sample case #2, there are three perfect subarrays:<br>
+[9], whose total sum is 32.<br>
+[1], whose total sum is 12.<br>
+[30 30 9 1 30], whose total sum is 102.</p>
+<p>In sample case #3, there are nine perfect subarrays:<br>
+[4], whose total sum is 22.<br>
+[4 0], whose total sum is 22.<br>
+[4 0 0], whose total sum is 22.<br>
+[0], whose total sum is 02.<br>
+[0 0], whose total sum is 02.<br>
+[0 0 16], whose total sum is 42.<br>
+[0], whose total sum is 02.<br>
+[0 16], whose total sum is 42.<br>
+[16], whose total sum is 42.</p>
+<h3 id="note">Note</h3>
+<p>We do not recommend using interpreted/slower languages for the test set 2 of this problem.</p>
+<h2 id="anaylsis">Anaylsis</h2>
 <ol>
-<li>O(nk) solution:for each A[i to i+k], we can check it whether meets the requirement in the problem or not.</li>
-<li>O(n) solution: We can set a variation &quot;head&quot;. At first, head equals to k. If A[i] equals to head, head minus one, otherwise reset head. When head equals to 0, we find a countdown, and then we need to add it to the answer and reset head.</li>
+<li>O(n^2) Solution: Easily, we only need to check every subarray in it. In an n-length array, there exist n*(n+1)/2 subarrays. So the time complexity of this algorithm is O(n^2).</li>
+<li>O(n<em>sqrt(1e7) to n</em>logn*sqrt(1e7)) Solution: First, we use sum[] to record the prefix sum of a[]. So the problem becomes: how many sum[i]-sum[j-1]=x^2(i&gt;=j &amp;&amp; x is an integer). This formula equals to sum[j-1]=sum[i]-x^2. So, all we need to do is to enumerate all possible x and check how many j meet the requirement. To implement it, we can use a hash table to record the number of exist sum[j], which has a O(1) time complexity. This algorithm's time complexity can be accepted narrowly.</li>
 </ol>
-<h2 id="code-of-the-best-solution">Code of the best solution</h2>
+<h2 id="code-of-the-best-solution">Code of the best Solution</h2>
 <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+#define BASE 15000000
+#define LL long long
 using namespace std;
 int n;
-int k;
+int a[100010];
+LL h[70000010];
 int main(){
     int T;
     cin&gt;&gt;T;
-    for(int P=1;P&lt;=T;++P){
-        cin&gt;&gt;n&gt;&gt;k;
-        int head=k;
-        int ans=0;
+    for(int cas=1;cas&lt;=T;++cas){
+        memset(h,0,sizeof h);
+        LL ans=0;
+        cin&gt;&gt;n;
+        h[BASE]=1;
+        a[0]=BASE;
         for(int i=1;i&lt;=n;++i){
-            int now;
-            cin&gt;&gt;now;
-            if(now==head){
-                --head;
-            }
-            else{
-                head=now==k?k-1:k;
-            }
-            if(head==0){
-                ++ans;
-                head=k;
-            }
+            cin&gt;&gt;a[i];
+            a[i]+=a[i-1];
         }
-        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;P&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
+        int minn=BASE;
+        for(int i=1;i&lt;=n;++i){
+            for(int j=0;j*j&lt;=10000000;++j){
+                if(a[i]-j*j&lt;minn){
+                    break;
+                }
+                ans+=h[a[i]-j*j]; 
+            }
+            minn=min(a[i],minn);
+            h[a[i]]++;
+        }
+        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;cas&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
     }
     return 0;
 }
 </code></pre>
 <h2 id="ps">P.S.</h2>
-<p>When you reset head, checking adjacent number is necessary.&gt;line 19</p>
+<ul>
+<li>If you use C++ to solve this problem, do not use map, which will add a logn to your time complexity.</li>
+<li>You should use long long to save the answer.</li>
+<li>Do not use Python.</li>
+</ul>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#official-link">Official link</a></li>
 <li><a href="#problem">Problem</a></li>
 <li><a href="#input">Input</a></li>
 <li><a href="#output">Output</a></li>
-<li><a href="#limits">Limits</a></li>
+<li><a href="#limits">Limits</a>
+<ul>
 <li><a href="#test-set-1">Test set 1</a></li>
 <li><a href="#test-set-2">Test set 2</a></li>
-<li><a href="#analysis">Analysis</a></li>
-<li><a href="#code-of-the-best-solution">Code of the best solution</a></li>
+</ul>
+</li>
+<li><a href="#sample">Sample</a>
+<ul>
+<li><a href="#input-2">Input</a></li>
+<li><a href="#output-2">Output</a></li>
+<li><a href="#explanation">Explanation</a></li>
+<li><a href="#note">Note</a></li>
+</ul>
+</li>
+<li><a href="#anaylsis">Anaylsis</a></li>
+<li><a href="#code-of-the-best-solution">Code of the best Solution</a></li>
 <li><a href="#ps">P.S.</a></li>
 </ul>
 </li>
@@ -185,9 +230,9 @@ int main(){
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/">
+            <a href="https://dawn-cmd.github.io/o_E2mKnup/">
               <h3 class="post-title">
-                Kick Start 2020 Round C T2 Stable_Wall Analysis
+                Topological Sort
               </h3>
             </a>
           </div>
