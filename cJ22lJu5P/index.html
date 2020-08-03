@@ -1,0 +1,364 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kick Start 2020 Round D T2 Alien Piano Analysis | ezo&#39;s blog</title>
+<link rel="shortcut icon" href="https://dawn-cmd.github.io/favicon.ico?v=1596448007535">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dawn-cmd.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Kick Start 2020 Round D T2 Alien Piano Analysis | ezo&#39;s blog - Atom Feed" href="https://dawn-cmd.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Official Link
+Here
+Problem
+An alien has just landed on Earth, and really likes our music. Lucky for us.
+The alien would ..." />
+    <meta name="keywords" content="Solution" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dawn-cmd.github.io">
+  <img class="avatar" src="https://dawn-cmd.github.io/images/avatar.png?v=1596448007535" alt="">
+  </a>
+  <h1 class="site-title">
+    ezo&#39;s blog
+  </h1>
+  <p class="site-description">
+    People who know nothing repeat it.
+Never give up the faith.
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dawn-cmd.github.io" class="menu">
+          Homepage
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          Archives
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          Tags
+        </a>
+      
+    
+      
+        <a href="https://dawn-cmd.github.io/aQhyHFZwS" class="menu">
+          About
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Kick Start 2020 Round D T2 Alien Piano Analysis
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-08-03
+              </span>
+              <span>
+                7 min read
+              </span>
+              
+                <a href="https://dawn-cmd.github.io/OPRCr9F-Y/" class="post-tag">
+                  # Solution
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://tse1-mm.cn.bing.net/th/id/OIP.zCZvaLblroS943kFj4-tDQHaD4?w=290&amp;h=180&amp;c=7&amp;o=5&amp;dpr=1.38&amp;pid=1.7" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="official-link">Official Link</h2>
+<p><a href="https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff08/0000000000387174">Here</a></p>
+<h2 id="problem">Problem</h2>
+<p>An alien has just landed on Earth, and really likes our music. Lucky for us.</p>
+<p>The alien would like to bring home its favorite human songs, but it only has a very strange instrument to do it with: a piano with just 4 keys of different pitches.</p>
+<p>The alien converts a song by writing it down as a series of keys on the alien piano. Obviously, this piano will not be able to convert our songs completely, as our songs tend to have many more than 4 pitches.</p>
+<p>The alien will settle for converting our songs with the following rules instead:</p>
+<p>The first note in our song can be converted to any key on the alien piano.</p>
+<p>For every note after,</p>
+<ul>
+<li>if its pitch is higher than the previous note, it should be converted into a higher-pitched key than the previous note's conversion;</li>
+<li>if lower, it should be converted into a lower-pitched key than the previous note's conversion;</li>
+<li>if exactly identical, it should be converted into the same key as the previous note's conversion.</li>
+</ul>
+<p>Note: two notes with the same pitch do not need to be converted into the same key if they are not adjacent.</p>
+<p>What the alien wants to know is: how often will it have to break its rules when converting a particular song?</p>
+<p>To elaborate, let us describe one of our songs as having K notes. The first note we describe as &quot;note 1&quot;, the second note &quot;note 2&quot;, and the last note &quot;note K.&quot;<br>
+So note 2 comes immediately after note 1.<br>
+Now if note 2 is lower than note 1 in our version of the song, yet converted to an equally-pitched or lower-pitched key (relative to note 2's conversion) in the alien's version of the song, then we consider that a single rule break.<br>
+For each test case, return the minimum amount of times the alien must necessarily break one of its rules in converting that song.</p>
+<h2 id="input">Input</h2>
+<p>The first line of the input gives the number of test cases, T. T test cases follow.<br>
+Each test case consists of two lines.<br>
+The first line consists of a single integer, K.<br>
+The second line consists of K space-separated integers, A1, A2 ... AK, where Ai refers to the pitch of the i-th note for this test case.</p>
+<h2 id="output">Output</h2>
+<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the minimum number of times that particular test case will require the alien to break its own rules during the conversion process.</p>
+<h2 id="limits">Limits</h2>
+<p>Memory limit: 1GB.<br>
+1 ≤ T ≤ 100.<br>
+1 ≤ Ai ≤ 106.</p>
+<h3 id="test-set-1">Test set 1</h3>
+<p>Time limit: 20 seconds.<br>
+1 ≤ K ≤ 10.</p>
+<h3 id="test-set-2">Test set 2</h3>
+<p>Time limit: 40 seconds.<br>
+1 ≤ K ≤ 104.</p>
+<h2 id="analysis">Analysis</h2>
+<ul>
+<li>O(4^K) Solution: We can generate all possible conversions and choose the one with the smallest number of violations. To a fixed K, there exist 4^K solutions, so the time complexity is O(4^K).</li>
+<li>O(K) Solution1: When I was finishing this problem, I first came up with DP--<a href="https://en.wikipedia.org/wiki/Dynamic_programming">Dynamic programming</a>. We can consider dp[i][j] as the smallest number of violation when you choose conversion j at the position of i. So dp[i][j] equals to min(dp[i-1][k]+(violate the rule?1:0)). Because we just need a one layer of loop, so the time complexity is O(K).</li>
+<li>O(K) Solution2: We can interpret the problem through this way: record the number of ascending or descending substrings which is longer than 4. We just need to make sure each element is ergodic.</li>
+</ul>
+<h2 id="code-of-ok-solution-1">Code of O(K) Solution 1:</h2>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n;
+int a[10010];
+int dp[10010][6];
+void initialization(){
+    memset(a,0,sizeof a);
+    memset(dp,0,sizeof dp);
+    return;
+}
+int main(){
+    int T;
+    cin&gt;&gt;T;
+    for(int cas=1;cas&lt;=T;++cas){
+        initialization();
+        cin&gt;&gt;n;
+        for(int i=1;i&lt;=n;++i){
+            cin&gt;&gt;a[i];
+            if(i!=1&amp;&amp;a[i]==a[i-1]){
+                --i;
+                --n;
+            }
+        }
+        for(int i=1;i&lt;=4;++i){
+            dp[1][i]=0;
+        }
+        for(int i=2;i&lt;=n;++i){
+            for(int j=1;j&lt;=4;++j){
+                dp[i][j]=2147483647;   
+                if(a[i]&gt;a[i-1]){
+                    for(int k=1;k&lt;=4;++k){
+                        if(k&lt;j){
+                            dp[i][j]=min(dp[i][j],dp[i-1][k]);
+                        }
+                        else{
+                            dp[i][j]=min(dp[i][j],dp[i-1][k]+1);
+                        }
+                    }
+                }
+                else{
+                    for(int k=1;k&lt;=4;++k){
+                        if(k&gt;j){
+                            dp[i][j]=min(dp[i][j],dp[i-1][k]);
+                        }
+                        else{
+                            dp[i][j]=min(dp[i][j],dp[i-1][k]+1);
+                        }
+                    }
+                }
+            }
+        }
+        int ans=2147483647;
+        for(int i=1;i&lt;=4;++i){
+            ans=min(ans,dp[n][i]);
+        }
+        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;cas&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="code-of-ok-solution-2">Code of O(K) Solution 2:</h2>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n;
+int main(){
+    int T;
+    cin&gt;&gt;T;
+    for(int cas=1;cas&lt;=T;++cas){
+        cin&gt;&gt;n;
+        int now;
+        int pre;
+        int ans=0;
+        int upcnt=0;
+        int downcnt=0;
+        for(int i=1;i&lt;=n;++i){
+            cin&gt;&gt;now;
+            if(i==1||now==pre){
+                pre=now;
+                continue;
+            }
+            if(now&gt;pre){
+                upcnt++;
+                downcnt=0;
+            }
+            else{
+                upcnt=0;
+                downcnt++;
+            }
+            if(upcnt&gt;3||downcnt&gt;3){
+                ++ans;
+                upcnt=0;
+                downcnt=0;
+            }
+            pre=now;
+        }
+        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;cas&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#official-link">Official Link</a></li>
+<li><a href="#problem">Problem</a></li>
+<li><a href="#input">Input</a></li>
+<li><a href="#output">Output</a></li>
+<li><a href="#limits">Limits</a>
+<ul>
+<li><a href="#test-set-1">Test set 1</a></li>
+<li><a href="#test-set-2">Test set 2</a></li>
+</ul>
+</li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#code-of-ok-solution-1">Code of O(K) Solution 1:</a></li>
+<li><a href="#code-of-ok-solution-2">Code of O(K) Solution 2:</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dawn-cmd.github.io/76NaE9Spv/">
+              <h3 class="post-title">
+                Kick Start 2020 Round D T1 Record Breaker Analysis
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'a557158794a6c9e40381',
+    clientSecret: 'bfea67373002d05ed56651f57426652332b138a9',
+    repo: 'dawn-cmd.github.io',
+    owner: 'dawn-cmd',
+    admin: ['dawn-cmd'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/dawn-cmd" target="_blank"> ezo</a>
+  <a class="rss" href="https://dawn-cmd.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
