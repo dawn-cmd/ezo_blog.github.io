@@ -3,14 +3,19 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ezo | ezo&#39;s blog</title>
-<link rel="shortcut icon" href="https://dawn-cmd.github.io/favicon.ico?v=1596781122387">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<meta name="description" content="People who know nothing repeat it.
+" />
+<link rel="shortcut icon" href="https://dawn-cmd.github.io/favicon.ico">
 <link rel="stylesheet" href="https://dawn-cmd.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Ezo | ezo&#39;s blog - Atom Feed" href="https://dawn-cmd.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
-
-
+<script src="https://dawn-cmd.github.io/media/js/jquery.min.js"></script>
+<script src="https://dawn-cmd.github.io/media/js/masonry.pkgd.min.js"></script>
+<script src="https://dawn-cmd.github.io/media/js/aos.js"></script>
+<script src="https://dawn-cmd.github.io/media/js/pace.min.js"></script>
+<script src="https://dawn-cmd.github.io/media/js/view-image.min.js"></script>
+<script src="https://dawn-cmd.github.io/media/js/jquery.magnific-popup.min.js"></script>
+<script src="https://dawn-cmd.github.io/media/js/functions.js"></script>
+    <meta name="referrer" content="never">
     <meta name="description" content="
 is a boy
 lives in China(for now)
@@ -19,89 +24,100 @@ is learning JAVA and JAVAscript
 knows a little bit CSS&amp;HTML
 u..." />
     <meta name="keywords" content="Self Introduction" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://dawn-cmd.github.io/media/js/waterfall.min.js"></script>
+    <script src="https://dawn-cmd.github.io/media/js/prism.min.js"></script>
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://dawn-cmd.github.io">
-  <img class="avatar" src="https://dawn-cmd.github.io/images/avatar.png?v=1596781122387" alt="">
-  </a>
-  <h1 class="site-title">
-    ezo&#39;s blog
-  </h1>
-  <p class="site-description">
-    People who know nothing repeat it.
-Never give up the faith.
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="https://dawn-cmd.github.io" class="menu">
-          Homepage
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          Archives
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          Tags
-        </a>
-      
-    
-      
-        <a href="https://dawn-cmd.github.io/aQhyHFZwS" class="menu">
-          About
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
+            <header id="header" class="grid-container">
+        <!-- start: .menu-wrapper -->
+        <div class="menu-mobile"> 
+          <i class="fa fa-reorder"></i>
+        </div>
+        <div class="menu-wrapper">
+          <div class="">
+            <div class="logo">
+              <a href="https://dawn-cmd.github.io"><img src="\media\images\custom-headerLogo.jpg" alt=""></a>
+            </div>
+            <!-- start: .main-nav -->
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              Ezo
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-07-30
-              </span>
-              <span>
-                1 min read
-              </span>
+            <nav class="main-nav grid-container grid-parent">
+              <ul id="menu-header" class="menu gradient-effect">
+                <li class=""><a href="https://dawn-cmd.github.io" class="menu">首页</a></li>
+                
+                  <li class="" >
+                    <a href="/archives" class="menu">
+                      Archives
+                    </a>
+                  </li>
+                
+                  <li class="" >
+                    <a href="/tags" class="menu">
+                      Tags
+                    </a>
+                  </li>
+                
+                  <li class="" >
+                    <a href="https://dawn-cmd.github.io/aQhyHFZwS" class="menu">
+                      About
+                    </a>
+                  </li>
+                
+                <li class="search-menu-item hide-on-mobile hide-on-tablet"><a href="#search-lightbox" class="lightbox mfp-inline"><i class="fa fa-search-line"></i></a></li>
+              </ul>
+            </nav>
+            <a href="#search-lightbox" class="lightbox epcl-search-button mfp-inline hide-on-tablet hide-on-desktop"><i class="fa fa-search-line"></i></a>
+            <!-- end: .main-nav -->
+            <div class="clear"></div>
+            <div class="border hide-on-tablet hide-on-mobile"></div>
+          </div>    
+          <div class="clear"></div>
+        </div>
+        <!-- end: .menu-wrapper -->
+        <div class="clear"></div>
+      </header>
+      <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
+        <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
+          <div class="search-wrapper section">
+            <form id="gridea-search-form" data-update="1596782750366" action="/search/index.html" class="search-form" _lpchecked="1">
+              <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
+              <button type="submit" class="submit" aria-label="Submit">
+                <i class="fa fa-search-line"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
+
+        <div class="center content">
+          <div class="featured-image cover" style="background-image: url('https://images.nintendolife.com/707afa592050b/1280x720.jpg');">
+            <div class="meta top"> 
+              <time class="meta-info" style="float:left;" datetime="2020-07-30"><i class="fa fa-calendar"></i><span class="lately">8 天前</span></time>
               
-                <a href="https://dawn-cmd.github.io/Q9Iss7bCR/" class="post-tag">
-                  # Self Introduction
-                </a>
+              <a href="https://dawn-cmd.github.io/aQhyHFZwS/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/aQhyHFZwS/"> </span>
+              </a>
+              <span id="/aQhyHFZwS/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
               
             </div>
-            
-              <img class="post-feature-image" src="https://images.nintendolife.com/707afa592050b/1280x720.jpg" alt="">
-            
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <ul>
+            <div class="info">
+              <div class="tags ">
+                
+                      <a href="https://dawn-cmd.github.io/Q9Iss7bCR/" class="ctag ctag-0 ctag-Q9Iss7bCR" aria-label="">Self Introduction</a>
+                    
+              </div>
+              <h1 class="title ularge white bold">Ezo</h1>
+            </div>
+          </div>
+        </div>  
+
+        <div class="epcl-page-wrapper">
+          <div class="left-content grid-70 np-mobile">
+            <article class="main-article post">
+              <section class="post-content">
+                <div class="text">
+                  <ul>
 <li>is a boy</li>
 <li>lives in China(for now)</li>
 <li>is familiar with c++</li>
@@ -119,25 +135,31 @@ Never give up the faith.
 <li>'s number: +8613376173601</li>
 </ul>
 
-              </div>
-              <div class="toc-container">
+                </div>
+                <div class="clear"></div>
+              </section>
+            </article>
+            <div class="clear"></div>
+
+            <section class="related section">
+              
+              
+
+                <div class="clear"></div>
+            </section>
+
+              <div class="clear"></div>
+              
+            
+              <div id="comments" class="bg-white hosted ">
                 
-              </div>
-            </div>
-          </article>
-        </div>
-
-        
-
-        
-          
-            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 <div id="gitalk-container"></div>
+<div class="clear"></div>
 
 <script>
-
   var gitalk = new Gitalk({
     clientID: 'a557158794a6c9e40381',
     clientSecret: 'bfea67373002d05ed56651f57426652332b138a9',
@@ -149,63 +171,153 @@ Never give up the faith.
   })
 
   gitalk.render('gitalk-container')
-
 </script>
 
-          
+                
+                
+              </div>
+            
 
-          
+            </div>
+          </div>
+      </main>
+
+          <footer id="footer" class="grid-container">
+        <div class="widgets row gradient-effect">
+            <div class="default-sidebar border-effect">
+              <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                <section id="tag_cloud-2" class="widget widget_epcl_posts_thumbs underline-effect">
+                  <h4 class="widget-title title white bordered">最新文章</h4>
+                  
+                  
+                  <article class="item post-0 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://dawn-cmd.github.io/CNLoDPtVC/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('data:image/jpeg;base64,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');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2020-08-07">2020-08-07</time>
+                      <h4 class="title usmall">
+                        <a href="https://dawn-cmd.github.io/CNLoDPtVC/">Codeforces Round #661 Div3 retrospect </a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://dawn-cmd.github.io/cJ22lJu5P/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://tse1-mm.cn.bing.net/th/id/OIP.zCZvaLblroS943kFj4-tDQHaD4?w=290&amp;h=180&amp;c=7&amp;o=5&amp;dpr=1.38&amp;pid=1.7');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2020-08-03">2020-08-03</time>
+                      <h4 class="title usmall">
+                        <a href="https://dawn-cmd.github.io/cJ22lJu5P/">Kick Start 2020 Round D T2 Alien Piano Analysis</a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://dawn-cmd.github.io/76NaE9Spv/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://tse1-mm.cn.bing.net/th/id/OIP.zCZvaLblroS943kFj4-tDQHaD4?w=290&amp;h=180&amp;c=7&amp;o=5&amp;dpr=1.38&amp;pid=1.7');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2020-08-02">2020-08-02</time>
+                      <h4 class="title usmall">
+                        <a href="https://dawn-cmd.github.io/76NaE9Spv/">Kick Start 2020 Round D T1 Record Breaker Analysis</a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <div class="clear"></div>
+                </section>
+              </div>
+
+              <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                <section id="tag_cloud-2" class="widget widget_tag_cloud underline-effect">
+                  <h4 class="widget-title title white bordered">标签云</h4>
+                  <div class="tagcloud">
+                    
+                      <a href="https://dawn-cmd.github.io/P8XbJiAxi/" class="ctag ctag-0 ctag-P8XbJiAxi" aria-label="">Contest Retrospect</a>
+                    
+                      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/" class="ctag ctag-1 ctag-OPRCr9F-Y" aria-label="">Solution</a>
+                    
+                      <a href="https://dawn-cmd.github.io/T9dinVrg_/" class="ctag ctag-2 ctag-T9dinVrg_" aria-label="">Note</a>
+                    
+                  </div>
+                  <div class="clear"></div>
+                </section>
+              </div>
+
+              <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                <section id="epcl_about-2" class="widget widget_epcl_about underline-effect">
+                  <h4 class="widget-title title white bordered">关于我</h4>
+                  <div class="avatar">
+                    <a href="" class="translate-effect thumb"><span class="fullimage cover" style="background-image: url(https://dawn-cmd.github.io/images/avatar.png);"></span></a>
+                  </div>
+                  <div class="info">
+                    <h4 class="title small author-name gradient-effect no-margin"><a href="">ezo&#39;s blog</a></h4>
+                    <p class="founder">People who know nothing repeat it.
+</p>
+                    <div class="social">
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </div> 
+                  </div>
+                  <div class="clear"></div>
+                  </section>
+              </div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="logo">
+          <a href="https://dawn-cmd.github.io"><img src="\media\images\custom-footerLogo.jpg" alt=""></a>
+        </div>
+        <p class="published border-effect">
+          ©2019 共 8 篇文章
+          <br/>
+          Theme <a href="https://gridea.dev/" target="_blank">「breek」</a> Powered by <a href="https://gridea.dev/" target="_blank">「Gridea」</a>
+        </p>
+        
+        <a href="javascript:void(0)" id="back-to-top" class="epcl-button dark" style="display:none">
+          <i class="fa fa-arrow"></i>
+        </a>
+    </footer>
+    
+    <div class="clear"></div>
+
         
 
-        <div class="site-footer">
-  Powered by <a href="https://github.com/dawn-cmd" target="_blank"> ezo</a>
-  <a class="rss" href="https://dawn-cmd.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
+      
+    <script src="https://dawn-cmd.github.io/media/js/functions-post.js"></script>
 
-      </div>
     </div>
-
-    <script>
-      hljs.initHighlightingOnLoad()
-
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
-
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
-
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
-
-    </script>
+    <!-- end: #wrapper -->
   </body>
 </html>
