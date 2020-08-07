@@ -1,9 +1,8 @@
-<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>我的阅读 | ezo&#39;s blog</title>
+<title>Codeforces Round #661 Div3 retrospect | ezo&#39;s blog</title>
 <meta name="description" content="People who know nothing repeat it.
 " />
 <link rel="shortcut icon" href="https://dawn-cmd.github.io/favicon.ico">
@@ -17,13 +16,16 @@
 <script src="https://dawn-cmd.github.io/media/js/jquery.magnific-popup.min.js"></script>
 <script src="https://dawn-cmd.github.io/media/js/functions.js"></script>
     <meta name="referrer" content="never">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iMuFeng/bmdb@1.8.0/dist/Bmdb.min.css">
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/iMuFeng/bmdb@1.8.0/dist/Bmdb.min.js'></script>
+    <meta name="description" content="First, here is my score and rate:
+
+A. Remove Smallest
+Problem
+You are given the array a consisting of n positive (greate..." />
+    <meta name="keywords" content="" />
+    <script src="https://dawn-cmd.github.io/media/js/waterfall.min.js"></script>
+    <script src="https://dawn-cmd.github.io/media/js/prism.min.js"></script>
   </head>
   <body>
-    <!-- start: #wrapper -->
-    <div class="wrapper">
-      
             <header id="header" class="grid-container">
         <!-- start: .menu-wrapper -->
         <div class="menu-mobile"> 
@@ -84,14 +86,125 @@
         </div>
       </div>
 
-      <main id="friends" class="main fullcover no-sidebar content">
-        <div class="grid-container module-wrapper enable-masonry aos-init aos-animate" data-aos="fade-up">
+      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
+
+        <div class="center content">
+          <div class="featured-image cover" style="background-image: url('/media/images/gridea.jpg');">
+            <div class="meta top"> 
+              <time class="meta-info" style="float:left;" datetime="2020-08-07"><i class="fa fa-calendar"></i><span class="lately">22 分钟前</span></time>
+              
+              <a href="https://dawn-cmd.github.io/BKt7ppc1X/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/BKt7ppc1X/"> </span>
+              </a>
+              <span id="/BKt7ppc1X/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+              
+            </div>
+            <div class="info">
+              <div class="tags ">
+                
+              </div>
+              <h1 class="title ularge white bold">Codeforces Round #661 Div3 retrospect</h1>
+            </div>
+          </div>
+        </div>  
+
         <div class="epcl-page-wrapper">
-          <div class="section-content" style="margin-top:3em;"></div>
-        </div>
-        </div>
+          <div class="left-content grid-70 np-mobile">
+            <article class="main-article post">
+              <section class="post-content">
+                <div class="text">
+                  <h2 id="first-here-is-my-score-and-rate">First, here is my score and rate:</h2>
+<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1596807580878.png" alt="" loading="lazy"></figure>
+<h2 id="a-remove-smallest">A. Remove Smallest</h2>
+<h3 id="problem">Problem</h3>
+<p>You are given the array a consisting of n positive (greater than zero) integers.</p>
+<p>In one move, you can choose two indices i and j (i≠j) such that the absolute difference between ai and aj is no more than one (|ai−aj|≤1) and remove the smallest of these two elements. If two elements are equal, you can remove any of them (but exactly one).</p>
+<p>Your task is to find if it is possible to obtain the array consisting of only one element using several (possibly, zero) such moves or not.</p>
+<p>You have to answer t independent test cases.</p>
+<h3 id="input">Input</h3>
+<p>The first line of the input contains one integer t (1≤t≤1000) — the number of test cases. Then t test cases follow.</p>
+<p>The first line of the test case contains one integer n (1≤n≤50) — the length of a. The second line of the test case contains n integers a1,a2,…,an (1≤ai≤100), where ai is the i-th element of a.</p>
+<h3 id="ouput">Ouput</h3>
+<p>For each test case, print the answer: &quot;YES&quot; if it is possible to obtain the array consisting of only one element using several (possibly, zero) moves described in the problem statement, or &quot;NO&quot; otherwise.</p>
+<h3 id="limits">Limits</h3>
+<p>time limit per test1 second<br>
+memory limit per test256 megabytes## First, here is my score and rate:</p>
+<h2 id="a-remove-smallest-2">A. Remove Smallest</h2>
+<h3 id="problem-2">Problem</h3>
+<p>You are given the array a consisting of n positive (greater than zero) integers.</p>
+<p>In one move, you can choose two indices i and j (i≠j) such that the absolute difference between ai and aj is no more than one (|ai−aj|≤1) and remove the smallest of these two elements. If two elements are equal, you can remove any of them (but exactly one).</p>
+<p>Your task is to find if it is possible to obtain the array consisting of only one element using several (possibly, zero) such moves or not.</p>
+<p>You have to answer t independent test cases.</p>
+<h3 id="input-2">Input</h3>
+<p>The first line of the input contains one integer t (1≤t≤1000) — the number of test cases. Then t test cases follow.</p>
+<p>The first line of the test case contains one integer n (1≤n≤50) — the length of a. The second line of the test case contains n integers a1,a2,…,an (1≤ai≤100), where ai is the i-th element of a.</p>
+<h3 id="ouput-2">Ouput</h3>
+<p>For each test case, print the answer: &quot;YES&quot; if it is possible to obtain the array consisting of only one element using several (possibly, zero) moves described in the problem statement, or &quot;NO&quot; otherwise.</p>
+<h3 id="limits-2">Limits</h3>
+<p>time limit per test1 second<br>
+memory limit per test256 megabytes</p>
+
+                </div>
+                <div class="clear"></div>
+              </section>
+            </article>
+            <div class="clear"></div>
+
+            <section class="related section">
+              
+              
+              <article class="next grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('https://tse1-mm.cn.bing.net/th/id/OIP.zCZvaLblroS943kFj4-tDQHaD4?w=290&amp;h=180&amp;c=7&amp;o=5&amp;dpr=1.38&amp;pid=1.7');"></div>
+                 <a href="https://dawn-cmd.github.io/cJ22lJu5P/" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="2020-08-03">2020-08-03</time>
+                  <h4 class="title white no-margin">Kick Start 2020 Round D T2 Alien Piano Analysis</h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="https://dawn-cmd.github.io/media/images/right-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              
+
+                <div class="clear"></div>
+            </section>
+
+              <div class="clear"></div>
+              
+            
+              <div id="comments" class="bg-white hosted ">
+                
+                  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+<div class="clear"></div>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'a557158794a6c9e40381',
+    clientSecret: 'bfea67373002d05ed56651f57426652332b138a9',
+    repo: 'dawn-cmd.github.io',
+    owner: 'dawn-cmd',
+    admin: ['dawn-cmd'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+                
+                
+              </div>
+            
+
+            </div>
+          </div>
       </main>
-        <footer id="footer" class="grid-container">
+
+          <footer id="footer" class="grid-container">
         <div class="widgets row gradient-effect">
             <div class="default-sidebar border-effect">
               <div class="grid-33 tablet-grid-50 mobile-grid-100">
@@ -221,15 +334,9 @@
 
         
 
-    <script>
-    new Bmdb({
-      type: 'books',
-      selector: '.section-content',
-      secret: '',
-      noMoreText: '没有更多数据了',
-      limit: 30
-    })
-    </script>
+      
+    <script src="https://dawn-cmd.github.io/media/js/functions-post.js"></script>
+
     </div>
     <!-- end: #wrapper -->
   </body>
