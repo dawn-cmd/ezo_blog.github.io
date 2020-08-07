@@ -2,21 +2,21 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kick Start 2020 Round C T1 Countdown Analysis | ezo&#39;s blog</title>
+<title>Codeforces Round #661 Div3 retrospect  | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="https://dawn-cmd.github.io/favicon.ico?v=1596780457324">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://dawn-cmd.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Kick Start 2020 Round C T1 Countdown Analysis | ezo&#39;s blog - Atom Feed" href="https://dawn-cmd.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Codeforces Round #661 Div3 retrospect  | ezo&#39;s blog - Atom Feed" href="https://dawn-cmd.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="Official link
-Here
+    <meta name="description" content="First, here is my score and rate:
+
+A. Remove Smallest
 Problem
-Avery has an array of N positive integers. The i-th integer of the array is Ai.
-A contiguous ..." />
-    <meta name="keywords" content="Solution" />
+You are given the array a consisting of n positive (greate..." />
+    <meta name="keywords" content="Contest Retrospect,Solution" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -79,15 +79,19 @@ Never give up the faith.
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Kick Start 2020 Round C T1 Countdown Analysis
+              Codeforces Round #661 Div3 retrospect 
             </h2>
             <div class="post-info">
               <span>
-                2020-07-30
+                2020-08-07
               </span>
               <span>
-                3 min read
+                2 min read
               </span>
+              
+                <a href="https://dawn-cmd.github.io/P8XbJiAxi/" class="post-tag">
+                  # Contest Retrospect
+                </a>
               
                 <a href="https://dawn-cmd.github.io/OPRCr9F-Y/" class="post-tag">
                   # Solution
@@ -95,85 +99,39 @@ Never give up the faith.
               
             </div>
             
-              <img class="post-feature-image" src="https://tse1-mm.cn.bing.net/th/id/OIP.zCZvaLblroS943kFj4-tDQHaD4?w=290&amp;h=180&amp;c=7&amp;o=5&amp;dpr=1.38&amp;pid=1.7" alt="">
-            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="official-link">Official link</h2>
-<p><a href="https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff43/00000000003380d2">Here</a></p>
-<h2 id="problem">Problem</h2>
-<p>Avery has an array of N positive integers. The i-th integer of the array is Ai.</p>
-<p>A contiguous subarray is an m-countdown if it is of length m and contains the integers m, m-1, m-2, ..., 2, 1 in that order. For example, [3, 2, 1] is a 3-countdown.</p>
-<p>Can you help Avery count the number of K-countdowns in her array?</p>
-<h2 id="input">Input</h2>
-<p>The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the integers N and K. The second line contains N integers. The i-th integer is Ai.</p>
-<h2 id="output">Output</h2>
-<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of K-countdowns in her array.</p>
-<h2 id="limits">Limits</h2>
-<p>Time limit: 20 seconds per test set.<br>
-Memory limit: 1GB.<br>
-1 ≤ T ≤ 100.<br>
-2 ≤ K ≤ N.<br>
-1 ≤ Ai ≤ 2 × 10^5, for all i.</p>
-<h2 id="test-set-1">Test set 1</h2>
-<p>2 ≤ N ≤ 1000.</p>
-<h2 id="test-set-2">Test set 2</h2>
-<p>2 ≤ N ≤ 2 × 10^5 for at most 10 test cases.<br>
-For the remaining cases, 2 ≤ N ≤ 1000.</p>
-<h2 id="analysis">Analysis</h2>
-<ol>
-<li>O(nk) solution:for each A[i to i+k], we can check it whether meets the requirement in the problem or not.</li>
-<li>O(n) solution: We can set a variation &quot;head&quot;. At first, head equals to k. If A[i] equals to head, head minus one, otherwise reset head. When head equals to 0, we find a countdown, and then we need to add it to the answer and reset head.</li>
-</ol>
-<h2 id="code-of-the-best-solution">Code of the best solution</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int n;
-int k;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    for(int P=1;P&lt;=T;++P){
-        cin&gt;&gt;n&gt;&gt;k;
-        int head=k;
-        int ans=0;
-        for(int i=1;i&lt;=n;++i){
-            int now;
-            cin&gt;&gt;now;
-            if(now==head){
-                --head;
-            }
-            else{
-                head=now==k?k-1:k;
-            }
-            if(head==0){
-                ++ans;
-                head=k;
-            }
-        }
-        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;P&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre>
-<h2 id="ps">P.S.</h2>
-<p>When you reset head, checking adjacent number is necessary.&gt;line 19</p>
+                <h2 id="first-here-is-my-score-and-rate">First, here is my score and rate:</h2>
+<figure data-type="image" tabindex="1"><img src="https://wx1.sbimg.cn/2020/08/06/oAgDe.png" alt="oAgDe.png" loading="lazy"></figure>
+<h2 id="a-remove-smallest">A. Remove Smallest</h2>
+<h3 id="problem">Problem</h3>
+<p>You are given the array a consisting of n positive (greater than zero) integers.</p>
+<p>In one move, you can choose two indices i and j (i≠j) such that the absolute difference between ai and aj is no more than one (|ai−aj|≤1) and remove the smallest of these two elements. If two elements are equal, you can remove any of them (but exactly one).</p>
+<p>Your task is to find if it is possible to obtain the array consisting of only one element using several (possibly, zero) such moves or not.</p>
+<p>You have to answer t independent test cases.</p>
+<h3 id="input">Input</h3>
+<p>The first line of the input contains one integer t (1≤t≤1000) — the number of test cases. Then t test cases follow.</p>
+<p>The first line of the test case contains one integer n (1≤n≤50) — the length of a. The second line of the test case contains n integers a1,a2,…,an (1≤ai≤100), where ai is the i-th element of a.</p>
+<h3 id="ouput">Ouput</h3>
+<p>For each test case, print the answer: &quot;YES&quot; if it is possible to obtain the array consisting of only one element using several (possibly, zero) moves described in the problem statement, or &quot;NO&quot; otherwise.</p>
+<h3 id="limits">Limits</h3>
+<p>time limit per test1 second<br>
+memory limit per test256 megabytes</p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#official-link">Official link</a></li>
+<li><a href="#first-here-is-my-score-and-rate">First, here is my score and rate:</a></li>
+<li><a href="#a-remove-smallest">A. Remove Smallest</a>
+<ul>
 <li><a href="#problem">Problem</a></li>
 <li><a href="#input">Input</a></li>
-<li><a href="#output">Output</a></li>
+<li><a href="#ouput">Ouput</a></li>
 <li><a href="#limits">Limits</a></li>
-<li><a href="#test-set-1">Test set 1</a></li>
-<li><a href="#test-set-2">Test set 2</a></li>
-<li><a href="#analysis">Analysis</a></li>
-<li><a href="#code-of-the-best-solution">Code of the best solution</a></li>
-<li><a href="#ps">P.S.</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -186,9 +144,9 @@ int main(){
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/">
+            <a href="https://dawn-cmd.github.io/cJ22lJu5P/">
               <h3 class="post-title">
-                Kick Start 2020 Round C T2 Stable_Wall Analysis
+                Kick Start 2020 Round D T2 Alien Piano Analysis
               </h3>
             </a>
           </div>
