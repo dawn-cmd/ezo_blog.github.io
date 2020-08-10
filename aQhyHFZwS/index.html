@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Ezo | ezo&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1597047861345">
+<link rel="shortcut icon" href="/favicon.ico?v=1597049756171">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -919,6 +919,118 @@ int main(){
             ans+=max(c[i]-minc,o[i]-mino);
         }
         cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;c-boats-competition&#34;&gt;C. Boats Competition&lt;/h2&gt;
+&lt;h3 id=&#34;introduction-3&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1399/problem/C&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;analysis-3&#34;&gt;Analysis&lt;/h3&gt;
+&lt;p&gt;According to the description, it is not hard to find that the maximum of s is 100. So to each data, we try s from 0 to 100, and record the answer. To a specific s, how we can calculate the maximum number of teams? We can use a map to record all the weights, and to each person, we find whether there exist another one to match it. The total time complexity is O(n).&lt;/p&gt;
+&lt;h3 id=&#34;code-3&#34;&gt;Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        int w[100];
+        map&amp;lt;int,int&amp;gt; h;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;w[i];
+            ++h[w[i]];
+        }
+        if(n==1){
+            cout&amp;lt;&amp;lt;0&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        if(n==2){
+            cout&amp;lt;&amp;lt;1&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        int ans=-1;
+        for(int i=1;i&amp;lt;=101;++i){
+            int cnt=0;
+            map&amp;lt;int,int&amp;gt; p=h;
+            for(int j=1;j&amp;lt;=n;++j){
+                if(i-w[j]==w[j]&amp;amp;&amp;amp;p[w[j]]&amp;lt;=1){
+                    continue;
+                }
+                if(p[w[j]]==0||p[i-w[j]]==0){
+                    continue;
+                }
+                --p[w[j]];
+                --p[i-w[j]];
+                ++cnt;
+            }
+            ans=max(ans,cnt);
+        }
+        cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;d-binary-string-to-subsequences&#34;&gt;D. Binary String To Subsequences&lt;/h2&gt;
+&lt;h3 id=&#34;introduction-4&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1399/problem/D&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;analysis-4&#34;&gt;Analysis&lt;/h3&gt;
+&lt;p&gt;In the problem, we do not really cares the body of each subsequence, instead, the end character is the most important to us. When we meet a &#39;0&#39;,  we need to add it to a &#39;1&#39;-end-subsequence and when we meeet a &#39;1&#39;, we need to add it to a &#39;0&#39;-end-subsequence. So we can use two chains to connect the id of &#39;1&#39;-end-subsequences and &#39;0&#39;-end-subquences. The total time complexity of the solution is O(n).&lt;/p&gt;
+&lt;h3 id=&#34;code-4&#34;&gt;Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        string s;
+        cin&amp;gt;&amp;gt;s;
+        int pre[200010];
+        int headz=0;
+        int heado=0;
+        int ans=0;
+        int bl[200010];
+        for(int i=0,len=s.length();i&amp;lt;len;++i){
+            if(s[i]-&#39;0&#39;==0){
+                if(heado==0){
+                    ++ans;
+                    pre[ans]=headz;
+                    headz=ans;
+                    bl[i]=ans;
+                }
+                else{
+                    bl[i]=heado;
+                    int tmp=pre[heado];
+                    pre[heado]=headz;
+                    headz=heado;
+                    heado=tmp;
+                }
+            }
+            else{
+                if(headz==0){
+                    ++ans;
+                    pre[ans]=heado;
+                    heado=ans;
+                    bl[i]=ans;
+                }
+                else{
+                    bl[i]=headz;
+                    int tmp=pre[headz];
+                    pre[headz]=heado;
+                    heado=headz;
+                    headz=tmp;
+                }
+            }
+        }
+        cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+        for(int i=0;i&amp;lt;n;++i){
+            cout&amp;lt;&amp;lt;bl[i]&amp;lt;&amp;lt;&#39; &#39;;
+        }
+        cout&amp;lt;&amp;lt;endl;
     }
     return 0;
 }
