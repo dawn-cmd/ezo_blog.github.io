@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Topological Sort | ezo&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1596854172705">
+<link rel="shortcut icon" href="/favicon.ico?v=1597047861345">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1140,21 +1140,80 @@ int main(){
           &lt;h2 id=&#34;first-here-is-my-score-and-rate&#34;&gt;First, here is my score and rate:&lt;/h2&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1596807580878.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;a-remove-smallest&#34;&gt;A. Remove Smallest&lt;/h2&gt;
-&lt;h3 id=&#34;problem&#34;&gt;Problem&lt;/h3&gt;
-&lt;p&gt;You are given the array a consisting of n positive (greater than zero) integers.&lt;/p&gt;
-&lt;p&gt;In one move, you can choose two indices i and j (i≠j) such that the absolute difference between ai and aj is no more than one (|ai−aj|≤1) and remove the smallest of these two elements. If two elements are equal, you can remove any of them (but exactly one).&lt;/p&gt;
-&lt;p&gt;Your task is to find if it is possible to obtain the array consisting of only one element using several (possibly, zero) such moves or not.&lt;/p&gt;
-&lt;p&gt;You have to answer t independent test cases.&lt;/p&gt;
-&lt;h3 id=&#34;input&#34;&gt;Input&lt;/h3&gt;
-&lt;p&gt;The first line of the input contains one integer t (1≤t≤1000) — the number of test cases. Then t test cases follow.&lt;/p&gt;
-&lt;p&gt;The first line of the test case contains one integer n (1≤n≤50) — the length of a. The second line of the test case contains n integers a1,a2,…,an (1≤ai≤100), where ai is the i-th element of a.&lt;/p&gt;
-&lt;h3 id=&#34;ouput&#34;&gt;Ouput&lt;/h3&gt;
-&lt;p&gt;For each test case, print the answer: &amp;quot;YES&amp;quot; if it is possible to obtain the array consisting of only one element using several (possibly, zero) moves described in the problem statement, or &amp;quot;NO&amp;quot; otherwise.&lt;/p&gt;
-&lt;h3 id=&#34;limits&#34;&gt;Limits&lt;/h3&gt;
-&lt;p&gt;time limit per test1 second&lt;br&gt;
-memory limit per test256 megabytes&lt;/p&gt;
+&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1399/problem/A&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;analysis&#34;&gt;Analysis&lt;/h3&gt;
 &lt;p&gt;It&#39;s not hard to find that the answer of the question is not related to the order of the array a[]. The critical fact is whether there exist a gap border than 1. To check it, we can sort the array and list it. Due to the sort function, the time complexity of the solution is O(nlogn), which is acceptable.&lt;/p&gt;
+&lt;h3 id=&#34;code&#34;&gt;Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        int a[100];
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;a[i];
+        }
+        if(n==1){
+            cout&amp;lt;&amp;lt;&amp;quot;Yes&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        sort(a+1,a+1+n);
+        int ans=1;
+        for(int i=1;i&amp;lt;=n-1;++i){
+            if(a[i+1]-a[i]&amp;gt;1){
+                ans=0;
+                break;
+            }
+        }
+        if(ans){
+            cout&amp;lt;&amp;lt;&amp;quot;Yes&amp;quot;&amp;lt;&amp;lt;endl;
+        }
+        else{
+            cout&amp;lt;&amp;lt;&amp;quot;No&amp;quot;&amp;lt;&amp;lt;endl;
+        }
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;b-gifts-fixing&#34;&gt;B. Gifts Fixing&lt;/h2&gt;
+&lt;h3 id=&#34;introduction-2&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1399/problem/B&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;analysis-2&#34;&gt;Analysis&lt;/h3&gt;
+&lt;p&gt;First, we can use c[i] and o[i] to describe the number of candies and oranges in each gift. According to the description, we can only decrease c[i] and o[i]but not increase them. So it is clear that in the end, the number of candies/oranges will be the smallest one in the initial numbers. Let&#39;s call them min_c and min_o. As the result, the answer is sum(max(c[i]-min_c,o[i]-min_o))(i&amp;gt;=1&amp;amp;&amp;amp;i&amp;lt;=n)&lt;/p&gt;
+&lt;h3 id=&#34;code-2&#34;&gt;Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        int c[100];
+        int o[100];
+        cin&amp;gt;&amp;gt;n;
+        int minc=1e9+1;
+        int mino=1e9+1;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;c[i];
+            minc=min(minc,c[i]);
+        }
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;o[i];
+            mino=min(mino,o[i]);
+        }
+        long long ans=0;
+        for(int i=1;i&amp;lt;=n;++i){
+            ans+=max(c[i]-minc,o[i]-mino);
+        }
+        cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
 ">Codeforces Round #661 Div3 retrospect</a>
       </div>
       
