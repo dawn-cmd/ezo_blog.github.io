@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Kick Start 2020 Round C T1 Countdown Analysis | ezo&#39;s blog</title>
+<title>Codeforces Round #663 Div2 retrospect | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1597399945786">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Kick Start 2020 Round C T1 Countdown Analysis" />
-  <meta name="keywords" content="Solution" />
+  <meta name="description" content="Codeforces Round #663 Div2 retrospect" />
+  <meta name="keywords" content="Contest Retrospect,Solution" />
 </head>
 
 <body>
@@ -189,18 +189,26 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li>
+<li><a href="#first-here-is-my-score-and-rate">First, here is my score and rate:</a></li>
+<li><a href="#a-suborrays">A. Suborrays</a>
 <ul>
-<li><a href="#official-link">Official link</a></li>
-<li><a href="#problem">Problem</a></li>
-<li><a href="#input">Input</a></li>
-<li><a href="#output">Output</a></li>
-<li><a href="#limits">Limits</a></li>
-<li><a href="#test-set-1">Test set 1</a></li>
-<li><a href="#test-set-2">Test set 2</a></li>
+<li><a href="#introduction">Introduction</a></li>
 <li><a href="#analysis">Analysis</a></li>
-<li><a href="#code-of-the-best-solution">Code of the best solution</a></li>
-<li><a href="#ps">P.S.</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+</li>
+<li><a href="#b-fix-you">B. Fix You</a>
+<ul>
+<li><a href="#introduction-2">Introduction</a></li>
+<li><a href="#analysis-2">Analysis</a></li>
+<li><a href="#code-2">Code</a></li>
+</ul>
+</li>
+<li><a href="#c-cyclic-permutations">C. Cyclic Permutations</a>
+<ul>
+<li><a href="#introduction-3">Introduction</a></li>
+<li><a href="#analysis-3">Analysis</a></li>
+<li><a href="#code-3">Code</a></li>
 </ul>
 </li>
 </ul>
@@ -468,8 +476,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/">
-      Kick Start 2020 Round C T1 Countdown Analysis
+    <a class="post-title-link" href="https://dawn-cmd.github.io/oYNuWB-VD/">
+      Codeforces Round #663 Div2 retrospect
     </a>
   </h1>
   <div class="post-meta">
@@ -477,13 +485,19 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-07-30 18:58:22">2020-07-30</span>
+      <span class="publish-time" data-t="2020-08-14 16:26:07">2020-08-14</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-folder-o"></i>
       <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://dawn-cmd.github.io/P8XbJiAxi/">
+        <span>Contest Retrospect</span>
+      </a>、
+      
       
       
       <a href="https://dawn-cmd.github.io/OPRCr9F-Y/">
@@ -501,71 +515,100 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>386<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>466<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="official-link">Official link</h2>
-<p><a href="https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff43/00000000003380d2">Here</a></p>
-<h2 id="problem">Problem</h2>
-<p>Avery has an array of N positive integers. The i-th integer of the array is Ai.</p>
-<p>A contiguous subarray is an m-countdown if it is of length m and contains the integers m, m-1, m-2, ..., 2, 1 in that order. For example, [3, 2, 1] is a 3-countdown.</p>
-<p>Can you help Avery count the number of K-countdowns in her array?</p>
-<h2 id="input">Input</h2>
-<p>The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the integers N and K. The second line contains N integers. The i-th integer is Ai.</p>
-<h2 id="output">Output</h2>
-<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of K-countdowns in her array.</p>
-<h2 id="limits">Limits</h2>
-<p>Time limit: 20 seconds per test set.<br>
-Memory limit: 1GB.<br>
-1 ≤ T ≤ 100.<br>
-2 ≤ K ≤ N.<br>
-1 ≤ Ai ≤ 2 × 10^5, for all i.</p>
-<h2 id="test-set-1">Test set 1</h2>
-<p>2 ≤ N ≤ 1000.</p>
-<h2 id="test-set-2">Test set 2</h2>
-<p>2 ≤ N ≤ 2 × 10^5 for at most 10 test cases.<br>
-For the remaining cases, 2 ≤ N ≤ 1000.</p>
+              <h1 id="first-here-is-my-score-and-rate">First, here is my score and rate:</h1>
+<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1597394785217.png" alt="" loading="lazy"></figure>
+<h1 id="a-suborrays">A. Suborrays</h1>
+<h2 id="introduction">Introduction</h2>
+<p><a href="https://codeforces.com/contest/1391/problem/A">Here</a></p>
 <h2 id="analysis">Analysis</h2>
-<ol>
-<li>O(nk) solution:for each A[i to i+k], we can check it whether meets the requirement in the problem or not.</li>
-<li>O(n) solution: We can set a variation &quot;head&quot;. At first, head equals to k. If A[i] equals to head, head minus one, otherwise reset head. When head equals to 0, we find a countdown, and then we need to add it to the answer and reset head.</li>
-</ol>
-<h2 id="code-of-the-best-solution">Code of the best solution</h2>
+<p>It's not hard to understand the problem's true meaning: Give a solution that to all subarrays which have length k, there exist at least one number in the subarray no less than k. There is a fixed solution to this problem: 1, 2, 3, ......, n.</p>
+<h2 id="code">Code</h2>
 <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+#define LL long long
 using namespace std;
-int n;
-int k;
 int main(){
     int T;
     cin&gt;&gt;T;
-    for(int P=1;P&lt;=T;++P){
-        cin&gt;&gt;n&gt;&gt;k;
-        int head=k;
-        int ans=0;
+    while(T--){
+        int n;
+        cin&gt;&gt;n;
         for(int i=1;i&lt;=n;++i){
-            int now;
-            cin&gt;&gt;now;
-            if(now==head){
-                --head;
-            }
-            else{
-                head=now==k?k-1:k;
-            }
-            if(head==0){
-                ++ans;
-                head=k;
-            }
+            cout&lt;&lt;i&lt;&lt;' ';
         }
-        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;P&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
+        cout&lt;&lt;endl;
     }
     return 0;
 }
 </code></pre>
-<h2 id="ps">P.S.</h2>
-<p>When you reset head, checking adjacent number is necessary.&gt;line 19</p>
+<h1 id="b-fix-you">B. Fix You</h1>
+<h2 id="introduction-2">Introduction</h2>
+<p><a href="https://codeforces.com/contest/1391/problem/B">Here</a></p>
+<h2 id="analysis-2">Analysis</h2>
+<p>Because all the places can be chosen, the only way and also the best way to solve it is to change all 'D' on the bottom into 'R' and change all 'R' on the right edge into 'D'.</p>
+<h2 id="code-2">Code</h2>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int main(){
+    int T;
+    cin&gt;&gt;T;
+    while(T--){
+        int n;
+        int m;
+        vector&lt;string&gt; g;
+        cin&gt;&gt;n&gt;&gt;m;
+        g=vector&lt;string&gt;(n);
+        for(auto &amp;i:g){
+            cin&gt;&gt;i;
+        }
+        int ans=0;
+        for(int i=0;i&lt;n;++i){
+            if(i&lt;n-1){
+                g[i][m-1]=='R'?++ans:0;
+            }
+            else{
+                for(auto &amp;j:g[i]){
+                    j=='D'?++ans:0;
+                }
+            }
+        }
+        cout&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<h1 id="c-cyclic-permutations">C. Cyclic Permutations</h1>
+<h2 id="introduction-3">Introduction</h2>
+<p><a href="https://codeforces.com/contest/1391/problem/C">Here</a></p>
+<h2 id="analysis-3">Analysis</h2>
+<p>The problem cannot be easily solved straightly. We can find that to any element in this sequence, if it has edge to both left and right, it must be in a circle. It is very easy to verify. So, what we do is to find the number of solution that cannot build a circle and use the number of all solutions n! to minus it. So how we can find the number of solution that cannot build circle? According to the conclusion we get previously, we can put these numbers into a deque by this sequence: n-1, n-2,......, 1, and each number can choose put from the left or from the right. So the answer is n!-2^(n-1).</p>
+<h2 id="code-3">Code</h2>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+#define LL long long
+#define MOD 1000000007
+using namespace std;
+long long qpow(long long _b,long long _e){
+    return _e==0?1:(_e&amp;1?_b:1)*qpow(_b*_b%MOD,_e&gt;&gt;1)%MOD; 
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    LL n;
+    cin&gt;&gt;n;
+    LL ans=1;   
+    for(LL i=2;i&lt;=n;++i){
+        ans=ans*i%MOD;
+    }
+    cout&lt;&lt;(ans+MOD-qpow(2,n-1))%MOD&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
 
             </div>
             
@@ -582,7 +625,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/" title="Kick Start 2020 Round C T1 Countdown Analysis">https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/</a>
+      <a href="https://dawn-cmd.github.io/oYNuWB-VD/" title="Codeforces Round #663 Div2 retrospect">https://dawn-cmd.github.io/oYNuWB-VD/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -591,21 +634,19 @@ int main(){
   </ul>
   <div class="tags">
     
+      <a href="https://dawn-cmd.github.io/P8XbJiAxi/"># Contest Retrospect</a>
+    
       <a href="https://dawn-cmd.github.io/OPRCr9F-Y/"># Solution</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Topological Sort" href="https://dawn-cmd.github.io/o_E2mKnup/">Topological Sort</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Topological Sort" href="https://dawn-cmd.github.io/o_E2mKnup/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Kick Start 2020 Round C T2 Stable_Wall Analysis" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/">Kick Start 2020 Round C T2 Stable_Wall Analysis</a>
-        <a class="nav-mobile-next" title="Kick Start 2020 Round C T2 Stable_Wall Analysis" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/">下一篇</a>
+        <a class="nav-pc-next" title="Codeforces Round #662 Div2 retrospect" href="https://dawn-cmd.github.io/i28zPrNp9/">Codeforces Round #662 Div2 retrospect</a>
+        <a class="nav-mobile-next" title="Codeforces Round #662 Div2 retrospect" href="https://dawn-cmd.github.io/i28zPrNp9/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
