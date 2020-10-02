@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Codeforces Round #661 Div3 retrospect | ezo&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1601212588933">
+<link rel="shortcut icon" href="/favicon.ico?v=1601653545203">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1256,6 +1256,82 @@ int main(){
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/r5xcxY_Zp/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In this passage, I will explain a algorithm that works on graphs. When we are faced with problems on graphs, we often need to face a very classic problem: Finding a shortest way from A to B. There are two main stream algorithms to solve the problem in the information technology competition circle.(at least in China) They are Dijskstra and SPFA. However, to SPFA, it is not stable because if the problem-maker draw the graph like a grid, it can reach its most terrible time complexity readily. So the most welcomed one is Dijsktra.&lt;/p&gt;
+&lt;h2 id=&#34;step1-core-principle&#34;&gt;Step1: Core Principle&lt;/h2&gt;
+&lt;p&gt;Dijkstra is very easy to understand in the aspect of principle. We use a array dist[i] to represent the shortest way between vertex i and the initial vertex. So the algorithm is that using the dist[i] to update the connected vertexs&#39; information: dist[i.to]&amp;gt;dist[i]+cost[i][t.to]?&amp;quot;update&amp;quot;:&amp;quot;remain&amp;quot;;&lt;/p&gt;
+&lt;h2 id=&#34;step2-make-it-perfect&#34;&gt;Step2: Make it Perfect&lt;/h2&gt;
+&lt;p&gt;Nevertheless, if we just practice the principle directly, the time complexity is O(n^2)(Here the &amp;quot;O&amp;quot; means theta, I cannot type the symbol easily in my blog) because we repeated N times to find the minimum distance among N distances, which is not acceptable. We can use pile to help us to finish the finding proccess. Because pile can use O(log2N) to find the minimum one among N. The better time complexity is O(nlogn).&lt;/p&gt;
+&lt;h2 id=&#34;step3-code&#34;&gt;Step3: Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+using namespace std;
+struct node{
+    int to;
+    int cost;
+    bool operator &amp;lt;(const node &amp;amp;x)const{
+        return x.cost&amp;lt;cost;
+    } 
+};
+vector&amp;lt;int&amp;gt; dijkstra(int n,int m,int s,vector&amp;lt;vector&amp;lt;node&amp;gt; &amp;gt; &amp;amp;g){
+    vector&amp;lt;int&amp;gt; dist=vector&amp;lt;int&amp;gt;(n+1);
+    for(int i=1;i&amp;lt;=n;++i){
+        dist[i]=2147483647;
+    }
+    dist[s]=0;//initialize the distance
+    priority_queue&amp;lt;node&amp;gt; p;//use a priority_queue to decrease the time on finding the minimum number to log2N
+    map&amp;lt;int,int&amp;gt; h;
+    node tmp={s,0};
+    p.push(tmp);
+    while(!p.empty()){
+        int x=p.top().to;
+        p.pop();
+        if(h[x]==1){
+            continue;
+        }//because each vertex can only be used for one time, this measure can avoid a dead loop
+        h[x]=1;
+        for(int i=0;i&amp;lt;g[x].size();++i){
+            int y=g[x][i].to;
+            if(dist[y]&amp;gt;dist[x]+g[x][i].cost){
+                dist[y]=dist[x]+g[x][i].cost;
+                if(!h[y]){
+                    node tmp={y,dist[y]};
+                    p.push(tmp);
+                }
+            }
+        }//follow the principle, use the best data to update
+    }
+    return dist;
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n;//total number of vertexs
+    int m;//total number of edges
+    int s;//the initial vertex
+    cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m&amp;gt;&amp;gt;s; //input the data
+    vector&amp;lt;vector&amp;lt;node&amp;gt; &amp;gt; g=vector&amp;lt;vector&amp;lt;node&amp;gt; &amp;gt;(n+1);//the graph
+    for(int i=1,x,y,c;i&amp;lt;=m;++i){
+        cin&amp;gt;&amp;gt;x&amp;gt;&amp;gt;y&amp;gt;&amp;gt;c;
+        node tmp={y,c};
+        g[x].push_back(tmp);
+    }//store the graph
+    vector&amp;lt;int&amp;gt; dist=dijkstra(n,m,s,g);//calculate the answer
+    for(int i=1;i&amp;lt;=n;++i){
+        cout&amp;lt;&amp;lt;dist[i]&amp;lt;&amp;lt;&#39; &#39;;
+    }//output the answer
+    cout&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;notice&#34;&gt;Notice&lt;/h2&gt;
+&lt;p&gt;This Dijkstra cannot be used on graphs with minus edges. Although this problem can also be solved by using potential function on the algorithm, it will make it more like a maths problem but not information technology problem. So I will not talk too much on it in this blog but I may use another passage to explain the area.&lt;/p&gt;
+">Dijkstra Algorithm</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/oYNuWB-VD/"" data-c="
