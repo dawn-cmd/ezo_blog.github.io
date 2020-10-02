@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>ezo&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1601653793826">
+<link rel="shortcut icon" href="/favicon.ico?v=1601653962170">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1175,7 +1175,7 @@
           &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;In this passage, I will explain a algorithm that works on graphs. When we are faced with problems on graphs, we often need to face a very classic problem: Finding a shortest way from A to B. There are two main stream algorithms to solve the problem in the information technology competition circle.(at least in China) They are Dijskstra and SPFA. However, to SPFA, it is not stable because if the problem-maker draw the graph like a grid, it can reach its most terrible time complexity readily. So the most welcomed one is Dijsktra.&lt;/p&gt;
 &lt;h2 id=&#34;step1-core-principle&#34;&gt;Step1: Core Principle&lt;/h2&gt;
-&lt;p&gt;Dijkstra is very easy to understand in the aspect of principle. We use a array dist[i] to represent the shortest way between vertex i and the initial vertex. So the algorithm is that using the dist[i] to update the connected vertexs&#39; information: dist[i.to]&amp;gt;dist[i]+cost[i][t.to]?&amp;quot;update&amp;quot;:&amp;quot;remain&amp;quot;;&lt;/p&gt;
+&lt;p&gt;Dijkstra is very easy to understand in the aspect of principle. We use an array dist[i] to represent the shortest way between vertex i and the initial vertex. So the algorithm is that using the dist[i] to update the connected vertexs&#39; information: dist[i.to]&amp;gt;dist[i]+cost[i][i.to]?&amp;quot;update&amp;quot;:&amp;quot;remain&amp;quot;;&lt;/p&gt;
 &lt;h2 id=&#34;step2-make-it-perfect&#34;&gt;Step2: Make it Perfect&lt;/h2&gt;
 &lt;p&gt;Nevertheless, if we just practice the principle directly, the time complexity is O(n^2)(Here the &amp;quot;O&amp;quot; means theta, I cannot type the symbol easily in my blog) because we repeated N times to find the minimum distance among N distances, which is not acceptable. We can use pile to help us to finish the finding proccess. Because pile can use O(log2N) to find the minimum one among N. The better time complexity is O(nlogn).&lt;/p&gt;
 &lt;h2 id=&#34;step3-code&#34;&gt;Step3: Code&lt;/h2&gt;
