@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Codeforces Round #661 Div3 retrospect | ezo&#39;s blog</title>
+<title>Edmonds-Karp Algorithm | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1602077705194">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Codeforces Round #661 Div3 retrospect" />
-  <meta name="keywords" content="Contest Retrospect,Solution" />
+  <meta name="description" content="Edmonds-Karp Algorithm" />
+  <meta name="keywords" content="Note" />
 </head>
 
 <body>
@@ -191,35 +191,12 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#first-here-is-my-score-and-rate">First, here is my score and rate:</a></li>
-<li><a href="#a-remove-smallest">A. Remove Smallest</a>
-<ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#analysis">Analysis</a></li>
+<li><a href="#prerequisite-build-the-graph">Prerequisite: Build the Graph</a></li>
+<li><a href="#step1-find-augmenting-path">Step1: Find Augmenting Path</a></li>
+<li><a href="#step2-add-the-flow">Step2: Add the flow</a></li>
 <li><a href="#code">Code</a></li>
-</ul>
-</li>
-<li><a href="#b-gifts-fixing">B. Gifts Fixing</a>
-<ul>
-<li><a href="#introduction-2">Introduction</a></li>
-<li><a href="#analysis-2">Analysis</a></li>
-<li><a href="#code-2">Code</a></li>
-</ul>
-</li>
-<li><a href="#c-boats-competition">C. Boats Competition</a>
-<ul>
-<li><a href="#introduction-3">Introduction</a></li>
-<li><a href="#analysis-3">Analysis</a></li>
-<li><a href="#code-3">Code</a></li>
-</ul>
-</li>
-<li><a href="#d-binary-string-to-subsequences">D. Binary String To Subsequences</a>
-<ul>
-<li><a href="#introduction-4">Introduction</a></li>
-<li><a href="#analysis-4">Analysis</a></li>
-<li><a href="#code-4">Code</a></li>
-</ul>
-</li>
+<li><a href="#notice">Notice</a></li>
 </ul>
 </li>
 </ul>
@@ -487,8 +464,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/BKt7ppc1X/">
-      Codeforces Round #661 Div3 retrospect
+    <a class="post-title-link" href="https://dawn-cmd.github.io/fUyI1lct0/">
+      Edmonds-Karp Algorithm
     </a>
   </h1>
   <div class="post-meta">
@@ -496,7 +473,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-08-07 21:18:45">2020-08-07</span>
+      <span class="publish-time" data-t="2020-10-07 16:39:52">2020-10-07</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -505,14 +482,8 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://dawn-cmd.github.io/P8XbJiAxi/">
-        <span>Contest Retrospect</span>
-      </a>、
-      
-      
-      
-      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/">
-        <span>Solution</span>
+      <a href="https://dawn-cmd.github.io/T9dinVrg_/">
+        <span>Note</span>
       </a>
       
       
@@ -526,201 +497,109 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>847<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>856<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="first-here-is-my-score-and-rate">First, here is my score and rate:</h2>
-<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1596807580878.png" alt="" loading="lazy"></figure>
-<h2 id="a-remove-smallest">A. Remove Smallest</h2>
-<h3 id="introduction">Introduction</h3>
-<p><a href="https://codeforces.com/contest/1399/problem/A">Here</a></p>
-<h3 id="analysis">Analysis</h3>
-<p>It's not hard to find that the answer of the question is not related to the order of the array a[]. The critical fact is whether there exist a gap border than 1. To check it, we can sort the array and list it. Due to the sort function, the time complexity of the solution is O(nlogn), which is acceptable.</p>
-<h3 id="code">Code</h3>
+              <h2 id="introduction">Introduction</h2>
+<p>In this passage, I will show one of the most classic problems on graph: the network flow problem. The graph is made by several vertexs and edges which have directions and capacities. There exist a source vertex and a sink vertex in the graph. And the problem is to calculate the maximum flow from source vertex to the sink vertex. If you think it is hard to understand, you can consider it as a water pipe system under the ground: In the system, each pipe has a capacity and direction. And the question is to calculate how much water can flow from the source to the sink in a minute.</p>
+<h2 id="prerequisite-build-the-graph">Prerequisite: Build the Graph</h2>
+<p>In most cases, this part is not mentioned in many other kinds of introduction of other graph algorithms. Because most of them just need a effective way to check the whole graph but do not need to concern the order. Nevertheless, in the network flow problems, we need to attach two antiparallel edges to each other.(I will explain the reason later in the passage.) So I recommend using array to imitate static list but not other data structure. If you use this structure and add a pair of antiparallel edge, you will find their ids in the array are adjacent. Suppose one of edges' id is x. Then, its antiparallel edge's id is x^1. The benefit enables the computer to &quot;regret&quot; when they choose a wrong answer.</p>
+<h2 id="step1-find-augmenting-path">Step1: Find Augmenting Path</h2>
+<p>Before we formally start coding, let me explain the main idea briefly: Find a augmenting path, add the minimum capacity to the answer, and repeat it until there is no augmenting path. So, what's the augmenting path? Generally speaking, an augmenting path is a feasible way from source to sink. In the first step, we just need to find a augmenting path but do not need to concern its capacity.  We can use BFS to finish this proccess.</p>
+<h2 id="step2-add-the-flow">Step2: Add the flow</h2>
+<p>Now we have an augmenting path, and then we need to do is subtracting the maximum capacity in the path from each edge's capacity in the path. And here is a point: We also need to add the maximum capacity to all the antiparallel edges' capacity of the path. Why? One edge may be included in different augmenting paths for several times. If the computer choose the edge but it finds out that it put the edge into a wrong augmenting path, choosing the edge's antiparallel edge enables them to regret the choice and recover the original edge.</p>
+<h2 id="code">Code</h2>
 <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+#define LL long long
 using namespace std;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    while(T--){
-        int n;
-        cin&gt;&gt;n;
-        int a[100];
-        for(int i=1;i&lt;=n;++i){
-            cin&gt;&gt;a[i];
+class node{//information of the edge
+    public:
+        int to;
+        int c;
+        int nxt;
+};
+class graph{
+    public:
+        vector&lt;int&gt; head;
+        vector&lt;node&gt; edge;
+        vector&lt;int&gt; pre;
+        vector&lt;int&gt; incf;
+        graph(int a,int s){
+            head=vector&lt;int&gt;(a+1);
+            pre=vector&lt;int&gt;(a+1);
+            incf=vector&lt;int&gt;(a+1);
+            incf[s]=2147483647;
+            node tmp={0,0,0};
+            edge.push_back(tmp);
+            edge.push_back(tmp);
+        };
+};
+void addedge(graph &amp;g,int s,int t,int c){
+    node tmp={t,c,g.head[s]};
+    g.edge.push_back(tmp);
+    g.head[s]=g.edge.size()-1;
+}
+bool augmenting_path(graph &amp;g,int n,int s,int t){
+    vector&lt;bool&gt; h=vector&lt;bool&gt;(n+1);//detect the point is visited or not
+    queue&lt;int&gt; q;
+    q.push(s);
+    h[s]=1;
+    while(!q.empty()){
+        int x=q.front();
+        q.pop();
+        for(int y,c,i=g.head[x];i;i=g.edge[i].nxt){
+            y=g.edge[i].to;
+            c=g.edge[i].c;
+            if(h[y]||!c)
+                continue;
+            g.incf[y]=min(g.incf[x],c);
+            g.pre[y]=i;
+            if(y==t)
+                return 1;
+            h[y]=1;
+            q.push(y);
         }
-        if(n==1){
-            cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;
-            continue;
-        }
-        sort(a+1,a+1+n);
-        int ans=1;
-        for(int i=1;i&lt;=n-1;++i){
-            if(a[i+1]-a[i]&gt;1){
-                ans=0;
-                break;
-            }
-        }
-        if(ans){
-            cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;
-        }
-        else{
-            cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;
-        }
+    } 
+    return 0;
+}
+int increase_flow(graph &amp;g,int s,int t){
+    int x=t;
+    while(x!=s){
+        int i=g.pre[x];
+        g.edge[i].c-=g.incf[t];
+        g.edge[i^1].c+=g.incf[t];
+        x=g.edge[i^1].to;
     }
+    return g.incf[t];
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n;//number of vertexs
+    int m;//number of edges
+    int s;//source vertex
+    int t;//sink vertex
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;t;
+    graph g(n,s);
+    for(int i=1,a,b,c;i&lt;=m;++i){
+        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;
+        addedge(g,a,b,c);
+        addedge(g,b,a,0);
+    }
+    LL ans=0;
+    while(augmenting_path(g,n,s,t)){
+        ans+=increase_flow(g,s,t);
+    }
+    cout&lt;&lt;ans&lt;&lt;endl;
     return 0;
 }
 </code></pre>
-<h2 id="b-gifts-fixing">B. Gifts Fixing</h2>
-<h3 id="introduction-2">Introduction</h3>
-<p><a href="https://codeforces.com/contest/1399/problem/B">Here</a></p>
-<h3 id="analysis-2">Analysis</h3>
-<p>First, we can use c[i] and o[i] to describe the number of candies and oranges in each gift. According to the description, we can only decrease c[i] and o[i]but not increase them. So it is clear that in the end, the number of candies/oranges will be the smallest one in the initial numbers. Let's call them min_c and min_o. As the result, the answer is sum(max(c[i]-min_c,o[i]-min_o))(i&gt;=1&amp;&amp;i&lt;=n)</p>
-<h3 id="code-2">Code</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    while(T--){
-        int n;
-        int c[100];
-        int o[100];
-        cin&gt;&gt;n;
-        int minc=1e9+1;
-        int mino=1e9+1;
-        for(int i=1;i&lt;=n;++i){
-            cin&gt;&gt;c[i];
-            minc=min(minc,c[i]);
-        }
-        for(int i=1;i&lt;=n;++i){
-            cin&gt;&gt;o[i];
-            mino=min(mino,o[i]);
-        }
-        long long ans=0;
-        for(int i=1;i&lt;=n;++i){
-            ans+=max(c[i]-minc,o[i]-mino);
-        }
-        cout&lt;&lt;ans&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre>
-<h2 id="c-boats-competition">C. Boats Competition</h2>
-<h3 id="introduction-3">Introduction</h3>
-<p><a href="https://codeforces.com/contest/1399/problem/C">Here</a></p>
-<h3 id="analysis-3">Analysis</h3>
-<p>According to the description, it is not hard to find that the maximum of s is 100. So to each data, we try s from 0 to 100, and record the answer. To a specific s, how we can calculate the maximum number of teams? We can use a map to record all the weights, and to each person, we find whether there exist another one to match it. The total time complexity is O(n).</p>
-<h3 id="code-3">Code</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    while(T--){
-        int n;
-        cin&gt;&gt;n;
-        int w[100];
-        map&lt;int,int&gt; h;
-        for(int i=1;i&lt;=n;++i){
-            cin&gt;&gt;w[i];
-            ++h[w[i]];
-        }
-        if(n==1){
-            cout&lt;&lt;0&lt;&lt;endl;
-            continue;
-        }
-        if(n==2){
-            cout&lt;&lt;1&lt;&lt;endl;
-            continue;
-        }
-        int ans=-1;
-        for(int i=1;i&lt;=101;++i){
-            int cnt=0;
-            map&lt;int,int&gt; p=h;
-            for(int j=1;j&lt;=n;++j){
-                if(i-w[j]==w[j]&amp;&amp;p[w[j]]&lt;=1){
-                    continue;
-                }
-                if(p[w[j]]==0||p[i-w[j]]==0){
-                    continue;
-                }
-                --p[w[j]];
-                --p[i-w[j]];
-                ++cnt;
-            }
-            ans=max(ans,cnt);
-        }
-        cout&lt;&lt;ans&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre>
-<h2 id="d-binary-string-to-subsequences">D. Binary String To Subsequences</h2>
-<h3 id="introduction-4">Introduction</h3>
-<p><a href="https://codeforces.com/contest/1399/problem/D">Here</a></p>
-<h3 id="analysis-4">Analysis</h3>
-<p>In the problem, we do not really cares the body of each subsequence, instead, the end character is the most important to us. When we meet a '0',  we need to add it to a '1'-end-subsequence and when we meeet a '1', we need to add it to a '0'-end-subsequence. So we can use two chains to connect the id of '1'-end-subsequences and '0'-end-subquences. The total time complexity of the solution is O(n).</p>
-<h3 id="code-4">Code</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    while(T--){
-        int n;
-        cin&gt;&gt;n;
-        string s;
-        cin&gt;&gt;s;
-        int pre[200010];
-        int headz=0;
-        int heado=0;
-        int ans=0;
-        int bl[200010];
-        for(int i=0,len=s.length();i&lt;len;++i){
-            if(s[i]-'0'==0){
-                if(heado==0){
-                    ++ans;
-                    pre[ans]=headz;
-                    headz=ans;
-                    bl[i]=ans;
-                }
-                else{
-                    bl[i]=heado;
-                    int tmp=pre[heado];
-                    pre[heado]=headz;
-                    headz=heado;
-                    heado=tmp;
-                }
-            }
-            else{
-                if(headz==0){
-                    ++ans;
-                    pre[ans]=heado;
-                    heado=ans;
-                    bl[i]=ans;
-                }
-                else{
-                    bl[i]=headz;
-                    int tmp=pre[headz];
-                    pre[headz]=heado;
-                    heado=headz;
-                    headz=tmp;
-                }
-            }
-        }
-        cout&lt;&lt;ans&lt;&lt;endl;
-        for(int i=0;i&lt;n;++i){
-            cout&lt;&lt;bl[i]&lt;&lt;' ';
-        }
-        cout&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre>
+<h2 id="notice">Notice</h2>
+<p>This algorithm is, indeed, a semi-finished product. Thus, it is not very effective. It can be used when the number of vertexs is lower than 10,000. But it provides a principle that used in most other network-flow problems. So totally understanding this algorithm will lay a solid fundation for further study.</p>
 
             </div>
             
@@ -737,7 +616,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/BKt7ppc1X/" title="Codeforces Round #661 Div3 retrospect">https://dawn-cmd.github.io/BKt7ppc1X/</a>
+      <a href="https://dawn-cmd.github.io/fUyI1lct0/" title="Edmonds-Karp Algorithm">https://dawn-cmd.github.io/fUyI1lct0/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -746,23 +625,17 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/P8XbJiAxi/"># Contest Retrospect</a>
-    
-      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/"># Solution</a>
+      <a href="https://dawn-cmd.github.io/T9dinVrg_/"># Note</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Codeforces Round #662 Div2 retrospect" href="https://dawn-cmd.github.io/i28zPrNp9/">Codeforces Round #662 Div2 retrospect</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Codeforces Round #662 Div2 retrospect" href="https://dawn-cmd.github.io/i28zPrNp9/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Kick Start 2020 Round D T2 Alien Piano Analysis" href="https://dawn-cmd.github.io/cJ22lJu5P/">Kick Start 2020 Round D T2 Alien Piano Analysis</a>
-        <a class="nav-mobile-next" title="Kick Start 2020 Round D T2 Alien Piano Analysis" href="https://dawn-cmd.github.io/cJ22lJu5P/">下一篇</a>
+        <a class="nav-pc-next" title="Dijkstra Algorithm" href="https://dawn-cmd.github.io/r5xcxY_Zp/">Dijkstra Algorithm</a>
+        <a class="nav-mobile-next" title="Dijkstra Algorithm" href="https://dawn-cmd.github.io/r5xcxY_Zp/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

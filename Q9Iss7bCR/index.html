@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>ezo&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1601791337163">
+<link rel="shortcut icon" href="/favicon.ico?v=1602077705194">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -185,7 +185,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">10</span>
+        <span class="site-item-stat-count">11</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -248,6 +248,10 @@
           <small class="language" data-lan="tag">标签</small>
         </h2>
       </div>
+      
+      
+      
+      
       
       
       
@@ -517,6 +521,108 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/fUyI1lct0/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In this passage, I will show one of the most classic problems on graph: the network flow problem. The graph is made by several vertexs and edges which have directions and capacities. There exist a source vertex and a sink vertex in the graph. And the problem is to calculate the maximum flow from source vertex to the sink vertex. If you think it is hard to understand, you can consider it as a water pipe system under the ground: In the system, each pipe has a capacity and direction. And the question is to calculate how much water can flow from the source to the sink in a minute.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisite-build-the-graph&#34;&gt;Prerequisite: Build the Graph&lt;/h2&gt;
+&lt;p&gt;In most cases, this part is not mentioned in many other kinds of introduction of other graph algorithms. Because most of them just need a effective way to check the whole graph but do not need to concern the order. Nevertheless, in the network flow problems, we need to attach two antiparallel edges to each other.(I will explain the reason later in the passage.) So I recommend using array to imitate static list but not other data structure. If you use this structure and add a pair of antiparallel edge, you will find their ids in the array are adjacent. Suppose one of edges&#39; id is x. Then, its antiparallel edge&#39;s id is x^1. The benefit enables the computer to &amp;quot;regret&amp;quot; when they choose a wrong answer.&lt;/p&gt;
+&lt;h2 id=&#34;step1-find-augmenting-path&#34;&gt;Step1: Find Augmenting Path&lt;/h2&gt;
+&lt;p&gt;Before we formally start coding, let me explain the main idea briefly: Find a augmenting path, add the minimum capacity to the answer, and repeat it until there is no augmenting path. So, what&#39;s the augmenting path? Generally speaking, an augmenting path is a feasible way from source to sink. In the first step, we just need to find a augmenting path but do not need to concern its capacity.  We can use BFS to finish this proccess.&lt;/p&gt;
+&lt;h2 id=&#34;step2-add-the-flow&#34;&gt;Step2: Add the flow&lt;/h2&gt;
+&lt;p&gt;Now we have an augmenting path, and then we need to do is subtracting the maximum capacity in the path from each edge&#39;s capacity in the path. And here is a point: We also need to add the maximum capacity to all the antiparallel edges&#39; capacity of the path. Why? One edge may be included in different augmenting paths for several times. If the computer choose the edge but it finds out that it put the edge into a wrong augmenting path, choosing the edge&#39;s antiparallel edge enables them to regret the choice and recover the original edge.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+using namespace std;
+class node{//information of the edge
+    public:
+        int to;
+        int c;
+        int nxt;
+};
+class graph{
+    public:
+        vector&amp;lt;int&amp;gt; head;
+        vector&amp;lt;node&amp;gt; edge;
+        vector&amp;lt;int&amp;gt; pre;
+        vector&amp;lt;int&amp;gt; incf;
+        graph(int a,int s){
+            head=vector&amp;lt;int&amp;gt;(a+1);
+            pre=vector&amp;lt;int&amp;gt;(a+1);
+            incf=vector&amp;lt;int&amp;gt;(a+1);
+            incf[s]=2147483647;
+            node tmp={0,0,0};
+            edge.push_back(tmp);
+            edge.push_back(tmp);
+        };
+};
+void addedge(graph &amp;amp;g,int s,int t,int c){
+    node tmp={t,c,g.head[s]};
+    g.edge.push_back(tmp);
+    g.head[s]=g.edge.size()-1;
+}
+bool augmenting_path(graph &amp;amp;g,int n,int s,int t){
+    vector&amp;lt;bool&amp;gt; h=vector&amp;lt;bool&amp;gt;(n+1);//detect the point is visited or not
+    queue&amp;lt;int&amp;gt; q;
+    q.push(s);
+    h[s]=1;
+    while(!q.empty()){
+        int x=q.front();
+        q.pop();
+        for(int y,c,i=g.head[x];i;i=g.edge[i].nxt){
+            y=g.edge[i].to;
+            c=g.edge[i].c;
+            if(h[y]||!c)
+                continue;
+            g.incf[y]=min(g.incf[x],c);
+            g.pre[y]=i;
+            if(y==t)
+                return 1;
+            h[y]=1;
+            q.push(y);
+        }
+    } 
+    return 0;
+}
+int increase_flow(graph &amp;amp;g,int s,int t){
+    int x=t;
+    while(x!=s){
+        int i=g.pre[x];
+        g.edge[i].c-=g.incf[t];
+        g.edge[i^1].c+=g.incf[t];
+        x=g.edge[i^1].to;
+    }
+    return g.incf[t];
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n;//number of vertexs
+    int m;//number of edges
+    int s;//source vertex
+    int t;//sink vertex
+    cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m&amp;gt;&amp;gt;s&amp;gt;&amp;gt;t;
+    graph g(n,s);
+    for(int i=1,a,b,c;i&amp;lt;=m;++i){
+        cin&amp;gt;&amp;gt;a&amp;gt;&amp;gt;b&amp;gt;&amp;gt;c;
+        addedge(g,a,b,c);
+        addedge(g,b,a,0);
+    }
+    LL ans=0;
+    while(augmenting_path(g,n,s,t)){
+        ans+=increase_flow(g,s,t);
+    }
+    cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;notice&#34;&gt;Notice&lt;/h2&gt;
+&lt;p&gt;This algorithm is, indeed, a semi-finished product. Thus, it is not very effective. It can be used when the number of vertexs is lower than 10,000. But it provides a principle that used in most other network-flow problems. So totally understanding this algorithm will lay a solid fundation for further study.&lt;/p&gt;
+">Edmonds-Karp Algorithm</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/r5xcxY_Zp/"" data-c="
