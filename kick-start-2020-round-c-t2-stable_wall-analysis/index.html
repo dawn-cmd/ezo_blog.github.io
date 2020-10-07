@@ -1,125 +1,503 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kick Start 2020 Round C T2 Stable_Wall Analysis | ezo&#39;s blog</title>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="People who know nothing repeat it.
-" />
-<link rel="shortcut icon" href="https://dawn-cmd.github.io/favicon.ico">
-<link rel="stylesheet" href="https://dawn-cmd.github.io/styles/main.css">
+">
+<meta name="theme-color" content="#000">
+<title>Kick Start 2020 Round C T2 Stable_Wall Analysis | ezo&#39;s blog</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1602080137397">
+<link rel="stylesheet" href="/media/css/pisces.css">
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
 
-<script src="https://dawn-cmd.github.io/media/js/jquery.min.js"></script>
-<script src="https://dawn-cmd.github.io/media/js/masonry.pkgd.min.js"></script>
-<script src="https://dawn-cmd.github.io/media/js/aos.js"></script>
-<script src="https://dawn-cmd.github.io/media/js/pace.min.js"></script>
-<script src="https://dawn-cmd.github.io/media/js/view-image.min.js"></script>
-<script src="https://dawn-cmd.github.io/media/js/jquery.magnific-popup.min.js"></script>
-<script src="https://dawn-cmd.github.io/media/js/functions.js"></script>
-    <meta name="referrer" content="never">
-    <meta name="description" content="
-Before the passage
-I think the data of this problem should be strengthened. Because of the weak data, many people can s..." />
-    <meta name="keywords" content="Solution" />
-    <script src="https://dawn-cmd.github.io/media/js/waterfall.min.js"></script>
-    <script src="https://dawn-cmd.github.io/media/js/prism.min.js"></script>
-  </head>
-  <body>
-            <header id="header" class="grid-container">
-        <!-- start: .menu-wrapper -->
-        <div class="menu-mobile"> 
-          <i class="fa fa-reorder"></i>
-        </div>
-        <div class="menu-wrapper">
-          <div class="">
-            <div class="logo">
-              <a href="https://dawn-cmd.github.io"><img src="/media/images/logoo.png" alt=""></a>
-            </div>
-            <!-- start: .main-nav -->
+<link href="/media/hljs/styles/default.css"
+  rel="stylesheet">
 
-            <nav class="main-nav grid-container grid-parent">
-              <ul id="menu-header" class="menu gradient-effect">
-                <li class=""><a href="https://dawn-cmd.github.io" class="menu">首页</a></li>
-                
-                  <li class="" >
-                    <a href="https://dawn-cmd.github.io" class="menu">
-                      Homepage
-                    </a>
-                  </li>
-                
-                  <li class="" >
-                    <a href="/archives" class="menu">
-                      Archives
-                    </a>
-                  </li>
-                
-                  <li class="" >
-                    <a href="/tags" class="menu">
-                      Tags
-                    </a>
-                  </li>
-                
-                  <li class="" >
-                    <a href="https://dawn-cmd.github.io/aQhyHFZwS" class="menu">
-                      About
-                    </a>
-                  </li>
-                
-                <li class="search-menu-item hide-on-mobile hide-on-tablet"><a href="#search-lightbox" class="lightbox mfp-inline"><i class="fa fa-search-line"></i></a></li>
-              </ul>
-            </nav>
-            <a href="#search-lightbox" class="lightbox epcl-search-button mfp-inline hide-on-tablet hide-on-desktop"><i class="fa fa-search-line"></i></a>
-            <!-- end: .main-nav -->
-            <div class="clear"></div>
-            <div class="border hide-on-tablet hide-on-mobile"></div>
-          </div>    
-          <div class="clear"></div>
-        </div>
-        <!-- end: .menu-wrapper -->
-        <div class="clear"></div>
-      </header>
-      <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
-        <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
-          <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1602079839247" action="/search/index.html" class="search-form" _lpchecked="1">
-              <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
-              <button type="submit" class="submit" aria-label="Submit">
-                <i class="fa fa-search-line"></i>
-              </button>
-            </form>
-          </div>
+<link rel="stylesheet" href="/styles/main.css">
+
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+  <meta name="description" content="Kick Start 2020 Round C T2 Stable_Wall Analysis" />
+  <meta name="keywords" content="Solution" />
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    
+<div class="pisces">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
         </div>
       </div>
-
-      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
-
-        <div class="center content">
-          <div class="featured-image cover" style="background-image: url('https://tse1-mm.cn.bing.net/th/id/OIP.zCZvaLblroS943kFj4-tDQHaD4?w=290&amp;h=180&amp;c=7&amp;o=5&amp;dpr=1.38&amp;pid=1.7');">
-            <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-07-30"><i class="fa fa-calendar"></i><span class="lately">2 个月前</span></time>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>ezo&#39;s blog</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">Good things come to those who wait.</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+            <li class="nav-item ">
               
-              <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/#comments" class="comments meta-info" title="">
-                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/kick-start-2020-round-c-t2-stable_wall-analysis/"> </span>
+              
+                <a href="https://dawn-cmd.github.io/" target="_self">
+                  <i class="fa fa-globe"></i> Homepage
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/archives/" target="_self">
+                  <i class="fa fa-archive"></i> Archives
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/tags/" target="_self">
+                  <i class="fa fa-tags"></i> Tags
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://dawn-cmd.github.io/aQhyHFZwS/" target="_self">
+                  <i class="fa fa-globe"></i> About
+                </a>
+              
+            </li>
+          
+          
+          
+            <li id="fa_search" class="nav-item">
+              <a href="javascript:void(0);">
+                <i class="fa fa-search"></i> <span class="language" data-lan="search">搜索</span>
               </a>
-              <span id="/kick-start-2020-round-c-t2-stable_wall-analysis/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
-              
-            </div>
-            <div class="info">
-              <div class="tags ">
-                
-                      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/" class="ctag ctag-0 ctag-OPRCr9F-Y" aria-label="">Solution</a>
-                    
-              </div>
-              <h1 class="title ularge white bold">Kick Start 2020 Round C T2 Stable_Wall Analysis</h1>
-            </div>
-          </div>
-        </div>  
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
 
-        <div class="epcl-page-wrapper">
-          <div class="left-content grid-70 np-mobile">
-            <article class="main-article post">
-              <section class="post-content">
-                <div class="text">
-                  <!-- more -->
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout pisces ">
+      <div class="section-layout-wrapper">
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            <div style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#before-the-passage">Before the passage</a></li>
+<li><a href="#official-link">Official link</a></li>
+<li><a href="#problem">Problem</a></li>
+<li><a href="#input">Input</a></li>
+<li><a href="#output">Output</a></li>
+<li><a href="#limits">Limits</a></li>
+<li><a href="#test-set-1">Test set 1</a></li>
+<li><a href="#test-set-2">Test set 2</a></li>
+<li><a href="#sample">Sample</a>
+<ul>
+<li><a href="#input-2">Input</a></li>
+<li><a href="#output-2">Output</a></li>
+<li><a href="#explainatoin">Explainatoin</a></li>
+</ul>
+</li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#code-of-my-solution">Code of my solution</a></li>
+<li><a href="#code-of-the-best-solution">Code of the best solution</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/">
+      Kick Start 2020 Round C T2 Stable_Wall Analysis
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2020-07-30 18:50:13">2020-07-30</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/">
+        <span>Solution</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>8<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>1213<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</section>
+            <div class="post-body next-md-body" id="post_body">
+              <!-- more -->
 <h2 id="before-the-passage">Before the passage</h2>
 <p>I think the data of this problem should be strengthened. Because of the weak data, many people can solve the problem via a very stupid way(<s>me</s>). the details will be furnished in the following passage. However, the ratio of people who passed the problem is lower than the one in other contemporary rounds, it is unbelievable.</p>
 <h2 id="official-link">Official link</h2>
@@ -329,42 +707,50 @@ int main(){
 }
 </code></pre>
 
-                </div>
-                <div class="clear"></div>
-              </section>
-            </article>
-            <div class="clear"></div>
-
-            <section class="related section">
-              
-              <article class="prev grid-50 tablet-grid-50 grid-parent">
-                <div class="thumb cover lazy loaded" style="background-image: url('https://tse1-mm.cn.bing.net/th/id/OIP.zCZvaLblroS943kFj4-tDQHaD4?w=290&amp;h=180&amp;c=7&amp;o=5&amp;dpr=1.38&amp;pid=1.7');"></div>
-                 <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/" class="full-link"></a>
-                 <div class="info">
-                  <time datetime="2020-07-30">2020-07-30</time>
-                  <h4 class="title white no-margin">Kick Start 2020 Round C T1 Countdown Analysis</h4>
-                </div>
-                 <span class="epcl-button red">
-                  <img src="https://dawn-cmd.github.io/media/images/left-arrow.svg" width="15" alt="Left Arrow">
-                </span>
-                <div class="overlay"></div>
-              </article>
-              
-              
-
-                <div class="clear"></div>
-            </section>
-
-              <div class="clear"></div>
-              
+            </div>
             
-              <div id="comments" class="bg-white hosted ">
-                
-                  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      ezo
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/" title="Kick Start 2020 Round C T2 Stable_Wall Analysis">https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/"># Solution</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="Kick Start 2020 Round C T1 Countdown Analysis" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/">Kick Start 2020 Round C T1 Countdown Analysis</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="Kick Start 2020 Round C T1 Countdown Analysis" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+    </div>
+  </div>
+</div>
+            
+            
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 <div id="gitalk-container"></div>
-<div class="clear"></div>
 
 <script>
   var gitalk = new Gitalk({
@@ -376,163 +762,2138 @@ int main(){
     id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
     distractionFreeMode: false  // Facebook-like distraction free mode
   })
-
   gitalk.render('gitalk-container')
 </script>
-
-                
-                
-              </div>
-            
-
-            </div>
-          </div>
-      </main>
-
-          <footer id="footer" class="grid-container">
-        <div class="widgets row gradient-effect">
-            <div class="default-sidebar border-effect">
-              <div class="grid-33 tablet-grid-50 mobile-grid-100">
-                <section id="tag_cloud-2" class="widget widget_epcl_posts_thumbs underline-effect">
-                  <h4 class="widget-title title white bordered">最新文章</h4>
-                  
-                  
-                  <article class="item post-0 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://dawn-cmd.github.io/fUyI1lct0/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://dawn-cmd.github.io/post-images/fUyI1lct0.jpg');"></span>
-                    </a>
-                    <div class="info gradient-effect">
-                      <time datetime="2020-10-07">2020-10-07</time>
-                      <h4 class="title usmall">
-                        <a href="https://dawn-cmd.github.io/fUyI1lct0/">Edmonds-Karp Algorithm</a>
-                      </h4>
-                    </div>
-                    <div class="clear"></div>
-                  </article>
-                  
-                  
-                  
-                  <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://dawn-cmd.github.io/r5xcxY_Zp/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://dawn-cmd.github.io/post-images/r5xcxY_Zp.gif');"></span>
-                    </a>
-                    <div class="info gradient-effect">
-                      <time datetime="2020-10-02">2020-10-02</time>
-                      <h4 class="title usmall">
-                        <a href="https://dawn-cmd.github.io/r5xcxY_Zp/">Dijkstra Algorithm</a>
-                      </h4>
-                    </div>
-                    <div class="clear"></div>
-                  </article>
-                  
-                  
-                  
-                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://dawn-cmd.github.io/oYNuWB-VD/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://news.itmo.ru/images/news/big/917925.jpg');"></span>
-                    </a>
-                    <div class="info gradient-effect">
-                      <time datetime="2020-08-14">2020-08-14</time>
-                      <h4 class="title usmall">
-                        <a href="https://dawn-cmd.github.io/oYNuWB-VD/">Codeforces Round #663 Div2 retrospect</a>
-                      </h4>
-                    </div>
-                    <div class="clear"></div>
-                  </article>
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  <div class="clear"></div>
-                </section>
-              </div>
-
-              <div class="grid-33 tablet-grid-50 mobile-grid-100">
-                <section id="tag_cloud-2" class="widget widget_tag_cloud underline-effect">
-                  <h4 class="widget-title title white bordered">标签云</h4>
-                  <div class="tagcloud">
-                    
-                      <a href="https://dawn-cmd.github.io/T9dinVrg_/" class="ctag ctag-0 ctag-T9dinVrg_" aria-label="">Note</a>
-                    
-                      <a href="https://dawn-cmd.github.io/P8XbJiAxi/" class="ctag ctag-1 ctag-P8XbJiAxi" aria-label="">Contest Retrospect</a>
-                    
-                      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/" class="ctag ctag-2 ctag-OPRCr9F-Y" aria-label="">Solution</a>
-                    
-                  </div>
-                  <div class="clear"></div>
-                </section>
-              </div>
-
-              <div class="grid-33 tablet-grid-50 mobile-grid-100">
-                <section id="epcl_about-2" class="widget widget_epcl_about underline-effect">
-                  <h4 class="widget-title title white bordered">关于我</h4>
-                  <div class="avatar">
-                    <a href="" class="translate-effect thumb"><span class="fullimage cover" style="background-image: url(https://dawn-cmd.github.io/images/avatar.png);"></span></a>
-                  </div>
-                  <div class="info">
-                    <h4 class="title small author-name gradient-effect no-margin"><a href="">ezo&#39;s blog</a></h4>
-                    <p class="founder">People who know nothing repeat it.
-</p>
-                    <div class="social">
-                      
-                        
-                      
-                        
-                      
-                        
-                      
-                        
-                      
-                        
-                      
-                    </div> 
-                  </div>
-                  <div class="clear"></div>
-                  </section>
-              </div>
-
-            </div>
-            <div class="clear"></div>
-        </div>
-
-        <div class="logo">
-          <a href="https://dawn-cmd.github.io"><img src="/media/images/gridea.png" alt=""></a>
-        </div>
-        <p class="published border-effect">
-          ©2019 共 12 篇文章
-          <br/>
-          Theme <a href="https://gridea.dev/" target="_blank">「breek」</a> Powered by <a href="https://gridea.dev/" target="_blank">「Gridea」</a>
-        </p>
-        
-        <a href="javascript:void(0)" id="back-to-top" class="epcl-button dark" style="display:none">
-          <i class="fa fa-arrow"></i>
-        </a>
-    </footer>
     
-    <div class="clear"></div>
+    
+  
 
-        
-
-      
-    <script src="https://dawn-cmd.github.io/media/js/functions-post.js"></script>
-
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- end: #wrapper -->
-  </body>
+    <div class="footer-box">
+  <footer class="footer">
+    <div class="copyright">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By <a
+        href="https://github.com/hsxyhao/gridea-theme-next" target="_blank">HsxyHao</a>
+    </div>
+    <div class="poweredby">
+      Powered by <a href="https://github.com/dawn-cmd" target="_blank"> ezo</a>
+    </div>
+  </footer>
+  
+  
+  <div class="pisces back-to-top" id="back_to_top">
+    <i class="fa fa-arrow-up"></i>
+    
+    <span class="scrollpercent">
+      <span id="back_to_top_text">0</span>%
+    </span>
+    
+  </div>
+  
+  
+  
+</div>
+<script>
+
+  let sideBarOpen = 'sidebar-open';
+  let body = document.body;
+  let back2Top = document.querySelector('#back_to_top'),
+    back2TopText = document.querySelector('#back_to_top_text'),
+    drawerBox = document.querySelector('#drawer_box'),
+    rightSideBar = document.querySelector('.sidebar'),
+    viewport = document.querySelector('body');
+
+  function scrollAnimation(currentY, targetY) {
+
+    let needScrollTop = targetY - currentY
+    let _currentY = currentY
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10)
+      _currentY += dist
+      window.scrollTo(_currentY, currentY)
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY)
+      } else {
+        window.scrollTo(_currentY, targetY)
+      }
+    }, 1)
+  }
+
+  back2Top.addEventListener("click", function (e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+
+  window.addEventListener('scroll', function (e) {
+    let percent = document.scrollingElement.scrollTop / (document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight) * 100;
+    if (percent > 1 && !back2Top.classList.contains('back-top-active')) {
+      back2Top.classList.add('back-top-active');
+    }
+    if (percent == 0) {
+      back2Top.classList.remove('back-top-active');
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+
+  let hasCacu = false;
+  window.onresize = function () {
+    calcuHeight();
+  }
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (!hasCacu && back2Top.classList.contains('pisces') || back2Top.classList.contains('gemini')) {
+      let sideBar = document.querySelector('.sidebar');
+      let navUl = document.querySelector('#site_nav');
+      sideBar.style = 'margin-top:' + (navUl.offsetHeight + navUl.offsetTop + 15) + 'px;';
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+
+  let open = false, MOTION_TIME = 300, RIGHT_MOVE_DIS = '320px';
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll('.right-motion');
+    let right = drawerBox.classList.contains('right');
+
+    let transitionDir = right ? "transition.slideRightIn" : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS
+      };
+      closeProp = {
+        paddingRight: '0px'
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS
+      };
+      closeProp = {
+        paddingLeft: '0px'
+      };
+    }
+
+    drawerBox.onclick = function () {
+      open = !open;
+      window.Velocity(rightSideBar, 'stop');
+      window.Velocity(viewport, 'stop');
+      window.Velocity(rightMotions, 'stop');
+      if (open) {
+        window.Velocity(rightSideBar, {
+          width: RIGHT_MOVE_DIS
+        }, {
+          duration: MOTION_TIME,
+          begin: function () {
+            window.Velocity(rightMotions, transitionDir, {});
+          }
+        })
+        window.Velocity(viewport, openProp, {
+          duration: MOTION_TIME
+        });
+      } else {
+        window.Velocity(rightSideBar, {
+          width: '0px'
+        }, {
+          duration: MOTION_TIME,
+          begin: function () {
+            window.Velocity(rightMotions, {
+              opacity: 0
+            });
+          }
+        })
+        window.Velocity(viewport, closeProp, {
+          duration: MOTION_TIME
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle('muse-line');
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    }
+  }
+
+  // 链接跳转
+  let newWindow = 'false'
+  if (newWindow === 'true') {
+    let links = document.querySelectorAll('.post-body a')
+    links.forEach(item => {
+      if (!item.classList.contains('btn')) {
+        item.setAttribute("target", "_blank");
+      }
+    })
+  }
+
+  let faSearch = document.querySelector('#fa_search');
+  faSearch.addEventListener('click', function () {
+    document.querySelector('#search_mask').style = ''
+  })
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+  
+  // 离开当前页title变化
+  var leaveTitle = "";
+  if (leaveTitle) {
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState == 'hidden') {
+        normal_title = document.title;
+        document.title = leaveTitle;
+      } else {
+        document.title = normal_title;
+      }
+    });
+  }
+
+</script>
+    <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick = () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function (e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px;border-radius: 2px;`;
+      lightImg.onclick = function () {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        window.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        window.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        window.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        window.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      window.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
+  </div>
+</body>
+
+<div class="search-mask" id="search_mask" style="display: none;">
+  <div class="search-box">
+    <div class="search-title">
+      <i class="fa fa-search"></i>
+      <div class="input-box">
+        <input id="search" type="text" class="language" data-lan="search" placeholder="搜索">
+      </div>
+      <i id="close" class="fa fa-times-circle"></i>
+    </div>
+    <div class="stat-box">
+      <span id="stat_count">0</span><span class="language" data-lan="stat">条相关条目，使用了</span><span id="stat_times">0</span><span class="language" data-lan="stat-time">毫秒</span>
+      <hr>
+    </div>
+    <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/fUyI1lct0/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In this passage, I will show one of the most classic problems on graph: the network flow problem. The graph is made by several vertexs and edges which have directions and capacities. There exist a source vertex and a sink vertex in the graph. And the problem is to calculate the maximum flow from source vertex to the sink vertex. If you think it is hard to understand, you can consider it as a water pipe system under the ground: In the system, each pipe has a capacity and direction. And the question is to calculate how much water can flow from the source to the sink in a minute.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisite-build-the-graph&#34;&gt;Prerequisite: Build the Graph&lt;/h2&gt;
+&lt;p&gt;In most cases, this part is not mentioned in many other kinds of introduction of other graph algorithms. Because most of them just need a effective way to check the whole graph but do not need to concern the order. Nevertheless, in the network flow problems, we need to attach two antiparallel edges to each other.(I will explain the reason later in the passage.) So I recommend using array to imitate static list but not other data structure. If you use this structure and add a pair of antiparallel edge, you will find their ids in the array are adjacent. Suppose one of edges&#39; id is x. Then, its antiparallel edge&#39;s id is x^1. The benefit enables the computer to &amp;quot;regret&amp;quot; when they choose a wrong answer.&lt;/p&gt;
+&lt;h2 id=&#34;step1-find-augmenting-path&#34;&gt;Step1: Find Augmenting Path&lt;/h2&gt;
+&lt;p&gt;Before we formally start coding, let me explain the main idea briefly: Find a augmenting path, add the minimum capacity to the answer, and repeat it until there is no augmenting path. So, what&#39;s the augmenting path? Generally speaking, an augmenting path is a feasible way from source to sink. In the first step, we just need to find a augmenting path but do not need to concern its capacity.  We can use BFS to finish this proccess.&lt;/p&gt;
+&lt;h2 id=&#34;step2-add-the-flow&#34;&gt;Step2: Add the flow&lt;/h2&gt;
+&lt;p&gt;Now we have an augmenting path, and then we need to do is subtracting the maximum capacity in the path from each edge&#39;s capacity in the path. And here is a point: We also need to add the maximum capacity to all the antiparallel edges&#39; capacity of the path. Why? One edge may be included in different augmenting paths for several times. If the computer choose the edge but it finds out that it put the edge into a wrong augmenting path, choosing the edge&#39;s antiparallel edge enables them to regret the choice and recover the original edge.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+using namespace std;
+class node{//information of the edge
+    public:
+        int to;
+        int c;
+        int nxt;
+};
+class graph{
+    public:
+        vector&amp;lt;int&amp;gt; head;
+        vector&amp;lt;node&amp;gt; edge;
+        vector&amp;lt;int&amp;gt; pre;
+        vector&amp;lt;int&amp;gt; incf;
+        graph(int a,int s){
+            head=vector&amp;lt;int&amp;gt;(a+1);
+            pre=vector&amp;lt;int&amp;gt;(a+1);
+            incf=vector&amp;lt;int&amp;gt;(a+1);
+            incf[s]=2147483647;
+            node tmp={0,0,0};
+            edge.push_back(tmp);
+            edge.push_back(tmp);
+        };
+};
+void addedge(graph &amp;amp;g,int s,int t,int c){
+    node tmp={t,c,g.head[s]};
+    g.edge.push_back(tmp);
+    g.head[s]=g.edge.size()-1;
+}
+bool augmenting_path(graph &amp;amp;g,int n,int s,int t){
+    vector&amp;lt;bool&amp;gt; h=vector&amp;lt;bool&amp;gt;(n+1);//detect the point is visited or not
+    queue&amp;lt;int&amp;gt; q;
+    q.push(s);
+    h[s]=1;
+    while(!q.empty()){
+        int x=q.front();
+        q.pop();
+        for(int y,c,i=g.head[x];i;i=g.edge[i].nxt){
+            y=g.edge[i].to;
+            c=g.edge[i].c;
+            if(h[y]||!c)
+                continue;
+            g.incf[y]=min(g.incf[x],c);
+            g.pre[y]=i;
+            if(y==t)
+                return 1;
+            h[y]=1;
+            q.push(y);
+        }
+    } 
+    return 0;
+}
+int increase_flow(graph &amp;amp;g,int s,int t){
+    int x=t;
+    while(x!=s){
+        int i=g.pre[x];
+        g.edge[i].c-=g.incf[t];
+        g.edge[i^1].c+=g.incf[t];
+        x=g.edge[i^1].to;
+    }
+    return g.incf[t];
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n;//number of vertexs
+    int m;//number of edges
+    int s;//source vertex
+    int t;//sink vertex
+    cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m&amp;gt;&amp;gt;s&amp;gt;&amp;gt;t;
+    graph g(n,s);
+    for(int i=1,a,b,c;i&amp;lt;=m;++i){
+        cin&amp;gt;&amp;gt;a&amp;gt;&amp;gt;b&amp;gt;&amp;gt;c;
+        addedge(g,a,b,c);
+        addedge(g,b,a,0);
+    }
+    LL ans=0;
+    while(augmenting_path(g,n,s,t)){
+        ans+=increase_flow(g,s,t);
+    }
+    cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;notice&#34;&gt;Notice&lt;/h2&gt;
+&lt;p&gt;This algorithm is, indeed, a semi-finished product. Thus, it is not very effective. It can be used when the number of vertexs is lower than 10,000. But it provides a principle that used in most other network-flow problems. So totally understanding this algorithm will lay a solid fundation for further study.&lt;/p&gt;
+">Edmonds-Karp Algorithm</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/r5xcxY_Zp/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In this passage, I will explain a algorithm that works on graphs. When we are faced with problems on graphs, we often need to face a very classic problem: Finding a shortest way from A to B. There are two main stream algorithms to solve the problem in the programming competition community.(at least in China) They are Dijskstra and SPFA. However, to SPFA, it is not stable because if the problem-maker draw the graph like a grid, it can reach its most terrible time complexity readily. So the most popular one is Dijsktra.&lt;/p&gt;
+&lt;h2 id=&#34;step1-core-principle&#34;&gt;Step1: Core Principle&lt;/h2&gt;
+&lt;p&gt;Dijkstra is very easy to understand in the aspect of principle. We use an array dist[i] to represent the shortest way between vertex i and the initial vertex. So the algorithm is that using the dist[i] to update the connected vertexs&#39; information: dist[i.to]&amp;gt;dist[i]+cost[i][i.to]?&amp;quot;update&amp;quot;:&amp;quot;remain&amp;quot;;&lt;/p&gt;
+&lt;h2 id=&#34;step2-make-it-perfect&#34;&gt;Step2: Make it Perfect&lt;/h2&gt;
+&lt;p&gt;Nevertheless, if we just practice the principle directly, the time complexity is O(n^2)(Here the &amp;quot;O&amp;quot; means theta, I cannot type the symbol easily in my blog) because we repeated N times to find the minimum distance among N distances, which is not acceptable. We can use pile to help us to finish the finding proccess. Because pile can use O(log2N) to find the minimum one among N. The better time complexity is O(nlogn).&lt;/p&gt;
+&lt;h2 id=&#34;step3-code&#34;&gt;Step3: Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+using namespace std;
+struct node{
+    int to;
+    int cost;
+    bool operator &amp;lt;(const node &amp;amp;x)const{
+        return x.cost&amp;lt;cost;
+    } 
+};
+vector&amp;lt;int&amp;gt; dijkstra(int n,int m,int s,vector&amp;lt;vector&amp;lt;node&amp;gt; &amp;gt; &amp;amp;g){
+    vector&amp;lt;int&amp;gt; dist=vector&amp;lt;int&amp;gt;(n+1);
+    for(int i=1;i&amp;lt;=n;++i){
+        dist[i]=2147483647;
+    }
+    dist[s]=0;//initialize the distance
+    priority_queue&amp;lt;node&amp;gt; p;//use a priority_queue to decrease the time on finding the minimum number to log2N
+    map&amp;lt;int,int&amp;gt; h;
+    node tmp={s,0};
+    p.push(tmp);
+    while(!p.empty()){
+        int x=p.top().to;
+        p.pop();
+        if(h[x]==1){
+            continue;
+        }//because each vertex can only be used for one time, this measure can avoid a dead loop
+        h[x]=1;
+        for(int i=0;i&amp;lt;g[x].size();++i){
+            int y=g[x][i].to;
+            if(dist[y]&amp;gt;dist[x]+g[x][i].cost){
+                dist[y]=dist[x]+g[x][i].cost;
+                if(!h[y]){
+                    node tmp={y,dist[y]};
+                    p.push(tmp);
+                }
+            }
+        }//follow the principle, use the best data to update
+    }
+    return dist;
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n;//total number of vertexs
+    int m;//total number of edges
+    int s;//the initial vertex
+    cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m&amp;gt;&amp;gt;s; //input the data
+    vector&amp;lt;vector&amp;lt;node&amp;gt; &amp;gt; g=vector&amp;lt;vector&amp;lt;node&amp;gt; &amp;gt;(n+1);//the graph
+    for(int i=1,x,y,c;i&amp;lt;=m;++i){
+        cin&amp;gt;&amp;gt;x&amp;gt;&amp;gt;y&amp;gt;&amp;gt;c;
+        node tmp={y,c};
+        g[x].push_back(tmp);
+    }//store the graph
+    vector&amp;lt;int&amp;gt; dist=dijkstra(n,m,s,g);//calculate the answer
+    for(int i=1;i&amp;lt;=n;++i){
+        cout&amp;lt;&amp;lt;dist[i]&amp;lt;&amp;lt;&#39; &#39;;
+    }//output the answer
+    cout&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;notice&#34;&gt;Notice&lt;/h2&gt;
+&lt;p&gt;This Dijkstra cannot be used on graphs with minus edges. Although this problem can also be solved by using potential function on the algorithm, it will make it more like a maths problem but not information technology problem. So I will not talk too much on it in this blog but I may use another passage to explain the area.&lt;/p&gt;
+">Dijkstra Algorithm</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/oYNuWB-VD/"" data-c="
+          &lt;h1 id=&#34;first-here-is-my-score-and-rate&#34;&gt;First, here is my score and rate:&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1597394785217.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;a-suborrays&#34;&gt;A. Suborrays&lt;/h1&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1391/problem/A&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;It&#39;s not hard to understand the problem&#39;s true meaning: Give a solution that to all subarrays which have length k, there exist at least one number in the subarray no less than k. There is a fixed solution to this problem: 1, 2, 3, ......, n.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        for(int i=1;i&amp;lt;=n;++i){
+            cout&amp;lt;&amp;lt;i&amp;lt;&amp;lt;&#39; &#39;;
+        }
+        cout&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;b-fix-you&#34;&gt;B. Fix You&lt;/h1&gt;
+&lt;h2 id=&#34;introduction-2&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1391/problem/B&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;analysis-2&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;Because all the places can be chosen, the only way and also the best way to solve it is to change all &#39;D&#39; on the bottom into &#39;R&#39; and change all &#39;R&#39; on the right edge into &#39;D&#39;.&lt;/p&gt;
+&lt;h2 id=&#34;code-2&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        int m;
+        vector&amp;lt;string&amp;gt; g;
+        cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m;
+        g=vector&amp;lt;string&amp;gt;(n);
+        for(auto &amp;amp;i:g){
+            cin&amp;gt;&amp;gt;i;
+        }
+        int ans=0;
+        for(int i=0;i&amp;lt;n;++i){
+            if(i&amp;lt;n-1){
+                g[i][m-1]==&#39;R&#39;?++ans:0;
+            }
+            else{
+                for(auto &amp;amp;j:g[i]){
+                    j==&#39;D&#39;?++ans:0;
+                }
+            }
+        }
+        cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;c-cyclic-permutations&#34;&gt;C. Cyclic Permutations&lt;/h1&gt;
+&lt;h2 id=&#34;introduction-3&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1391/problem/C&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;analysis-3&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;The problem cannot be easily solved straightly. We can find that to any element in this sequence, if it has edge to both left and right, it must be in a circle. It is very easy to verify. So, what we do is to find the number of solution that cannot build a circle and use the number of all solutions n! to minus it. So how we can find the number of solution that cannot build circle? According to the conclusion we get previously, we can put these numbers into a deque by this sequence: n-1, n-2,......, 1, and each number can choose put from the left or from the right. So the answer is n!-2^(n-1).&lt;/p&gt;
+&lt;h2 id=&#34;code-3&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+#define MOD 1000000007
+using namespace std;
+long long qpow(long long _b,long long _e){
+    return _e==0?1:(_e&amp;amp;1?_b:1)*qpow(_b*_b%MOD,_e&amp;gt;&amp;gt;1)%MOD; 
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    LL n;
+    cin&amp;gt;&amp;gt;n;
+    LL ans=1;   
+    for(LL i=2;i&amp;lt;=n;++i){
+        ans=ans*i%MOD;
+    }
+    cout&amp;lt;&amp;lt;(ans+MOD-qpow(2,n-1))%MOD&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Codeforces Round #663 Div2 retrospect</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/i28zPrNp9/"" data-c="
+          &lt;h1 id=&#34;first-here-is-my-score-and-rate&#34;&gt;First, here is my score and rate:&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1597310459488.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;a-rainbow-dash-fluttershy-and-chess-coloring&#34;&gt;A. Rainbow Dash, Fluttershy and Chess Coloring&lt;/h1&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1393/problem/A&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;It&#39;s very easy, you can find the answer via merely trying 2 to 3 numbers. The answer is n/2+1. That&#39;s all.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        cout&amp;lt;&amp;lt;n/2+1&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;b-applejack-and-storages&#34;&gt;B. Applejack and Storages&lt;/h1&gt;
+&lt;h2 id=&#34;introduction-2&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1393/problem/B&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;analysis-2&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;First, we can record number of each kind of lumber. Then we can count and update the number of types of lumber which is more than 2, 4, 6 and 8. This whole procedure is O(n). Each time the data is renewed, we can use the record to judge that the requirement in the introduction is accpetable or not.&lt;/p&gt;
+&lt;h2 id=&#34;code-2&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int n;
+    cin&amp;gt;&amp;gt;n;
+    map&amp;lt;int,int&amp;gt; h;
+    int cnt2=0;
+    int cnt4=0;
+    int cnt6=0;
+    int cnt8=0; 
+    for(int i=1,tmp;i&amp;lt;=n;++i){
+        cin&amp;gt;&amp;gt;tmp;
+        h[tmp]++;
+        if(h[tmp]==2){
+            ++cnt2;
+        }
+        if(h[tmp]==4){
+            ++cnt4;
+        }
+        if(h[tmp]==6){
+            ++cnt6;
+        }
+        if(h[tmp]==8){
+            ++cnt8;
+        }
+    }
+    int q;
+    cin&amp;gt;&amp;gt;q;
+    while(q--){
+        char c;
+        int tmp;
+        cin&amp;gt;&amp;gt;c&amp;gt;&amp;gt;tmp;
+        if(c==&#39;+&#39;){
+            ++n;
+            ++h[tmp];
+            if(h[tmp]==2){
+                ++cnt2;
+            }
+            if(h[tmp]==4){
+                ++cnt4;
+            }
+            if(h[tmp]==6){
+                ++cnt6;
+            }
+            if(h[tmp]==8){
+                ++cnt8;
+            }
+        }
+        else{
+            --n;
+            --h[tmp];
+            if(h[tmp]==1){
+                --cnt2;
+            }
+            if(h[tmp]==3){
+                --cnt4;
+            }
+            if(h[tmp]==5){
+                --cnt6;
+            }
+            if(h[tmp]==7){
+                --cnt8;
+            }
+        }
+        if(n&amp;lt;8){
+            cout&amp;lt;&amp;lt;&amp;quot;NO&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        if(cnt8){
+            cout&amp;lt;&amp;lt;&amp;quot;YES&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        if(cnt6&amp;amp;&amp;amp;cnt2&amp;gt;=2){
+            cout&amp;lt;&amp;lt;&amp;quot;YES&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        if(cnt4&amp;gt;=2){
+            cout&amp;lt;&amp;lt;&amp;quot;YES&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        if(cnt4&amp;amp;&amp;amp;cnt2&amp;gt;=3){
+            cout&amp;lt;&amp;lt;&amp;quot;YES&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        cout&amp;lt;&amp;lt;&amp;quot;NO&amp;quot;&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;c-pinkie-pie-eats-patty-cakes&#34;&gt;C. Pinkie Pie Eats Patty-cakes&lt;/h1&gt;
+&lt;h2 id=&#34;introduction-3&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1393/problem/C&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;analysis-3&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;At the first glance, we can judge that the answer of this question is linear. It means that there must exist a value that any value lower than it is acceptable and any value higher than it is not acceptable. So the value is the answer we look for. What&#39;s more, the range of answer can up to 2*10^5. Large scale, linear answer, which kind of algorithm or data structure can match these features? Of course, the BINARY SEARCH. It is one of my favourite algorithm and also the first algorithm I learned formally.  With a check function, you can locate an answer in logn time complexity. But how to design the check algorithm? We can use the GREEK strategy. At a specific position, choose the legal type of the cake which has the greatest number. In detail,  we can use SET to implement it. So, the whole time complexity of the problem is O(nlogn), which is acceptable.&lt;/p&gt;
+&lt;h2 id=&#34;code-3&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+using namespace std;
+vector&amp;lt;int&amp;gt; a;
+int n;
+bool check(int x){
+    map&amp;lt;int,int&amp;gt; cnt;
+    for(auto &amp;amp;i:a){
+        ++cnt[i];
+    }
+    vector&amp;lt;int&amp;gt; b;
+    set&amp;lt;pair&amp;lt;int,int&amp;gt;,greater&amp;lt;pair&amp;lt;int,int&amp;gt;&amp;gt;&amp;gt; s;
+    for(int i=1;i&amp;lt;=n;i++){
+        if(cnt[i]){
+            s.insert({cnt[i],i});         
+        }
+    }
+    for(int i=0;i&amp;lt;n;++i){
+        if(i&amp;gt;x&amp;amp;&amp;amp;cnt[b[i-x-1]]){
+            s.insert({cnt[b[i-x-1]],b[i-x-1]});
+        }
+        if(s.empty()){
+            return 0;
+        }
+        b.push_back(s.begin()-&amp;gt;second);
+        s.erase(s.begin());
+        --cnt[b.back()];
+    }
+    return 1;
+}
+int binary_search(int l,int r){
+    if(l==r){
+        return l;
+    }
+    int mid=(l+r)/2+1;
+    if(check(mid)){
+        return binary_search(mid,r);
+    }
+    else{
+        return binary_search(l,mid-1);
+    }
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        cin&amp;gt;&amp;gt;n;
+        a=vector&amp;lt;int&amp;gt;(n);
+        for(auto &amp;amp;i:a){
+            cin&amp;gt;&amp;gt;i;     
+        }
+        cout&amp;lt;&amp;lt;binary_search(0,n)&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Codeforces Round #662 Div2 retrospect</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/BKt7ppc1X/"" data-c="
+          &lt;h2 id=&#34;first-here-is-my-score-and-rate&#34;&gt;First, here is my score and rate:&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1596807580878.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;a-remove-smallest&#34;&gt;A. Remove Smallest&lt;/h2&gt;
+&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1399/problem/A&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;analysis&#34;&gt;Analysis&lt;/h3&gt;
+&lt;p&gt;It&#39;s not hard to find that the answer of the question is not related to the order of the array a[]. The critical fact is whether there exist a gap border than 1. To check it, we can sort the array and list it. Due to the sort function, the time complexity of the solution is O(nlogn), which is acceptable.&lt;/p&gt;
+&lt;h3 id=&#34;code&#34;&gt;Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        int a[100];
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;a[i];
+        }
+        if(n==1){
+            cout&amp;lt;&amp;lt;&amp;quot;Yes&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        sort(a+1,a+1+n);
+        int ans=1;
+        for(int i=1;i&amp;lt;=n-1;++i){
+            if(a[i+1]-a[i]&amp;gt;1){
+                ans=0;
+                break;
+            }
+        }
+        if(ans){
+            cout&amp;lt;&amp;lt;&amp;quot;Yes&amp;quot;&amp;lt;&amp;lt;endl;
+        }
+        else{
+            cout&amp;lt;&amp;lt;&amp;quot;No&amp;quot;&amp;lt;&amp;lt;endl;
+        }
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;b-gifts-fixing&#34;&gt;B. Gifts Fixing&lt;/h2&gt;
+&lt;h3 id=&#34;introduction-2&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1399/problem/B&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;analysis-2&#34;&gt;Analysis&lt;/h3&gt;
+&lt;p&gt;First, we can use c[i] and o[i] to describe the number of candies and oranges in each gift. According to the description, we can only decrease c[i] and o[i]but not increase them. So it is clear that in the end, the number of candies/oranges will be the smallest one in the initial numbers. Let&#39;s call them min_c and min_o. As the result, the answer is sum(max(c[i]-min_c,o[i]-min_o))(i&amp;gt;=1&amp;amp;&amp;amp;i&amp;lt;=n)&lt;/p&gt;
+&lt;h3 id=&#34;code-2&#34;&gt;Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        int c[100];
+        int o[100];
+        cin&amp;gt;&amp;gt;n;
+        int minc=1e9+1;
+        int mino=1e9+1;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;c[i];
+            minc=min(minc,c[i]);
+        }
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;o[i];
+            mino=min(mino,o[i]);
+        }
+        long long ans=0;
+        for(int i=1;i&amp;lt;=n;++i){
+            ans+=max(c[i]-minc,o[i]-mino);
+        }
+        cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;c-boats-competition&#34;&gt;C. Boats Competition&lt;/h2&gt;
+&lt;h3 id=&#34;introduction-3&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1399/problem/C&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;analysis-3&#34;&gt;Analysis&lt;/h3&gt;
+&lt;p&gt;According to the description, it is not hard to find that the maximum of s is 100. So to each data, we try s from 0 to 100, and record the answer. To a specific s, how we can calculate the maximum number of teams? We can use a map to record all the weights, and to each person, we find whether there exist another one to match it. The total time complexity is O(n).&lt;/p&gt;
+&lt;h3 id=&#34;code-3&#34;&gt;Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        int w[100];
+        map&amp;lt;int,int&amp;gt; h;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;w[i];
+            ++h[w[i]];
+        }
+        if(n==1){
+            cout&amp;lt;&amp;lt;0&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        if(n==2){
+            cout&amp;lt;&amp;lt;1&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        int ans=-1;
+        for(int i=1;i&amp;lt;=101;++i){
+            int cnt=0;
+            map&amp;lt;int,int&amp;gt; p=h;
+            for(int j=1;j&amp;lt;=n;++j){
+                if(i-w[j]==w[j]&amp;amp;&amp;amp;p[w[j]]&amp;lt;=1){
+                    continue;
+                }
+                if(p[w[j]]==0||p[i-w[j]]==0){
+                    continue;
+                }
+                --p[w[j]];
+                --p[i-w[j]];
+                ++cnt;
+            }
+            ans=max(ans,cnt);
+        }
+        cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;d-binary-string-to-subsequences&#34;&gt;D. Binary String To Subsequences&lt;/h2&gt;
+&lt;h3 id=&#34;introduction-4&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1399/problem/D&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;analysis-4&#34;&gt;Analysis&lt;/h3&gt;
+&lt;p&gt;In the problem, we do not really cares the body of each subsequence, instead, the end character is the most important to us. When we meet a &#39;0&#39;,  we need to add it to a &#39;1&#39;-end-subsequence and when we meeet a &#39;1&#39;, we need to add it to a &#39;0&#39;-end-subsequence. So we can use two chains to connect the id of &#39;1&#39;-end-subsequences and &#39;0&#39;-end-subquences. The total time complexity of the solution is O(n).&lt;/p&gt;
+&lt;h3 id=&#34;code-4&#34;&gt;Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        string s;
+        cin&amp;gt;&amp;gt;s;
+        int pre[200010];
+        int headz=0;
+        int heado=0;
+        int ans=0;
+        int bl[200010];
+        for(int i=0,len=s.length();i&amp;lt;len;++i){
+            if(s[i]-&#39;0&#39;==0){
+                if(heado==0){
+                    ++ans;
+                    pre[ans]=headz;
+                    headz=ans;
+                    bl[i]=ans;
+                }
+                else{
+                    bl[i]=heado;
+                    int tmp=pre[heado];
+                    pre[heado]=headz;
+                    headz=heado;
+                    heado=tmp;
+                }
+            }
+            else{
+                if(headz==0){
+                    ++ans;
+                    pre[ans]=heado;
+                    heado=ans;
+                    bl[i]=ans;
+                }
+                else{
+                    bl[i]=headz;
+                    int tmp=pre[headz];
+                    pre[headz]=heado;
+                    heado=headz;
+                    headz=tmp;
+                }
+            }
+        }
+        cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+        for(int i=0;i&amp;lt;n;++i){
+            cout&amp;lt;&amp;lt;bl[i]&amp;lt;&amp;lt;&#39; &#39;;
+        }
+        cout&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Codeforces Round #661 Div3 retrospect</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/cJ22lJu5P/"" data-c="
+          &lt;h2 id=&#34;official-link&#34;&gt;Official Link&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff08/0000000000387174&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;An alien has just landed on Earth, and really likes our music. Lucky for us.&lt;/p&gt;
+&lt;p&gt;The alien would like to bring home its favorite human songs, but it only has a very strange instrument to do it with: a piano with just 4 keys of different pitches.&lt;/p&gt;
+&lt;p&gt;The alien converts a song by writing it down as a series of keys on the alien piano. Obviously, this piano will not be able to convert our songs completely, as our songs tend to have many more than 4 pitches.&lt;/p&gt;
+&lt;p&gt;The alien will settle for converting our songs with the following rules instead:&lt;/p&gt;
+&lt;p&gt;The first note in our song can be converted to any key on the alien piano.&lt;/p&gt;
+&lt;p&gt;For every note after,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;if its pitch is higher than the previous note, it should be converted into a higher-pitched key than the previous note&#39;s conversion;&lt;/li&gt;
+&lt;li&gt;if lower, it should be converted into a lower-pitched key than the previous note&#39;s conversion;&lt;/li&gt;
+&lt;li&gt;if exactly identical, it should be converted into the same key as the previous note&#39;s conversion.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note: two notes with the same pitch do not need to be converted into the same key if they are not adjacent.&lt;/p&gt;
+&lt;p&gt;What the alien wants to know is: how often will it have to break its rules when converting a particular song?&lt;/p&gt;
+&lt;p&gt;To elaborate, let us describe one of our songs as having K notes. The first note we describe as &amp;quot;note 1&amp;quot;, the second note &amp;quot;note 2&amp;quot;, and the last note &amp;quot;note K.&amp;quot;&lt;br&gt;
+So note 2 comes immediately after note 1.&lt;br&gt;
+Now if note 2 is lower than note 1 in our version of the song, yet converted to an equally-pitched or lower-pitched key (relative to note 2&#39;s conversion) in the alien&#39;s version of the song, then we consider that a single rule break.&lt;br&gt;
+For each test case, return the minimum amount of times the alien must necessarily break one of its rules in converting that song.&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;The first line of the input gives the number of test cases, T. T test cases follow.&lt;br&gt;
+Each test case consists of two lines.&lt;br&gt;
+The first line consists of a single integer, K.&lt;br&gt;
+The second line consists of K space-separated integers, A1, A2 ... AK, where Ai refers to the pitch of the i-th note for this test case.&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the minimum number of times that particular test case will require the alien to break its own rules during the conversion process.&lt;/p&gt;
+&lt;h2 id=&#34;limits&#34;&gt;Limits&lt;/h2&gt;
+&lt;p&gt;Memory limit: 1GB.&lt;br&gt;
+1 ≤ T ≤ 100.&lt;br&gt;
+1 ≤ Ai ≤ 106.&lt;/p&gt;
+&lt;h3 id=&#34;test-set-1&#34;&gt;Test set 1&lt;/h3&gt;
+&lt;p&gt;Time limit: 20 seconds.&lt;br&gt;
+1 ≤ K ≤ 10.&lt;/p&gt;
+&lt;h3 id=&#34;test-set-2&#34;&gt;Test set 2&lt;/h3&gt;
+&lt;p&gt;Time limit: 40 seconds.&lt;br&gt;
+1 ≤ K ≤ 104.&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;O(4^K) Solution: We can generate all possible conversions and choose the one with the smallest number of violations. To a fixed K, there exist 4^K solutions, so the time complexity is O(4^K).&lt;/li&gt;
+&lt;li&gt;O(K) Solution1: When I was finishing this problem, I first came up with DP--&lt;a href=&#34;https://en.wikipedia.org/wiki/Dynamic_programming&#34;&gt;Dynamic programming&lt;/a&gt;. We can consider dp[i][j] as the smallest number of violation when you choose conversion j at the position of i. So dp[i][j] equals to min(dp[i-1][k]+(violate the rule?1:0)). Because we just need one layer of loop, so the time complexity is O(K).&lt;/li&gt;
+&lt;li&gt;O(K) Solution2: We can interpret the problem through this way: record the number of ascending or descending substrings which is longer than 4. We just need to make sure each element is ergodic.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;code-of-ok-solution-1&#34;&gt;Code of O(K) Solution 1:&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n;
+int a[10010];
+int dp[10010][6];
+void initialization(){
+    memset(a,0,sizeof a);
+    memset(dp,0,sizeof dp);
+    return;
+}
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    for(int cas=1;cas&amp;lt;=T;++cas){
+        initialization();
+        cin&amp;gt;&amp;gt;n;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;a[i];
+            if(i!=1&amp;amp;&amp;amp;a[i]==a[i-1]){
+                --i;
+                --n;
+            }
+        }
+        for(int i=1;i&amp;lt;=4;++i){
+            dp[1][i]=0;
+        }
+        for(int i=2;i&amp;lt;=n;++i){
+            for(int j=1;j&amp;lt;=4;++j){
+                dp[i][j]=2147483647;   
+                if(a[i]&amp;gt;a[i-1]){
+                    for(int k=1;k&amp;lt;=4;++k){
+                        if(k&amp;lt;j){
+                            dp[i][j]=min(dp[i][j],dp[i-1][k]);
+                        }
+                        else{
+                            dp[i][j]=min(dp[i][j],dp[i-1][k]+1);
+                        }
+                    }
+                }
+                else{
+                    for(int k=1;k&amp;lt;=4;++k){
+                        if(k&amp;gt;j){
+                            dp[i][j]=min(dp[i][j],dp[i-1][k]);
+                        }
+                        else{
+                            dp[i][j]=min(dp[i][j],dp[i-1][k]+1);
+                        }
+                    }
+                }
+            }
+        }
+        int ans=2147483647;
+        for(int i=1;i&amp;lt;=4;++i){
+            ans=min(ans,dp[n][i]);
+        }
+        cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;cas&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;code-of-ok-solution-2&#34;&gt;Code of O(K) Solution 2:&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    for(int cas=1;cas&amp;lt;=T;++cas){
+        cin&amp;gt;&amp;gt;n;
+        int now;
+        int pre;
+        int ans=0;
+        int upcnt=0;
+        int downcnt=0;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;now;
+            if(i==1||now==pre){
+                pre=now;
+                continue;
+            }
+            if(now&amp;gt;pre){
+                upcnt++;
+                downcnt=0;
+            }
+            else{
+                upcnt=0;
+                downcnt++;
+            }
+            if(upcnt&amp;gt;3||downcnt&amp;gt;3){
+                ++ans;
+                upcnt=0;
+                downcnt=0;
+            }
+            pre=now;
+        }
+        cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;cas&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Kick Start 2020 Round D T2 Alien Piano Analysis</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/76NaE9Spv/"" data-c="
+          &lt;h2 id=&#34;official-link&#34;&gt;Official Link&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff08/0000000000387171&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Isyana is given the number of visitors at her local theme park on N consecutive days. The number of visitors on the i-th day is Vi. A day is record breaking if it satisfies both of the following conditions:&lt;/p&gt;
+&lt;p&gt;The number of visitors on the day is strictly larger than the number of visitors on each of the previous days.&lt;/p&gt;
+&lt;p&gt;Either it is the last day, or the number of visitors on the day is strictly larger than the number of visitors on the following day.&lt;br&gt;
+Note that the very first day could be a record breaking day!&lt;/p&gt;
+&lt;p&gt;Please help Isyana find out the number of record breaking days.&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the integer N. The second line contains N integers. The i-th integer is Vi.&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of record breaking days.&lt;/p&gt;
+&lt;h2 id=&#34;limits&#34;&gt;Limits&lt;/h2&gt;
+&lt;p&gt;Time limit: 20 seconds per test set.&lt;br&gt;
+Memory limit: 1GB.&lt;br&gt;
+1 ≤ T ≤ 100.&lt;br&gt;
+0 ≤ Vi ≤ 2 × 105.&lt;/p&gt;
+&lt;h3 id=&#34;test-set-1&#34;&gt;Test set 1&lt;/h3&gt;
+&lt;p&gt;1 ≤ N ≤ 1000.&lt;/p&gt;
+&lt;h3 id=&#34;test-set-2&#34;&gt;Test set 2&lt;/h3&gt;
+&lt;p&gt;1 ≤ N ≤ 2 × 105 for at most 10 test cases.&lt;br&gt;
+For the remaining cases, 1 ≤ N ≤ 1000.&lt;/p&gt;
+&lt;h2 id=&#34;sample&#34;&gt;Sample&lt;/h2&gt;
+&lt;h3 id=&#34;input-2&#34;&gt;Input&lt;/h3&gt;
+&lt;p&gt;4&lt;/p&gt;
+&lt;p&gt;8&lt;/p&gt;
+&lt;p&gt;1 2 0 7 2 0 2 0&lt;/p&gt;
+&lt;p&gt;6&lt;/p&gt;
+&lt;p&gt;4 8 15 16 23 42&lt;/p&gt;
+&lt;p&gt;9&lt;/p&gt;
+&lt;p&gt;3 1 4 1 5 9 2 6 5&lt;/p&gt;
+&lt;p&gt;6&lt;/p&gt;
+&lt;p&gt;9 9 9 9 9 9&lt;/p&gt;
+&lt;h3 id=&#34;output-2&#34;&gt;Output&lt;/h3&gt;
+&lt;p&gt;Case #1: 2&lt;/p&gt;
+&lt;p&gt;Case #2: 1&lt;/p&gt;
+&lt;p&gt;Case #3: 3&lt;/p&gt;
+&lt;p&gt;Case #4: 0&lt;/p&gt;
+&lt;h3 id=&#34;explanation&#34;&gt;Explanation&lt;/h3&gt;
+&lt;p&gt;In Sample Case #1, the bold and underlined numbers in the following represent the record breaking days: 1 2 0 7 2 0 2 0.&lt;/p&gt;
+&lt;p&gt;In Sample Case #2, only the last day is a record breaking day.&lt;/p&gt;
+&lt;p&gt;In Sample Case #3, the first, the third, and the sixth days are record breaking days.&lt;/p&gt;
+&lt;p&gt;In Sample Case #4, there is no record breaking day.&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;O(n^2) Solution: To every V[i], we can check all the previous numbers to verify whether it breaks the record or not. So it is an O(n^2) Solution,  it is enough to pass the time set one.&lt;/li&gt;
+&lt;li&gt;O(n) Solution: We can list all v[i] and use a varition RECORD to record the existed record(???). When a v[i] break the record, it satisfy the first requirement, thus, we just need to check whether it satisfies the second requirement or not. The total time complexity of the solution is O(n), it is enough to pass the time set two.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;code-of-the-best-solution&#34;&gt;Code of the best solution&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n;
+int v[200010];
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    for(int cas=1;cas&amp;lt;=T;++cas){
+        cin&amp;gt;&amp;gt;n;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;v[i];
+        } 
+        int maxn=-1;
+        int ans=0;
+        for(int i=1;i&amp;lt;=n;++i){
+            if(v[i]&amp;gt;maxn){
+                if(i==n||v[i]&amp;gt;v[i+1]){
+                    ++ans;
+                }
+                maxn=v[i];
+            }
+        }
+        cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;cas&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Kick Start 2020 Round D T1 Record Breaker Analysis</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/r6whUkCyg/"" data-c="
+          &lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Cristobal has an array of N (possibly negative) integers. The i-th integer in his array is Ai. A contiguous non-empty subarray of Cristobal&#39;s array is perfect if its total sum is a perfect square. A perfect square is a number that is the product of a non-negative integer with itself. For example, the first five perfect squares are 0, 1, 4, 9 and 16.&lt;/p&gt;
+&lt;p&gt;How many subarrays are perfect? Two subarrays are different if they start or end at different indices in the array, even if the subarrays contain the same values in the same order.&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;The first line of the input gives the number of test cases, T. T test cases follow. The first line of each test case contains the integer N. The second line contains N integers describing Cristobal&#39;s array. The i-th integer is Ai.&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of perfect subarrays.&lt;/p&gt;
+&lt;h2 id=&#34;limits&#34;&gt;Limits&lt;/h2&gt;
+&lt;p&gt;Memory limit: 1GB.&lt;br&gt;
+1 ≤ T ≤ 100.&lt;br&gt;
+-100 ≤ Ai ≤ 100, for all i.&lt;/p&gt;
+&lt;h3 id=&#34;test-set-1&#34;&gt;Test set 1&lt;/h3&gt;
+&lt;p&gt;Time limit: 20 seconds.&lt;br&gt;
+1 ≤ N ≤ 1000.&lt;/p&gt;
+&lt;h3 id=&#34;test-set-2&#34;&gt;Test set 2&lt;/h3&gt;
+&lt;p&gt;Time limit: 30 seconds.&lt;br&gt;
+For up to 5 cases, 1 ≤ N ≤ 105.&lt;br&gt;
+For the remaining cases, 1 ≤ N ≤ 1000.&lt;/p&gt;
+&lt;h2 id=&#34;sample&#34;&gt;Sample&lt;/h2&gt;
+&lt;h3 id=&#34;input-2&#34;&gt;Input&lt;/h3&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;2 2 6&lt;/p&gt;
+&lt;p&gt;5&lt;/p&gt;
+&lt;p&gt;30 30 9 1 30&lt;/p&gt;
+&lt;p&gt;4&lt;/p&gt;
+&lt;p&gt;4 0 0 16&lt;/p&gt;
+&lt;h3 id=&#34;output-2&#34;&gt;Output&lt;/h3&gt;
+&lt;p&gt;Case #1: 1&lt;/p&gt;
+&lt;p&gt;Case #2: 3&lt;/p&gt;
+&lt;p&gt;Case #3: 9&lt;/p&gt;
+&lt;h3 id=&#34;explanation&#34;&gt;Explanation&lt;/h3&gt;
+&lt;p&gt;In sample case #1, there is one perfect subarray: [2 2] whose sum is 22.&lt;/p&gt;
+&lt;p&gt;In sample case #2, there are three perfect subarrays:&lt;br&gt;
+[9], whose total sum is 32.&lt;br&gt;
+[1], whose total sum is 12.&lt;br&gt;
+[30 30 9 1 30], whose total sum is 102.&lt;/p&gt;
+&lt;p&gt;In sample case #3, there are nine perfect subarrays:&lt;br&gt;
+[4], whose total sum is 22.&lt;br&gt;
+[4 0], whose total sum is 22.&lt;br&gt;
+[4 0 0], whose total sum is 22.&lt;br&gt;
+[0], whose total sum is 02.&lt;br&gt;
+[0 0], whose total sum is 02.&lt;br&gt;
+[0 0 16], whose total sum is 42.&lt;br&gt;
+[0], whose total sum is 02.&lt;br&gt;
+[0 16], whose total sum is 42.&lt;br&gt;
+[16], whose total sum is 42.&lt;/p&gt;
+&lt;h3 id=&#34;note&#34;&gt;Note&lt;/h3&gt;
+&lt;p&gt;We do not recommend using interpreted/slower languages for the test set 2 of this problem.&lt;/p&gt;
+&lt;h2 id=&#34;anaylsis&#34;&gt;Anaylsis&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;O(n^2) Solution: Easily, we only need to check every subarray in it. In an n-length array, there exist n*(n+1)/2 subarrays. So the time complexity of this algorithm is O(n^2).&lt;/li&gt;
+&lt;li&gt;O(n&lt;em&gt;sqrt(1e7) to n&lt;/em&gt;logn*sqrt(1e7)) Solution: First, we use sum[] to record the prefix sum of a[]. So the problem becomes: how many sum[i]-sum[j-1]=x^2(i&amp;gt;=j &amp;amp;&amp;amp; x is an integer). This formula equals to sum[j-1]=sum[i]-x^2. So, all we need to do is to enumerate all possible x and check how many j meet the requirement. To implement it, we can use a hash table to record the number of exist sum[j], which has a O(1) time complexity. This algorithm&#39;s time complexity can be accepted narrowly.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;code-of-the-best-solution&#34;&gt;Code of the best Solution&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define BASE 15000000
+#define LL long long
+using namespace std;
+int n;
+int a[100010];
+LL h[70000010];
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    for(int cas=1;cas&amp;lt;=T;++cas){
+        memset(h,0,sizeof h);
+        LL ans=0;
+        cin&amp;gt;&amp;gt;n;
+        h[BASE]=1;
+        a[0]=BASE;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;a[i];
+            a[i]+=a[i-1];
+        }
+        int minn=BASE;
+        for(int i=1;i&amp;lt;=n;++i){
+            for(int j=0;j*j&amp;lt;=10000000;++j){
+                if(a[i]-j*j&amp;lt;minn){
+                    break;
+                }
+                ans+=h[a[i]-j*j]; 
+            }
+            minn=min(a[i],minn);
+            h[a[i]]++;
+        }
+        cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;cas&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ps&#34;&gt;P.S.&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;If you use C++ to solve this problem, do not use map, which will add a logn to your time complexity.&lt;/li&gt;
+&lt;li&gt;You should use long long to save the answer.&lt;/li&gt;
+&lt;li&gt;Do not use Python.&lt;/li&gt;
+&lt;/ul&gt;
+">Kick Start 2020 Round C T3 Perfect Subarray Analysis</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/o_E2mKnup/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Many times, the sort of our works are fixed in some degrees: you may be able to change the order of washing your face and brushing your teeth, but you cannot change the order of getting out and dressing up. Yes, many things have a comparative order, which means that they are neither totally fixed nor sheer random. So it is very difficult to determine the sort by normal ways, as a result, here comes the Topological Sort.&lt;/p&gt;
+&lt;h2 id=&#34;defination&#34;&gt;Defination&lt;/h2&gt;
+&lt;p&gt;Topological Sort is linear sort of a Directed Acyclic Graph(DAG). The DAG is often used to represent a complicated dependancy relationship.&lt;/p&gt;
+&lt;h2 id=&#34;implementation&#34;&gt;Implementation&lt;/h2&gt;
+&lt;p&gt;We can use either DFS or BFS to solve it. But the core mechanisms of these two algorithms are same -- find the 0-in-degree vertaxs, add them to the answer, eliminate all the edges from it, and then repeats it until there is no 0-in-degree vertaxs.&lt;/p&gt;
+&lt;h3 id=&#34;dfs-code&#34;&gt;DFS code:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n;
+int m;
+vector&amp;lt;int&amp;gt; mp[200];
+int incnt[200];
+vector&amp;lt;int&amp;gt; ans;
+void Topo(int now){
+    ans.push_back(now);
+    for(int i=0;i&amp;lt;mp[now].size();++i){
+        int y=mp[now][i];
+        --incnt[y];
+        if(incnt[y]==0){
+            Topo(y);
+        }
+    }
+    return;
+}
+int main(){
+    cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m;
+    for(int i=1;i&amp;lt;=m;++i){
+        int x;
+        int y;
+        cin&amp;gt;&amp;gt;x&amp;gt;&amp;gt;y;
+        mp[x].push_back(y);
+        incnt[y]++;
+    }
+    for(int i=1;i&amp;lt;=n;++i){
+        mp[0].push_back(i);
+        incnt[i]++;
+    }
+    Topo(0);
+    for(int i=1;i&amp;lt;ans.size();++i){
+        cout&amp;lt;&amp;lt;ans[i]&amp;lt;&amp;lt;&#39; &#39;;
+    }
+    cout&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;bfs-code&#34;&gt;BFS code:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n;
+int m;
+vector&amp;lt;int&amp;gt; mp[200];
+vector&amp;lt;int&amp;gt; ans;
+int incnt[200];
+void Topo(){
+    queue&amp;lt;int&amp;gt; q;
+    q.push(0);
+    while(!q.empty()){
+        int x=q.front();
+        ans.push_back(x);
+        q.pop();
+        int y;
+        for(int i=0;i&amp;lt;mp[x].size();++i){
+            y=mp[x][i];
+            incnt[y]--;
+            if(incnt[y]==0){
+                q.push(y);
+            }
+        }
+    }
+    return;
+}
+int main(){
+    cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m;
+    for(int i=1;i&amp;lt;=m;++i){
+        int x;
+        int y;
+        cin&amp;gt;&amp;gt;x&amp;gt;&amp;gt;y;
+        mp[x].push_back(y);
+        incnt[y]++;
+    }
+    for(int i=1;i&amp;lt;=n;++i){
+        mp[0].push_back(i);
+        incnt[i]++;
+    }
+    Topo();
+    for(int i=1;i&amp;lt;ans.size();++i){
+        cout&amp;lt;&amp;lt;ans[i]&amp;lt;&amp;lt;&#39; &#39;;
+    }
+    cout&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;in-the-end&#34;&gt;In the end&lt;/h2&gt;
+&lt;p&gt;Topological sort is one of the basic graph algorithms. I will appreciate you if you think this blog is beneficial. Moreover, &lt;a href=&#34;https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/&#34;&gt;this problem&lt;/a&gt; can serve as a good case in point.&lt;/p&gt;
+">Topological Sort</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/aQhyHFZwS/"" data-c="
+          &lt;ul&gt;
+&lt;li&gt;is a boy&lt;/li&gt;
+&lt;li&gt;lives in China(for now)&lt;/li&gt;
+&lt;li&gt;is familiar with c++&lt;/li&gt;
+&lt;li&gt;is learning JAVA and JAVAscript&lt;/li&gt;
+&lt;li&gt;knows a little bit CSS&amp;amp;HTML&lt;/li&gt;
+&lt;li&gt;uses VIM to edit everything&lt;/li&gt;
+&lt;li&gt;is a fan of Metroidvania&lt;/li&gt;
+&lt;li&gt;plays Arknights&lt;/li&gt;
+&lt;li&gt;has participated NOIP for 3 times&lt;/li&gt;
+&lt;li&gt;has participated CSP-S&lt;/li&gt;
+&lt;li&gt;&#39;s &lt;a href=&#34;https://github.com/dawn-cmd&#34;&gt;github account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&#39;s &lt;a href=&#34;https://codeforces.com/profile/knight5207&#34;&gt;Codeforces account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&#39;s number: +8613376173601&lt;br&gt;
+Im Ezo, a moderate programmer from China. Nice to meet you！&lt;/li&gt;
+&lt;/ul&gt;
+">Ezo</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/"" data-c="
+          &lt;h2 id=&#34;official-link&#34;&gt;Official link&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff43/00000000003380d2&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Avery has an array of N positive integers. The i-th integer of the array is Ai.&lt;/p&gt;
+&lt;p&gt;A contiguous subarray is an m-countdown if it is of length m and contains the integers m, m-1, m-2, ..., 2, 1 in that order. For example, [3, 2, 1] is a 3-countdown.&lt;/p&gt;
+&lt;p&gt;Can you help Avery count the number of K-countdowns in her array?&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the integers N and K. The second line contains N integers. The i-th integer is Ai.&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of K-countdowns in her array.&lt;/p&gt;
+&lt;h2 id=&#34;limits&#34;&gt;Limits&lt;/h2&gt;
+&lt;p&gt;Time limit: 20 seconds per test set.&lt;br&gt;
+Memory limit: 1GB.&lt;br&gt;
+1 ≤ T ≤ 100.&lt;br&gt;
+2 ≤ K ≤ N.&lt;br&gt;
+1 ≤ Ai ≤ 2 × 10^5, for all i.&lt;/p&gt;
+&lt;h2 id=&#34;test-set-1&#34;&gt;Test set 1&lt;/h2&gt;
+&lt;p&gt;2 ≤ N ≤ 1000.&lt;/p&gt;
+&lt;h2 id=&#34;test-set-2&#34;&gt;Test set 2&lt;/h2&gt;
+&lt;p&gt;2 ≤ N ≤ 2 × 10^5 for at most 10 test cases.&lt;br&gt;
+For the remaining cases, 2 ≤ N ≤ 1000.&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;O(nk) solution:for each A[i to i+k], we can check it whether meets the requirement in the problem or not.&lt;/li&gt;
+&lt;li&gt;O(n) solution: We can set a variation &amp;quot;head&amp;quot;. At first, head equals to k. If A[i] equals to head, head minus one, otherwise reset head. When head equals to 0, we find a countdown, and then we need to add it to the answer and reset head.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;code-of-the-best-solution&#34;&gt;Code of the best solution&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n;
+int k;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    for(int P=1;P&amp;lt;=T;++P){
+        cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;k;
+        int head=k;
+        int ans=0;
+        for(int i=1;i&amp;lt;=n;++i){
+            int now;
+            cin&amp;gt;&amp;gt;now;
+            if(now==head){
+                --head;
+            }
+            else{
+                head=now==k?k-1:k;
+            }
+            if(head==0){
+                ++ans;
+                head=k;
+            }
+        }
+        cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;P&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ps&#34;&gt;P.S.&lt;/h2&gt;
+&lt;p&gt;When you reset head, checking adjacent number is necessary.&amp;gt;line 19&lt;/p&gt;
+">Kick Start 2020 Round C T1 Countdown Analysis</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/"" data-c="
+          &lt;!-- more --&gt;
+&lt;h2 id=&#34;before-the-passage&#34;&gt;Before the passage&lt;/h2&gt;
+&lt;p&gt;I think the data of this problem should be strengthened. Because of the weak data, many people can solve the problem via a very stupid way(&lt;s&gt;me&lt;/s&gt;). the details will be furnished in the following passage. However, the ratio of people who passed the problem is lower than the one in other contemporary rounds, it is unbelievable.&lt;/p&gt;
+&lt;h2 id=&#34;official-link&#34;&gt;Official link&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff43/00000000003379bb&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Apollo is playing a game involving polyominos. A polyomino is a shape made by joining together one or more squares edge to edge to form a single connected shape. The game involves combining N polyominos into a single rectangular shape without any holes. Each polyomino is labeled with a unique character from A to Z.&lt;/p&gt;
+&lt;p&gt;Apollo has finished the game and created a rectangular wall containing R rows and C columns. He took a picture and sent it to his friend Selene. Selene likes pictures of walls, but she likes them even more if they are stable walls. A wall is stable if it can be created by adding polyominos one at a time to the wall so that each polyomino is always supported. A polyomino is supported if each of its squares is either on the ground, or has another square below it.&lt;/p&gt;
+&lt;p&gt;Apollo would like to check if his wall is stable and if it is, prove that fact to Selene by telling her the order in which he added the polyominos.&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the two integers R and C. Then, R lines follow, describing the wall from top to bottom. Each line contains a string of C uppercase characters from A to Z, describing that row of the wall.&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is a string of N uppercase characters, describing the order in which he built them. If there is more than one such order, output any of them. If the wall is not stable, output -1 instead.&lt;/p&gt;
+&lt;h2 id=&#34;limits&#34;&gt;Limits&lt;/h2&gt;
+&lt;p&gt;Time limit: 20 seconds per test set.&lt;br&gt;
+Memory limit: 1GB.&lt;br&gt;
+1 ≤ T ≤ 100.&lt;br&gt;
+1 ≤ R ≤ 30.&lt;br&gt;
+1 ≤ C ≤ 30.&lt;br&gt;
+No two polyominos will be labeled with the same letter.&lt;br&gt;
+The input is guaranteed to be valid according to the rules described in the statement.&lt;/p&gt;
+&lt;h2 id=&#34;test-set-1&#34;&gt;Test set 1&lt;/h2&gt;
+&lt;p&gt;1 ≤ N ≤ 5.&lt;/p&gt;
+&lt;h2 id=&#34;test-set-2&#34;&gt;Test set 2&lt;/h2&gt;
+&lt;p&gt;1 ≤ N ≤ 26.&lt;/p&gt;
+&lt;h2 id=&#34;sample&#34;&gt;Sample&lt;/h2&gt;
+&lt;h3 id=&#34;input-2&#34;&gt;Input&lt;/h3&gt;
+&lt;p&gt;4&lt;/p&gt;
+&lt;p&gt;4 6&lt;/p&gt;
+&lt;p&gt;ZOAAMM&lt;/p&gt;
+&lt;p&gt;ZOAOMM&lt;/p&gt;
+&lt;p&gt;ZOOOOM&lt;/p&gt;
+&lt;p&gt;ZZZZOM&lt;/p&gt;
+&lt;p&gt;4 4&lt;/p&gt;
+&lt;p&gt;XXOO&lt;/p&gt;
+&lt;p&gt;XFFO&lt;/p&gt;
+&lt;p&gt;XFXO&lt;/p&gt;
+&lt;p&gt;XXXO&lt;/p&gt;
+&lt;p&gt;5 3&lt;/p&gt;
+&lt;p&gt;XXX&lt;/p&gt;
+&lt;p&gt;XPX&lt;/p&gt;
+&lt;p&gt;XXX&lt;/p&gt;
+&lt;p&gt;XJX&lt;/p&gt;
+&lt;p&gt;XXX&lt;/p&gt;
+&lt;p&gt;3 10&lt;/p&gt;
+&lt;p&gt;AAABBCCDDE&lt;/p&gt;
+&lt;p&gt;AABBCCDDEE&lt;/p&gt;
+&lt;p&gt;AABBCCDDEE&lt;/p&gt;
+&lt;h3 id=&#34;output-2&#34;&gt;Output&lt;/h3&gt;
+&lt;p&gt;Case #1: ZOAM&lt;/p&gt;
+&lt;p&gt;Case #2: -1&lt;/p&gt;
+&lt;p&gt;Case #3: -1&lt;/p&gt;
+&lt;p&gt;Case #4: EDCBA&lt;/p&gt;
+&lt;h3 id=&#34;explainatoin&#34;&gt;Explainatoin&lt;/h3&gt;
+&lt;p&gt;In sample case #1, note that ZOMA is another possible answer.&lt;/p&gt;
+&lt;p&gt;In sample case #2 and sample case #3, the wall is not stable, so the answer is -1.&lt;/p&gt;
+&lt;p&gt;In sample case #4, the only possible answer is EDCBA.&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;O(n!) solution:We can list all the possible order that the polyominos being set in and then check them one by one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;O(n to n!) solution:&lt;s&gt;this is the stupid way&lt;/s&gt;When I was solving the problem, I used DFS technique(Deep-First-Search) to address it. Specifically, I imitated the process of setting polyomino: I determined which polyomino I should put one by one, when there exist problems, we back to the previous step and try another way. Because N is specially small, this solution can be accepted narrowly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;O(R * C) solution:So this is the best solution. Literally, when a polyomino is totally or partly above another polyomino, the upper one should be set after the lower one restrictly. When it happpens, we can consider these two polyominos as two vertexs, and build an edge directed from the lower one to the upper one. We proceed all the polyominos by this way, in the end, we can get a graph. All we need to do is to find a topological sort of the graph. About topological sort, if you do not know it very well, &lt;a href=&#34;https://dawn-cmd.github.io/o_E2mKnup/&#34;&gt;this passage&lt;/a&gt; may help you.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;code-of-my-solution&#34;&gt;Code of my solution&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int T;
+int r;
+int c;
+string ans;
+string mp[31];
+string lit;
+map&amp;lt;char,int&amp;gt; h;
+bool check(){
+    for(int i=1;i&amp;lt;r;++i){
+        for(int j=0;j&amp;lt;c;++j){
+            if(h[mp[i][j]]==0&amp;amp;&amp;amp;h[mp[i-1][j]]==1){
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+void dfs(string now){
+    if(now.length()==lit.length()){
+        ans=now;
+        return;
+    }
+    if(ans!=&amp;quot;-1&amp;quot;){
+        return;
+    }
+    for(int i=0;i&amp;lt;lit.length();++i){
+        if(h[lit[i]]==1){
+            continue;
+        }
+        h[lit[i]]=1;
+        if(check()){
+            dfs(now+lit[i]);
+        }
+        h[lit[i]]=0; 
+    } 
+}
+int main(){
+    cin&amp;gt;&amp;gt;T;
+    for(int P=1;P&amp;lt;=T;++P){
+        cin&amp;gt;&amp;gt;r&amp;gt;&amp;gt;c;
+        lit=&amp;quot;&amp;quot;;
+        h.erase(h.begin(),h.end());
+        for(int i=0;i&amp;lt;r;++i){
+            cin&amp;gt;&amp;gt;mp[i];
+            for(int j=0;j&amp;lt;c;++j){
+                if(h[mp[i][j]]==0){
+                    h[mp[i][j]]=1;
+                    lit+=mp[i][j];
+                }
+            }
+        }
+        h.erase(h.begin(),h.end());
+        ans=&amp;quot;-1&amp;quot;;
+        dfs(&amp;quot;&amp;quot;);
+        cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;P&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;code-of-the-best-solution&#34;&gt;Code of the best solution&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int r;
+int c;
+string mp[1000];
+vector&amp;lt;int&amp;gt; graph[1000];
+int incnt[1000];
+int n;
+string ans;
+map&amp;lt;char,int&amp;gt; h;
+void topo(){
+    queue&amp;lt;int&amp;gt; q;
+    for(int i=1;i&amp;lt;=30;++i){
+        if(incnt[i]==0&amp;amp;&amp;amp;h[(char)(i+&#39;A&#39;-1)]){
+            q.push(i);
+        }
+    }
+    while(!q.empty()){
+        int x=q.front();
+        ans+=(char)(x+&#39;A&#39;-1);
+        q.pop();
+        for(int i=0;i&amp;lt;graph[x].size();++i){
+            int y=graph[x][i];
+            incnt[y]--;
+            if(incnt[y]==0){
+                q.push(y);
+            }
+        }
+    }
+    return;
+}
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    for(int P=1;P&amp;lt;=T;++P){
+        cin&amp;gt;&amp;gt;r&amp;gt;&amp;gt;c;
+        n=0;
+        h.erase(h.begin(),h.end());
+        for(int i=0;i&amp;lt;r;++i){
+            cin&amp;gt;&amp;gt;mp[i];
+            for(int j=0;j&amp;lt;c;++j){
+                if(h[mp[i][j]]==0){
+                    h[mp[i][j]]=1;
+                    ++n;
+                }
+            }
+        }
+        memset(incnt,0,sizeof incnt);
+        map&amp;lt;pair&amp;lt;int,int&amp;gt;,int&amp;gt; he;
+        for(int i=1;i&amp;lt;=30;++i){
+            graph[i].clear();
+        }
+        for(int i=1;i&amp;lt;r;++i){
+            for(int j=0;j&amp;lt;c;++j){
+                if(mp[i][j]!=mp[i-1][j]){
+                    int x=mp[i][j]-&#39;A&#39;+1;
+                    int y=mp[i-1][j]-&#39;A&#39;+1;
+                    if(he[make_pair(x,y)]==0){
+                        graph[x].push_back(y);
+                        he[make_pair(x,y)]=1;
+                        ++incnt[y];
+                    } 
+                }
+            }
+        }
+        ans=&amp;quot;&amp;quot;;
+        topo();
+        if(ans.length()&amp;lt;n){
+            cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;P&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;&amp;quot;-1&amp;quot;&amp;lt;&amp;lt;endl;
+        }
+        else{
+            cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;P&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+        }
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Kick Start 2020 Round C T2 Stable_Wall Analysis</a>
+      </div>
+      
+    </div>
+    <div class="page">
+      <div id="page_ul"></div>
+    </div>
+  </div>
+</div>
+<script>
+  !function () {
+    let searchMask = document.querySelector('#search_mask');
+    let result = document.querySelector('#result');
+    let items = document.querySelectorAll('.item');
+    let searchBox = document.querySelector('#search');
+    let statCount = document.querySelector('#stat_count');
+    let statTimes = document.querySelector('#stat_times');
+    let pageUl = document.querySelector('#page_ul');
+    let close = document.querySelector('#close');
+    
+    close.addEventListener('click', function() {
+      searchMask.style = 'display: none;'
+    })
+
+    let finds = [];
+    let contents = [];
+    let pageSize = 10;
+    items.forEach(item => {
+      let a = item.querySelector('a');
+      contents.push({
+        title: a.innerText,
+        details: a.dataset.c,
+        link: a.href
+      })
+      item.remove();
+    })
+
+    function insertStr(soure, start, count) {
+      let newStr = soure.substr(start, count);
+      return soure.slice(0, start) + '<em>' + newStr + '</em>' + soure.slice(start + count);
+    }
+
+    pageUl.addEventListener('click', function(event) {
+      let target = event.target;
+      if (target.__proto__ === HTMLSpanElement.prototype) {
+        appendResults(parseInt(target.dataset.i));
+      }
+    })
+
+    function appendResults(index) {
+      let htmlResult = '';
+      let start = index || 0;
+      let end = Math.min(start + pageSize, finds.length);
+      for (let i = start; i < end; i++) {
+        const current = finds[i];
+        let html = current.title;
+        let sum = 0;
+        let positions = current.positions;
+        positions.forEach(position => {
+          html = insertStr(html, position.start + sum, position.count);
+          sum += 9;
+        })
+        htmlResult += `<div class="item"><a class="result-title" href="${current.link}">${html}</a></div>`;
+      }
+      result.innerHTML = htmlResult;
+      pageUl.innerHTML = '';
+      let count = finds.length / pageSize;
+      let lis = '';
+      if (start !== 0) {
+        lis += `<span class="fa fa-angle-left" data-i='${start - 1}'></span>`;
+      }
+      for (let i = 0; i < count; i++) {
+        lis += `<span class='${i === start?'current':''}' data-i='${i}'>${i+1}</span>`;     
+      }
+      if (start+1 < count) {
+        lis += `<span class="fa fa-angle-right" data-i='${start+1}'></span>`;  
+      }
+      pageUl.innerHTML = lis;
+    }
+
+    function search(delay) {
+      let timer = null
+      return function () {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          let start = Date.now();
+          let segments = searchBox.value.split(' ').filter(c => c != '');
+          if (segments.length <= 0) {
+            return;
+          }
+          finds = [];
+          let htmlResult = '';
+          contents.forEach(content => {
+            let title = content.title;
+            let positions = [];
+            let find = false;
+            segments.forEach((segment) => {
+              if (content.title.includes(segment)) {
+                find = true;
+                positions.push({
+                  start: content.title.indexOf(segment),
+                  count: segment.length
+                })
+              } else if (content.details.includes(segment)) {
+                find = true;
+              }
+            });
+            if (find) {
+              finds.push({
+                title: content.title,
+                link: content.link,
+                positions
+              });
+            }
+          })
+          appendResults(0);
+          statCount.textContent = finds.length;
+          statTimes.textContent = Date.now() - start;
+        }, delay)
+      }
+    }
+    searchBox.addEventListener('input', search(200));
+  }()
+</script>
+
+<input hidden id="copy" />
+<script>
+  !function () {
+    let times = document.querySelectorAll('.publish-time');
+    for (let i = 0; i < times.length; i++) {
+      let date = times[i].dataset.t;
+      let time = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+      if (time < 60) {
+        str = time + '秒之前';
+      } else if (time < 3600) {
+        str = Math.floor(time / 60) + '分钟之前';
+      } else if (time >= 3600 && time < 86400) {
+        str = Math.floor(time / 3600) + '小时之前';
+      } else if (time >= 86400 && time < 259200) {
+        str = Math.floor(time / 86400) + '天之前';
+      } else {
+        str = times[i].textContent;
+      }
+      times[i].textContent = str;
+    }
+  }();
+</script>
+
+<script>
+  let language = 'en';
+  if (language !== '') {
+    let map = new Map();
+    if (language === 'en') {
+      map.set('search', 'Search');
+      map.set('category', 'Categories');
+      map.set('article', 'Articles');
+      map.set('tag', 'Tags');
+      map.set('top', 'Top');
+      map.set('publish', 'published');
+      map.set('minute', ' minutes');
+      map.set('read-more', 'Read More');
+      map.set('view', 'View');
+      map.set('words', ' words');
+      map.set('category-in', 'category in');
+      map.set('preview', 'Meta');
+      map.set('index', 'Toc');
+      map.set('no-archives', "You haven't created yet");
+      map.set('archives', " articles in total");
+      map.set('cloud-tags', " tags in total");
+      map.set('copyright', "Copyright: ");
+      map.set('author', "Author: ");
+      map.set('link', "Link: ");
+      map.set('leave-message', "Leave a message");
+      map.set('format', "Links Format");
+      map.set('site-name', "Name: ");
+      map.set('site-link', "Link: ");
+      map.set('site-desc', "Desc: ");
+      map.set('stat', " related results, taking ");
+      map.set('stat-time', " ms");
+      map.set('site-img', "Image: ");
+    }
+
+    if (map.size > 0) {
+      let lanElems = document.querySelectorAll('.language');
+      lanElems.forEach(elem => {
+        let lan = elem.dataset.lan, text = map.get(lan);
+        if (elem.__proto__ === HTMLInputElement.prototype) {
+          elem.placeholder = text
+        } else {
+          if (elem.dataset.count) {
+            text = elem.dataset.count + text;
+          }
+          elem.textContent = text;
+        }
+      })
+    }
+  }
+  //拿来主义(真香)^_^，Clipboard 实现摘自掘金 https://juejin.im/post/5aefeb6e6fb9a07aa43c20af
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+
+</script>
+<script src="/media/js/motion.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script>
+  var scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 200
+  });
+</script>
+
+
+
+
+
 </html>
