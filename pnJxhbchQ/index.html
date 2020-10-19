@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Kick Start 2020 Round C T1 Countdown Analysis | ezo&#39;s blog</title>
+<title>Binary Indexed Tree | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1603116253599">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Kick Start 2020 Round C T1 Countdown Analysis" />
-  <meta name="keywords" content="Solution" />
+  <meta name="description" content="Binary Indexed Tree" />
+  <meta name="keywords" content="Note" />
 </head>
 
 <body>
@@ -173,16 +173,10 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#official-link">Official link</a></li>
-<li><a href="#problem">Problem</a></li>
-<li><a href="#input">Input</a></li>
-<li><a href="#output">Output</a></li>
-<li><a href="#limits">Limits</a></li>
-<li><a href="#test-set-1">Test set 1</a></li>
-<li><a href="#test-set-2">Test set 2</a></li>
-<li><a href="#analysis">Analysis</a></li>
-<li><a href="#code-of-the-best-solution">Code of the best solution</a></li>
-<li><a href="#ps">P.S.</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#details">Details</a></li>
+<li><a href="#code">Code</a></li>
+<li><a href="#whats-more">What's more:</a></li>
 </ul>
 </li>
 </ul>
@@ -450,8 +444,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/">
-      Kick Start 2020 Round C T1 Countdown Analysis
+    <a class="post-title-link" href="https://dawn-cmd.github.io/pnJxhbchQ/">
+      Binary Indexed Tree
     </a>
   </h1>
   <div class="post-meta">
@@ -459,7 +453,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-07-30 18:58:22">2020-07-30</span>
+      <span class="publish-time" data-t="2020-10-19 20:57:25">2020-10-19</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -468,8 +462,8 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/">
-        <span>Solution</span>
+      <a href="https://dawn-cmd.github.io/T9dinVrg_/">
+        <span>Note</span>
       </a>
       
       
@@ -483,71 +477,38 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>386<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>468<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="official-link">Official link</h2>
-<p><a href="https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff43/00000000003380d2">Here</a></p>
-<h2 id="problem">Problem</h2>
-<p>Avery has an array of N positive integers. The i-th integer of the array is Ai.</p>
-<p>A contiguous subarray is an m-countdown if it is of length m and contains the integers m, m-1, m-2, ..., 2, 1 in that order. For example, [3, 2, 1] is a 3-countdown.</p>
-<p>Can you help Avery count the number of K-countdowns in her array?</p>
-<h2 id="input">Input</h2>
-<p>The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the integers N and K. The second line contains N integers. The i-th integer is Ai.</p>
-<h2 id="output">Output</h2>
-<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of K-countdowns in her array.</p>
-<h2 id="limits">Limits</h2>
-<p>Time limit: 20 seconds per test set.<br>
-Memory limit: 1GB.<br>
-1 ≤ T ≤ 100.<br>
-2 ≤ K ≤ N.<br>
-1 ≤ Ai ≤ 2 × 10^5, for all i.</p>
-<h2 id="test-set-1">Test set 1</h2>
-<p>2 ≤ N ≤ 1000.</p>
-<h2 id="test-set-2">Test set 2</h2>
-<p>2 ≤ N ≤ 2 × 10^5 for at most 10 test cases.<br>
-For the remaining cases, 2 ≤ N ≤ 1000.</p>
-<h2 id="analysis">Analysis</h2>
-<ol>
-<li>O(nk) solution:for each A[i to i+k], we can check it whether meets the requirement in the problem or not.</li>
-<li>O(n) solution: We can set a variation &quot;head&quot;. At first, head equals to k. If A[i] equals to head, head minus one, otherwise reset head. When head equals to 0, we find a countdown, and then we need to add it to the answer and reset head.</li>
-</ol>
-<h2 id="code-of-the-best-solution">Code of the best solution</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int n;
-int k;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    for(int P=1;P&lt;=T;++P){
-        cin&gt;&gt;n&gt;&gt;k;
-        int head=k;
-        int ans=0;
-        for(int i=1;i&lt;=n;++i){
-            int now;
-            cin&gt;&gt;now;
-            if(now==head){
-                --head;
-            }
-            else{
-                head=now==k?k-1:k;
-            }
-            if(head==0){
-                ++ans;
-                head=k;
-            }
-        }
-        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;P&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
-    }
-    return 0;
-}
+              <h2 id="introduction">Introduction</h2>
+<p>Before we start to talk about Binary Indexed Tree, let me introduce the segment tree first. In a segment tree, each vertex represents a segment on the original sequence. So when we want to make some modifications on the sequence, like add x to ai-aj in the sequence, we can record the modification in the vertex to represent that all the elements in this part has been changed but not change them one by one. Obviously, it is a very agile data structure. It supports addtion, minus, and many other measures on sequence. Compared to Segment Tree, Binary Indexed Tree is quite limited because it only supports addtion and finding specific data and it can be totally replaced by segment tree in the aspect of function. So why it still exists? Because it is easy. A segment tree may takes hundreds of lines of code while Binary Indexed Tree only takes no more than fifty lines.</p>
+<h2 id="details">Details</h2>
+<p>As we just metioned, Binary Indexed Tree (BIT) supports two function: finding the sum of a1~x and adding a specific number to an element in sequence. We use an array c[i] to represent the tree.<br>
+<img src="https://dawn-cmd.github.io/post-images/1603115035363.jpg" alt="" loading="lazy"><br>
+When we change the id i into its binary version, like 5 to 0101, each '1' in the binary number reprsents a child of the vertex, and the data in the vertex is the sum of these childs' data, like id=4 and id=1 is id=5's children. So how can we visit these children effectively? We can use Lowbit function. Lowbit(x) = x &amp; (-x). It can return the smallest '1' in the binary number by using the trait of computer which is used to record the numbers, like lowbit(6) = 2. When we add a number x to an element, we are supposed to not only add it to c[x], but also need to add it to its fathers -- c[x + lowbit(x)], c[x + lowbit(x) + lowbit(x + lowbit(x))] ...... until x exceeds the sequence. When we need the data in element x, we just need to do it in a reversed direction.</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-python">class BIT: #Binary Indexed Tree
+    __c = [0]
+    def __init__(self, n):#initialization
+        self.__c *= n + 2
+    def __lowbit(self, x):
+        return x &amp; (-x)
+    def Add(self, pos, x):# Add x to the data at pos
+        while pos &lt; len(self.__c):
+            self.__c[pos] += x
+            pos += self.__lowbit(pos)
+    def Sum(self, pos):# the sum of data before pos
+        ans = 0
+        while pos &gt; 0:
+            ans += self.__c[pos]
+            pos -= self.__lowbit(pos)
+        return ans
 </code></pre>
-<h2 id="ps">P.S.</h2>
-<p>When you reset head, checking adjacent number is necessary.&gt;line 19</p>
+<h2 id="whats-more">What's more:</h2>
+<p>If we can use this data structure effectively, it can replace many function of segment tree readly. In my opinion, it is one of the most useful data structures I have ever used.</p>
 
             </div>
             
@@ -560,7 +521,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/" title="Kick Start 2020 Round C T1 Countdown Analysis">https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/</a>
+      <a href="https://dawn-cmd.github.io/pnJxhbchQ/" title="Binary Indexed Tree">https://dawn-cmd.github.io/pnJxhbchQ/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -569,21 +530,17 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/"># Solution</a>
+      <a href="https://dawn-cmd.github.io/T9dinVrg_/"># Note</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Topological Sort" href="https://dawn-cmd.github.io/o_E2mKnup/">Topological Sort</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Topological Sort" href="https://dawn-cmd.github.io/o_E2mKnup/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Kick Start 2020 Round C T2 Stable_Wall Analysis" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/">Kick Start 2020 Round C T2 Stable_Wall Analysis</a>
-        <a class="nav-mobile-next" title="Kick Start 2020 Round C T2 Stable_Wall Analysis" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/">下一篇</a>
+        <a class="nav-pc-next" title="Edmonds-Karp Algorithm" href="https://dawn-cmd.github.io/fUyI1lct0/">Edmonds-Karp Algorithm</a>
+        <a class="nav-mobile-next" title="Edmonds-Karp Algorithm" href="https://dawn-cmd.github.io/fUyI1lct0/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
