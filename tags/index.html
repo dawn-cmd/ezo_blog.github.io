@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>ezo&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1603116692814">
+<link rel="shortcut icon" href="/favicon.ico?v=1603116840388">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -673,7 +673,7 @@
           &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Before we start to talk about Binary Indexed Tree, let me introduce the segment tree first. In a segment tree, each vertex represents a segment on the original sequence. So when we want to make some modifications on the sequence, like add x to ai-aj in the sequence, we can record the modification in the vertex to represent that all the elements in this part has been changed but not change them one by one. Obviously, it is a very agile data structure. It supports addtion, minus, and many other measures on sequence. Compared to Segment Tree, Binary Indexed Tree is quite limited because it only supports addtion and finding specific data and it can be totally replaced by segment tree in the aspect of function. So why it still exists? Because it is easy. A segment tree may takes hundreds of lines of code while Binary Indexed Tree only takes no more than fifty lines.&lt;/p&gt;
 &lt;h2 id=&#34;details&#34;&gt;Details&lt;/h2&gt;
-&lt;p&gt;As we just metioned, Binary Indexed Tree (BIT) supports two function: finding the sum of a1~x and adding a specific number to an element in sequence. We use an array c[i] to represent the tree.&lt;br&gt;
+&lt;p&gt;As we just metioned, Binary Indexed Tree (BIT) supports two functions: finding the sum of a1~x and adding a specific number to an element in sequence. We use an array c[i] to represent the tree.&lt;br&gt;
 &lt;img src=&#34;https://dawn-cmd.github.io/post-images/1603116425209.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 When we change the id i into its binary version, like 5 to 0101, each &#39;1&#39; in the binary number reprsents a child of the vertex, and the data in the vertex is the sum of these childs&#39; data, like id=4 and id=1 is id=5&#39;s children. So how can we visit these children effectively? We can use Lowbit function. Lowbit(x) = x &amp;amp; (-x). It can return the smallest &#39;1&#39; in the binary number by using the trait of computer which is used to record the numbers, like lowbit(6) = 2. When we add a number x to an element, we are supposed to not only add it to c[x], but also need to add it to its fathers -- c[x + lowbit(x)], c[x + lowbit(x) + lowbit(x + lowbit(x))] ...... until x exceeds the sequence. When we need the data in element x, we just need to do it in a reversed direction.&lt;/p&gt;
 &lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
