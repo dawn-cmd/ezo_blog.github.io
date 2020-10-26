@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Binary Indexed Tree | ezo&#39;s blog</title>
+<title>Segment Tree | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1603722439200">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,7 +39,7 @@
 
 
 
-  <meta name="description" content="Binary Indexed Tree" />
+  <meta name="description" content="Segment Tree" />
   <meta name="keywords" content="Note" />
 </head>
 
@@ -174,9 +174,13 @@
 <li>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#details">Details</a></li>
-<li><a href="#code">Code</a></li>
-<li><a href="#whats-more">What's more:</a></li>
+<li><a href="#code">Code</a>
+<ul>
+<li><a href="#python">Python</a></li>
+<li><a href="#c">C++</a></li>
+</ul>
+</li>
+<li><a href="#whats-more">What's more</a></li>
 </ul>
 </li>
 </ul>
@@ -444,8 +448,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/pnJxhbchQ/">
-      Binary Indexed Tree
+    <a class="post-title-link" href="https://dawn-cmd.github.io/lGXuyC3uR/">
+      Segment Tree
     </a>
   </h1>
   <div class="post-meta">
@@ -453,7 +457,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-10-19 20:57:25">2020-10-19</span>
+      <span class="publish-time" data-t="2020-10-26 20:57:07">2020-10-26</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -472,43 +476,212 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
+      <span>8<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>468<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1248<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
               <h2 id="introduction">Introduction</h2>
-<p>Before we start to talk about Binary Indexed Tree, let me introduce the segment tree first. In a segment tree, each vertex represents a segment on the original sequence. So when we want to make some modifications on the sequence, like add x to ai-aj in the sequence, we can record the modification in the vertex to represent that all the elements in this part has been changed but not change them one by one. Obviously, it is a very agile data structure. It supports addtion, minus, and many other measures on sequence. Compared to Segment Tree, Binary Indexed Tree is quite limited because it only supports addtion and finding specific data and it can be totally replaced by segment tree in the aspect of function. So why it still exists? Because it is easy. A segment tree may takes hundreds of lines of code while Binary Indexed Tree only takes no more than fifty lines.</p>
-<h2 id="details">Details</h2>
-<p>As we just metioned, Binary Indexed Tree (BIT) supports two functions: finding the sum of a1~x and adding a specific number to an element in sequence. We use an array c[i] to represent the tree.<br>
-<img src="https://dawn-cmd.github.io/post-images/1603116425209.jpg" alt="" loading="lazy"><br>
-When we change the id i into its binary version, like 5 to 0101, each '1' in the binary number reprsents a child of the vertex, and the data in the vertex is the sum of these childs' data, like id=4 and id=1 is id=5's children. So how can we visit these children effectively? We can use Lowbit function. Lowbit(x) = x &amp; (-x). It can return the smallest '1' in the binary number by using the trait of computer which is used to record the numbers, like lowbit(6) = 2. When we add a number x to an element, we are supposed to not only add it to c[x], but also need to add it to its fathers -- c[x + lowbit(x)], c[x + lowbit(x) + lowbit(x + lowbit(x))] ...... until x exceeds the sequence. When we need the data in element x, we just need to do it in a reversed direction.</p>
+<p>Segment Tree, as its name, store information about periods of segment, like the maximum and minimum of the sequence, in all vertexs of the tree. Sepcifically, it looks like this:</p>
+<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1603719518361.png" alt="" loading="lazy"></figure>
+<p>But, well, you may ask: why we need to use about 4 times space to split the sequence into these small parts? It is because you can find, if you rebuild sequence into the binary tree, all the things we need to do with the element one by one, like add x to all elements with id from 0 ~ 9, just need few steps on segment tree. I will explain all these functions and how they work in my following codes.</p>
 <h2 id="code">Code</h2>
-<pre><code class="language-python">class BIT: #Binary Indexed Tree
-    __c = [0]
-    def __init__(self, n):#initialization
-        self.__c *= n + 2
-    def __lowbit(self, x):
-        return x &amp; (-x)
-    def Add(self, pos, x):# Add x to the data at pos
-        while pos &lt; len(self.__c):
-            self.__c[pos] += x
-            pos += self.__lowbit(pos)
-    def Sum(self, pos):# the sum of data before pos
-        ans = 0
-        while pos &gt; 0:
-            ans += self.__c[pos]
-            pos -= self.__lowbit(pos)
+<h3 id="python">Python</h3>
+<pre><code class="language-python">class SMT: #Segment Tree stores information about maximum 
+    __data = [0]# maximum of the elements
+    __l = [0]# left range of the vertexs
+    __r = [0]# right range of the vertexs
+    def __build(self, pos, a, l, r):#build the tree
+        self.__r[pos] = r
+        self.__l[pos] = l
+        if l == r:
+            self.__data[pos] = a[l]# when there is only one element, the maximum number is itself
+            return
+        mid = (l + r) &gt;&gt; 1#the position to divide the two children of the vertex
+        self.__build(pos &lt;&lt; 1, a, l, mid)
+        self.__build(pos &lt;&lt; 1 | 1, a, mid + 1, r)
+        self.__data[pos] = max(self.__data[pos &lt;&lt; 1], self.__data[pos &lt;&lt; 1 | 1])
+    def __init__(self, a):
+        self.__data *= len(a) * 4 + 1
+        self.__r *= len(a) * 4 + 1
+        self.__l *= len(a) * 4 + 1
+        self.__build(1, a, 0, len(a) - 1)
+    def add(self, pos, l, r, x):
+        if l == r:
+            self.__data[pos] += x
+            return
+        mid = (self.__l[pos] + self.__r[pos]) &gt;&gt; 1
+        if r &lt;= mid:
+            self.add(pos &lt;&lt; 1, l, r, x)
+        elif l &gt;= mid + 1:
+            self.add(pos &lt;&lt; 1 | 1, l, r, x)
+        else:
+            self.add(pos &lt;&lt; 1, l, mid, x)
+            self.add(pos &lt;&lt; 1 | 1, mid + 1, r, x)
+        self.__data[pos] = max(self.__data[pos &lt;&lt; 1], self.__data[pos &lt;&lt; 1 | 1])
+    def maximum(self, pos, l, r):
+        if l &lt;= self.__l[pos] and r &gt;= self.__r[pos]:
+            return self.__data[pos]
+        ans = -2147483647
+        mid = (self.__l[pos] + self.__r[pos]) &gt;&gt; 1
+        if l &gt;= mid + 1:
+            ans = max(ans, self.maximum(pos &lt;&lt; 1 | 1, l, r))
+        elif r &lt;= mid:
+            ans = max(ans, self.maximum(pos &lt;&lt; 1, l, r))
+        else:
+            ans = max(self.maximum(pos &lt;&lt; 1 | 1, l, mid), self.maximum(pos &lt;&lt; 1 | 1, mid + 1, r))
         return ans
+def main():
+    a = list(map(int, input().split()))
+    tree = SMT(a)
+    while 1:
+        command = input()
+        if command == 'add':# add x to all elements with id from l to r
+            l, r, x = map(int, input().split())
+            tree.add(1, l, r, x)
+        elif command == 'max':
+            l, r = map(int, input().split())#print the maximum number from l to r
+            print(tree.maximum(1, l, r))
+main()
 </code></pre>
-<h2 id="whats-more">What's more:</h2>
-<p>If we can use this data structure effectively, it can replace many function of segment tree readly. In my opinion, it is one of the most useful data structures I have ever used.</p>
+<h3 id="c">C++</h3>
+<pre><code class="language-c">#include&lt;bits/stdc++.h&gt;
+#define LL long long
+using namespace std;
+int n;
+int T;
+int MOD;
+LL a[100010];
+struct tr{
+    int l;
+    int r;
+    LL pt;
+    LL mt;
+    LL d;
+    #define l(x) st[x].l
+    #define r(x) st[x].r
+    #define pt(x) st[x].pt
+    #define mt(x) st[x].mt
+    #define d(x) st[x].d
+};
+tr st[1000010];
+void build(int now,int l,int r){
+    l(now)=l;
+    r(now)=r;
+    pt(now)=0;
+    mt(now)=1;
+    if(l==r){
+        d(now)=a[l]%MOD;
+        return;
+    }
+    int mid=(l+r)&gt;&gt;1;
+    build(now&lt;&lt;1,l,mid);
+    build(now&lt;&lt;1|1,mid+1,r);
+    d(now)=d(now&lt;&lt;1)+d(now&lt;&lt;1|1);
+    return;
+}
+void push_down(int now){
+    d(now&lt;&lt;1)=(d(now&lt;&lt;1)*mt(now)%MOD+pt(now)*(r(now&lt;&lt;1)-l(now&lt;&lt;1)+1)%MOD)%MOD;
+    d(now&lt;&lt;1|1)=(d(now&lt;&lt;1|1)*mt(now)%MOD+pt(now)*(r(now&lt;&lt;1|1)-l(now&lt;&lt;1|1)+1)%MOD)%MOD;
+    pt(now&lt;&lt;1)=(pt(now&lt;&lt;1)*mt(now)%MOD+pt(now))%MOD;
+    pt(now&lt;&lt;1|1)=(pt(now&lt;&lt;1|1)*mt(now)%MOD+pt(now))%MOD;
+    mt(now&lt;&lt;1)=mt(now&lt;&lt;1)*mt(now)%MOD;
+    mt(now&lt;&lt;1|1)=mt(now&lt;&lt;1|1)*mt(now)%MOD;
+    !mt(now&lt;&lt;1)?mt(now&lt;&lt;1)=MOD:0;
+    !mt(now&lt;&lt;1|1)?mt(now&lt;&lt;1|1)=MOD:0;
+    pt(now)=0;
+    mt(now)=1;
+}
+void add(int now,int l,int r,int p){
+    if(l&lt;=l(now)&amp;&amp;r&gt;=r(now)){
+        d(now)=(d(now)+p*(r(now)-l(now)+1)%MOD)%MOD;
+        pt(now)=(pt(now)+p)%MOD;
+        return;
+    }
+    if(pt(now)||mt(now)&gt;1){
+        push_down(now);
+    }
+    int mid=(l(now)+r(now))&gt;&gt;1;
+    if(l&lt;=mid){
+        add(now&lt;&lt;1,l,r,p);
+    }
+    if(r&gt;mid){
+        add(now&lt;&lt;1|1,l,r,p);
+    }
+    d(now)=d(now&lt;&lt;1)+d(now&lt;&lt;1|1);
+    return;
+}
+void mul(int now,int l,int r,int p){
+    if(l&lt;=l(now)&amp;&amp;r&gt;=r(now)){
+        d(now)=d(now)*p%MOD;
+        pt(now)=pt(now)*p%MOD;
+        mt(now)=mt(now)*p%MOD;
+        return;
+    }
+    if(pt(now)||mt(now)&gt;1){
+        push_down(now);
+    }
+    int mid=(l(now)+r(now))&gt;&gt;1;
+    if(l&lt;=mid){
+        mul(now&lt;&lt;1,l,r,p);
+    }
+    if(r&gt;mid){
+        mul(now&lt;&lt;1|1,l,r,p);
+    }
+    d(now)=d(now&lt;&lt;1)+d(now&lt;&lt;1|1);
+    return;
+}
+LL sum(int now,int l,int r){
+    if(l&lt;=l(now)&amp;&amp;r&gt;=r(now)){
+        return d(now);
+    }
+    if(pt(now)||mt(now)&gt;1){
+        push_down(now);
+    }
+    int mid=(l(now)+r(now))&gt;&gt;1;
+    int ans=0;
+    l&lt;=mid?ans=(ans+sum(now&lt;&lt;1,l,r))%MOD:0;
+    r&gt;mid?ans=(ans+sum(now&lt;&lt;1|1,l,r))%MOD:0;
+    return ans;
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin&gt;&gt;n&gt;&gt;T&gt;&gt;MOD;
+    for(int i=1;i&lt;=n;++i){
+        cin&gt;&gt;a[i];
+    }
+    build(1,1,n);
+    int k;
+    int x;
+    int y;
+    int z;
+    while(T--){
+        cin&gt;&gt;k&gt;&gt;x&gt;&gt;y;
+        if(k==1){
+            cin&gt;&gt;z;
+            mul(1,x,y,z);
+        }
+        else if(k==2){
+            cin&gt;&gt;z;
+            add(1,x,y,z);
+        }
+        else{
+            cout&lt;&lt;sum(1,x,y)&lt;&lt;endl;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="whats-more">What's more</h2>
+<p>Although the data structure is quite plastic, it is a little bit hard to realize sepecially when you try to integrate many functions into one segment tree. So I suggests that when you try to make more than one function, use a segment tree to finish a sepcific funtion. And if the function is just concern about the sum of a sequence, you can use binary indexed tree because it is much easier to be finished than segment tree.</p>
 
             </div>
             
@@ -521,7 +694,7 @@ When we change the id i into its binary version, like 5 to 0101, each '1' in the
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/pnJxhbchQ/" title="Binary Indexed Tree">https://dawn-cmd.github.io/pnJxhbchQ/</a>
+      <a href="https://dawn-cmd.github.io/lGXuyC3uR/" title="Segment Tree">https://dawn-cmd.github.io/lGXuyC3uR/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -536,15 +709,11 @@ When we change the id i into its binary version, like 5 to 0101, each '1' in the
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Segment Tree" href="https://dawn-cmd.github.io/lGXuyC3uR/">Segment Tree</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Segment Tree" href="https://dawn-cmd.github.io/lGXuyC3uR/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Edmonds-Karp Algorithm" href="https://dawn-cmd.github.io/fUyI1lct0/">Edmonds-Karp Algorithm</a>
-        <a class="nav-mobile-next" title="Edmonds-Karp Algorithm" href="https://dawn-cmd.github.io/fUyI1lct0/">下一篇</a>
+        <a class="nav-pc-next" title="Binary Indexed Tree" href="https://dawn-cmd.github.io/pnJxhbchQ/">Binary Indexed Tree</a>
+        <a class="nav-mobile-next" title="Binary Indexed Tree" href="https://dawn-cmd.github.io/pnJxhbchQ/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
