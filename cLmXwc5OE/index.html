@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Edmonds-Karp Algorithm | ezo&#39;s blog</title>
+<title>Prim &amp; Kruskal | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1604411073206">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,7 +39,7 @@
 
 
 
-  <meta name="description" content="Edmonds-Karp Algorithm" />
+  <meta name="description" content="Prim & Kruskal" />
   <meta name="keywords" content="Algorithm,Note" />
 </head>
 
@@ -174,11 +174,13 @@
 <li>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#prerequisite-build-the-graph">Prerequisite: Build the Graph</a></li>
-<li><a href="#step1-find-augmenting-path">Step1: Find Augmenting Path</a></li>
-<li><a href="#step2-add-the-flow">Step2: Add the flow</a></li>
-<li><a href="#code">Code</a></li>
-<li><a href="#notice">Notice</a></li>
+<li><a href="#code">Code</a>
+<ul>
+<li><a href="#kruskal">Kruskal</a></li>
+<li><a href="#prim">Prim</a></li>
+</ul>
+</li>
+<li><a href="#moreover">Moreover</a></li>
 </ul>
 </li>
 </ul>
@@ -446,8 +448,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/fUyI1lct0/">
-      Edmonds-Karp Algorithm
+    <a class="post-title-link" href="https://dawn-cmd.github.io/cLmXwc5OE/">
+      Prim &amp; Kruskal
     </a>
   </h1>
   <div class="post-meta">
@@ -455,7 +457,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-10-07 16:39:52">2020-10-07</span>
+      <span class="publish-time" data-t="2020-11-03 21:18:50">2020-11-03</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -480,114 +482,112 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>6<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>856<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>600<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
               <h2 id="introduction">Introduction</h2>
-<p>In this passage, I will show one of the most classic problems on graph: the network flow problem. The graph is made by several vertexs and edges which have directions and capacities. There exist a source vertex and a sink vertex in the graph. And the problem is to calculate the maximum flow from source vertex to the sink vertex. If you think it is hard to understand, you can consider it as a water pipe system under the ground: In the system, each pipe has a capacity and direction. And the question is to calculate how much water can flow from the source to the sink in a minute.</p>
-<h2 id="prerequisite-build-the-graph">Prerequisite: Build the Graph</h2>
-<p>In most cases, this part is not mentioned in many other kinds of introduction of other graph algorithms. Because most of them just need a effective way to check the whole graph but do not need to concern the order. Nevertheless, in the network flow problems, we need to attach two antiparallel edges to each other.(I will explain the reason later in the passage.) So I recommend using array to imitate static list but not other data structure. If you use this structure and add a pair of antiparallel edge, you will find their ids in the array are adjacent. Suppose one of edges' id is x. Then, its antiparallel edge's id is x^1. The benefit enables the computer to &quot;regret&quot; when they choose a wrong answer.</p>
-<h2 id="step1-find-augmenting-path">Step1: Find Augmenting Path</h2>
-<p>Before we formally start coding, let me explain the main idea briefly: Find a augmenting path, add the minimum capacity to the answer, and repeat it until there is no augmenting path. So, what's the augmenting path? Generally speaking, an augmenting path is a feasible way from source to sink. In the first step, we just need to find a augmenting path but do not need to concern its capacity.  We can use BFS to finish this proccess.</p>
-<h2 id="step2-add-the-flow">Step2: Add the flow</h2>
-<p>Now we have an augmenting path, and then we need to do is subtracting the maximum capacity in the path from each edge's capacity in the path. And here is a point: We also need to add the maximum capacity to all the antiparallel edges' capacity of the path. Why? One edge may be included in different augmenting paths for several times. If the computer choose the edge but it finds out that it put the edge into a wrong augmenting path, choosing the edge's antiparallel edge enables them to regret the choice and recover the original edge.</p>
+<p>Today let's talk about Minimum Spanning Tree (MST) problem. In  a MST problem, you usually have n points, and what you need to do is to use or choose n - 1 edges to connect them and minimize the sum of the length of the edges. There exist two basic algorithms to solve it: Kruskal and Prim. Both of them are adapted from the Greedy Algorithm and Kruskal considers edges as units while Prim considers points as units. I will show how they realize and explain them in the following code.</p>
 <h2 id="code">Code</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-#define LL long long
-using namespace std;
-class node{//information of the edge
-    public:
-        int to;
-        int c;
-        int nxt;
-};
-class graph{
-    public:
-        vector&lt;int&gt; head;
-        vector&lt;node&gt; edge;
-        vector&lt;int&gt; pre;
-        vector&lt;int&gt; incf;
-        graph(int a,int s){
-            head=vector&lt;int&gt;(a+1);
-            pre=vector&lt;int&gt;(a+1);
-            incf=vector&lt;int&gt;(a+1);
-            incf[s]=2147483647;
-            node tmp={0,0,0};
-            edge.push_back(tmp);
-            edge.push_back(tmp);
-        };
-};
-void addedge(graph &amp;g,int s,int t,int c){
-    node tmp={t,c,g.head[s]};
-    g.edge.push_back(tmp);
-    g.head[s]=g.edge.size()-1;
-}
-bool augmenting_path(graph &amp;g,int n,int s,int t){
-    vector&lt;bool&gt; h=vector&lt;bool&gt;(n+1);//detect the point is visited or not
-    queue&lt;int&gt; q;
-    q.push(s);
-    h[s]=1;
-    while(!q.empty()){
-        int x=q.front();
-        q.pop();
-        for(int y,c,i=g.head[x];i;i=g.edge[i].nxt){
-            y=g.edge[i].to;
-            c=g.edge[i].c;
-            if(h[y]||!c)
-                continue;
-            g.incf[y]=min(g.incf[x],c);
-            g.pre[y]=i;
-            if(y==t)
-                return 1;
-            h[y]=1;
-            q.push(y);
-        }
-    } 
-    return 0;
-}
-int increase_flow(graph &amp;g,int s,int t){
-    int x=t;
-    while(x!=s){
-        int i=g.pre[x];
-        g.edge[i].c-=g.incf[t];
-        g.edge[i^1].c+=g.incf[t];
-        x=g.edge[i^1].to;
-    }
-    return g.incf[t];
-}
-int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    int n;//number of vertexs
-    int m;//number of edges
-    int s;//source vertex
-    int t;//sink vertex
-    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;t;
-    graph g(n,s);
-    for(int i=1,a,b,c;i&lt;=m;++i){
-        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;
-        addedge(g,a,b,c);
-        addedge(g,b,a,0);
-    }
-    LL ans=0;
-    while(augmenting_path(g,n,s,t)){
-        ans+=increase_flow(g,s,t);
-    }
-    cout&lt;&lt;ans&lt;&lt;endl;
-    return 0;
-}
+<h3 id="kruskal">Kruskal</h3>
+<pre><code class="language-python">#Kruskal is better when the egdes are less than points, which means it is a sparse graph
+class edge:
+    fr = 0 #from
+    to = 0 #to
+    c = 0 #cost
+    def __init__(self, fr, to, c):
+        self.fr = fr
+        self.to = to
+        self.c = c
+    def __lt__(self, oth):
+        return self.c &lt; oth.c #reload '&lt;'
+
+class dsuf:#disjoint sets/union find
+    fa = [0]
+    def __init__(self, n):
+        self.fa *= n + 1
+        for i in range(n + 1):
+            self.fa[i] = i#if we find fa[x] == x then x is a source point
+    def merge(self, a, b):
+        self.fa[self.find(b)] = a# let a becomes b's father
+    def find(self, a):
+        if a == self.fa[a]:
+            return a
+        self.fa[a] = self.find(self.fa[a]) #compress the path to decrease the depth of tree
+        return self.fa[a]
+
+def kruskal(e, n, u):
+    ans = 0
+    for i in e:#pick egdes in order of cost
+        if u.find(i.to) == u.find(i.fr):#check the two vertexs are in a same union or not
+            continue
+        ans += i.c #you can use an array to record all of them as well
+        u.merge(i.to, i.fr)
+    return ans
+
+def main():
+    n, m = map(int, input().split())#input the number of edge and vertexs
+    e = []
+    u = dsuf(n)
+    for i in range(m):#input edges
+        fr, to, c = map(int, input().split())
+        e += [edge(fr, to, c)]
+    e.sort()#sort edges by their cost
+    print(kruskal(e, n, u))
+
+main()
 </code></pre>
-<h2 id="notice">Notice</h2>
-<p>This algorithm is, indeed, a semi-finished product. Thus, it is not very effective. It can be used when the number of vertexs is lower than 10,000. But it provides a principle that used in most other network-flow problems. So totally understanding this algorithm will lay a solid fundation for further study.</p>
+<h3 id="prim">Prim</h3>
+<pre><code class="language-python"># Prim is better when the points in graph is more than edges in the graph
+import queue
+
+class point:
+    x = y = -1
+    def __init__(self, pos):
+        self.x = pos[0]
+        self.y = pos[1]
+    def dis(self, other):
+        return (self.x - other.x) ** 2 + (self.y - other.y) ** 2# the distance between two points
+
+def prim(p, c):
+    ans = 0
+    q = queue.PriorityQueue() # use priority_queue to make it better
+    q.put([0, 0])
+    h = {}
+    for i in range(len(p)):
+        h[i] = 0#to record whether it has been visited or not
+    while not q.empty():
+        now = q.get()
+        if h[now[1]] == 1:
+            continue# if the point has already been visited, ignore it
+        h[now[1]] = 1
+        ans += now[0]
+        for i in range(len(p)):
+            if h[i] == 0 and p[now[1]].dis(p[i]) &gt;= c:#you can eliminate the second limitaion when you use it
+                q.put((p[now[1]].dis(p[i]), i))
+    for i in range(len(p)):
+        if h[i] == 0:
+            return -1# you can ignore this loop as well
+    return ans
+
+def main():
+    n, c = map(int, input().split()) # n is number of points, c is a limitaiton when I was doing a test, you can ignore it
+    p = []
+    for i in range(n):
+        p += [point(list(map(int, input().split())))]
+    print(prim(p, c))
+
+main()
+</code></pre>
+<h2 id="moreover">Moreover</h2>
+<p>The two main stream algorithms can be adapted into different versions to cope with different problems. We may talk about it in the other passages.</p>
 
             </div>
             
@@ -600,7 +600,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/fUyI1lct0/" title="Edmonds-Karp Algorithm">https://dawn-cmd.github.io/fUyI1lct0/</a>
+      <a href="https://dawn-cmd.github.io/cLmXwc5OE/" title="Prim &amp; Kruskal">https://dawn-cmd.github.io/cLmXwc5OE/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -617,15 +617,11 @@ int main(){
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Binary Indexed Tree" href="https://dawn-cmd.github.io/pnJxhbchQ/">Binary Indexed Tree</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Binary Indexed Tree" href="https://dawn-cmd.github.io/pnJxhbchQ/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Dijkstra Algorithm" href="https://dawn-cmd.github.io/r5xcxY_Zp/">Dijkstra Algorithm</a>
-        <a class="nav-mobile-next" title="Dijkstra Algorithm" href="https://dawn-cmd.github.io/r5xcxY_Zp/">下一篇</a>
+        <a class="nav-pc-next" title="Segment Tree" href="https://dawn-cmd.github.io/lGXuyC3uR/">Segment Tree</a>
+        <a class="nav-mobile-next" title="Segment Tree" href="https://dawn-cmd.github.io/lGXuyC3uR/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

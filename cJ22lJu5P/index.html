@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Kick Start 2020 Round D T2 Alien Piano Analysis | ezo&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1604130246523">
+<link rel="shortcut icon" href="/favicon.ico?v=1604411073206">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1153,6 +1153,106 @@ int main(){
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/cLmXwc5OE/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Today let&#39;s talk about Minimum Spanning Tree (MST) problem. In  a MST problem, you usually have n points, and what you need to do is to use or choose n - 1 edges to connect them and minimize the sum of the length of the edges. There exist two basic algorithms to solve it: Kruskal and Prim. Both of them are adapted from the Greedy Algorithm and Kruskal considers edges as units while Prim considers points as units. I will show how they realize and explain them in the following code.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;h3 id=&#34;kruskal&#34;&gt;Kruskal&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#Kruskal is better when the egdes are less than points, which means it is a sparse graph
+class edge:
+    fr = 0 #from
+    to = 0 #to
+    c = 0 #cost
+    def __init__(self, fr, to, c):
+        self.fr = fr
+        self.to = to
+        self.c = c
+    def __lt__(self, oth):
+        return self.c &amp;lt; oth.c #reload &#39;&amp;lt;&#39;
+
+class dsuf:#disjoint sets/union find
+    fa = [0]
+    def __init__(self, n):
+        self.fa *= n + 1
+        for i in range(n + 1):
+            self.fa[i] = i#if we find fa[x] == x then x is a source point
+    def merge(self, a, b):
+        self.fa[self.find(b)] = a# let a becomes b&#39;s father
+    def find(self, a):
+        if a == self.fa[a]:
+            return a
+        self.fa[a] = self.find(self.fa[a]) #compress the path to decrease the depth of tree
+        return self.fa[a]
+
+def kruskal(e, n, u):
+    ans = 0
+    for i in e:#pick egdes in order of cost
+        if u.find(i.to) == u.find(i.fr):#check the two vertexs are in a same union or not
+            continue
+        ans += i.c #you can use an array to record all of them as well
+        u.merge(i.to, i.fr)
+    return ans
+
+def main():
+    n, m = map(int, input().split())#input the number of edge and vertexs
+    e = []
+    u = dsuf(n)
+    for i in range(m):#input edges
+        fr, to, c = map(int, input().split())
+        e += [edge(fr, to, c)]
+    e.sort()#sort edges by their cost
+    print(kruskal(e, n, u))
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;prim&#34;&gt;Prim&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Prim is better when the points in graph is more than edges in the graph
+import queue
+
+class point:
+    x = y = -1
+    def __init__(self, pos):
+        self.x = pos[0]
+        self.y = pos[1]
+    def dis(self, other):
+        return (self.x - other.x) ** 2 + (self.y - other.y) ** 2# the distance between two points
+
+def prim(p, c):
+    ans = 0
+    q = queue.PriorityQueue() # use priority_queue to make it better
+    q.put([0, 0])
+    h = {}
+    for i in range(len(p)):
+        h[i] = 0#to record whether it has been visited or not
+    while not q.empty():
+        now = q.get()
+        if h[now[1]] == 1:
+            continue# if the point has already been visited, ignore it
+        h[now[1]] = 1
+        ans += now[0]
+        for i in range(len(p)):
+            if h[i] == 0 and p[now[1]].dis(p[i]) &amp;gt;= c:#you can eliminate the second limitaion when you use it
+                q.put((p[now[1]].dis(p[i]), i))
+    for i in range(len(p)):
+        if h[i] == 0:
+            return -1# you can ignore this loop as well
+    return ans
+
+def main():
+    n, c = map(int, input().split()) # n is number of points, c is a limitaiton when I was doing a test, you can ignore it
+    p = []
+    for i in range(n):
+        p += [point(list(map(int, input().split())))]
+    print(prim(p, c))
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;moreover&#34;&gt;Moreover&lt;/h2&gt;
+&lt;p&gt;The two main stream algorithms can be adapted into different versions to cope with different problems. We may talk about it in the other passages.&lt;/p&gt;
+">Prim & Kruskal</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/lGXuyC3uR/"" data-c="
