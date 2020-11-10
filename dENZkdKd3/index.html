@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Kick Start 2020 Round D T1 Record Breaker Analysis | ezo&#39;s blog</title>
+<title>Pile | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1605017585484">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Kick Start 2020 Round D T1 Record Breaker Analysis" />
-  <meta name="keywords" content="Solution" />
+  <meta name="description" content="Pile" />
+  <meta name="keywords" content="Data Structure,Note" />
 </head>
 
 <body>
@@ -191,25 +191,8 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#official-link">Official Link</a></li>
-<li><a href="#problem">Problem</a></li>
-<li><a href="#input">Input</a></li>
-<li><a href="#output">Output</a></li>
-<li><a href="#limits">Limits</a>
-<ul>
-<li><a href="#test-set-1">Test set 1</a></li>
-<li><a href="#test-set-2">Test set 2</a></li>
-</ul>
-</li>
-<li><a href="#sample">Sample</a>
-<ul>
-<li><a href="#input-2">Input</a></li>
-<li><a href="#output-2">Output</a></li>
-<li><a href="#explanation">Explanation</a></li>
-</ul>
-</li>
-<li><a href="#analysis">Analysis</a></li>
-<li><a href="#code-of-the-best-solution">Code of the best solution</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#code">Code</a></li>
 </ul>
 </li>
 </ul>
@@ -477,8 +460,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/76NaE9Spv/">
-      Kick Start 2020 Round D T1 Record Breaker Analysis
+    <a class="post-title-link" href="https://dawn-cmd.github.io/dENZkdKd3/">
+      Pile
     </a>
   </h1>
   <div class="post-meta">
@@ -486,7 +469,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-08-02 20:39:30">2020-08-02</span>
+      <span class="publish-time" data-t="2020-11-10 21:53:47">2020-11-10</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -495,8 +478,14 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/">
-        <span>Solution</span>
+      <a href="https://dawn-cmd.github.io/wRT9h1jy0/">
+        <span>Data Structure</span>
+      </a>、
+      
+      
+      
+      <a href="https://dawn-cmd.github.io/T9dinVrg_/">
+        <span>Note</span>
       </a>
       
       
@@ -505,92 +494,69 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>4<span class="language" data-lan="minute">分钟</span></span>
+      <span>3<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>555<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>470<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="official-link">Official Link</h2>
-<p><a href="https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff08/0000000000387171">Here</a></p>
-<h2 id="problem">Problem</h2>
-<p>Isyana is given the number of visitors at her local theme park on N consecutive days. The number of visitors on the i-th day is Vi. A day is record breaking if it satisfies both of the following conditions:</p>
-<p>The number of visitors on the day is strictly larger than the number of visitors on each of the previous days.</p>
-<p>Either it is the last day, or the number of visitors on the day is strictly larger than the number of visitors on the following day.<br>
-Note that the very first day could be a record breaking day!</p>
-<p>Please help Isyana find out the number of record breaking days.</p>
-<h2 id="input">Input</h2>
-<p>The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the integer N. The second line contains N integers. The i-th integer is Vi.</p>
-<h2 id="output">Output</h2>
-<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of record breaking days.</p>
-<h2 id="limits">Limits</h2>
-<p>Time limit: 20 seconds per test set.<br>
-Memory limit: 1GB.<br>
-1 ≤ T ≤ 100.<br>
-0 ≤ Vi ≤ 2 × 105.</p>
-<h3 id="test-set-1">Test set 1</h3>
-<p>1 ≤ N ≤ 1000.</p>
-<h3 id="test-set-2">Test set 2</h3>
-<p>1 ≤ N ≤ 2 × 105 for at most 10 test cases.<br>
-For the remaining cases, 1 ≤ N ≤ 1000.</p>
-<h2 id="sample">Sample</h2>
-<h3 id="input-2">Input</h3>
-<p>4</p>
-<p>8</p>
-<p>1 2 0 7 2 0 2 0</p>
-<p>6</p>
-<p>4 8 15 16 23 42</p>
-<p>9</p>
-<p>3 1 4 1 5 9 2 6 5</p>
-<p>6</p>
-<p>9 9 9 9 9 9</p>
-<h3 id="output-2">Output</h3>
-<p>Case #1: 2</p>
-<p>Case #2: 1</p>
-<p>Case #3: 3</p>
-<p>Case #4: 0</p>
-<h3 id="explanation">Explanation</h3>
-<p>In Sample Case #1, the bold and underlined numbers in the following represent the record breaking days: 1 2 0 7 2 0 2 0.</p>
-<p>In Sample Case #2, only the last day is a record breaking day.</p>
-<p>In Sample Case #3, the first, the third, and the sixth days are record breaking days.</p>
-<p>In Sample Case #4, there is no record breaking day.</p>
-<h2 id="analysis">Analysis</h2>
-<ul>
-<li>O(n^2) Solution: To every V[i], we can check all the previous numbers to verify whether it breaks the record or not. So it is an O(n^2) Solution,  it is enough to pass the time set one.</li>
-<li>O(n) Solution: We can list all v[i] and use a varition RECORD to record the existed record(???). When a v[i] break the record, it satisfy the first requirement, thus, we just need to check whether it satisfies the second requirement or not. The total time complexity of the solution is O(n), it is enough to pass the time set two.</li>
-</ul>
-<h2 id="code-of-the-best-solution">Code of the best solution</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int n;
-int v[200010];
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    for(int cas=1;cas&lt;=T;++cas){
-        cin&gt;&gt;n;
-        for(int i=1;i&lt;=n;++i){
-            cin&gt;&gt;v[i];
-        } 
-        int maxn=-1;
-        int ans=0;
-        for(int i=1;i&lt;=n;++i){
-            if(v[i]&gt;maxn){
-                if(i==n||v[i]&gt;v[i+1]){
-                    ++ans;
-                }
-                maxn=v[i];
-            }
-        }
-        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;cas&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
-    }
-    return 0;
-}
+              <h2 id="introduction">Introduction</h2>
+<p>Well, let's talk about something simple in this passage. I believe most of you must have learnt pile when you just start to learn data structure. But I will still repeat this part again in this passage because it is quite important for the next passage. If we can really understand the inner system of pile, we will be able to make other algorithms that based on it better as well.</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-python">class pile:
+    def __init__(self):
+        self.p = [-1]  # because we use binary tree to actclize the pile, the root node must be 1, so we fill p[0]with -1
+
+    def add(self, x):
+        self.p += [x]  # put the number at the end of the pile
+        pos = len(self.p) - 1  # locate it 
+        while pos &gt; 1:  # when pos is not at root 
+            if self.p[pos] &lt; self.p[pos &gt;&gt; 1]:  # pos &gt;&gt; 1(same as pos // 2) is p[pos]'s father node's id
+                self.p[pos], self.p[pos &gt;&gt; 1] = self.p[pos &gt;&gt; 1], self.p[pos]  # swap them
+                pos &gt;&gt;= 1  # update pos
+            else:
+                break  # we find a ideal place, so there is no need to go on
+
+    def pop(self):
+        if len(self.p) == 1:
+            return -1  # there is nothing in the pile, so we return -1 to represent there is something wrong
+        if len(self.p) == 2:
+            return self.p.pop()  # there is only one element, so we just need to return it and delete it
+        ans = self.p[1]  # store the answer
+        self.p[1] = self.p.pop()  # replace the place with the last element
+        pos = 1
+        while pos &lt;&lt; 1 &lt;= len(self.p) - 1:
+            if self.p[pos] &gt; self.p[pos * 2]:  # pos &lt;&lt; 1(same as pos * 2) is pos's left son
+                self.p[pos], self.p[pos &lt;&lt; 1] = self.p[pos &lt;&lt; 1], self.p[pos]  # swap them
+                pos &lt;&lt;= 1  # update pos
+                continue
+            elif pos &lt;&lt; 1 | 1 &lt;= len(self.p) - 1:  # to ensure pos's right son's id will not exceed the range
+                if self.p[pos] &gt; self.p[pos &lt;&lt; 1 | 1]:
+                    self.p[pos], self.p[pos &lt;&lt; 1 | 1] = self.p[pos &lt;&lt; 1 | 1], self.p[pos]  # swap them
+                    pos = pos &lt;&lt; 1 | 1  # update pos
+                    continue
+                else:
+                    break
+            else:
+                break
+        return ans
+
+def main():
+    a = list(map(int, input('elements:').split())) # input the data
+    n = len(a)
+    pl = pile()
+    for i in range(len(a)):
+        pl.add(a[i])  # put all the things into pile and they will be sorted automatically :)
+    print('sorted:', end = '')
+    for i in range(n):
+        print(pl.pop(), end = '\n' if i == n - 1 else ' ')  # output the answer
+
+main()
 </code></pre>
 
             </div>
@@ -604,7 +570,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/76NaE9Spv/" title="Kick Start 2020 Round D T1 Record Breaker Analysis">https://dawn-cmd.github.io/76NaE9Spv/</a>
+      <a href="https://dawn-cmd.github.io/dENZkdKd3/" title="Pile">https://dawn-cmd.github.io/dENZkdKd3/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -613,21 +579,19 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/"># Solution</a>
+      <a href="https://dawn-cmd.github.io/wRT9h1jy0/"># Data Structure</a>
+    
+      <a href="https://dawn-cmd.github.io/T9dinVrg_/"># Note</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Kick Start 2020 Round D T2 Alien Piano Analysis" href="https://dawn-cmd.github.io/cJ22lJu5P/">Kick Start 2020 Round D T2 Alien Piano Analysis</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Kick Start 2020 Round D T2 Alien Piano Analysis" href="https://dawn-cmd.github.io/cJ22lJu5P/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Kick Start 2020 Round C T3 Perfect Subarray Analysis" href="https://dawn-cmd.github.io/r6whUkCyg/">Kick Start 2020 Round C T3 Perfect Subarray Analysis</a>
-        <a class="nav-mobile-next" title="Kick Start 2020 Round C T3 Perfect Subarray Analysis" href="https://dawn-cmd.github.io/r6whUkCyg/">下一篇</a>
+        <a class="nav-pc-next" title="Prim &amp; Kruskal" href="https://dawn-cmd.github.io/cLmXwc5OE/">Prim &amp; Kruskal</a>
+        <a class="nav-mobile-next" title="Prim &amp; Kruskal" href="https://dawn-cmd.github.io/cLmXwc5OE/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

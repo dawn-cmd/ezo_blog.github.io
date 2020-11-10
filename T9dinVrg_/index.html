@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>ezo&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1604496613832">
+<link rel="shortcut icon" href="/favicon.ico?v=1605017585484">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -185,7 +185,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">14</span>
+        <span class="site-item-stat-count">15</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -248,6 +248,23 @@
           <small class="language" data-lan="tag">标签</small>
         </h2>
       </div>
+      
+      
+      
+      
+      
+      <a href="https://dawn-cmd.github.io/dENZkdKd3/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              11-10
+              <small>Pile</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
       
       
       
@@ -598,6 +615,64 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/dENZkdKd3/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Well, let&#39;s talk about something simple in this passage. I believe most of you must have learnt pile when you just start to learn data structure. But I will still repeat this part again in this passage because it is quite important for the next passage. If we can really understand the inner system of pile, we will be able to make other algorithms that based on it better as well.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class pile:
+    def __init__(self):
+        self.p = [-1]  # because we use binary tree to actclize the pile, the root node must be 1, so we fill p[0]with -1
+
+    def add(self, x):
+        self.p += [x]  # put the number at the end of the pile
+        pos = len(self.p) - 1  # locate it 
+        while pos &amp;gt; 1:  # when pos is not at root 
+            if self.p[pos] &amp;lt; self.p[pos &amp;gt;&amp;gt; 1]:  # pos &amp;gt;&amp;gt; 1(same as pos // 2) is p[pos]&#39;s father node&#39;s id
+                self.p[pos], self.p[pos &amp;gt;&amp;gt; 1] = self.p[pos &amp;gt;&amp;gt; 1], self.p[pos]  # swap them
+                pos &amp;gt;&amp;gt;= 1  # update pos
+            else:
+                break  # we find a ideal place, so there is no need to go on
+
+    def pop(self):
+        if len(self.p) == 1:
+            return -1  # there is nothing in the pile, so we return -1 to represent there is something wrong
+        if len(self.p) == 2:
+            return self.p.pop()  # there is only one element, so we just need to return it and delete it
+        ans = self.p[1]  # store the answer
+        self.p[1] = self.p.pop()  # replace the place with the last element
+        pos = 1
+        while pos &amp;lt;&amp;lt; 1 &amp;lt;= len(self.p) - 1:
+            if self.p[pos] &amp;gt; self.p[pos * 2]:  # pos &amp;lt;&amp;lt; 1(same as pos * 2) is pos&#39;s left son
+                self.p[pos], self.p[pos &amp;lt;&amp;lt; 1] = self.p[pos &amp;lt;&amp;lt; 1], self.p[pos]  # swap them
+                pos &amp;lt;&amp;lt;= 1  # update pos
+                continue
+            elif pos &amp;lt;&amp;lt; 1 | 1 &amp;lt;= len(self.p) - 1:  # to ensure pos&#39;s right son&#39;s id will not exceed the range
+                if self.p[pos] &amp;gt; self.p[pos &amp;lt;&amp;lt; 1 | 1]:
+                    self.p[pos], self.p[pos &amp;lt;&amp;lt; 1 | 1] = self.p[pos &amp;lt;&amp;lt; 1 | 1], self.p[pos]  # swap them
+                    pos = pos &amp;lt;&amp;lt; 1 | 1  # update pos
+                    continue
+                else:
+                    break
+            else:
+                break
+        return ans
+
+def main():
+    a = list(map(int, input(&#39;elements:&#39;).split())) # input the data
+    n = len(a)
+    pl = pile()
+    for i in range(len(a)):
+        pl.add(a[i])  # put all the things into pile and they will be sorted automatically :)
+    print(&#39;sorted:&#39;, end = &#39;&#39;)
+    for i in range(n):
+        print(pl.pop(), end = &#39;\n&#39; if i == n - 1 else &#39; &#39;)  # output the answer
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+">Pile</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/cLmXwc5OE/"" data-c="
