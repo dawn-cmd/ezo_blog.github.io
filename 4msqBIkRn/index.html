@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Edmonds-Karp Algorithm | ezo&#39;s blog</title>
+<title>Pairing Heap | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1605623400656">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Edmonds-Karp Algorithm" />
-  <meta name="keywords" content="Algorithm,Note" />
+  <meta name="description" content="Pairing Heap" />
+  <meta name="keywords" content="Data Structure,Note" />
 </head>
 
 <body>
@@ -192,11 +192,8 @@
 <li>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#prerequisite-build-the-graph">Prerequisite: Build the Graph</a></li>
-<li><a href="#step1-find-augmenting-path">Step1: Find Augmenting Path</a></li>
-<li><a href="#step2-add-the-flow">Step2: Add the flow</a></li>
 <li><a href="#code">Code</a></li>
-<li><a href="#notice">Notice</a></li>
+<li><a href="#about-efficiency">About efficiency</a></li>
 </ul>
 </li>
 </ul>
@@ -464,8 +461,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/fUyI1lct0/">
-      Edmonds-Karp Algorithm
+    <a class="post-title-link" href="https://dawn-cmd.github.io/4msqBIkRn/">
+      Pairing Heap
     </a>
   </h1>
   <div class="post-meta">
@@ -473,7 +470,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-10-07 16:39:52">2020-10-07</span>
+      <span class="publish-time" data-t="2020-11-17 21:20:04">2020-11-17</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -482,8 +479,8 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://dawn-cmd.github.io/S6macCZkQ/">
-        <span>Algorithm</span>
+      <a href="https://dawn-cmd.github.io/wRT9h1jy0/">
+        <span>Data Structure</span>
       </a>、
       
       
@@ -498,114 +495,72 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>6<span class="language" data-lan="minute">分钟</span></span>
+      <span>3<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>856<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>388<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
               <h2 id="introduction">Introduction</h2>
-<p>In this passage, I will show one of the most classic problems on graph: the network flow problem. The graph is made by several vertexs and edges which have directions and capacities. There exist a source vertex and a sink vertex in the graph. And the problem is to calculate the maximum flow from source vertex to the sink vertex. If you think it is hard to understand, you can consider it as a water pipe system under the ground: In the system, each pipe has a capacity and direction. And the question is to calculate how much water can flow from the source to the sink in a minute.</p>
-<h2 id="prerequisite-build-the-graph">Prerequisite: Build the Graph</h2>
-<p>In most cases, this part is not mentioned in many other kinds of introduction of other graph algorithms. Because most of them just need a effective way to check the whole graph but do not need to concern the order. Nevertheless, in the network flow problems, we need to attach two antiparallel edges to each other.(I will explain the reason later in the passage.) So I recommend using array to imitate static list but not other data structure. If you use this structure and add a pair of antiparallel edge, you will find their ids in the array are adjacent. Suppose one of edges' id is x. Then, its antiparallel edge's id is x^1. The benefit enables the computer to &quot;regret&quot; when they choose a wrong answer.</p>
-<h2 id="step1-find-augmenting-path">Step1: Find Augmenting Path</h2>
-<p>Before we formally start coding, let me explain the main idea briefly: Find a augmenting path, add the minimum capacity to the answer, and repeat it until there is no augmenting path. So, what's the augmenting path? Generally speaking, an augmenting path is a feasible way from source to sink. In the first step, we just need to find a augmenting path but do not need to concern its capacity.  We can use BFS to finish this proccess.</p>
-<h2 id="step2-add-the-flow">Step2: Add the flow</h2>
-<p>Now we have an augmenting path, and then we need to do is subtracting the maximum capacity in the path from each edge's capacity in the path. And here is a point: We also need to add the maximum capacity to all the antiparallel edges' capacity of the path. Why? One edge may be included in different augmenting paths for several times. If the computer choose the edge but it finds out that it put the edge into a wrong augmenting path, choosing the edge's antiparallel edge enables them to regret the choice and recover the original edge.</p>
+<p>Well, in the previous passage, we have talked about normal heaps, also called binary heap. In this passage, we will discuss a new kind of heap. It is much more effective than binary heap in many aspects, and it's not hard to practice it as well. Let's see the code first and at the end of the passage, I will compare their efficiency.</p>
 <h2 id="code">Code</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-#define LL long long
-using namespace std;
-class node{//information of the edge
-    public:
-        int to;
-        int c;
-        int nxt;
-};
-class graph{
-    public:
-        vector&lt;int&gt; head;
-        vector&lt;node&gt; edge;
-        vector&lt;int&gt; pre;
-        vector&lt;int&gt; incf;
-        graph(int a,int s){
-            head=vector&lt;int&gt;(a+1);
-            pre=vector&lt;int&gt;(a+1);
-            incf=vector&lt;int&gt;(a+1);
-            incf[s]=2147483647;
-            node tmp={0,0,0};
-            edge.push_back(tmp);
-            edge.push_back(tmp);
-        };
-};
-void addedge(graph &amp;g,int s,int t,int c){
-    node tmp={t,c,g.head[s]};
-    g.edge.push_back(tmp);
-    g.head[s]=g.edge.size()-1;
-}
-bool augmenting_path(graph &amp;g,int n,int s,int t){
-    vector&lt;bool&gt; h=vector&lt;bool&gt;(n+1);//detect the point is visited or not
-    queue&lt;int&gt; q;
-    q.push(s);
-    h[s]=1;
-    while(!q.empty()){
-        int x=q.front();
-        q.pop();
-        for(int y,c,i=g.head[x];i;i=g.edge[i].nxt){
-            y=g.edge[i].to;
-            c=g.edge[i].c;
-            if(h[y]||!c)
-                continue;
-            g.incf[y]=min(g.incf[x],c);
-            g.pre[y]=i;
-            if(y==t)
-                return 1;
-            h[y]=1;
-            q.push(y);
-        }
-    } 
-    return 0;
-}
-int increase_flow(graph &amp;g,int s,int t){
-    int x=t;
-    while(x!=s){
-        int i=g.pre[x];
-        g.edge[i].c-=g.incf[t];
-        g.edge[i^1].c+=g.incf[t];
-        x=g.edge[i^1].to;
-    }
-    return g.incf[t];
-}
-int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    int n;//number of vertexs
-    int m;//number of edges
-    int s;//source vertex
-    int t;//sink vertex
-    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;t;
-    graph g(n,s);
-    for(int i=1,a,b,c;i&lt;=m;++i){
-        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;
-        addedge(g,a,b,c);
-        addedge(g,b,a,0);
-    }
-    LL ans=0;
-    while(augmenting_path(g,n,s,t)){
-        ans+=increase_flow(g,s,t);
-    }
-    cout&lt;&lt;ans&lt;&lt;endl;
-    return 0;
-}
+<pre><code class="language-python">class node:  # the item class
+
+    def __init__(self, value):
+        self.value = value  # value(priority)
+        self.bro = self.ch = None  # brother node and child node
+
+class pairing_heap:
+
+    def __init__(self):
+        self.root = None  # There is no node
+        self.node_number = 0  # It has 0 node
+
+    def __merge(self, a, b):  # Core API 1
+        if a is None or b is None:
+            return a if b is None else b  # return the one that is not None
+        if a.value &gt; b.value:  
+            a, b = b, a  # make sure that a is the smaller one
+        a.ch, b.bro = b, a.ch  # let b becomes a's child
+        return a
+        
+    def __pair_merge(self, now):  # Core API 2
+        if now is None or now.bro is None:  # It has no brother node to break
+            return now
+        bro1, bro2 = now.bro, now.bro.bro  # save its brother and its brother's brother
+        now.bro = bro1.bro = None  # break them
+        return self.__merge(self.__merge(now, bro1), self.__pair_merge(bro2))  # merge these two and continue the next two
+
+    def push(self, new):
+        if self.root is None:
+            self.root = node(new)  # there is no node here, so just let the new one be the root
+        else:
+            self.root = self.__merge(self.root, node(new))  # consider the new one as a single heap, and merge them
+        self.node_number += 1
+
+    def merge(self, new):
+        self.root = self.__merge(self.root, new.root)  # just merge the root of the two heap
+        self.node_number += new.node_number
+
+    def pop(self):
+        if self.root is None:
+            return None  # if there is nothing, than it is an error
+        self.root = self.__pair_merge(self.root.ch)
+        self.node_number -= 1
+
+    def top(self):
+        return None if self.root is None else self.root.value
 </code></pre>
-<h2 id="notice">Notice</h2>
-<p>This algorithm is, indeed, a semi-finished product. Thus, it is not very effective. It can be used when the number of vertexs is lower than 10,000. But it provides a principle that used in most other network-flow problems. So totally understanding this algorithm will lay a solid fundation for further study.</p>
+<h2 id="about-efficiency">About efficiency</h2>
+<p>pop: Binary O(nlogn) | Pairing O(h(n))<br>
+push: Binary O(nlogn) | Pairing O(1)<br>
+get_min: Binary O(1) | Pairing O(1)<br>
+merge: Binary doesn't support | Pairing O(1)</p>
 
             </div>
             
@@ -618,7 +573,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/fUyI1lct0/" title="Edmonds-Karp Algorithm">https://dawn-cmd.github.io/fUyI1lct0/</a>
+      <a href="https://dawn-cmd.github.io/4msqBIkRn/" title="Pairing Heap">https://dawn-cmd.github.io/4msqBIkRn/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -627,7 +582,7 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/S6macCZkQ/"># Algorithm</a>
+      <a href="https://dawn-cmd.github.io/wRT9h1jy0/"># Data Structure</a>
     
       <a href="https://dawn-cmd.github.io/T9dinVrg_/"># Note</a>
     
@@ -635,15 +590,11 @@ int main(){
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Binary Indexed Tree" href="https://dawn-cmd.github.io/pnJxhbchQ/">Binary Indexed Tree</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Binary Indexed Tree" href="https://dawn-cmd.github.io/pnJxhbchQ/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Dijkstra Algorithm" href="https://dawn-cmd.github.io/r5xcxY_Zp/">Dijkstra Algorithm</a>
-        <a class="nav-mobile-next" title="Dijkstra Algorithm" href="https://dawn-cmd.github.io/r5xcxY_Zp/">下一篇</a>
+        <a class="nav-pc-next" title="Heap" href="https://dawn-cmd.github.io/dENZkdKd3/">Heap</a>
+        <a class="nav-mobile-next" title="Heap" href="https://dawn-cmd.github.io/dENZkdKd3/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

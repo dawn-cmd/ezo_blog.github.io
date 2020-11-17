@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Codeforces Round #663 Div2 retrospect | ezo&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1605017902503">
+<link rel="shortcut icon" href="/favicon.ico?v=1605623400656">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1130,6 +1130,66 @@ int main(){
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/4msqBIkRn/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Well, in the previous passage, we have talked about normal heaps, also called binary heap. In this passage, we will discuss a new kind of heap. It is much more effective than binary heap in many aspects, and it&#39;s not hard to practice it as well. Let&#39;s see the code first and at the end of the passage, I will compare their efficiency.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class node:  # the item class
+
+    def __init__(self, value):
+        self.value = value  # value(priority)
+        self.bro = self.ch = None  # brother node and child node
+
+class pairing_heap:
+
+    def __init__(self):
+        self.root = None  # There is no node
+        self.node_number = 0  # It has 0 node
+
+    def __merge(self, a, b):  # Core API 1
+        if a is None or b is None:
+            return a if b is None else b  # return the one that is not None
+        if a.value &amp;gt; b.value:  
+            a, b = b, a  # make sure that a is the smaller one
+        a.ch, b.bro = b, a.ch  # let b becomes a&#39;s child
+        return a
+        
+    def __pair_merge(self, now):  # Core API 2
+        if now is None or now.bro is None:  # It has no brother node to break
+            return now
+        bro1, bro2 = now.bro, now.bro.bro  # save its brother and its brother&#39;s brother
+        now.bro = bro1.bro = None  # break them
+        return self.__merge(self.__merge(now, bro1), self.__pair_merge(bro2))  # merge these two and continue the next two
+
+    def push(self, new):
+        if self.root is None:
+            self.root = node(new)  # there is no node here, so just let the new one be the root
+        else:
+            self.root = self.__merge(self.root, node(new))  # consider the new one as a single heap, and merge them
+        self.node_number += 1
+
+    def merge(self, new):
+        self.root = self.__merge(self.root, new.root)  # just merge the root of the two heap
+        self.node_number += new.node_number
+
+    def pop(self):
+        if self.root is None:
+            return None  # if there is nothing, than it is an error
+        self.root = self.__pair_merge(self.root.ch)
+        self.node_number -= 1
+
+    def top(self):
+        return None if self.root is None else self.root.value
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;about-efficiency&#34;&gt;About efficiency&lt;/h2&gt;
+&lt;p&gt;pop: Binary O(nlogn) | Pairing O(h(n))&lt;br&gt;
+push: Binary O(nlogn) | Pairing O(1)&lt;br&gt;
+get_min: Binary O(1) | Pairing O(1)&lt;br&gt;
+merge: Binary doesn&#39;t support | Pairing O(1)&lt;/p&gt;
+">Pairing Heap</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/dENZkdKd3/"" data-c="
           &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Well, let&#39;s talk about something simple in this passage. I believe most of you must have learnt pile when you just start to learn data structure. But I will still repeat this part again in this passage because it is quite important for the next passage. If we can really understand the inner system of pile, we will be able to make other algorithms that based on it better as well.&lt;/p&gt;
@@ -1184,7 +1244,7 @@ def main():
 
 main()
 &lt;/code&gt;&lt;/pre&gt;
-">Pile</a>
+">Heap</a>
       </div>
       
       <div class="item">
