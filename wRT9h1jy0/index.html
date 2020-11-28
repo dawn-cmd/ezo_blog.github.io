@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>ezo&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1605623400656">
+<link rel="shortcut icon" href="/favicon.ico?v=1606536351183">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -185,7 +185,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">16</span>
+        <span class="site-item-stat-count">17</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -248,6 +248,8 @@
           <small class="language" data-lan="tag">标签</small>
         </h2>
       </div>
+      
+      
       
       
       
@@ -588,6 +590,119 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/guwS0s3Te/"" data-c="
+          &lt;h2 id=&#34;problem-description&#34;&gt;Problem Description&lt;/h2&gt;
+&lt;p&gt;There are some spherical balloons spread in two-dimensional space. For each balloon, provided input is the start and end coordinates of the horizontal diameter. Since it&#39;s horizontal, y-coordinates don&#39;t matter, and hence the x-coordinates of start and end of the diameter suffice. The start is always smaller than the end.&lt;/p&gt;
+&lt;p&gt;An arrow can be shot up exactly vertically from different points along the x-axis. A balloon with xstart and xend bursts by an arrow shot at x if xstart ≤ x ≤ xend. There is no limit to the number of arrows that can be shot. An arrow once shot keeps traveling up infinitely.&lt;/p&gt;
+&lt;p&gt;Given an array points where points[i] = [xstart, xend], return the minimum number of arrows that must be shot to burst all balloons.&lt;/p&gt;
+&lt;h2 id=&#34;constraints&#34;&gt;Constraints&lt;/h2&gt;
+&lt;p&gt;0 &amp;lt;= points.length &amp;lt;= 104&lt;br&gt;
+points[i].length == 2&lt;br&gt;
+-2^31 &amp;lt;= xstart &amp;lt; xend &amp;lt;= 2^31 - 1&lt;/p&gt;
+&lt;h2 id=&#34;solution-1-violent-try&#34;&gt;Solution 1: Violent Try&lt;/h2&gt;
+&lt;p&gt;No algorithms! No data structure! Just try all the possibilities. For         each point on x-axis, it has two condition: has arrow or not. We can          represent it by 0 and 1. Under the most terrible situation, we have 2^        (2^32) possibilities. But it does not matter at all! Because many             excellent solution, algorithms and data structures starts from it.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    ans = 2 ** 32 - 1
+    def dfs(self, now, end, h):
+        if now == end:
+            if check(h):
+                ans = min(ans, sum(h))
+            return
+        self.dfs(now + 1, end, h + [0])
+        self.dfs(now + 1, end, h + [1])
+    def findMinArrowShots(self, points: List[List[int]]) -&amp;gt; int: 
+        start = min(list(map(lambda x: x[0], points)))
+        end = max(list(map(lambda x: x[1], points)))
+        self.dfs(start, end, [])
+        return self.ans
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-2-greedy-algorithm&#34;&gt;Solution 2: Greedy algorithm&lt;/h2&gt;
+&lt;p&gt;Obviously, we wasted a lot of arrows in the previous trying. So we will try our best to save our arrows. What we do is still judge it from left or right(reverse is okay), but we only use the arrow when we really need it otherwise we have no chance. Let me explain it, for example, there is a balloon is from 5 to 8, and we find position 8 is the last point in its cover. That is to say if we just let it go, we will not be able to shoot the balloon again. So we use the arrow here.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -&amp;gt; int:
+        ans += 0 
+        for i in range(left, right + 1):
+            if i is a balloon&#39;s right bound:
+                # realize a function to shoot a arrow at x[i]
+                ans += 1
+        return ans        
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-3-a-small-improvement&#34;&gt;Solution 3: A small improvement&lt;/h2&gt;
+&lt;p&gt;Up to now, we have build a prototype of the final solution. Let&#39;s see whether there is anything can be improved or not. We find that the loop in the previous code has many superfluous visit to irrevelent positions. Because we can see only at the right bound of a balloon, we may do something and the points between two bounds won&#39;t be used at all. Self-evidently, we only need to visit the bound points. What&#39;s more, we have to visit it by the sequence of its position on x-axis. So we need to sort them with their right bound positions and visit them.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class item:
+    
+    def __init__(self, start, end):
+        self.start, self.end = start, end
+
+    def __lt__(self, other):
+        return self.end &amp;lt; other.end
+
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -&amp;gt; int: 
+        p = []
+        for i in range(len(points)):
+            p.append(item(points[i][0], points[i][1]))
+        p.sort()
+        ans = 0
+        h = [0] * len(p)
+        for i in range(len(p)):
+            if h[i] == 1:
+                continue
+            ans += 1
+            for j in range(i, len(p)):
+                if h[j] == 1:
+                    continue
+                elif p[j].start &amp;lt;= p[i].end:
+                    h[j] = 1
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-4-a-large-step-to-the-best-one&#34;&gt;Solution 4: A large step to the best one&lt;/h2&gt;
+&lt;p&gt;The solution 3 is excellent enough in most cases, but it is still not stable. In some special cases, the time complexity of the solution will raise to O(n^2). In some restrictedly developing environments, we need a more stable algorithm. Let&#39;s see the line 24: when the computer find that this arrow cannot shoot this ballon, it chooses to continue visiting the rest balloons, but it is not necessary. When we find this arrow cannot shoot a balloon for the first time, we can quit the loop. Why? Because if this arrow cannot shoot the balloon, the other arrows will shoot it later, so the following balloons that this arrow can shoot, the other arrows can do it as well.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class item:
+    
+    def __init__(self, start, end):
+        self.start, self.end = start, end
+
+    def __lt__(self, other):
+        return self.end &amp;lt; other.end
+
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -&amp;gt; int: 
+        p = []
+        for i in range(len(points)):
+            p.append(item(points[i][0], points[i][1]))
+        p.sort()
+        ans = 0
+        h = [0] * len(p)
+        for i in range(len(p)):
+            if h[i] == 1:
+                continue
+            ans += 1
+            for j in range(i, len(p)):
+                if h[j] == 1:
+                    continue
+                elif p[j].start &amp;lt;= p[i].end:
+                    h[j] = 1
+                else:
+                    break
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-5-make-it-beautiful&#34;&gt;Solution 5: Make it beautiful&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -&amp;gt; int: 
+        points = sorted(points, key = lambda x: x[1])
+        ans = 0
+        min_end = -2 ** 31 - 1
+        for i in points:
+            if i[0] &amp;gt; min_end:
+                ans += 1
+                min_end = i[1]
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+">Deaply Analysis: Minimum Number of Arrows to Burst Balloons</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/4msqBIkRn/"" data-c="

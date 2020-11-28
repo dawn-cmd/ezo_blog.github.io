@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Kick Start 2020 Round C T2 Stable_Wall Analysis | ezo&#39;s blog</title>
+<title>Deaply Analysis: Minimum Number of Arrows to Burst Balloons | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1606536351183">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Kick Start 2020 Round C T2 Stable_Wall Analysis" />
-  <meta name="keywords" content="Solution" />
+  <meta name="description" content="Deaply Analysis: Minimum Number of Arrows to Burst Balloons" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -191,24 +191,13 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#before-the-passage">Before the passage</a></li>
-<li><a href="#official-link">Official link</a></li>
-<li><a href="#problem">Problem</a></li>
-<li><a href="#input">Input</a></li>
-<li><a href="#output">Output</a></li>
-<li><a href="#limits">Limits</a></li>
-<li><a href="#test-set-1">Test set 1</a></li>
-<li><a href="#test-set-2">Test set 2</a></li>
-<li><a href="#sample">Sample</a>
-<ul>
-<li><a href="#input-2">Input</a></li>
-<li><a href="#output-2">Output</a></li>
-<li><a href="#explainatoin">Explainatoin</a></li>
-</ul>
-</li>
-<li><a href="#analysis">Analysis</a></li>
-<li><a href="#code-of-my-solution">Code of my solution</a></li>
-<li><a href="#code-of-the-best-solution">Code of the best solution</a></li>
+<li><a href="#problem-description">Problem Description</a></li>
+<li><a href="#constraints">Constraints</a></li>
+<li><a href="#solution-1-violent-try">Solution 1: Violent Try</a></li>
+<li><a href="#solution-2-greedy-algorithm">Solution 2: Greedy algorithm</a></li>
+<li><a href="#solution-3-a-small-improvement">Solution 3: A small improvement</a></li>
+<li><a href="#solution-4-a-large-step-to-the-best-one">Solution 4: A large step to the best one</a></li>
+<li><a href="#solution-5-make-it-beautiful">Solution 5: Make it beautiful</a></li>
 </ul>
 </li>
 </ul>
@@ -476,8 +465,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/">
-      Kick Start 2020 Round C T2 Stable_Wall Analysis
+    <a class="post-title-link" href="https://dawn-cmd.github.io/guwS0s3Te/">
+      Deaply Analysis: Minimum Number of Arrows to Burst Balloons
     </a>
   </h1>
   <div class="post-meta">
@@ -485,244 +474,130 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-07-30 18:50:13">2020-07-30</span>
+      <span class="publish-time" data-t="2020-11-25 20:43:40">2020-11-25</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/">
-        <span>Solution</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>8<span class="language" data-lan="minute">分钟</span></span>
+      <span>6<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1213<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>927<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <!-- more -->
-<h2 id="before-the-passage">Before the passage</h2>
-<p>I think the data of this problem should be strengthened. Because of the weak data, many people can solve the problem via a very stupid way(<s>me</s>). the details will be furnished in the following passage. However, the ratio of people who passed the problem is lower than the one in other contemporary rounds, it is unbelievable.</p>
-<h2 id="official-link">Official link</h2>
-<p><a href="https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff43/00000000003379bb">Here</a></p>
-<h2 id="problem">Problem</h2>
-<p>Apollo is playing a game involving polyominos. A polyomino is a shape made by joining together one or more squares edge to edge to form a single connected shape. The game involves combining N polyominos into a single rectangular shape without any holes. Each polyomino is labeled with a unique character from A to Z.</p>
-<p>Apollo has finished the game and created a rectangular wall containing R rows and C columns. He took a picture and sent it to his friend Selene. Selene likes pictures of walls, but she likes them even more if they are stable walls. A wall is stable if it can be created by adding polyominos one at a time to the wall so that each polyomino is always supported. A polyomino is supported if each of its squares is either on the ground, or has another square below it.</p>
-<p>Apollo would like to check if his wall is stable and if it is, prove that fact to Selene by telling her the order in which he added the polyominos.</p>
-<h2 id="input">Input</h2>
-<p>The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the two integers R and C. Then, R lines follow, describing the wall from top to bottom. Each line contains a string of C uppercase characters from A to Z, describing that row of the wall.</p>
-<h2 id="output">Output</h2>
-<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is a string of N uppercase characters, describing the order in which he built them. If there is more than one such order, output any of them. If the wall is not stable, output -1 instead.</p>
-<h2 id="limits">Limits</h2>
-<p>Time limit: 20 seconds per test set.<br>
-Memory limit: 1GB.<br>
-1 ≤ T ≤ 100.<br>
-1 ≤ R ≤ 30.<br>
-1 ≤ C ≤ 30.<br>
-No two polyominos will be labeled with the same letter.<br>
-The input is guaranteed to be valid according to the rules described in the statement.</p>
-<h2 id="test-set-1">Test set 1</h2>
-<p>1 ≤ N ≤ 5.</p>
-<h2 id="test-set-2">Test set 2</h2>
-<p>1 ≤ N ≤ 26.</p>
-<h2 id="sample">Sample</h2>
-<h3 id="input-2">Input</h3>
-<p>4</p>
-<p>4 6</p>
-<p>ZOAAMM</p>
-<p>ZOAOMM</p>
-<p>ZOOOOM</p>
-<p>ZZZZOM</p>
-<p>4 4</p>
-<p>XXOO</p>
-<p>XFFO</p>
-<p>XFXO</p>
-<p>XXXO</p>
-<p>5 3</p>
-<p>XXX</p>
-<p>XPX</p>
-<p>XXX</p>
-<p>XJX</p>
-<p>XXX</p>
-<p>3 10</p>
-<p>AAABBCCDDE</p>
-<p>AABBCCDDEE</p>
-<p>AABBCCDDEE</p>
-<h3 id="output-2">Output</h3>
-<p>Case #1: ZOAM</p>
-<p>Case #2: -1</p>
-<p>Case #3: -1</p>
-<p>Case #4: EDCBA</p>
-<h3 id="explainatoin">Explainatoin</h3>
-<p>In sample case #1, note that ZOMA is another possible answer.</p>
-<p>In sample case #2 and sample case #3, the wall is not stable, so the answer is -1.</p>
-<p>In sample case #4, the only possible answer is EDCBA.</p>
-<h2 id="analysis">Analysis</h2>
-<ol>
-<li>
-<p>O(n!) solution:We can list all the possible order that the polyominos being set in and then check them one by one.</p>
-</li>
-<li>
-<p>O(n to n!) solution:<s>this is the stupid way</s>When I was solving the problem, I used DFS technique(Deep-First-Search) to address it. Specifically, I imitated the process of setting polyomino: I determined which polyomino I should put one by one, when there exist problems, we back to the previous step and try another way. Because N is specially small, this solution can be accepted narrowly.</p>
-</li>
-<li>
-<p>O(R * C) solution:So this is the best solution. Literally, when a polyomino is totally or partly above another polyomino, the upper one should be set after the lower one restrictly. When it happpens, we can consider these two polyominos as two vertexs, and build an edge directed from the lower one to the upper one. We proceed all the polyominos by this way, in the end, we can get a graph. All we need to do is to find a topological sort of the graph. About topological sort, if you do not know it very well, <a href="https://dawn-cmd.github.io/o_E2mKnup/">this passage</a> may help you.</p>
-</li>
-</ol>
-<h2 id="code-of-my-solution">Code of my solution</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int T;
-int r;
-int c;
-string ans;
-string mp[31];
-string lit;
-map&lt;char,int&gt; h;
-bool check(){
-    for(int i=1;i&lt;r;++i){
-        for(int j=0;j&lt;c;++j){
-            if(h[mp[i][j]]==0&amp;&amp;h[mp[i-1][j]]==1){
-                return 0;
-            }
-        }
-    }
-    return 1;
-}
-void dfs(string now){
-    if(now.length()==lit.length()){
-        ans=now;
-        return;
-    }
-    if(ans!=&quot;-1&quot;){
-        return;
-    }
-    for(int i=0;i&lt;lit.length();++i){
-        if(h[lit[i]]==1){
-            continue;
-        }
-        h[lit[i]]=1;
-        if(check()){
-            dfs(now+lit[i]);
-        }
-        h[lit[i]]=0; 
-    } 
-}
-int main(){
-    cin&gt;&gt;T;
-    for(int P=1;P&lt;=T;++P){
-        cin&gt;&gt;r&gt;&gt;c;
-        lit=&quot;&quot;;
-        h.erase(h.begin(),h.end());
-        for(int i=0;i&lt;r;++i){
-            cin&gt;&gt;mp[i];
-            for(int j=0;j&lt;c;++j){
-                if(h[mp[i][j]]==0){
-                    h[mp[i][j]]=1;
-                    lit+=mp[i][j];
-                }
-            }
-        }
-        h.erase(h.begin(),h.end());
-        ans=&quot;-1&quot;;
-        dfs(&quot;&quot;);
-        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;P&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
-    }
-    return 0;
-}
+              <h2 id="problem-description">Problem Description</h2>
+<p>There are some spherical balloons spread in two-dimensional space. For each balloon, provided input is the start and end coordinates of the horizontal diameter. Since it's horizontal, y-coordinates don't matter, and hence the x-coordinates of start and end of the diameter suffice. The start is always smaller than the end.</p>
+<p>An arrow can be shot up exactly vertically from different points along the x-axis. A balloon with xstart and xend bursts by an arrow shot at x if xstart ≤ x ≤ xend. There is no limit to the number of arrows that can be shot. An arrow once shot keeps traveling up infinitely.</p>
+<p>Given an array points where points[i] = [xstart, xend], return the minimum number of arrows that must be shot to burst all balloons.</p>
+<h2 id="constraints">Constraints</h2>
+<p>0 &lt;= points.length &lt;= 104<br>
+points[i].length == 2<br>
+-2^31 &lt;= xstart &lt; xend &lt;= 2^31 - 1</p>
+<h2 id="solution-1-violent-try">Solution 1: Violent Try</h2>
+<p>No algorithms! No data structure! Just try all the possibilities. For         each point on x-axis, it has two condition: has arrow or not. We can          represent it by 0 and 1. Under the most terrible situation, we have 2^        (2^32) possibilities. But it does not matter at all! Because many             excellent solution, algorithms and data structures starts from it.</p>
+<pre><code class="language-python">class Solution:
+    ans = 2 ** 32 - 1
+    def dfs(self, now, end, h):
+        if now == end:
+            if check(h):
+                ans = min(ans, sum(h))
+            return
+        self.dfs(now + 1, end, h + [0])
+        self.dfs(now + 1, end, h + [1])
+    def findMinArrowShots(self, points: List[List[int]]) -&gt; int: 
+        start = min(list(map(lambda x: x[0], points)))
+        end = max(list(map(lambda x: x[1], points)))
+        self.dfs(start, end, [])
+        return self.ans
 </code></pre>
-<h2 id="code-of-the-best-solution">Code of the best solution</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int r;
-int c;
-string mp[1000];
-vector&lt;int&gt; graph[1000];
-int incnt[1000];
-int n;
-string ans;
-map&lt;char,int&gt; h;
-void topo(){
-    queue&lt;int&gt; q;
-    for(int i=1;i&lt;=30;++i){
-        if(incnt[i]==0&amp;&amp;h[(char)(i+'A'-1)]){
-            q.push(i);
-        }
-    }
-    while(!q.empty()){
-        int x=q.front();
-        ans+=(char)(x+'A'-1);
-        q.pop();
-        for(int i=0;i&lt;graph[x].size();++i){
-            int y=graph[x][i];
-            incnt[y]--;
-            if(incnt[y]==0){
-                q.push(y);
-            }
-        }
-    }
-    return;
-}
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    for(int P=1;P&lt;=T;++P){
-        cin&gt;&gt;r&gt;&gt;c;
-        n=0;
-        h.erase(h.begin(),h.end());
-        for(int i=0;i&lt;r;++i){
-            cin&gt;&gt;mp[i];
-            for(int j=0;j&lt;c;++j){
-                if(h[mp[i][j]]==0){
-                    h[mp[i][j]]=1;
-                    ++n;
-                }
-            }
-        }
-        memset(incnt,0,sizeof incnt);
-        map&lt;pair&lt;int,int&gt;,int&gt; he;
-        for(int i=1;i&lt;=30;++i){
-            graph[i].clear();
-        }
-        for(int i=1;i&lt;r;++i){
-            for(int j=0;j&lt;c;++j){
-                if(mp[i][j]!=mp[i-1][j]){
-                    int x=mp[i][j]-'A'+1;
-                    int y=mp[i-1][j]-'A'+1;
-                    if(he[make_pair(x,y)]==0){
-                        graph[x].push_back(y);
-                        he[make_pair(x,y)]=1;
-                        ++incnt[y];
-                    } 
-                }
-            }
-        }
-        ans=&quot;&quot;;
-        topo();
-        if(ans.length()&lt;n){
-            cout&lt;&lt;&quot;Case #&quot;&lt;&lt;P&lt;&lt;&quot;: &quot;&lt;&lt;&quot;-1&quot;&lt;&lt;endl;
-        }
-        else{
-            cout&lt;&lt;&quot;Case #&quot;&lt;&lt;P&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
-        }
-    }
-    return 0;
-}
+<h2 id="solution-2-greedy-algorithm">Solution 2: Greedy algorithm</h2>
+<p>Obviously, we wasted a lot of arrows in the previous trying. So we will try our best to save our arrows. What we do is still judge it from left or right(reverse is okay), but we only use the arrow when we really need it otherwise we have no chance. Let me explain it, for example, there is a balloon is from 5 to 8, and we find position 8 is the last point in its cover. That is to say if we just let it go, we will not be able to shoot the balloon again. So we use the arrow here.</p>
+<pre><code class="language-python">class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -&gt; int:
+        ans += 0 
+        for i in range(left, right + 1):
+            if i is a balloon's right bound:
+                # realize a function to shoot a arrow at x[i]
+                ans += 1
+        return ans        
+</code></pre>
+<h2 id="solution-3-a-small-improvement">Solution 3: A small improvement</h2>
+<p>Up to now, we have build a prototype of the final solution. Let's see whether there is anything can be improved or not. We find that the loop in the previous code has many superfluous visit to irrevelent positions. Because we can see only at the right bound of a balloon, we may do something and the points between two bounds won't be used at all. Self-evidently, we only need to visit the bound points. What's more, we have to visit it by the sequence of its position on x-axis. So we need to sort them with their right bound positions and visit them.</p>
+<pre><code class="language-python">class item:
+    
+    def __init__(self, start, end):
+        self.start, self.end = start, end
+
+    def __lt__(self, other):
+        return self.end &lt; other.end
+
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -&gt; int: 
+        p = []
+        for i in range(len(points)):
+            p.append(item(points[i][0], points[i][1]))
+        p.sort()
+        ans = 0
+        h = [0] * len(p)
+        for i in range(len(p)):
+            if h[i] == 1:
+                continue
+            ans += 1
+            for j in range(i, len(p)):
+                if h[j] == 1:
+                    continue
+                elif p[j].start &lt;= p[i].end:
+                    h[j] = 1
+        return ans
+</code></pre>
+<h2 id="solution-4-a-large-step-to-the-best-one">Solution 4: A large step to the best one</h2>
+<p>The solution 3 is excellent enough in most cases, but it is still not stable. In some special cases, the time complexity of the solution will raise to O(n^2). In some restrictedly developing environments, we need a more stable algorithm. Let's see the line 24: when the computer find that this arrow cannot shoot this ballon, it chooses to continue visiting the rest balloons, but it is not necessary. When we find this arrow cannot shoot a balloon for the first time, we can quit the loop. Why? Because if this arrow cannot shoot the balloon, the other arrows will shoot it later, so the following balloons that this arrow can shoot, the other arrows can do it as well.</p>
+<pre><code class="language-python">class item:
+    
+    def __init__(self, start, end):
+        self.start, self.end = start, end
+
+    def __lt__(self, other):
+        return self.end &lt; other.end
+
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -&gt; int: 
+        p = []
+        for i in range(len(points)):
+            p.append(item(points[i][0], points[i][1]))
+        p.sort()
+        ans = 0
+        h = [0] * len(p)
+        for i in range(len(p)):
+            if h[i] == 1:
+                continue
+            ans += 1
+            for j in range(i, len(p)):
+                if h[j] == 1:
+                    continue
+                elif p[j].start &lt;= p[i].end:
+                    h[j] = 1
+                else:
+                    break
+        return ans
+</code></pre>
+<h2 id="solution-5-make-it-beautiful">Solution 5: Make it beautiful</h2>
+<pre><code class="language-python">class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -&gt; int: 
+        points = sorted(points, key = lambda x: x[1])
+        ans = 0
+        min_end = -2 ** 31 - 1
+        for i in points:
+            if i[0] &gt; min_end:
+                ans += 1
+                min_end = i[1]
+        return ans
 </code></pre>
 
             </div>
@@ -736,7 +611,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/" title="Kick Start 2020 Round C T2 Stable_Wall Analysis">https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/</a>
+      <a href="https://dawn-cmd.github.io/guwS0s3Te/" title="Deaply Analysis: Minimum Number of Arrows to Burst Balloons">https://dawn-cmd.github.io/guwS0s3Te/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -745,18 +620,16 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/"># Solution</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Kick Start 2020 Round C T1 Countdown Analysis" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/">Kick Start 2020 Round C T1 Countdown Analysis</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Kick Start 2020 Round C T1 Countdown Analysis" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/">上一篇</a>
-      
     </div>
     <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Pairing Heap" href="https://dawn-cmd.github.io/4msqBIkRn/">Pairing Heap</a>
+        <a class="nav-mobile-next" title="Pairing Heap" href="https://dawn-cmd.github.io/4msqBIkRn/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>
