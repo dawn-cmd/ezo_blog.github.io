@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>ezo&apos;s blog</title>
-    <updated>2020-11-28T09:35:19.193Z</updated>
+    <updated>2020-12-06T13:53:49.835Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -11,6 +11,13 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, ezo&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Deep Analysis: Count Primes]]></title>
+        <id>https://dawn-cmd.github.io/Fo59-fr0V/</id>
+        <link href="https://dawn-cmd.github.io/Fo59-fr0V/">
+        </link>
+        <updated>2020-12-03T12:45:15.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Deaply Analysis: Minimum Number of Arrows to Burst Balloons]]></title>
         <id>https://dawn-cmd.github.io/guwS0s3Te/</id>
@@ -73,12 +80,5 @@
         <link href="https://dawn-cmd.github.io/oYNuWB-VD/">
         </link>
         <updated>2020-08-14T08:26:07.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Codeforces Round #662 Div2 retrospect]]></title>
-        <id>https://dawn-cmd.github.io/i28zPrNp9/</id>
-        <link href="https://dawn-cmd.github.io/i28zPrNp9/">
-        </link>
-        <updated>2020-08-13T09:15:54.000Z</updated>
     </entry>
 </feed>

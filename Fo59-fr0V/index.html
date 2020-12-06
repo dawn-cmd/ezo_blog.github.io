@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Ezo | ezo&#39;s blog</title>
+<title>Deep Analysis: Count Primes | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1607262816157">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Ezo" />
-  <meta name="keywords" content="Self Introduction" />
+  <meta name="description" content="Deep Analysis: Count Primes" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -179,6 +179,209 @@
 
 <div class="sidebar">
   
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            <div style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#problem-description">Problem Description</a></li>
+<li><a href="#constraints">Constraints:</a></li>
+<li><a href="#solution-1-volent-trying">Solution 1: Volent Trying</a></li>
+<li><a href="#solution-2-a-little-bit-improvement">Solution 2: A little bit improvement</a></li>
+<li><a href="#solution-3-another-trick">Solution 3: Another trick</a></li>
+<li><a href="#solution-4-sieve-of-eratosthenes">Solution 4: Sieve of Eratosthenes</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
+      </div>
+    </div>
+  
 </div>
 <script>
   const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
@@ -261,8 +464,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/aQhyHFZwS/">
-      Ezo
+    <a class="post-title-link" href="https://dawn-cmd.github.io/Fo59-fr0V/">
+      Deep Analysis: Count Primes
     </a>
   </h1>
   <div class="post-meta">
@@ -270,42 +473,119 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-07-30 20:08:02">2020-07-30</span>
+      <span class="publish-time" data-t="2020-12-03 20:45:15">2020-12-03</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://dawn-cmd.github.io/Q9Iss7bCR/">
-        <span>Self Introduction</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>13<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>553<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <ul>
-<li>'s <a href="https://github.com/dawn-cmd">github account</a></li>
-<li>'s <a href="https://codeforces.com/profile/knight5207">Codeforces account</a></li>
-<li>'s<a href="https://leetcode-cn.com/u/ezo/">LeetCode account(Chinese Station)</a></li>
-<li>'s number: +8613376173601</li>
-</ul>
+              <h2 id="problem-description">Problem Description</h2>
+<p>Count the number of prime numbers less than a non-negative number n.</p>
+<h2 id="constraints">Constraints:</h2>
+<p>0 &lt;= n &lt;= 5 * 10 ^ 6</p>
+<h2 id="solution-1-volent-trying">Solution 1: Volent Trying</h2>
+<p>So let's see the algorithm with the worst time efficiency. What we need to do is just identifying the integers are primes or not one by one. In the end, we count the number of primes and return the answer. When judging every number, we need to check whether the number from 2 to n - 1 can divide the number we need to judge. If yes, the number is not a prime and in other cases it is a prime.</p>
+<pre><code class="language-python">def isprime(num):
+    if num == 0 or num == 1:
+        return 0
+    i = 2
+    while i  &lt; num:
+        if num % i == 0:
+            return 0
+        i += 1
+    return 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(n):
+        ans += isprime(i)
+    print(ans)
+
+main()
+</code></pre>
+<h2 id="solution-2-a-little-bit-improvement">Solution 2: A little bit improvement</h2>
+<p>Let's focus on the function &quot;isprime&quot;. In this function, we try to use [2, n) to divide the number, but actually, we just need [2, sqrt(n) + 1). Because when we try a number larger than sqrt(n) + 1, this process must be repeated before. So we can get this code.</p>
+<pre><code class="language-python">def isprime(num):
+    if num == 0 or num == 1:
+        return 0
+    i = 2
+    while i ** 2 &lt;= num:  # I did not import Math because it will make the program slow
+        if num % i == 0:
+            return 0
+        i += 1
+    return 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(n):
+        ans += isprime(i)
+    print(ans)
+
+main()
+</code></pre>
+<h2 id="solution-3-another-trick">Solution 3: Another trick</h2>
+<p>When you judge a number is a prime or not, 6 is a quite efficient number. Why? Because except 2 and 3, if a number n % 6 is neither 1 nor 5, it must not be a prime: 6k + 2 can divide by 2, 6k + 3 can divide by 3, 6k + 4 can divide by 2, 6k + 6 can divde by 6. As a result, we use just one command to cut 2/3 answers. Why it is not efficient?</p>
+<pre><code class="language-python">def isprime(num):
+    if num == 0 or num == 1:
+        return 0
+    if num == 2 or num == 3:
+        return 1
+    elif num % 6 != 1 and num % 6 != 5:
+        return 0
+    i = 2
+    while i ** 2 &lt;= num:
+        if num % i == 0:
+            return 0
+        i += 1
+    return 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(n):
+        ans += isprime(i)
+    print(ans)
+
+main()
+</code></pre>
+<h2 id="solution-4-sieve-of-eratosthenes">Solution 4: Sieve of Eratosthenes</h2>
+<p>Up to now, it is quite efficient on judging one prime. But we have to judge n numbers. Does there exist better algorithm or not? Of course yes. The Sieve of Eratosthenes can produce the prime from 2 to n - 1 in one time an it is easy to understand: if k is a prime, then k * 2, k * 3, k * 4...... are not primes.</p>
+<pre><code class="language-python">def prime_select():
+    n = 5 * (10 ** 6) + 1
+    h = [1] * n
+    h[1] = h[0] = 0
+    for i in range(2, n):
+        if h[i] == 0:
+            continue
+        j = i
+        while j * i &lt; n:
+            h[i * j] = 0
+            j += 1
+    return h
+
+h = prime_select()
+
+class Solution:
+    
+    def countPrimes(self, n: int) -&gt; int:
+        ans = 0
+        for i in range(n):
+            ans += h[i]
+        return ans
+</code></pre>
 
             </div>
             
@@ -318,7 +598,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/aQhyHFZwS/" title="Ezo">https://dawn-cmd.github.io/aQhyHFZwS/</a>
+      <a href="https://dawn-cmd.github.io/Fo59-fr0V/" title="Deep Analysis: Count Primes">https://dawn-cmd.github.io/Fo59-fr0V/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -327,14 +607,16 @@
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/Q9Iss7bCR/"># Self Introduction</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
     </div>
     <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Deaply Analysis: Minimum Number of Arrows to Burst Balloons" href="https://dawn-cmd.github.io/guwS0s3Te/">Deaply Analysis: Minimum Number of Arrows to Burst Balloons</a>
+        <a class="nav-mobile-next" title="Deaply Analysis: Minimum Number of Arrows to Burst Balloons" href="https://dawn-cmd.github.io/guwS0s3Te/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>

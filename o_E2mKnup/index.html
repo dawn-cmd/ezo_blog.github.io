@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Topological Sort | ezo&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1606556113965">
+<link rel="shortcut icon" href="/favicon.ico?v=1607262816157">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1118,6 +1118,107 @@ int main(){
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/Fo59-fr0V/"" data-c="
+          &lt;h2 id=&#34;problem-description&#34;&gt;Problem Description&lt;/h2&gt;
+&lt;p&gt;Count the number of prime numbers less than a non-negative number n.&lt;/p&gt;
+&lt;h2 id=&#34;constraints&#34;&gt;Constraints:&lt;/h2&gt;
+&lt;p&gt;0 &amp;lt;= n &amp;lt;= 5 * 10 ^ 6&lt;/p&gt;
+&lt;h2 id=&#34;solution-1-volent-trying&#34;&gt;Solution 1: Volent Trying&lt;/h2&gt;
+&lt;p&gt;So let&#39;s see the algorithm with the worst time efficiency. What we need to do is just identifying the integers are primes or not one by one. In the end, we count the number of primes and return the answer. When judging every number, we need to check whether the number from 2 to n - 1 can divide the number we need to judge. If yes, the number is not a prime and in other cases it is a prime.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def isprime(num):
+    if num == 0 or num == 1:
+        return 0
+    i = 2
+    while i  &amp;lt; num:
+        if num % i == 0:
+            return 0
+        i += 1
+    return 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(n):
+        ans += isprime(i)
+    print(ans)
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-2-a-little-bit-improvement&#34;&gt;Solution 2: A little bit improvement&lt;/h2&gt;
+&lt;p&gt;Let&#39;s focus on the function &amp;quot;isprime&amp;quot;. In this function, we try to use [2, n) to divide the number, but actually, we just need [2, sqrt(n) + 1). Because when we try a number larger than sqrt(n) + 1, this process must be repeated before. So we can get this code.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def isprime(num):
+    if num == 0 or num == 1:
+        return 0
+    i = 2
+    while i ** 2 &amp;lt;= num:  # I did not import Math because it will make the program slow
+        if num % i == 0:
+            return 0
+        i += 1
+    return 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(n):
+        ans += isprime(i)
+    print(ans)
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-3-another-trick&#34;&gt;Solution 3: Another trick&lt;/h2&gt;
+&lt;p&gt;When you judge a number is a prime or not, 6 is a quite efficient number. Why? Because except 2 and 3, if a number n % 6 is neither 1 nor 5, it must not be a prime: 6k + 2 can divide by 2, 6k + 3 can divide by 3, 6k + 4 can divide by 2, 6k + 6 can divde by 6. As a result, we use just one command to cut 2/3 answers. Why it is not efficient?&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def isprime(num):
+    if num == 0 or num == 1:
+        return 0
+    if num == 2 or num == 3:
+        return 1
+    elif num % 6 != 1 and num % 6 != 5:
+        return 0
+    i = 2
+    while i ** 2 &amp;lt;= num:
+        if num % i == 0:
+            return 0
+        i += 1
+    return 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(n):
+        ans += isprime(i)
+    print(ans)
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-4-sieve-of-eratosthenes&#34;&gt;Solution 4: Sieve of Eratosthenes&lt;/h2&gt;
+&lt;p&gt;Up to now, it is quite efficient on judging one prime. But we have to judge n numbers. Does there exist better algorithm or not? Of course yes. The Sieve of Eratosthenes can produce the prime from 2 to n - 1 in one time an it is easy to understand: if k is a prime, then k * 2, k * 3, k * 4...... are not primes.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def prime_select():
+    n = 5 * (10 ** 6) + 1
+    h = [1] * n
+    h[1] = h[0] = 0
+    for i in range(2, n):
+        if h[i] == 0:
+            continue
+        j = i
+        while j * i &amp;lt; n:
+            h[i * j] = 0
+            j += 1
+    return h
+
+h = prime_select()
+
+class Solution:
+    
+    def countPrimes(self, n: int) -&amp;gt; int:
+        ans = 0
+        for i in range(n):
+            ans += h[i]
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+">Deep Analysis: Count Primes</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/guwS0s3Te/"" data-c="
