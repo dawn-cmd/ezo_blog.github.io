@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Deep Analysis: Count Primes | ezo&#39;s blog</title>
+<title>Deep Analysis: Fancy Sequence | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1608650138595">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Deep Analysis: Count Primes" />
-  <meta name="keywords" content="Leetcode,Algorithm" />
+  <meta name="description" content="Deep Analysis: Fancy Sequence" />
+  <meta name="keywords" content="Leetcode,Algorithm,Data Structure" />
 </head>
 
 <body>
@@ -192,11 +192,9 @@
 <li>
 <ul>
 <li><a href="#problem-description">Problem Description</a></li>
-<li><a href="#constraints">Constraints:</a></li>
-<li><a href="#solution-1-volent-trying">Solution 1: Volent Trying</a></li>
-<li><a href="#solution-2-a-little-bit-improvement">Solution 2: A little bit improvement</a></li>
-<li><a href="#solution-3-another-trick">Solution 3: Another trick</a></li>
-<li><a href="#solution-4-sieve-of-eratosthenes">Solution 4: Sieve of Eratosthenes</a></li>
+<li><a href="#constrains">Constrains</a></li>
+<li><a href="#solution-1-binary-indexed-tree">Solution 1: Binary Indexed Tree:</a></li>
+<li><a href="#solution-2-multiplicative-inverse-modulomim">Solution 2: Multiplicative inverse modulo(MIM)</a></li>
 </ul>
 </li>
 </ul>
@@ -464,8 +462,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/Fo59-fr0V/">
-      Deep Analysis: Count Primes
+    <a class="post-title-link" href="https://dawn-cmd.github.io/FYQ2RAKvZ/">
+      Deep Analysis: Fancy Sequence
     </a>
   </h1>
   <div class="post-meta">
@@ -473,7 +471,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-03 20:45:15">2020-12-03</span>
+      <span class="publish-time" data-t="2020-12-22 20:46:18">2020-12-22</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -490,6 +488,12 @@
       
       <a href="https://dawn-cmd.github.io/S6macCZkQ/">
         <span>Algorithm</span>
+      </a>、
+      
+      
+      
+      <a href="https://dawn-cmd.github.io/wRT9h1jy0/">
+        <span>Data Structure</span>
       </a>
       
       
@@ -498,112 +502,111 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>4<span class="language" data-lan="minute">分钟</span></span>
+      <span>5<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>553<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>783<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
               <h2 id="problem-description">Problem Description</h2>
-<p>Count the number of prime numbers less than a non-negative number n.</p>
-<h2 id="constraints">Constraints:</h2>
-<p>0 &lt;= n &lt;= 5 * 10 ^ 6</p>
-<h2 id="solution-1-volent-trying">Solution 1: Volent Trying</h2>
-<p>So let's see the algorithm with the worst time efficiency. What we need to do is just identifying the integers are primes or not one by one. In the end, we count the number of primes and return the answer. When judging every number, we need to check whether the number from 2 to n - 1 can divide the number we need to judge. If yes, the number is not a prime and in other cases it is a prime.</p>
-<pre><code class="language-python">def isprime(num):
-    if num == 0 or num == 1:
-        return 0
-    i = 2
-    while i  &lt; num:
-        if num % i == 0:
-            return 0
-        i += 1
-    return 1
+<p>Write an API that generates fancy sequences using the append, addAll, and multAll operations.<br>
+Implement the Fancy class:</p>
+<ul>
+<li>Fancy() Initializes the object with an empty sequence.</li>
+<li>void append(val) Appends an integer val to the end of the sequence.</li>
+<li>void addAll(inc) Increments all existing values in the sequence by an integer inc.</li>
+<li>void multAll(m) Multiplies all existing values in the sequence by an integer m.</li>
+<li>int getIndex(idx) Gets the current value at index idx (0-indexed) of the sequence modulo 109 + 7. If the index is greater or equal than the length of the sequence, return -1.</li>
+</ul>
+<h2 id="constrains">Constrains</h2>
+<p>1 &lt;= val, inc, m &lt;= 100<br>
+0 &lt;= idx &lt;= 10^5<br>
+At most 10^5 calls total will be made to append, addAll, multAll, and getIndex.</p>
+<h2 id="solution-1-binary-indexed-tree">Solution 1: Binary Indexed Tree:</h2>
+<p>This time, I will not list the violent solution because it is too apperant.  First, we can find that all the operations are add and multiply. This two modifications can add up under a mod. So this problem can be understanded in this way: each add and multiply demand can be seem as a node on a list and each node just affect the numbers before it. So when numbers come in, it will not be affected by previous buffs. When you try to get a specific number in the list, you just add all the previous buffs onto the number.</p>
+<p>Obviously, prefix sum can satisfied our needs. So what's the most direct and simple data structure that can achieve prefix sum? Binary Indexed Tree. Because I have already write an article to talk about the realization of Binary Indexed Tree, I will just choose some key points to mention here. The problem is, how to &quot;add&quot; buffs. Can we just add them up simply? Of course not. Let's assume f(x) = ax + b, g(x) = cx + d, and the f + g is a*cx + b * c + d. Although the two functions cannot be reversed, it will not affect the final answer.</p>
+<pre><code class="language-python">class Fancy:
 
-def main():
-    n = int(input())
-    ans = 0
-    for i in range(n):
-        ans += isprime(i)
-    print(ans)
+    mod = 10 ** 9 + 7
 
-main()
+    class expression:  # f(x) = a * x + b
+        mod = 10 ** 9 + 7
+        def __init__(self, x = 1, y = 0):
+            self.a, self.b = x, y
+        def __add__(self, other):
+            self.a = self.a * other.a % self.mod
+            self.b = (self.b * other.a + other.b) % self.mod
+            return self
+
+    lowbit = lambda self, x: x &amp; -x
+
+    def __init__(self):
+        self.nums = []
+        self.c = [self.expression() for _ in range(200000)]
+
+    def doit(self, demand):
+        i = 100000 - len(self.nums)
+        while i &lt; 200000:
+            self.c[i] = self.c[i] + demand
+            i += self.lowbit(i)
+
+    def append(self, val: int) -&gt; None:
+        self.nums.append(val)
+
+    def addAll(self, inc: int) -&gt; None:
+        if len(self.nums) == 0:
+            return
+        demand = self.expression(1, inc)
+        self.doit(demand)
+
+    def multAll(self, m: int) -&gt; None:
+        if len(self.nums) == 0:
+            return
+        demand = self.expression(m, 0)
+        self.doit(demand)
+
+    def getIndex(self, idx: int) -&gt; int:
+        if idx &gt;= len(self.nums):
+            return -1
+        op = self.expression()
+        i = 100000 - idx - 1
+        while i &gt;= 1:
+            op = op + self.c[i]
+            i -= self.lowbit(i)
+        return (self.nums[idx] * op.a % self.mod + op.b) % self.mod
 </code></pre>
-<h2 id="solution-2-a-little-bit-improvement">Solution 2: A little bit improvement</h2>
-<p>Let's focus on the function &quot;isprime&quot;. In this function, we try to use [2, n) to divide the number, but actually, we just need [2, sqrt(n) + 1). Because when we try a number larger than sqrt(n) + 1, this process must be repeated before. So we can get this code.</p>
-<pre><code class="language-python">def isprime(num):
-    if num == 0 or num == 1:
-        return 0
-    i = 2
-    while i ** 2 &lt;= num:  # I did not import Math because it will make the program slow
-        if num % i == 0:
-            return 0
-        i += 1
-    return 1
+<h2 id="solution-2-multiplicative-inverse-modulomim">Solution 2: Multiplicative inverse modulo(MIM)</h2>
+<p>There also existed a more elegant way to solve the problem. If we just use a and b to record all the behaviour, we just need to minus b and divide a before a number adds into the list. But here comes a question, this minus and divide can not be supported under a mod. So we need to use an MIM. MIM can help us use add and multiply to realize minus and divide under a mod: (x / b) % mod = (b ^ (mod - 2) * x) % mod, x - b = (x + mod - b) % mod.. With the two equations, we can solve the problem easily.</p>
+<pre><code class="language-python">class Fancy:
 
-def main():
-    n = int(input())
-    ans = 0
-    for i in range(n):
-        ans += isprime(i)
-    print(ans)
+    mult = 1
+    add = 0
+    mod = 10 ** 9 + 7
 
-main()
-</code></pre>
-<h2 id="solution-3-another-trick">Solution 3: Another trick</h2>
-<p>When you judge a number is a prime or not, 6 is a quite efficient number. Why? Because except 2 and 3, if a number n % 6 is neither 1 nor 5, it must not be a prime: 6k + 2 can divide by 2, 6k + 3 can divide by 3, 6k + 4 can divide by 2, 6k + 6 can divde by 6. As a result, we use just one command to cut 2/3 answers. Why it is not efficient?</p>
-<pre><code class="language-python">def isprime(num):
-    if num == 0 or num == 1:
-        return 0
-    if num == 2 or num == 3:
-        return 1
-    elif num % 6 != 1 and num % 6 != 5:
-        return 0
-    i = 2
-    while i ** 2 &lt;= num:
-        if num % i == 0:
-            return 0
-        i += 1
-    return 1
+    def qpow(self, num, power):
+        return 1 if power == 0 else self.qpow(num ** 2 % self.mod, power &gt;&gt; 1) % self.mod * (num if power &amp; 1 == 1 else 1)
 
-def main():
-    n = int(input())
-    ans = 0
-    for i in range(n):
-        ans += isprime(i)
-    print(ans)
+    def __init__(self):
+        self.val = []
 
-main()
-</code></pre>
-<h2 id="solution-4-sieve-of-eratosthenes">Solution 4: Sieve of Eratosthenes</h2>
-<p>Up to now, it is quite efficient on judging one prime. But we have to judge n numbers. Does there exist better algorithm or not? Of course yes. The Sieve of Eratosthenes can produce the prime from 2 to n - 1 in one time an it is easy to understand: if k is a prime, then k * 2, k * 3, k * 4...... are not primes.</p>
-<pre><code class="language-python">def prime_select():
-    n = 5 * (10 ** 6) + 1
-    h = [1] * n
-    h[1] = h[0] = 0
-    for i in range(2, n):
-        if h[i] == 0:
-            continue
-        j = i
-        while j * i &lt; n:
-            h[i * j] = 0
-            j += 1
-    return h
+    def append(self, val: int) -&gt; None:
+        val = (val - self.add + self.mod) * self.qpow(self.mult, self.mod - 2) % self.mod
+        self.val.append(val)
 
-h = prime_select()
+    def addAll(self, inc: int) -&gt; None:
+        self.add = (self.add + inc) % self.mod
 
-class Solution:
-    
-    def countPrimes(self, n: int) -&gt; int:
-        ans = 0
-        for i in range(n):
-            ans += h[i]
-        return ans
+    def multAll(self, m: int) -&gt; None:
+        self.mult = self.mult * m % self.mod
+        self.add = self.add * m % self.mod
+
+    def getIndex(self, idx: int) -&gt; int:
+        return -1 if idx &gt;= len(self.val) else (self.val[idx] * self.mult % self.mod + self.add) % self.mod 
 </code></pre>
 
             </div>
@@ -617,7 +620,7 @@ class Solution:
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/Fo59-fr0V/" title="Deep Analysis: Count Primes">https://dawn-cmd.github.io/Fo59-fr0V/</a>
+      <a href="https://dawn-cmd.github.io/FYQ2RAKvZ/" title="Deep Analysis: Fancy Sequence">https://dawn-cmd.github.io/FYQ2RAKvZ/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -630,19 +633,17 @@ class Solution:
     
       <a href="https://dawn-cmd.github.io/S6macCZkQ/"># Algorithm</a>
     
+      <a href="https://dawn-cmd.github.io/wRT9h1jy0/"># Data Structure</a>
+    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Deep Analysis: Fancy Sequence" href="https://dawn-cmd.github.io/FYQ2RAKvZ/">Deep Analysis: Fancy Sequence</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Deep Analysis: Fancy Sequence" href="https://dawn-cmd.github.io/FYQ2RAKvZ/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Deep Analysis: Minimum Number of Arrows to Burst Balloons" href="https://dawn-cmd.github.io/guwS0s3Te/">Deep Analysis: Minimum Number of Arrows to Burst Balloons</a>
-        <a class="nav-mobile-next" title="Deep Analysis: Minimum Number of Arrows to Burst Balloons" href="https://dawn-cmd.github.io/guwS0s3Te/">下一篇</a>
+        <a class="nav-pc-next" title="Deep Analysis: Count Primes" href="https://dawn-cmd.github.io/Fo59-fr0V/">Deep Analysis: Count Primes</a>
+        <a class="nav-mobile-next" title="Deep Analysis: Count Primes" href="https://dawn-cmd.github.io/Fo59-fr0V/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

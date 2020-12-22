@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>ezo&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1607345556331">
+<link rel="shortcut icon" href="/favicon.ico?v=1608650138595">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -185,7 +185,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">18</span>
+        <span class="site-item-stat-count">19</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -257,9 +257,7 @@
       
         
           
-        
-          
-        
+            
       
         
           
@@ -318,8 +316,6 @@
         
           
         
-      
-        
           
         
       
@@ -343,7 +339,15 @@
           
         
       
-      <a class="cloud-tag" href="https://dawn-cmd.github.io/EXSZJTPrn/" rel="2">Leetcode</a>
+        
+          
+        
+      
+        
+          
+        
+      
+      <a class="cloud-tag" href="https://dawn-cmd.github.io/EXSZJTPrn/" rel="3">Leetcode</a>
     
       
       
@@ -356,6 +360,12 @@
         
           
         
+          
+            
+      
+        
+          
+        
       
         
           
@@ -439,7 +449,7 @@
           
         
       
-      <a class="cloud-tag" href="https://dawn-cmd.github.io/S6macCZkQ/" rel="4">Algorithm</a>
+      <a class="cloud-tag" href="https://dawn-cmd.github.io/S6macCZkQ/" rel="5">Algorithm</a>
     
       
       
@@ -448,6 +458,14 @@
         
           
         
+          
+            
+      
+        
+          
+        
+          
+        
       
         
           
@@ -533,9 +551,17 @@
           
         
       
-      <a class="cloud-tag" href="https://dawn-cmd.github.io/wRT9h1jy0/" rel="4">Data Structure</a>
+      <a class="cloud-tag" href="https://dawn-cmd.github.io/wRT9h1jy0/" rel="5">Data Structure</a>
     
       
+      
+        
+          
+        
+          
+        
+          
+        
       
         
           
@@ -644,6 +670,14 @@
         
           
         
+          
+        
+      
+        
+          
+        
+          
+        
       
         
           
@@ -734,6 +768,14 @@
       <a class="cloud-tag" href="https://dawn-cmd.github.io/P8XbJiAxi/" rel="3">Contest Retrospect</a>
     
       
+      
+        
+          
+        
+          
+        
+          
+        
       
         
           
@@ -1093,6 +1135,106 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/FYQ2RAKvZ/"" data-c="
+          &lt;h2 id=&#34;problem-description&#34;&gt;Problem Description&lt;/h2&gt;
+&lt;p&gt;Write an API that generates fancy sequences using the append, addAll, and multAll operations.&lt;br&gt;
+Implement the Fancy class:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fancy() Initializes the object with an empty sequence.&lt;/li&gt;
+&lt;li&gt;void append(val) Appends an integer val to the end of the sequence.&lt;/li&gt;
+&lt;li&gt;void addAll(inc) Increments all existing values in the sequence by an integer inc.&lt;/li&gt;
+&lt;li&gt;void multAll(m) Multiplies all existing values in the sequence by an integer m.&lt;/li&gt;
+&lt;li&gt;int getIndex(idx) Gets the current value at index idx (0-indexed) of the sequence modulo 109 + 7. If the index is greater or equal than the length of the sequence, return -1.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;constrains&#34;&gt;Constrains&lt;/h2&gt;
+&lt;p&gt;1 &amp;lt;= val, inc, m &amp;lt;= 100&lt;br&gt;
+0 &amp;lt;= idx &amp;lt;= 10^5&lt;br&gt;
+At most 10^5 calls total will be made to append, addAll, multAll, and getIndex.&lt;/p&gt;
+&lt;h2 id=&#34;solution-1-binary-indexed-tree&#34;&gt;Solution 1: Binary Indexed Tree:&lt;/h2&gt;
+&lt;p&gt;This time, I will not list the violent solution because it is too apperant.  First, we can find that all the operations are add and multiply. This two modifications can add up under a mod. So this problem can be understanded in this way: each add and multiply demand can be seem as a node on a list and each node just affect the numbers before it. So when numbers come in, it will not be affected by previous buffs. When you try to get a specific number in the list, you just add all the previous buffs onto the number.&lt;/p&gt;
+&lt;p&gt;Obviously, prefix sum can satisfied our needs. So what&#39;s the most direct and simple data structure that can achieve prefix sum? Binary Indexed Tree. Because I have already write an article to talk about the realization of Binary Indexed Tree, I will just choose some key points to mention here. The problem is, how to &amp;quot;add&amp;quot; buffs. Can we just add them up simply? Of course not. Let&#39;s assume f(x) = ax + b, g(x) = cx + d, and the f + g is a*cx + b * c + d. Although the two functions cannot be reversed, it will not affect the final answer.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Fancy:
+
+    mod = 10 ** 9 + 7
+
+    class expression:  # f(x) = a * x + b
+        mod = 10 ** 9 + 7
+        def __init__(self, x = 1, y = 0):
+            self.a, self.b = x, y
+        def __add__(self, other):
+            self.a = self.a * other.a % self.mod
+            self.b = (self.b * other.a + other.b) % self.mod
+            return self
+
+    lowbit = lambda self, x: x &amp;amp; -x
+
+    def __init__(self):
+        self.nums = []
+        self.c = [self.expression() for _ in range(200000)]
+
+    def doit(self, demand):
+        i = 100000 - len(self.nums)
+        while i &amp;lt; 200000:
+            self.c[i] = self.c[i] + demand
+            i += self.lowbit(i)
+
+    def append(self, val: int) -&amp;gt; None:
+        self.nums.append(val)
+
+    def addAll(self, inc: int) -&amp;gt; None:
+        if len(self.nums) == 0:
+            return
+        demand = self.expression(1, inc)
+        self.doit(demand)
+
+    def multAll(self, m: int) -&amp;gt; None:
+        if len(self.nums) == 0:
+            return
+        demand = self.expression(m, 0)
+        self.doit(demand)
+
+    def getIndex(self, idx: int) -&amp;gt; int:
+        if idx &amp;gt;= len(self.nums):
+            return -1
+        op = self.expression()
+        i = 100000 - idx - 1
+        while i &amp;gt;= 1:
+            op = op + self.c[i]
+            i -= self.lowbit(i)
+        return (self.nums[idx] * op.a % self.mod + op.b) % self.mod
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-2-multiplicative-inverse-modulomim&#34;&gt;Solution 2: Multiplicative inverse modulo(MIM)&lt;/h2&gt;
+&lt;p&gt;There also existed a more elegant way to solve the problem. If we just use a and b to record all the behaviour, we just need to minus b and divide a before a number adds into the list. But here comes a question, this minus and divide can not be supported under a mod. So we need to use an MIM. MIM can help us use add and multiply to realize minus and divide under a mod: (x / b) % mod = (b ^ (mod - 2) * x) % mod, x - b = (x + mod - b) % mod.. With the two equations, we can solve the problem easily.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Fancy:
+
+    mult = 1
+    add = 0
+    mod = 10 ** 9 + 7
+
+    def qpow(self, num, power):
+        return 1 if power == 0 else self.qpow(num ** 2 % self.mod, power &amp;gt;&amp;gt; 1) % self.mod * (num if power &amp;amp; 1 == 1 else 1)
+
+    def __init__(self):
+        self.val = []
+
+    def append(self, val: int) -&amp;gt; None:
+        val = (val - self.add + self.mod) * self.qpow(self.mult, self.mod - 2) % self.mod
+        self.val.append(val)
+
+    def addAll(self, inc: int) -&amp;gt; None:
+        self.add = (self.add + inc) % self.mod
+
+    def multAll(self, m: int) -&amp;gt; None:
+        self.mult = self.mult * m % self.mod
+        self.add = self.add * m % self.mod
+
+    def getIndex(self, idx: int) -&amp;gt; int:
+        return -1 if idx &amp;gt;= len(self.val) else (self.val[idx] * self.mult % self.mod + self.add) % self.mod 
+&lt;/code&gt;&lt;/pre&gt;
+">Deep Analysis: Fancy Sequence</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/Fo59-fr0V/"" data-c="
