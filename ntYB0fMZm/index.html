@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Topological Sort | ezo&#39;s blog</title>
+<title>Manacher | ezo&#39;s blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1613637997838">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Topological Sort" />
-  <meta name="keywords" content="Note" />
+  <meta name="description" content="Manacher" />
+  <meta name="keywords" content="Algorithm,Note,Solution" />
 </head>
 
 <body>
@@ -191,15 +191,12 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#defination">Defination</a></li>
-<li><a href="#implementation">Implementation</a>
-<ul>
-<li><a href="#dfs-code">DFS code:</a></li>
-<li><a href="#bfs-code">BFS code:</a></li>
-</ul>
-</li>
-<li><a href="#in-the-end">In the end</a></li>
+<li><a href="#description">Description</a></li>
+<li><a href="#sample-problem">Sample problem</a></li>
+<li><a href="#solution-1">Solution 1:</a></li>
+<li><a href="#solution-2">Solution 2:</a></li>
+<li><a href="#solution-3">Solution 3</a></li>
+<li><a href="#about-time-complexity">About time complexity</a></li>
 </ul>
 </li>
 </ul>
@@ -467,8 +464,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/o_E2mKnup/">
-      Topological Sort
+    <a class="post-title-link" href="https://dawn-cmd.github.io/ntYB0fMZm/">
+      Manacher
     </a>
   </h1>
   <div class="post-meta">
@@ -476,7 +473,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-07-30 20:40:56">2020-07-30</span>
+      <span class="publish-time" data-t="2021-02-17 10:31:22">2021-02-17</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -485,8 +482,20 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
+      <a href="https://dawn-cmd.github.io/S6macCZkQ/">
+        <span>Algorithm</span>
+      </a>、
+      
+      
+      
       <a href="https://dawn-cmd.github.io/T9dinVrg_/">
         <span>Note</span>
+      </a>、
+      
+      
+      
+      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/">
+        <span>Solution</span>
       </a>
       
       
@@ -495,17 +504,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
+      <span>6<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>466<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>917<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/o_E2mKnup/" data-flag-title="Topological Sort" class="meta-item pc-show leancloud_visitors">
+    <span id="/ntYB0fMZm/" data-flag-title="Manacher" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -514,101 +523,129 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="introduction">Introduction</h2>
-<p>Many times, the sort of our works are fixed in some degrees: you may be able to change the order of washing your face and brushing your teeth, but you cannot change the order of getting out and dressing up. Yes, many things have a comparative order, which means that they are neither totally fixed nor sheer random. So it is very difficult to determine the sort by normal ways, as a result, here comes the Topological Sort.</p>
-<h2 id="defination">Defination</h2>
-<p>Topological Sort is linear sort of a Directed Acyclic Graph(DAG). The DAG is often used to represent a complicated dependancy relationship.</p>
-<h2 id="implementation">Implementation</h2>
-<p>We can use either DFS or BFS to solve it. But the core mechanisms of these two algorithms are same -- find the 0-in-degree vertaxs, add them to the answer, eliminate all the edges from it, and then repeats it until there is no 0-in-degree vertaxs.</p>
-<h3 id="dfs-code">DFS code:</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+              <h2 id="description">Description</h2>
+<p>Manacher algorithm can be used in most palindrome string problems. It provides a solution with O(n) time complexity.</p>
+<h2 id="sample-problem">Sample problem</h2>
+<p><a href="https://www.luogu.com.cn/problem/P3805">LuoguP3805</a><br>
+Give you a string S. Calculate the length of the longest palindrome substring in it.<br>
+1 &lt; length &lt; 1.1e7</p>
+<h2 id="solution-1">Solution 1:</h2>
+<p>Try every subtring and scan all of them to update the answer. Because we enumerate the left bound and right bound and check each character in the substring. Its time complexity is O(n^3). Actually, it is far from optimal condition.</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define ll long long
 using namespace std;
-int n;
-int m;
-vector&lt;int&gt; mp[200];
-int incnt[200];
-vector&lt;int&gt; ans;
-void Topo(int now){
-    ans.push_back(now);
-    for(int i=0;i&lt;mp[now].size();++i){
-        int y=mp[now][i];
-        --incnt[y];
-        if(incnt[y]==0){
-            Topo(y);
+bool check(int st, int ed, string s) {
+    while (st &lt;= ed) {
+        if (s[st] != s[ed]) return 0;
+        st++, ed--;
+    }
+    return 1;
+}
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    string s;
+    cin &gt;&gt; s;
+    int ans = -1;
+    for (int i = 0, l = s.size(); i &lt; l; ++i) {
+        for (int j = i; j &lt; l; ++j) {
+            if (check(i, j, s)) ans = max(ans, j - i + 1);
         }
     }
-    return;
-}
-int main(){
-    cin&gt;&gt;n&gt;&gt;m;
-    for(int i=1;i&lt;=m;++i){
-        int x;
-        int y;
-        cin&gt;&gt;x&gt;&gt;y;
-        mp[x].push_back(y);
-        incnt[y]++;
-    }
-    for(int i=1;i&lt;=n;++i){
-        mp[0].push_back(i);
-        incnt[i]++;
-    }
-    Topo(0);
-    for(int i=1;i&lt;ans.size();++i){
-        cout&lt;&lt;ans[i]&lt;&lt;' ';
-    }
-    cout&lt;&lt;endl;
+    cout &lt;&lt; ans &lt;&lt; endl;
     return 0;
 }
 </code></pre>
-<h3 id="bfs-code">BFS code:</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1613568323104.png" alt="" loading="lazy"></figure>
+<h2 id="solution-2">Solution 2:</h2>
+<p>Let's try to improve it. After observation, we find that we can enumerate the mid point of the palindrome string. Then expand until it touch its bound. The time complexity will become O(n^2), much faster. However, sometimes the mid point is between two characters. If we deal with the strings with odd number of characters and even number of characters separately, the code will become tedious. Using &quot;temp character&quot; can solve it elegantly. We can fill '#' (or some other characters that does not exist in the string) in the position between characters to simplify the code.</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define ll long long
 using namespace std;
-int n;
-int m;
-vector&lt;int&gt; mp[200];
-vector&lt;int&gt; ans;
-int incnt[200];
-void Topo(){
-    queue&lt;int&gt; q;
-    q.push(0);
-    while(!q.empty()){
-        int x=q.front();
-        ans.push_back(x);
-        q.pop();
-        int y;
-        for(int i=0;i&lt;mp[x].size();++i){
-            y=mp[x][i];
-            incnt[y]--;
-            if(incnt[y]==0){
-                q.push(y);
-            }
-        }
+string change (string s) {
+    string ans = &quot;+#&quot;;
+    for (auto &amp;i: s) {
+        ans += i;
+        ans += '#';
     }
-    return;
+    ans += &quot;-&quot;;
+    return ans;
 }
-int main(){
-    cin&gt;&gt;n&gt;&gt;m;
-    for(int i=1;i&lt;=m;++i){
-        int x;
-        int y;
-        cin&gt;&gt;x&gt;&gt;y;
-        mp[x].push_back(y);
-        incnt[y]++;
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    string s;
+    cin &gt;&gt; s;
+    s = change(s);
+    int ans = -1;
+    for (int i = 1, len = s.size() - 1; i &lt; len; ++i) {
+        int tmp = 0;
+        while (s[i + tmp + 1] == s[i - tmp - 1]) ++tmp;
+        ans = max(ans, tmp);
     }
-    for(int i=1;i&lt;=n;++i){
-        mp[0].push_back(i);
-        incnt[i]++;
-    }
-    Topo();
-    for(int i=1;i&lt;ans.size();++i){
-        cout&lt;&lt;ans[i]&lt;&lt;' ';
-    }
-    cout&lt;&lt;endl;
+    cout &lt;&lt; ans &lt;&lt; endl;
     return 0;
 }
 </code></pre>
-<h2 id="in-the-end">In the end</h2>
-<p>Topological sort is one of the basic graph algorithms. I will appreciate you if you think this blog is beneficial. Moreover, <a href="https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/">this problem</a> can serve as a good case in point.</p>
+<figure data-type="image" tabindex="2"><img src="https://dawn-cmd.github.io/post-images/1613614637904.png" alt="" loading="lazy"></figure>
+<p>As we see, it really made some progress. But still cannot satisfy the need.</p>
+<h2 id="solution-3">Solution 3</h2>
+<p>Here comes our leading role, the manacher algorithm. In fact, its core idea is quite easy to understand:<br>
+<img src="https://dawn-cmd.github.io/post-images/1613615453237.png" alt="" loading="lazy"><br>
+When you find a palindrome string in the half of another palindrome, it is obvious that there exist a totally same palindrome at the symmetry position. When we meet this situation, we can give the length of the palindrome in O(1).</p>
+<p>So we can maximize this idea. We choose the largest palindrome string that reach the most far position as the base palindrome and record its mid point and right bound (because we just need these, we call them max_right and max_mid in the following passage). When the mid point i's id is small than max_right, we can immediately know its radius is at least radius[mid * 2 - i].</p>
+<p>But here is a point, why we use &quot;at least&quot; but not &quot;exactly is&quot;? Sometimes i + radius[i] may touch max_right and the excceeding part will not follow the role, so we need update. Moreover, when this happen, we need to update max_right and max_mid as well.</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+#define ll long long
+using namespace std;
+string change (string base) {
+    string ans = &quot;+#&quot;;
+    for (auto &amp;i: base) {
+        ans += i;
+        ans += '#';
+    }
+    ans += &quot;-&quot;;
+    // The string will be in the form like &quot;+#a#b#c#-&quot;. Adding '#' between characters
+    // can help us standardize strings with odd length and even length. The '+' and '-'
+    // are marks of ending that can help us end loops easily. I will explain it in detail later.
+    return ans;
+}
+void manacher (string &amp;s, vector &lt;int&gt; &amp;p) {
+    int max_right = 0;  // the right bound we have calculated
+    int max_mid = 0;  // the mid point of the largest palindrome string that contains max_right
+    for (int i = 1, l = s.size(); i &lt; l; ++i) {
+        p[i] = i &lt;= max_right  // if i is still in range
+               ? min(max_right - i, p[(max_mid &lt;&lt; 1) - i])  // we can use its bro's data directly
+               : 0;  // otherwise, we can just calculate it from beginning
+        while (s[i + p[i] + 1] == s[i - p[i] - 1]) ++p[i];  // expand the length, the loop will end automacally.
+        if (max_right &lt; i + p[i]) max_right = i + p[i], max_mid = i;  // update max_right and max_mid
+    }
+    return;
+}
+int main () {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    string s;
+    cin &gt;&gt; s;
+    s = change(s);  // pretreatment
+    vector &lt;int&gt; p (s.size());  // p[i] means the radius of the palindrome string with a mid point at i (exclude i itself).
+    manacher(s, p);
+    int ans = -1;
+    for(int i = 0, l = p.size(); i &lt; l; ++i) {
+        ans = max(ans, p[i]);  
+        // Cause we have pretreated s, its length is 2 times larger than before.
+        // So, p[i] itself represents the actually length of its palindrome string.
+        // But not the radius.
+    }
+    cout &lt;&lt; ans &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<h2 id="about-time-complexity">About time complexity</h2>
+<p>This algorithm is O(n): when i cannot update max_right, we can get the answer in O(1); when i can update max_right, we need O(n) to update it.</p>
 
             </div>
             
@@ -621,7 +658,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/o_E2mKnup/" title="Topological Sort">https://dawn-cmd.github.io/o_E2mKnup/</a>
+      <a href="https://dawn-cmd.github.io/ntYB0fMZm/" title="Manacher">https://dawn-cmd.github.io/ntYB0fMZm/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -630,21 +667,21 @@ int main(){
   </ul>
   <div class="tags">
     
+      <a href="https://dawn-cmd.github.io/S6macCZkQ/"># Algorithm</a>
+    
       <a href="https://dawn-cmd.github.io/T9dinVrg_/"># Note</a>
+    
+      <a href="https://dawn-cmd.github.io/OPRCr9F-Y/"># Solution</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Kick Start 2020 Round C T3 Perfect Subarray Analysis" href="https://dawn-cmd.github.io/r6whUkCyg/">Kick Start 2020 Round C T3 Perfect Subarray Analysis</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Kick Start 2020 Round C T3 Perfect Subarray Analysis" href="https://dawn-cmd.github.io/r6whUkCyg/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Kick Start 2020 Round C T1 Countdown Analysis" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/">Kick Start 2020 Round C T1 Countdown Analysis</a>
-        <a class="nav-mobile-next" title="Kick Start 2020 Round C T1 Countdown Analysis" href="https://dawn-cmd.github.io/kick-start-2020-round-c-t1-countdown-analysis/">下一篇</a>
+        <a class="nav-pc-next" title="Circle-Based Tree" href="https://dawn-cmd.github.io/5vxYJM5Nd/">Circle-Based Tree</a>
+        <a class="nav-mobile-next" title="Circle-Based Tree" href="https://dawn-cmd.github.io/5vxYJM5Nd/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
