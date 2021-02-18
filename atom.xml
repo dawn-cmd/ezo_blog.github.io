@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>ezo&apos;s blog</title>
-    <updated>2021-02-18T08:52:28.773Z</updated>
+    <updated>2021-02-18T08:54:36.435Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -13,71 +13,71 @@
     <rights>All rights reserved 2021, ezo&apos;s blog</rights>
     <entry>
         <title type="html"><![CDATA[Manacher]]></title>
-        <id>https://dawn-cmd.github.io/ntYB0fMZm/</id>
-        <link href="https://dawn-cmd.github.io/ntYB0fMZm/">
+        <id>https://dawn-cmd.github.io/post/ntYB0fMZm/</id>
+        <link href="https://dawn-cmd.github.io/post/ntYB0fMZm/">
         </link>
         <updated>2021-02-17T02:31:22.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Circle-Based Tree]]></title>
-        <id>https://dawn-cmd.github.io/5vxYJM5Nd/</id>
-        <link href="https://dawn-cmd.github.io/5vxYJM5Nd/">
+        <id>https://dawn-cmd.github.io/post/5vxYJM5Nd/</id>
+        <link href="https://dawn-cmd.github.io/post/5vxYJM5Nd/">
         </link>
         <updated>2021-01-31T02:58:42.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Deep Analysis: Fancy Sequence]]></title>
-        <id>https://dawn-cmd.github.io/FYQ2RAKvZ/</id>
-        <link href="https://dawn-cmd.github.io/FYQ2RAKvZ/">
+        <id>https://dawn-cmd.github.io/post/FYQ2RAKvZ/</id>
+        <link href="https://dawn-cmd.github.io/post/FYQ2RAKvZ/">
         </link>
         <updated>2020-12-22T12:46:18.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Deep Analysis: Count Primes]]></title>
-        <id>https://dawn-cmd.github.io/Fo59-fr0V/</id>
-        <link href="https://dawn-cmd.github.io/Fo59-fr0V/">
+        <id>https://dawn-cmd.github.io/post/Fo59-fr0V/</id>
+        <link href="https://dawn-cmd.github.io/post/Fo59-fr0V/">
         </link>
         <updated>2020-12-03T12:45:15.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Deep Analysis: Minimum Number of Arrows to Burst Balloons]]></title>
-        <id>https://dawn-cmd.github.io/guwS0s3Te/</id>
-        <link href="https://dawn-cmd.github.io/guwS0s3Te/">
+        <id>https://dawn-cmd.github.io/post/guwS0s3Te/</id>
+        <link href="https://dawn-cmd.github.io/post/guwS0s3Te/">
         </link>
         <updated>2020-11-25T12:43:40.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Pairing Heap]]></title>
-        <id>https://dawn-cmd.github.io/4msqBIkRn/</id>
-        <link href="https://dawn-cmd.github.io/4msqBIkRn/">
+        <id>https://dawn-cmd.github.io/post/4msqBIkRn/</id>
+        <link href="https://dawn-cmd.github.io/post/4msqBIkRn/">
         </link>
         <updated>2020-11-17T13:20:04.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Heap]]></title>
-        <id>https://dawn-cmd.github.io/dENZkdKd3/</id>
-        <link href="https://dawn-cmd.github.io/dENZkdKd3/">
+        <id>https://dawn-cmd.github.io/post/dENZkdKd3/</id>
+        <link href="https://dawn-cmd.github.io/post/dENZkdKd3/">
         </link>
         <updated>2020-11-10T13:53:47.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Prim & Kruskal]]></title>
-        <id>https://dawn-cmd.github.io/cLmXwc5OE/</id>
-        <link href="https://dawn-cmd.github.io/cLmXwc5OE/">
+        <id>https://dawn-cmd.github.io/post/cLmXwc5OE/</id>
+        <link href="https://dawn-cmd.github.io/post/cLmXwc5OE/">
         </link>
         <updated>2020-11-03T13:18:50.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Segment Tree]]></title>
-        <id>https://dawn-cmd.github.io/lGXuyC3uR/</id>
-        <link href="https://dawn-cmd.github.io/lGXuyC3uR/">
+        <id>https://dawn-cmd.github.io/post/lGXuyC3uR/</id>
+        <link href="https://dawn-cmd.github.io/post/lGXuyC3uR/">
         </link>
         <updated>2020-10-26T12:57:07.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Binary Indexed Tree]]></title>
-        <id>https://dawn-cmd.github.io/pnJxhbchQ/</id>
-        <link href="https://dawn-cmd.github.io/pnJxhbchQ/">
+        <id>https://dawn-cmd.github.io/post/pnJxhbchQ/</id>
+        <link href="https://dawn-cmd.github.io/post/pnJxhbchQ/">
         </link>
         <updated>2020-10-19T12:57:25.000Z</updated>
     </entry>

@@ -1,97 +1,520 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
 
-<title>Kick Start 2020 Round C T1 Countdown Analysis | Gridea</title>
-<meta name="description" content="温故而知新">
+<head>
+  <meta charset="UTF-8" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://dawn-cmd.github.io/favicon.ico?v=1596106897603">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="Gridea静态个人博客">
+<meta name="description" content="People who know nothing repeat it.
+">
+<meta name="theme-color" content="#000">
+<title>Kick Start 2020 Round C T1 Countdown Analysis | ezo&#39;s blog</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1613638471241">
+<link rel="stylesheet" href="/media/css/pisces.css">
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-<link rel="stylesheet" href="https://dawn-cmd.github.io/styles/main.css">
+<link href="/media/hljs/styles/default.css"
+  rel="stylesheet">
+
+<link rel="stylesheet" href="/styles/main.css">
+
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
 
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
-  </head>
-  <body>
-  
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://dawn-cmd.github.io">Gridea</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
+
+  <meta name="description" content="Kick Start 2020 Round C T1 Countdown Analysis" />
+  <meta name="keywords" content="Solution" />
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    
+<div class="pisces">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>ezo&#39;s blog</span>
+            </a>  
+          
+        </div>
         
-          <li>
-            
-              <a href="https://dawn-cmd.github.io" class="menu">
-                首页
-              </a>
-            
-          </li>
+          <p class="subtitle">Good things come to those who wait.</p>
         
-          <li>
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
             
-              <a href="/archives" class="menu">
-                归档
-              </a>
             
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <article class="article">
-            <h1>Kick Start 2020 Round C T1 Countdown Analysis</h1>
-            <p class="article-meta">
-              2020-07-30
               
-                <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/" class="badge secondary">
-                  Solution
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://dawn-cmd.github.io/" target="_self">
+                  <i class="fa fa-globe"></i> Homepage
                 </a>
               
-            </p>
+            </li>
+          
             
-            <div class="post-content">
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/archives/" target="_self">
+                  <i class="fa fa-archive"></i> Archives
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/tags/" target="_self">
+                  <i class="fa fa-tags"></i> Tags
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://dawn-cmd.github.io/aQhyHFZwS/" target="_self">
+                  <i class="fa fa-globe"></i> About
+                </a>
+              
+            </li>
+          
+          
+            
+              <li class="nav-item ">
+                <a href="/friends/" target="_self">
+                  
+                    <i class="fa fa-address-book"></i> Friend Link
+                  
+                </a>
+              </li>
+            
+          
+          
+            <li id="fa_search" class="nav-item">
+              <a href="javascript:void(0);">
+                <i class="fa fa-search"></i> <span class="language" data-lan="search">搜索</span>
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout pisces ">
+      <div class="section-layout-wrapper">
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            <div style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#official-link">Official link</a></li>
+<li><a href="#problem">Problem</a></li>
+<li><a href="#input">Input</a></li>
+<li><a href="#output">Output</a></li>
+<li><a href="#limits">Limits</a></li>
+<li><a href="#test-set-1">Test set 1</a></li>
+<li><a href="#test-set-2">Test set 2</a></li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#code-of-the-best-solution">Code of the best solution</a></li>
+<li><a href="#ps">P.S.</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://dawn-cmd.github.io/post/kick-start-2020-round-c-t1-countdown-analysis/">
+      Kick Start 2020 Round C T1 Countdown Analysis
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2020-07-30 18:58:22">2020-07-30</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/">
+        <span>Solution</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>3<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>386<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+    
+    
+    <span id="/post/kick-start-2020-round-c-t1-countdown-analysis/" data-flag-title="Kick Start 2020 Round C T1 Countdown Analysis" class="meta-item pc-show leancloud_visitors">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
+    </span>
+    
+  </div>
+</section>
+            <div class="post-body next-md-body" id="post_body">
               <h2 id="official-link">Official link</h2>
 <p><a href="https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff43/00000000003380d2">Here</a></p>
 <h2 id="problem">Problem</h2>
@@ -153,97 +576,3179 @@ int main(){
 <p>When you reset head, checking adjacent number is necessary.&gt;line 19</p>
 
             </div>
-          </article>
-        </div>
-        <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://dawn-cmd.github.io/post/kick-start-2020-round-c-t2-stable_wall-analysis/">
-                <h3 class="post-title">
-                  Kick Start 2020 Round C T2 Stable_Wall Analysis
-                </h3>
-              </a>
-            </div>
-          
-        </div>
-        
-      </div>
-
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://dawn-cmd.github.io/images/avatar.png?v=1596106897603" class="no-responsive avatar">
-    <div class="text-muted">温故而知新</div>
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      ezo
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://dawn-cmd.github.io/post/kick-start-2020-round-c-t1-countdown-analysis/" title="Kick Start 2020 Round C T1 Countdown Analysis">https://dawn-cmd.github.io/post/kick-start-2020-round-c-t1-countdown-analysis/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/"># Solution</a>
+    
   </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://dawn-cmd.github.io/post/kick-start-2020-round-c-t1-countdown-analysis/">Kick Start 2020 Round C T1 Countdown Analysis</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://dawn-cmd.github.io/post/kick-start-2020-round-c-t2-stable_wall-analysis/">Kick Start 2020 Round C T2 Stable_Wall Analysis</a>
-            </li>
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
+  <div class="nav">
+    <div class="nav-prev">
       
-        <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/" class="badge secondary">
-          Solution
-        </a>
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="Topological Sort" href="https://dawn-cmd.github.io/post/o_E2mKnup/">Topological Sort</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="Topological Sort" href="https://dawn-cmd.github.io/post/o_E2mKnup/">上一篇</a>
       
     </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://dawn-cmd.github.io/atom.xml" target="_blank">RSS</a>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Kick Start 2020 Round C T2 Stable_Wall Analysis" href="https://dawn-cmd.github.io/post/kick-start-2020-round-c-t2-stable_wall-analysis/">Kick Start 2020 Round C T2 Stable_Wall Analysis</a>
+        <a class="nav-mobile-next" title="Kick Start 2020 Round C T2 Stable_Wall Analysis" href="https://dawn-cmd.github.io/post/kick-start-2020-round-c-t2-stable_wall-analysis/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
   </div>
 </div>
+            
+            
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
+<div id="gitalk-container"></div>
 
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'a557158794a6c9e40381',
+    clientSecret: 'bfea67373002d05ed56651f57426652332b138a9',
+    repo: 'dawn-cmd.github.io',
+    owner: 'dawn-cmd',
+    admin: ['dawn-cmd'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+    
+    
+  
+
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <div class="copyright">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By <a
+        href="https://github.com/hsxyhao/gridea-theme-next" target="_blank">HsxyHao</a>
+    </div>
+    <div class="poweredby">
+      Powered by <a href="https://github.com/dawn-cmd" target="_blank"> ezo</a>
+    </div>
+  </footer>
+  
+  
+  <div class="pisces back-to-top" id="back_to_top">
+    <i class="fa fa-arrow-up"></i>
+    
+    <span class="scrollpercent">
+      <span id="back_to_top_text">0</span>%
+    </span>
+    
+  </div>
+  
+  
+  
+</div>
+<script>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  let sideBarOpen = 'sidebar-open';
+  let body = document.body;
+  let back2Top = document.querySelector('#back_to_top'),
+    back2TopText = document.querySelector('#back_to_top_text'),
+    drawerBox = document.querySelector('#drawer_box'),
+    rightSideBar = document.querySelector('.sidebar'),
+    viewport = document.querySelector('body');
 
-<script type="application/javascript">
+  function scrollAnimation(currentY, targetY) {
 
-AOS.init();
+    let needScrollTop = targetY - currentY
+    let _currentY = currentY
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10)
+      _currentY += dist
+      window.scrollTo(_currentY, currentY)
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY)
+      } else {
+        window.scrollTo(_currentY, targetY)
+      }
+    }, 1)
+  }
 
-hljs.initHighlightingOnLoad()
+  back2Top.addEventListener("click", function (e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
 
+  window.addEventListener('scroll', function (e) {
+    let percent = document.scrollingElement.scrollTop / (document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight) * 100;
+    if (percent > 1 && !back2Top.classList.contains('back-top-active')) {
+      back2Top.classList.add('back-top-active');
+    }
+    if (percent == 0) {
+      back2Top.classList.remove('back-top-active');
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+
+  let hasCacu = false;
+  window.onresize = function () {
+    calcuHeight();
+  }
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (!hasCacu && back2Top.classList.contains('pisces') || back2Top.classList.contains('gemini')) {
+      let sideBar = document.querySelector('.sidebar');
+      let navUl = document.querySelector('#site_nav');
+      sideBar.style = 'margin-top:' + (navUl.offsetHeight + navUl.offsetTop + 15) + 'px;';
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+
+  let open = false, MOTION_TIME = 300, RIGHT_MOVE_DIS = '320px';
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll('.right-motion');
+    let right = drawerBox.classList.contains('right');
+
+    let transitionDir = right ? "transition.slideRightIn" : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS
+      };
+      closeProp = {
+        paddingRight: '0px'
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS
+      };
+      closeProp = {
+        paddingLeft: '0px'
+      };
+    }
+
+    drawerBox.onclick = function () {
+      open = !open;
+      window.Velocity(rightSideBar, 'stop');
+      window.Velocity(viewport, 'stop');
+      window.Velocity(rightMotions, 'stop');
+      if (open) {
+        window.Velocity(rightSideBar, {
+          width: RIGHT_MOVE_DIS
+        }, {
+          duration: MOTION_TIME,
+          begin: function () {
+            window.Velocity(rightMotions, transitionDir, {});
+          }
+        })
+        window.Velocity(viewport, openProp, {
+          duration: MOTION_TIME
+        });
+      } else {
+        window.Velocity(rightSideBar, {
+          width: '0px'
+        }, {
+          duration: MOTION_TIME,
+          begin: function () {
+            window.Velocity(rightMotions, {
+              opacity: 0
+            });
+          }
+        })
+        window.Velocity(viewport, closeProp, {
+          duration: MOTION_TIME
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle('muse-line');
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    }
+  }
+
+  // 链接跳转
+  let newWindow = 'true'
+  if (newWindow === 'true') {
+    let links = document.querySelectorAll('.post-body a')
+    links.forEach(item => {
+      if (!item.classList.contains('btn')) {
+        item.setAttribute("target", "_blank");
+      }
+    })
+  }
+
+  let faSearch = document.querySelector('#fa_search');
+  faSearch.addEventListener('click', function () {
+    document.querySelector('#search_mask').style = ''
+  })
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+  
+  // 离开当前页title变化
+  var leaveTitle = "";
+  if (leaveTitle) {
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState == 'hidden') {
+        normal_title = document.title;
+        document.title = leaveTitle;
+      } else {
+        document.title = normal_title;
+      }
+    });
+  }
+
+</script>
+    <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick = () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function (e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px;border-radius: 2px;`;
+      lightImg.onclick = function () {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        window.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        window.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        window.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        window.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      window.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
+  </div>
+</body>
+
+<div class="search-mask" id="search_mask" style="display: none;">
+  <div class="search-box">
+    <div class="search-title">
+      <i class="fa fa-search"></i>
+      <div class="input-box">
+        <input id="search" type="text" class="language" data-lan="search" placeholder="搜索">
+      </div>
+      <i id="close" class="fa fa-times-circle"></i>
+    </div>
+    <div class="stat-box">
+      <span id="stat_count">0</span><span class="language" data-lan="stat">条相关条目，使用了</span><span id="stat_times">0</span><span class="language" data-lan="stat-time">毫秒</span>
+      <hr>
+    </div>
+    <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/ntYB0fMZm/"" data-c="
+          &lt;h2 id=&#34;description&#34;&gt;Description&lt;/h2&gt;
+&lt;p&gt;Manacher algorithm can be used in most palindrome string problems. It provides a solution with O(n) time complexity.&lt;/p&gt;
+&lt;h2 id=&#34;sample-problem&#34;&gt;Sample problem&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.luogu.com.cn/problem/P3805&#34;&gt;LuoguP3805&lt;/a&gt;&lt;br&gt;
+Give you a string S. Calculate the length of the longest palindrome substring in it.&lt;br&gt;
+1 &amp;lt; length &amp;lt; 1.1e7&lt;/p&gt;
+&lt;h2 id=&#34;solution-1&#34;&gt;Solution 1:&lt;/h2&gt;
+&lt;p&gt;Try every subtring and scan all of them to update the answer. Because we enumerate the left bound and right bound and check each character in the substring. Its time complexity is O(n^3). Actually, it is far from optimal condition.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+#define ll long long
+using namespace std;
+bool check(int st, int ed, string s) {
+    while (st &amp;lt;= ed) {
+        if (s[st] != s[ed]) return 0;
+        st++, ed--;
+    }
+    return 1;
+}
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    string s;
+    cin &amp;gt;&amp;gt; s;
+    int ans = -1;
+    for (int i = 0, l = s.size(); i &amp;lt; l; ++i) {
+        for (int j = i; j &amp;lt; l; ++j) {
+            if (check(i, j, s)) ans = max(ans, j - i + 1);
+        }
+    }
+    cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1613568323104.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;solution-2&#34;&gt;Solution 2:&lt;/h2&gt;
+&lt;p&gt;Let&#39;s try to improve it. After observation, we find that we can enumerate the mid point of the palindrome string. Then expand until it touch its bound. The time complexity will become O(n^2), much faster. However, sometimes the mid point is between two characters. If we deal with the strings with odd number of characters and even number of characters separately, the code will become tedious. Using &amp;quot;temp character&amp;quot; can solve it elegantly. We can fill &#39;#&#39; (or some other characters that does not exist in the string) in the position between characters to simplify the code.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+#define ll long long
+using namespace std;
+string change (string s) {
+    string ans = &amp;quot;+#&amp;quot;;
+    for (auto &amp;amp;i: s) {
+        ans += i;
+        ans += &#39;#&#39;;
+    }
+    ans += &amp;quot;-&amp;quot;;
+    return ans;
+}
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    string s;
+    cin &amp;gt;&amp;gt; s;
+    s = change(s);
+    int ans = -1;
+    for (int i = 1, len = s.size() - 1; i &amp;lt; len; ++i) {
+        int tmp = 0;
+        while (s[i + tmp + 1] == s[i - tmp - 1]) ++tmp;
+        ans = max(ans, tmp);
+    }
+    cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1613614637904.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;As we see, it really made some progress. But still cannot satisfy the need.&lt;/p&gt;
+&lt;h2 id=&#34;solution-3&#34;&gt;Solution 3&lt;/h2&gt;
+&lt;p&gt;Here comes our leading role, the manacher algorithm. In fact, its core idea is quite easy to understand:&lt;br&gt;
+&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1613615453237.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+When you find a palindrome string in the half of another palindrome, it is obvious that there exist a totally same palindrome at the symmetry position. When we meet this situation, we can give the length of the palindrome in O(1).&lt;/p&gt;
+&lt;p&gt;So we can maximize this idea. We choose the largest palindrome string that reach the most far position as the base palindrome and record its mid point and right bound (because we just need these, we call them max_right and max_mid in the following passage). When the mid point i&#39;s id is small than max_right, we can immediately know its radius is at least radius[mid * 2 - i].&lt;/p&gt;
+&lt;p&gt;But here is a point, why we use &amp;quot;at least&amp;quot; but not &amp;quot;exactly is&amp;quot;? Sometimes i + radius[i] may touch max_right and the excceeding part will not follow the role, so we need update. Moreover, when this happen, we need to update max_right and max_mid as well.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+#define ll long long
+using namespace std;
+string change (string base) {
+    string ans = &amp;quot;+#&amp;quot;;
+    for (auto &amp;amp;i: base) {
+        ans += i;
+        ans += &#39;#&#39;;
+    }
+    ans += &amp;quot;-&amp;quot;;
+    // The string will be in the form like &amp;quot;+#a#b#c#-&amp;quot;. Adding &#39;#&#39; between characters
+    // can help us standardize strings with odd length and even length. The &#39;+&#39; and &#39;-&#39;
+    // are marks of ending that can help us end loops easily. I will explain it in detail later.
+    return ans;
+}
+void manacher (string &amp;amp;s, vector &amp;lt;int&amp;gt; &amp;amp;p) {
+    int max_right = 0;  // the right bound we have calculated
+    int max_mid = 0;  // the mid point of the largest palindrome string that contains max_right
+    for (int i = 1, l = s.size(); i &amp;lt; l; ++i) {
+        p[i] = i &amp;lt;= max_right  // if i is still in range
+               ? min(max_right - i, p[(max_mid &amp;lt;&amp;lt; 1) - i])  // we can use its bro&#39;s data directly
+               : 0;  // otherwise, we can just calculate it from beginning
+        while (s[i + p[i] + 1] == s[i - p[i] - 1]) ++p[i];  // expand the length, the loop will end automacally.
+        if (max_right &amp;lt; i + p[i]) max_right = i + p[i], max_mid = i;  // update max_right and max_mid
+    }
+    return;
+}
+int main () {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    string s;
+    cin &amp;gt;&amp;gt; s;
+    s = change(s);  // pretreatment
+    vector &amp;lt;int&amp;gt; p (s.size());  // p[i] means the radius of the palindrome string with a mid point at i (exclude i itself).
+    manacher(s, p);
+    int ans = -1;
+    for(int i = 0, l = p.size(); i &amp;lt; l; ++i) {
+        ans = max(ans, p[i]);  
+        // Cause we have pretreated s, its length is 2 times larger than before.
+        // So, p[i] itself represents the actually length of its palindrome string.
+        // But not the radius.
+    }
+    cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1613638344217.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;about-time-complexity&#34;&gt;About time complexity&lt;/h2&gt;
+&lt;p&gt;This algorithm is O(n): when i cannot update max_right, we can get the answer in O(1); when i can update max_right, we need O(n) to update it.&lt;/p&gt;
+">Manacher</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/5vxYJM5Nd/"" data-c="
+          &lt;h2 id=&#34;basic-definition-two-main-principle&#34;&gt;Basic Definition &amp;amp; Two Main Principle&lt;/h2&gt;
+&lt;p&gt;Just like zero point is not a point, circle-based tree is not a tree as well.&lt;br&gt;
+Circle-based Tree, a graph with n vertexs and n edges, has one or more circles in it.&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1612143955427.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;The graph has only one circle when the whole graph is connected. In other cases, it will form a &amp;quot;Circle-Based Forest&amp;quot;.&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1612143997831.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;When we deal with problems relate to it, we can follow two main idea:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Refine the circle from graph, then the graph will be like that some child - trees hang on the circle. Process the data on child-trees and return data to vertexs on circle. Finally, solve the circle problem.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1612144344053.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;Choosing to overlook an edge is also a direction. If we ignore an edge in the graph, it will become a simple tree.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1612146199022.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;practise&#34;&gt;Practise&lt;/h2&gt;
+&lt;h3 id=&#34;cf711d&#34;&gt;CF711D&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Describe:&lt;br&gt;
+Give you a graph with n edges without directions and n vertexs. You can define every edge&#39;s direction. Calculate there are how many solutions that can let the graph have no circle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Solution:&lt;br&gt;
+First, as all we known, there existed 2^n solutions. Then we need to minus the solution that has circles from it. This is a graph with n edges and n vertexs. Actually, it is a circle-based tree. The edges in the circle must point in the same way. Otherwise, it is not a circle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1612358736984.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;Other edges&#39; direction are indifferent. Cause it will neither break existed circles, nor add new circles.&lt;/p&gt;
+&lt;p&gt;Obviously, the illegal number of illegal solutions is 2^(n - len) * 2, len is the length of the circle. Hence, there are (2 ^ len - 2) * 2 ^ (n - len) legal solutions. And we successfully beat the problem ......&lt;/p&gt;
+&lt;p&gt;Not yet.&lt;/p&gt;
+&lt;p&gt;The problem didn&#39;t mention that the graph is connected. So there may not be only one circle. To each isolated graph, we need to add them all.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Code:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+#define ll long long
+#define MOD ((int)1e9 + 7)
+using namespace std;
+vector &amp;lt;int&amp;gt; graph[(int)2e5 + 1];
+int vis[(int)2e5 + 1];
+int dfs(int now, int fa, int depth, int &amp;amp;cnt) {
+    if (vis[now] &amp;amp;&amp;amp; vis[fa] == 1) {
+        vis[now] += 1;
+        return -depth;   
+    }
+    if (vis[now] &amp;amp;&amp;amp; vis[fa] == 2) {
+        return 0;
+    }
+    if (vis[now] == 2) {
+        return 0;
+    }
+    vis[now] += 1;
+    cnt += 1;
+    if (graph[now].size() == 1) {
+       return 1;
+    }
+    int ans = 1;
+    for (int i = 0, l = graph[now].size(); i &amp;lt; l; ++i) {
+         int t = graph[now][i];
+         if (t == fa) continue;
+         ans += dfs(t, now, depth + 1, cnt);
+    }
+    return ans;
+}
+ll qpow(ll x, ll b) {
+    if (b == 0) return 1;
+    if (b &amp;amp; 1) return x * qpow(x * x % MOD, b &amp;gt;&amp;gt; 1) % MOD;
+    else return qpow(x * x % MOD, b &amp;gt;&amp;gt; 1);
+}
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n;
+    cin &amp;gt;&amp;gt; n;
+    for (int i = 1; i &amp;lt;= n; ++i) {
+        int tmp;
+        cin &amp;gt;&amp;gt; tmp;
+        graph[tmp].push_back(i);
+        graph[i].push_back(tmp);
+    }
+    memset(vis, 0, sizeof vis);
+    ll ans = 0;
+    for (int i = 1; i &amp;lt;= n; ++i) {
+        if (vis[i]) {
+            continue;
+        }
+        int cnt = 0;
+        int s = dfs(i, -1, 0, cnt);
+        ans = (ans + (qpow(2, cnt) - qpow(2, s) * 2 % MOD + MOD) % MOD) % MOD;
+    }
+    cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Circle-Based Tree</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/FYQ2RAKvZ/"" data-c="
+          &lt;h2 id=&#34;problem-description&#34;&gt;Problem Description&lt;/h2&gt;
+&lt;p&gt;Write an API that generates fancy sequences using the append, addAll, and multAll operations.&lt;br&gt;
+Implement the Fancy class:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fancy() Initializes the object with an empty sequence.&lt;/li&gt;
+&lt;li&gt;void append(val) Appends an integer val to the end of the sequence.&lt;/li&gt;
+&lt;li&gt;void addAll(inc) Increments all existing values in the sequence by an integer inc.&lt;/li&gt;
+&lt;li&gt;void multAll(m) Multiplies all existing values in the sequence by an integer m.&lt;/li&gt;
+&lt;li&gt;int getIndex(idx) Gets the current value at index idx (0-indexed) of the sequence modulo 109 + 7. If the index is greater or equal than the length of the sequence, return -1.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;constrains&#34;&gt;Constrains&lt;/h2&gt;
+&lt;p&gt;1 &amp;lt;= val, inc, m &amp;lt;= 100&lt;br&gt;
+0 &amp;lt;= idx &amp;lt;= 10^5&lt;br&gt;
+At most 10^5 calls total will be made to append, addAll, multAll, and getIndex.&lt;/p&gt;
+&lt;h2 id=&#34;solution-1-binary-indexed-tree&#34;&gt;Solution 1: Binary Indexed Tree:&lt;/h2&gt;
+&lt;p&gt;This time, I will not list the violent solution because it is too apperant.  First, we can find that all the operations are add and multiply. This two modifications can add up under a mod. So this problem can be understanded in this way: each add and multiply demand can be seem as a node on a list and each node just affect the numbers before it. So when numbers come in, it will not be affected by previous buffs. When you try to get a specific number in the list, you just add all the previous buffs onto the number.&lt;/p&gt;
+&lt;p&gt;Obviously, prefix sum can satisfied our needs. So what&#39;s the most direct and simple data structure that can achieve prefix sum? Binary Indexed Tree. Because I have already write an article to talk about the realization of Binary Indexed Tree, I will just choose some key points to mention here. The problem is, how to &amp;quot;add&amp;quot; buffs. Can we just add them up simply? Of course not. Let&#39;s assume f(x) = ax + b, g(x) = cx + d, and the f + g is a*cx + b * c + d. Although the two functions cannot be reversed, it will not affect the final answer.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Fancy:
+
+    mod = 10 ** 9 + 7
+
+    class expression:  # f(x) = a * x + b
+        mod = 10 ** 9 + 7
+        def __init__(self, x = 1, y = 0):
+            self.a, self.b = x, y
+        def __add__(self, other):
+            self.a = self.a * other.a % self.mod
+            self.b = (self.b * other.a + other.b) % self.mod
+            return self
+
+    lowbit = lambda self, x: x &amp;amp; -x
+
+    def __init__(self):
+        self.nums = []
+        self.c = [self.expression() for _ in range(200000)]
+
+    def doit(self, demand):
+        i = 100000 - len(self.nums)
+        while i &amp;lt; 200000:
+            self.c[i] = self.c[i] + demand
+            i += self.lowbit(i)
+
+    def append(self, val: int) -&amp;gt; None:
+        self.nums.append(val)
+
+    def addAll(self, inc: int) -&amp;gt; None:
+        if len(self.nums) == 0:
+            return
+        demand = self.expression(1, inc)
+        self.doit(demand)
+
+    def multAll(self, m: int) -&amp;gt; None:
+        if len(self.nums) == 0:
+            return
+        demand = self.expression(m, 0)
+        self.doit(demand)
+
+    def getIndex(self, idx: int) -&amp;gt; int:
+        if idx &amp;gt;= len(self.nums):
+            return -1
+        op = self.expression()
+        i = 100000 - idx - 1
+        while i &amp;gt;= 1:
+            op = op + self.c[i]
+            i -= self.lowbit(i)
+        return (self.nums[idx] * op.a % self.mod + op.b) % self.mod
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-2-multiplicative-inverse-modulomim&#34;&gt;Solution 2: Multiplicative inverse modulo(MIM)&lt;/h2&gt;
+&lt;p&gt;There also existed a more elegant way to solve the problem. If we just use a and b to record all the behaviour, we just need to minus b and divide a before a number adds into the list. But here comes a question, this minus and divide can not be supported under a mod. So we need to use an MIM. MIM can help us use add and multiply to realize minus and divide under a mod: (x / b) % mod = (b ^ (mod - 2) * x) % mod, x - b = (x + mod - b) % mod.. With the two equations, we can solve the problem easily.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Fancy:
+
+    mult = 1
+    add = 0
+    mod = 10 ** 9 + 7
+
+    def qpow(self, num, power):
+        return 1 if power == 0 else self.qpow(num ** 2 % self.mod, power &amp;gt;&amp;gt; 1) % self.mod * (num if power &amp;amp; 1 == 1 else 1)
+
+    def __init__(self):
+        self.val = []
+
+    def append(self, val: int) -&amp;gt; None:
+        val = (val - self.add + self.mod) * self.qpow(self.mult, self.mod - 2) % self.mod
+        self.val.append(val)
+
+    def addAll(self, inc: int) -&amp;gt; None:
+        self.add = (self.add + inc) % self.mod
+
+    def multAll(self, m: int) -&amp;gt; None:
+        self.mult = self.mult * m % self.mod
+        self.add = self.add * m % self.mod
+
+    def getIndex(self, idx: int) -&amp;gt; int:
+        return -1 if idx &amp;gt;= len(self.val) else (self.val[idx] * self.mult % self.mod + self.add) % self.mod 
+&lt;/code&gt;&lt;/pre&gt;
+">Deep Analysis: Fancy Sequence</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/Fo59-fr0V/"" data-c="
+          &lt;h2 id=&#34;problem-description&#34;&gt;Problem Description&lt;/h2&gt;
+&lt;p&gt;Count the number of prime numbers less than a non-negative number n.&lt;/p&gt;
+&lt;h2 id=&#34;constraints&#34;&gt;Constraints:&lt;/h2&gt;
+&lt;p&gt;0 &amp;lt;= n &amp;lt;= 5 * 10 ^ 6&lt;/p&gt;
+&lt;h2 id=&#34;solution-1-volent-trying&#34;&gt;Solution 1: Volent Trying&lt;/h2&gt;
+&lt;p&gt;So let&#39;s see the algorithm with the worst time efficiency. What we need to do is just identifying the integers are primes or not one by one. In the end, we count the number of primes and return the answer. When judging every number, we need to check whether the number from 2 to n - 1 can divide the number we need to judge. If yes, the number is not a prime and in other cases it is a prime.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def isprime(num):
+    if num == 0 or num == 1:
+        return 0
+    i = 2
+    while i  &amp;lt; num:
+        if num % i == 0:
+            return 0
+        i += 1
+    return 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(n):
+        ans += isprime(i)
+    print(ans)
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-2-a-little-bit-improvement&#34;&gt;Solution 2: A little bit improvement&lt;/h2&gt;
+&lt;p&gt;Let&#39;s focus on the function &amp;quot;isprime&amp;quot;. In this function, we try to use [2, n) to divide the number, but actually, we just need [2, sqrt(n) + 1). Because when we try a number larger than sqrt(n) + 1, this process must be repeated before. So we can get this code.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def isprime(num):
+    if num == 0 or num == 1:
+        return 0
+    i = 2
+    while i ** 2 &amp;lt;= num:  # I did not import Math because it will make the program slow
+        if num % i == 0:
+            return 0
+        i += 1
+    return 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(n):
+        ans += isprime(i)
+    print(ans)
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-3-another-trick&#34;&gt;Solution 3: Another trick&lt;/h2&gt;
+&lt;p&gt;When you judge a number is a prime or not, 6 is a quite efficient number. Why? Because except 2 and 3, if a number n % 6 is neither 1 nor 5, it must not be a prime: 6k + 2 can divide by 2, 6k + 3 can divide by 3, 6k + 4 can divide by 2, 6k + 6 can divde by 6. As a result, we use just one command to cut 2/3 answers. Why it is not efficient?&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def isprime(num):
+    if num == 0 or num == 1:
+        return 0
+    if num == 2 or num == 3:
+        return 1
+    elif num % 6 != 1 and num % 6 != 5:
+        return 0
+    i = 2
+    while i ** 2 &amp;lt;= num:
+        if num % i == 0:
+            return 0
+        i += 1
+    return 1
+
+def main():
+    n = int(input())
+    ans = 0
+    for i in range(n):
+        ans += isprime(i)
+    print(ans)
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-4-sieve-of-eratosthenes&#34;&gt;Solution 4: Sieve of Eratosthenes&lt;/h2&gt;
+&lt;p&gt;Up to now, it is quite efficient on judging one prime. But we have to judge n numbers. Does there exist better algorithm or not? Of course yes. The Sieve of Eratosthenes can produce the prime from 2 to n - 1 in one time an it is easy to understand: if k is a prime, then k * 2, k * 3, k * 4...... are not primes.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def prime_select():
+    n = 5 * (10 ** 6) + 1
+    h = [1] * n
+    h[1] = h[0] = 0
+    for i in range(2, n):
+        if h[i] == 0:
+            continue
+        j = i
+        while j * i &amp;lt; n:
+            h[i * j] = 0
+            j += 1
+    return h
+
+h = prime_select()
+
+class Solution:
+    
+    def countPrimes(self, n: int) -&amp;gt; int:
+        ans = 0
+        for i in range(n):
+            ans += h[i]
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+">Deep Analysis: Count Primes</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/guwS0s3Te/"" data-c="
+          &lt;h2 id=&#34;problem-description&#34;&gt;Problem Description&lt;/h2&gt;
+&lt;p&gt;There are some spherical balloons spread in two-dimensional space. For each balloon, provided input is the start and end coordinates of the horizontal diameter. Since it&#39;s horizontal, y-coordinates don&#39;t matter, and hence the x-coordinates of start and end of the diameter suffice. The start is always smaller than the end.&lt;/p&gt;
+&lt;p&gt;An arrow can be shot up exactly vertically from different points along the x-axis. A balloon with xstart and xend bursts by an arrow shot at x if xstart ≤ x ≤ xend. There is no limit to the number of arrows that can be shot. An arrow once shot keeps traveling up infinitely.&lt;/p&gt;
+&lt;p&gt;Given an array points where points[i] = [xstart, xend], return the minimum number of arrows that must be shot to burst all balloons.&lt;/p&gt;
+&lt;h2 id=&#34;constraints&#34;&gt;Constraints&lt;/h2&gt;
+&lt;p&gt;0 &amp;lt;= points.length &amp;lt;= 104&lt;br&gt;
+points[i].length == 2&lt;br&gt;
+-2^31 &amp;lt;= xstart &amp;lt; xend &amp;lt;= 2^31 - 1&lt;/p&gt;
+&lt;h2 id=&#34;solution-1-violent-try&#34;&gt;Solution 1: Violent Try&lt;/h2&gt;
+&lt;p&gt;No algorithms! No data structure! Just try all the possibilities. For         each point on x-axis, it has two conditions: has arrow or not. We can          represent it by 0 and 1. Under the most terrible situation, we have 2^        (2^32) possibilities. But it does not matter at all! Because many             excellent solution, algorithms and data structures starts from it.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    ans = 2 ** 32 - 1
+    def dfs(self, now, end, h):
+        if now == end:
+            if check(h):
+                ans = min(ans, sum(h))
+            return
+        self.dfs(now + 1, end, h + [0])
+        self.dfs(now + 1, end, h + [1])
+    def findMinArrowShots(self, points: List[List[int]]) -&amp;gt; int: 
+        start = min(list(map(lambda x: x[0], points)))
+        end = max(list(map(lambda x: x[1], points)))
+        self.dfs(start, end, [])
+        return self.ans
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-2-greedy-algorithm&#34;&gt;Solution 2: Greedy algorithm&lt;/h2&gt;
+&lt;p&gt;Obviously, we wasted a lot of arrows in the previous trying. So we will try our best to save our arrows. What we do is still judge it from left or right(reverse is okay), but we only use the arrow when we really need it otherwise we have no chance. Let me explain it, for example, there is a balloon is from 5 to 8, and we find position 8 is the last point in its cover. That is to say if we just let it go, we will not be able to shoot the balloon again. So we use the arrow here.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -&amp;gt; int:
+        ans += 0 
+        for i in range(left, right + 1):
+            if i is a balloon&#39;s right bound:
+                # realize a function to shoot a arrow at x[i]
+                ans += 1
+        return ans        
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-3-a-small-improvement&#34;&gt;Solution 3: A small improvement&lt;/h2&gt;
+&lt;p&gt;Up to now, we have build a prototype of the final solution. Let&#39;s see whether there is anything can be improved or not. We find that the loop in the previous code has many superfluous visit to irrevelent positions. Because we can see only at the right bound of a balloon, we may do something and the points between two bounds won&#39;t be used at all. Self-evidently, we only need to visit the bound points. What&#39;s more, we have to visit it by the sequence of its position on x-axis. So we need to sort them with their right bound positions and visit them.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class item:
+    
+    def __init__(self, start, end):
+        self.start, self.end = start, end
+
+    def __lt__(self, other):
+        return self.end &amp;lt; other.end
+
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -&amp;gt; int: 
+        p = []
+        for i in range(len(points)):
+            p.append(item(points[i][0], points[i][1]))
+        p.sort()
+        ans = 0
+        h = [0] * len(p)
+        for i in range(len(p)):
+            if h[i] == 1:
+                continue
+            ans += 1
+            for j in range(i, len(p)):
+                if h[j] == 1:
+                    continue
+                elif p[j].start &amp;lt;= p[i].end:
+                    h[j] = 1
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-4-a-large-step-to-the-best-one&#34;&gt;Solution 4: A large step to the best one&lt;/h2&gt;
+&lt;p&gt;The solution 3 is excellent enough in most cases, but it is still not stable. In some special cases, the time complexity of the solution will raise to O(n^2). In some restrictedly developing environments, we need a more stable algorithm. Let&#39;s see the line 24: when the computer find that this arrow cannot shoot this ballon, it chooses to continue visiting the rest balloons, but it is not necessary. When we find this arrow cannot shoot a balloon for the first time, we can quit the loop. Why? Because if this arrow cannot shoot the balloon, the other arrows will shoot it later, so the following balloons that this arrow can shoot, the other arrows can do it as well.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class item:
+    
+    def __init__(self, start, end):
+        self.start, self.end = start, end
+
+    def __lt__(self, other):
+        return self.end &amp;lt; other.end
+
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -&amp;gt; int: 
+        p = []
+        for i in range(len(points)):
+            p.append(item(points[i][0], points[i][1]))
+        p.sort()
+        ans = 0
+        h = [0] * len(p)
+        for i in range(len(p)):
+            if h[i] == 1:
+                continue
+            ans += 1
+            for j in range(i, len(p)):
+                if h[j] == 1:
+                    continue
+                elif p[j].start &amp;lt;= p[i].end:
+                    h[j] = 1
+                else:
+                    break
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;solution-5-make-it-beautiful&#34;&gt;Solution 5: Make it beautiful&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -&amp;gt; int: 
+        points = sorted(points, key = lambda x: x[1])
+        ans = 0
+        min_end = -2 ** 31 - 1
+        for i in points:
+            if i[0] &amp;gt; min_end:
+                ans += 1
+                min_end = i[1]
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+">Deep Analysis: Minimum Number of Arrows to Burst Balloons</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/4msqBIkRn/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Well, in the previous passage, we have talked about normal heaps, also called binary heap. In this passage, we will discuss a new kind of heap. It is much more effective than binary heap in many aspects, and it&#39;s not hard to practice it as well. Let&#39;s see the code first and at the end of the passage, I will compare their efficiency.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class node:  # the item class
+
+    def __init__(self, value):
+        self.value = value  # value(priority)
+        self.bro = self.ch = None  # brother node and child node
+
+class pairing_heap:
+
+    def __init__(self):
+        self.root = None  # There is no node
+        self.node_number = 0  # It has 0 node
+
+    def __merge(self, a, b):  # Core API 1
+        if a is None or b is None:
+            return a if b is None else b  # return the one that is not None
+        if a.value &amp;gt; b.value:  
+            a, b = b, a  # make sure that a is the smaller one
+        a.ch, b.bro = b, a.ch  # let b becomes a&#39;s child
+        return a
+        
+    def __pair_merge(self, now):  # Core API 2
+        if now is None or now.bro is None:  # It has no brother node to break
+            return now
+        bro1, bro2 = now.bro, now.bro.bro  # save its brother and its brother&#39;s brother
+        now.bro = bro1.bro = None  # break them
+        return self.__merge(self.__merge(now, bro1), self.__pair_merge(bro2))  # merge these two and continue the next two
+
+    def push(self, new):
+        if self.root is None:
+            self.root = node(new)  # there is no node here, so just let the new one be the root
+        else:
+            self.root = self.__merge(self.root, node(new))  # consider the new one as a single heap, and merge them
+        self.node_number += 1
+
+    def merge(self, new):
+        self.root = self.__merge(self.root, new.root)  # just merge the root of the two heap
+        self.node_number += new.node_number
+
+    def pop(self):
+        if self.root is None:
+            return None  # if there is nothing, than it is an error
+        self.root = self.__pair_merge(self.root.ch)
+        self.node_number -= 1
+
+    def top(self):
+        return None if self.root is None else self.root.value
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;about-efficiency&#34;&gt;About efficiency&lt;/h2&gt;
+&lt;p&gt;pop: Binary O(nlogn) | Pairing O(h(n))&lt;br&gt;
+push: Binary O(nlogn) | Pairing O(1)&lt;br&gt;
+get_min: Binary O(1) | Pairing O(1)&lt;br&gt;
+merge: Binary doesn&#39;t support | Pairing O(1)&lt;/p&gt;
+">Pairing Heap</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/dENZkdKd3/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Well, let&#39;s talk about something simple in this passage. I believe most of you must have learnt pile when you just start to learn data structure. But I will still repeat this part again in this passage because it is quite important for the next passage. If we can really understand the inner system of pile, we will be able to make other algorithms that based on it better as well.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class pile:
+    def __init__(self):
+        self.p = [-1]  # because we use binary tree to actclize the pile, the root node must be 1, so we fill p[0]with -1
+
+    def add(self, x):
+        self.p += [x]  # put the number at the end of the pile
+        pos = len(self.p) - 1  # locate it 
+        while pos &amp;gt; 1:  # when pos is not at root 
+            if self.p[pos] &amp;lt; self.p[pos &amp;gt;&amp;gt; 1]:  # pos &amp;gt;&amp;gt; 1(same as pos // 2) is p[pos]&#39;s father node&#39;s id
+                self.p[pos], self.p[pos &amp;gt;&amp;gt; 1] = self.p[pos &amp;gt;&amp;gt; 1], self.p[pos]  # swap them
+                pos &amp;gt;&amp;gt;= 1  # update pos
+            else:
+                break  # we find a ideal place, so there is no need to go on
+
+    def pop(self):
+        if len(self.p) == 1:
+            return -1  # there is nothing in the pile, so we return -1 to represent there is something wrong
+        if len(self.p) == 2:
+            return self.p.pop()  # there is only one element, so we just need to return it and delete it
+        ans = self.p[1]  # store the answer
+        self.p[1] = self.p.pop()  # replace the place with the last element
+        pos = 1
+        while pos &amp;lt;&amp;lt; 1 &amp;lt;= len(self.p) - 1:
+            if self.p[pos] &amp;gt; self.p[pos * 2]:  # pos &amp;lt;&amp;lt; 1(same as pos * 2) is pos&#39;s left son
+                self.p[pos], self.p[pos &amp;lt;&amp;lt; 1] = self.p[pos &amp;lt;&amp;lt; 1], self.p[pos]  # swap them
+                pos &amp;lt;&amp;lt;= 1  # update pos
+                continue
+            elif pos &amp;lt;&amp;lt; 1 | 1 &amp;lt;= len(self.p) - 1:  # to ensure pos&#39;s right son&#39;s id will not exceed the range
+                if self.p[pos] &amp;gt; self.p[pos &amp;lt;&amp;lt; 1 | 1]:
+                    self.p[pos], self.p[pos &amp;lt;&amp;lt; 1 | 1] = self.p[pos &amp;lt;&amp;lt; 1 | 1], self.p[pos]  # swap them
+                    pos = pos &amp;lt;&amp;lt; 1 | 1  # update pos
+                    continue
+                else:
+                    break
+            else:
+                break
+        return ans
+
+def main():
+    a = list(map(int, input(&#39;elements:&#39;).split())) # input the data
+    n = len(a)
+    pl = pile()
+    for i in range(len(a)):
+        pl.add(a[i])  # put all the things into pile and they will be sorted automatically :)
+    print(&#39;sorted:&#39;, end = &#39;&#39;)
+    for i in range(n):
+        print(pl.pop(), end = &#39;\n&#39; if i == n - 1 else &#39; &#39;)  # output the answer
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+">Heap</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/cLmXwc5OE/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Today let&#39;s talk about Minimum Spanning Tree (MST) problem. In  a MST problem, you usually have n points, and what you need to do is to use or choose n - 1 edges to connect them and minimize the sum of the length of the edges. There exist two basic algorithms to solve it: Kruskal and Prim. Both of them are adapted from the Greedy Algorithm and Kruskal considers edges as units while Prim considers points as units. I will show how they realize and explain them in the following code.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;h3 id=&#34;kruskal&#34;&gt;Kruskal&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#Kruskal is better when the egdes are less than points, which means it is a sparse graph
+class edge:
+    fr = 0 #from
+    to = 0 #to
+    c = 0 #cost
+    def __init__(self, fr, to, c):
+        self.fr = fr
+        self.to = to
+        self.c = c
+    def __lt__(self, oth):
+        return self.c &amp;lt; oth.c #reload &#39;&amp;lt;&#39;
+
+class dsuf:#disjoint sets/union find
+    fa = [0]
+    def __init__(self, n):
+        self.fa *= n + 1
+        for i in range(n + 1):
+            self.fa[i] = i#if we find fa[x] == x then x is a source point
+    def merge(self, a, b):
+        self.fa[self.find(b)] = a# let a becomes b&#39;s father
+    def find(self, a):
+        if a == self.fa[a]:
+            return a
+        self.fa[a] = self.find(self.fa[a]) #compress the path to decrease the depth of tree
+        return self.fa[a]
+
+def kruskal(e, n, u):
+    ans = 0
+    for i in e:#pick egdes in order of cost
+        if u.find(i.to) == u.find(i.fr):#check the two vertexs are in a same union or not
+            continue
+        ans += i.c #you can use an array to record all of them as well
+        u.merge(i.to, i.fr)
+    return ans
+
+def main():
+    n, m = map(int, input().split())#input the number of edge and vertexs
+    e = []
+    u = dsuf(n)
+    for i in range(m):#input edges
+        fr, to, c = map(int, input().split())
+        e += [edge(fr, to, c)]
+    e.sort()#sort edges by their cost
+    print(kruskal(e, n, u))
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;prim&#34;&gt;Prim&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Prim is better when the points in graph is more than edges in the graph
+import queue
+
+class point:
+    x = y = -1
+    def __init__(self, pos):
+        self.x = pos[0]
+        self.y = pos[1]
+    def dis(self, other):
+        return (self.x - other.x) ** 2 + (self.y - other.y) ** 2# the distance between two points
+
+def prim(p, c):
+    ans = 0
+    q = queue.PriorityQueue() # use priority_queue to make it better
+    q.put([0, 0])
+    h = {}
+    for i in range(len(p)):
+        h[i] = 0#to record whether it has been visited or not
+    while not q.empty():
+        now = q.get()
+        if h[now[1]] == 1:
+            continue# if the point has already been visited, ignore it
+        h[now[1]] = 1
+        ans += now[0]
+        for i in range(len(p)):
+            if h[i] == 0 and p[now[1]].dis(p[i]) &amp;gt;= c:#you can eliminate the second limitaion when you use it
+                q.put((p[now[1]].dis(p[i]), i))
+    for i in range(len(p)):
+        if h[i] == 0:
+            return -1# you can ignore this loop as well
+    return ans
+
+def main():
+    n, c = map(int, input().split()) # n is number of points, c is a limitaiton when I was doing a test, you can ignore it
+    p = []
+    for i in range(n):
+        p += [point(list(map(int, input().split())))]
+    print(prim(p, c))
+
+main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;moreover&#34;&gt;Moreover&lt;/h2&gt;
+&lt;p&gt;The two main stream algorithms can be adapted into different versions to cope with different problems. We may talk about it in the other passages.&lt;/p&gt;
+">Prim & Kruskal</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/lGXuyC3uR/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Segment Tree, as its name, store information about periods of segment, like the maximum and minimum of the sequence, in all vertexs of the tree. Sepcifically, it looks like this:&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1603719518361.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;But, well, you may ask: why we need to use about 4 times space to split the sequence into these small parts? It is because you can find, if you rebuild sequence into the binary tree, all the things we need to do with the element one by one, like add x to all elements with id from 0 ~ 9, just need few steps on segment tree. I will explain all these functions and how they work in my following codes.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;h3 id=&#34;python&#34;&gt;Python&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class SMT: #Segment Tree stores information about maximum 
+    __data = [0]# maximum of the elements
+    __l = [0]# left range of the vertexs
+    __r = [0]# right range of the vertexs
+    def __build(self, pos, a, l, r):#build the tree
+        self.__r[pos] = r
+        self.__l[pos] = l
+        if l == r:
+            self.__data[pos] = a[l]# when there is only one element, the maximum number is itself
+            return
+        mid = (l + r) &amp;gt;&amp;gt; 1#the position to divide the two children of the vertex
+        self.__build(pos &amp;lt;&amp;lt; 1, a, l, mid)
+        self.__build(pos &amp;lt;&amp;lt; 1 | 1, a, mid + 1, r)
+        self.__data[pos] = max(self.__data[pos &amp;lt;&amp;lt; 1], self.__data[pos &amp;lt;&amp;lt; 1 | 1])
+    def __init__(self, a):
+        self.__data *= len(a) * 4 + 1
+        self.__r *= len(a) * 4 + 1
+        self.__l *= len(a) * 4 + 1
+        self.__build(1, a, 0, len(a) - 1)
+    def add(self, pos, l, r, x):
+        if l == r:
+            self.__data[pos] += x
+            return
+        mid = (self.__l[pos] + self.__r[pos]) &amp;gt;&amp;gt; 1
+        if r &amp;lt;= mid:
+            self.add(pos &amp;lt;&amp;lt; 1, l, r, x)
+        elif l &amp;gt;= mid + 1:
+            self.add(pos &amp;lt;&amp;lt; 1 | 1, l, r, x)
+        else:
+            self.add(pos &amp;lt;&amp;lt; 1, l, mid, x)
+            self.add(pos &amp;lt;&amp;lt; 1 | 1, mid + 1, r, x)
+        self.__data[pos] = max(self.__data[pos &amp;lt;&amp;lt; 1], self.__data[pos &amp;lt;&amp;lt; 1 | 1])
+    def maximum(self, pos, l, r):
+        if l &amp;lt;= self.__l[pos] and r &amp;gt;= self.__r[pos]:
+            return self.__data[pos]
+        ans = -2147483647
+        mid = (self.__l[pos] + self.__r[pos]) &amp;gt;&amp;gt; 1
+        if l &amp;gt;= mid + 1:
+            ans = max(ans, self.maximum(pos &amp;lt;&amp;lt; 1 | 1, l, r))
+        elif r &amp;lt;= mid:
+            ans = max(ans, self.maximum(pos &amp;lt;&amp;lt; 1, l, r))
+        else:
+            ans = max(self.maximum(pos &amp;lt;&amp;lt; 1 | 1, l, mid), self.maximum(pos &amp;lt;&amp;lt; 1 | 1, mid + 1, r))
+        return ans
+def main():
+    a = list(map(int, input().split()))
+    tree = SMT(a)
+    while 1:
+        command = input()
+        if command == &#39;add&#39;:# add x to all elements with id from l to r
+            l, r, x = map(int, input().split())
+            tree.add(1, l, r, x)
+        elif command == &#39;max&#39;:
+            l, r = map(int, input().split())#print the maximum number from l to r
+            print(tree.maximum(1, l, r))
+main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;c&#34;&gt;C++&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+using namespace std;
+int n;
+int T;
+int MOD;
+LL a[100010];
+struct tr{
+    int l;
+    int r;
+    LL pt;
+    LL mt;
+    LL d;
+    #define l(x) st[x].l
+    #define r(x) st[x].r
+    #define pt(x) st[x].pt
+    #define mt(x) st[x].mt
+    #define d(x) st[x].d
+};
+tr st[1000010];
+void build(int now,int l,int r){
+    l(now)=l;
+    r(now)=r;
+    pt(now)=0;
+    mt(now)=1;
+    if(l==r){
+        d(now)=a[l]%MOD;
+        return;
+    }
+    int mid=(l+r)&amp;gt;&amp;gt;1;
+    build(now&amp;lt;&amp;lt;1,l,mid);
+    build(now&amp;lt;&amp;lt;1|1,mid+1,r);
+    d(now)=d(now&amp;lt;&amp;lt;1)+d(now&amp;lt;&amp;lt;1|1);
+    return;
+}
+void push_down(int now){
+    d(now&amp;lt;&amp;lt;1)=(d(now&amp;lt;&amp;lt;1)*mt(now)%MOD+pt(now)*(r(now&amp;lt;&amp;lt;1)-l(now&amp;lt;&amp;lt;1)+1)%MOD)%MOD;
+    d(now&amp;lt;&amp;lt;1|1)=(d(now&amp;lt;&amp;lt;1|1)*mt(now)%MOD+pt(now)*(r(now&amp;lt;&amp;lt;1|1)-l(now&amp;lt;&amp;lt;1|1)+1)%MOD)%MOD;
+    pt(now&amp;lt;&amp;lt;1)=(pt(now&amp;lt;&amp;lt;1)*mt(now)%MOD+pt(now))%MOD;
+    pt(now&amp;lt;&amp;lt;1|1)=(pt(now&amp;lt;&amp;lt;1|1)*mt(now)%MOD+pt(now))%MOD;
+    mt(now&amp;lt;&amp;lt;1)=mt(now&amp;lt;&amp;lt;1)*mt(now)%MOD;
+    mt(now&amp;lt;&amp;lt;1|1)=mt(now&amp;lt;&amp;lt;1|1)*mt(now)%MOD;
+    !mt(now&amp;lt;&amp;lt;1)?mt(now&amp;lt;&amp;lt;1)=MOD:0;
+    !mt(now&amp;lt;&amp;lt;1|1)?mt(now&amp;lt;&amp;lt;1|1)=MOD:0;
+    pt(now)=0;
+    mt(now)=1;
+}
+void add(int now,int l,int r,int p){
+    if(l&amp;lt;=l(now)&amp;amp;&amp;amp;r&amp;gt;=r(now)){
+        d(now)=(d(now)+p*(r(now)-l(now)+1)%MOD)%MOD;
+        pt(now)=(pt(now)+p)%MOD;
+        return;
+    }
+    if(pt(now)||mt(now)&amp;gt;1){
+        push_down(now);
+    }
+    int mid=(l(now)+r(now))&amp;gt;&amp;gt;1;
+    if(l&amp;lt;=mid){
+        add(now&amp;lt;&amp;lt;1,l,r,p);
+    }
+    if(r&amp;gt;mid){
+        add(now&amp;lt;&amp;lt;1|1,l,r,p);
+    }
+    d(now)=d(now&amp;lt;&amp;lt;1)+d(now&amp;lt;&amp;lt;1|1);
+    return;
+}
+void mul(int now,int l,int r,int p){
+    if(l&amp;lt;=l(now)&amp;amp;&amp;amp;r&amp;gt;=r(now)){
+        d(now)=d(now)*p%MOD;
+        pt(now)=pt(now)*p%MOD;
+        mt(now)=mt(now)*p%MOD;
+        return;
+    }
+    if(pt(now)||mt(now)&amp;gt;1){
+        push_down(now);
+    }
+    int mid=(l(now)+r(now))&amp;gt;&amp;gt;1;
+    if(l&amp;lt;=mid){
+        mul(now&amp;lt;&amp;lt;1,l,r,p);
+    }
+    if(r&amp;gt;mid){
+        mul(now&amp;lt;&amp;lt;1|1,l,r,p);
+    }
+    d(now)=d(now&amp;lt;&amp;lt;1)+d(now&amp;lt;&amp;lt;1|1);
+    return;
+}
+LL sum(int now,int l,int r){
+    if(l&amp;lt;=l(now)&amp;amp;&amp;amp;r&amp;gt;=r(now)){
+        return d(now);
+    }
+    if(pt(now)||mt(now)&amp;gt;1){
+        push_down(now);
+    }
+    int mid=(l(now)+r(now))&amp;gt;&amp;gt;1;
+    int ans=0;
+    l&amp;lt;=mid?ans=(ans+sum(now&amp;lt;&amp;lt;1,l,r))%MOD:0;
+    r&amp;gt;mid?ans=(ans+sum(now&amp;lt;&amp;lt;1|1,l,r))%MOD:0;
+    return ans;
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;T&amp;gt;&amp;gt;MOD;
+    for(int i=1;i&amp;lt;=n;++i){
+        cin&amp;gt;&amp;gt;a[i];
+    }
+    build(1,1,n);
+    int k;
+    int x;
+    int y;
+    int z;
+    while(T--){
+        cin&amp;gt;&amp;gt;k&amp;gt;&amp;gt;x&amp;gt;&amp;gt;y;
+        if(k==1){
+            cin&amp;gt;&amp;gt;z;
+            mul(1,x,y,z);
+        }
+        else if(k==2){
+            cin&amp;gt;&amp;gt;z;
+            add(1,x,y,z);
+        }
+        else{
+            cout&amp;lt;&amp;lt;sum(1,x,y)&amp;lt;&amp;lt;endl;
+        }
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;whats-more&#34;&gt;What&#39;s more&lt;/h2&gt;
+&lt;p&gt;Although the data structure is quite plastic, it is a little bit hard to realize sepecially when you try to integrate many functions into one segment tree. So I suggests that when you try to make more than one function, use a segment tree to finish a sepcific funtion. And if the function is just concern about the sum of a sequence, you can use binary indexed tree because it is much easier to be finished than segment tree.&lt;/p&gt;
+">Segment Tree</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/pnJxhbchQ/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Before we start to talk about Binary Indexed Tree, let me introduce the segment tree first. In a segment tree, each vertex represents a segment on the original sequence. So when we want to make some modifications on the sequence, like add x to ai-aj in the sequence, we can record the modification in the vertex to represent that all the elements in this part has been changed but not change them one by one. Obviously, it is a very agile data structure. It supports addtion, minus, and many other measures on sequence. Compared to Segment Tree, Binary Indexed Tree is quite limited because it only supports addtion and finding specific data and it can be totally replaced by segment tree in the aspect of function. So why it still exists? Because it is easy. A segment tree may takes hundreds of lines of code while Binary Indexed Tree only takes no more than fifty lines.&lt;/p&gt;
+&lt;h2 id=&#34;details&#34;&gt;Details&lt;/h2&gt;
+&lt;p&gt;As we just metioned, Binary Indexed Tree (BIT) supports two functions: finding the sum of a1~x and adding a specific number to an element in sequence. We use an array c[i] to represent the tree.&lt;br&gt;
+&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1603116425209.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+When we change the id i into its binary version, like 5 to 0101, each &#39;1&#39; in the binary number reprsents a child of the vertex, and the data in the vertex is the sum of these childs&#39; data, like id=4 and id=1 is id=5&#39;s children. So how can we visit these children effectively? We can use Lowbit function. Lowbit(x) = x &amp;amp; (-x). It can return the smallest &#39;1&#39; in the binary number by using the trait of computer which is used to record the numbers, like lowbit(6) = 2. When we add a number x to an element, we are supposed to not only add it to c[x], but also need to add it to its fathers -- c[x + lowbit(x)], c[x + lowbit(x) + lowbit(x + lowbit(x))] ...... until x exceeds the sequence. When we need the data in element x, we just need to do it in a reversed direction.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class BIT: #Binary Indexed Tree
+    __c = [0]
+    def __init__(self, n):#initialization
+        self.__c *= n + 2
+    def __lowbit(self, x):
+        return x &amp;amp; (-x)
+    def Add(self, pos, x):# Add x to the data at pos
+        while pos &amp;lt; len(self.__c):
+            self.__c[pos] += x
+            pos += self.__lowbit(pos)
+    def Sum(self, pos):# the sum of data before pos
+        ans = 0
+        while pos &amp;gt; 0:
+            ans += self.__c[pos]
+            pos -= self.__lowbit(pos)
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;whats-more&#34;&gt;What&#39;s more:&lt;/h2&gt;
+&lt;p&gt;If we can use this data structure effectively, it can replace many function of segment tree readly. In my opinion, it is one of the most useful data structures I have ever used.&lt;/p&gt;
+">Binary Indexed Tree</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/fUyI1lct0/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In this passage, I will show one of the most classic problems on graph: the network flow problem. The graph is made by several vertexs and edges which have directions and capacities. There exist a source vertex and a sink vertex in the graph. And the problem is to calculate the maximum flow from source vertex to the sink vertex. If you think it is hard to understand, you can consider it as a water pipe system under the ground: In the system, each pipe has a capacity and direction. And the question is to calculate how much water can flow from the source to the sink in a minute.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisite-build-the-graph&#34;&gt;Prerequisite: Build the Graph&lt;/h2&gt;
+&lt;p&gt;In most cases, this part is not mentioned in many other kinds of introduction of other graph algorithms. Because most of them just need a effective way to check the whole graph but do not need to concern the order. Nevertheless, in the network flow problems, we need to attach two antiparallel edges to each other.(I will explain the reason later in the passage.) So I recommend using array to imitate static list but not other data structure. If you use this structure and add a pair of antiparallel edge, you will find their ids in the array are adjacent. Suppose one of edges&#39; id is x. Then, its antiparallel edge&#39;s id is x^1. The benefit enables the computer to &amp;quot;regret&amp;quot; when they choose a wrong answer.&lt;/p&gt;
+&lt;h2 id=&#34;step1-find-augmenting-path&#34;&gt;Step1: Find Augmenting Path&lt;/h2&gt;
+&lt;p&gt;Before we formally start coding, let me explain the main idea briefly: Find a augmenting path, add the minimum capacity to the answer, and repeat it until there is no augmenting path. So, what&#39;s the augmenting path? Generally speaking, an augmenting path is a feasible way from source to sink. In the first step, we just need to find a augmenting path but do not need to concern its capacity.  We can use BFS to finish this proccess.&lt;/p&gt;
+&lt;h2 id=&#34;step2-add-the-flow&#34;&gt;Step2: Add the flow&lt;/h2&gt;
+&lt;p&gt;Now we have an augmenting path, and then we need to do is subtracting the maximum capacity in the path from each edge&#39;s capacity in the path. And here is a point: We also need to add the maximum capacity to all the antiparallel edges&#39; capacity of the path. Why? One edge may be included in different augmenting paths for several times. If the computer choose the edge but it finds out that it put the edge into a wrong augmenting path, choosing the edge&#39;s antiparallel edge enables them to regret the choice and recover the original edge.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+using namespace std;
+class node{//information of the edge
+    public:
+        int to;
+        int c;
+        int nxt;
+};
+class graph{
+    public:
+        vector&amp;lt;int&amp;gt; head;
+        vector&amp;lt;node&amp;gt; edge;
+        vector&amp;lt;int&amp;gt; pre;
+        vector&amp;lt;int&amp;gt; incf;
+        graph(int a,int s){
+            head=vector&amp;lt;int&amp;gt;(a+1);
+            pre=vector&amp;lt;int&amp;gt;(a+1);
+            incf=vector&amp;lt;int&amp;gt;(a+1);
+            incf[s]=2147483647;
+            node tmp={0,0,0};
+            edge.push_back(tmp);
+            edge.push_back(tmp);
+        };
+};
+void addedge(graph &amp;amp;g,int s,int t,int c){
+    node tmp={t,c,g.head[s]};
+    g.edge.push_back(tmp);
+    g.head[s]=g.edge.size()-1;
+}
+bool augmenting_path(graph &amp;amp;g,int n,int s,int t){
+    vector&amp;lt;bool&amp;gt; h=vector&amp;lt;bool&amp;gt;(n+1);//detect the point is visited or not
+    queue&amp;lt;int&amp;gt; q;
+    q.push(s);
+    h[s]=1;
+    while(!q.empty()){
+        int x=q.front();
+        q.pop();
+        for(int y,c,i=g.head[x];i;i=g.edge[i].nxt){
+            y=g.edge[i].to;
+            c=g.edge[i].c;
+            if(h[y]||!c)
+                continue;
+            g.incf[y]=min(g.incf[x],c);
+            g.pre[y]=i;
+            if(y==t)
+                return 1;
+            h[y]=1;
+            q.push(y);
+        }
+    } 
+    return 0;
+}
+int increase_flow(graph &amp;amp;g,int s,int t){
+    int x=t;
+    while(x!=s){
+        int i=g.pre[x];
+        g.edge[i].c-=g.incf[t];
+        g.edge[i^1].c+=g.incf[t];
+        x=g.edge[i^1].to;
+    }
+    return g.incf[t];
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n;//number of vertexs
+    int m;//number of edges
+    int s;//source vertex
+    int t;//sink vertex
+    cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m&amp;gt;&amp;gt;s&amp;gt;&amp;gt;t;
+    graph g(n,s);
+    for(int i=1,a,b,c;i&amp;lt;=m;++i){
+        cin&amp;gt;&amp;gt;a&amp;gt;&amp;gt;b&amp;gt;&amp;gt;c;
+        addedge(g,a,b,c);
+        addedge(g,b,a,0);
+    }
+    LL ans=0;
+    while(augmenting_path(g,n,s,t)){
+        ans+=increase_flow(g,s,t);
+    }
+    cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;notice&#34;&gt;Notice&lt;/h2&gt;
+&lt;p&gt;This algorithm is, indeed, a semi-finished product. Thus, it is not very effective. It can be used when the number of vertexs is lower than 10,000. But it provides a principle that used in most other network-flow problems. So totally understanding this algorithm will lay a solid fundation for further study.&lt;/p&gt;
+">Edmonds-Karp Algorithm</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/r5xcxY_Zp/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In this passage, I will explain a algorithm that works on graphs. When we are faced with problems on graphs, we often need to face a very classic problem: Finding a shortest way from A to B. There are two main stream algorithms to solve the problem in the programming competition community.(at least in China) They are Dijskstra and SPFA. However, to SPFA, it is not stable because if the problem-maker draw the graph like a grid, it can reach its most terrible time complexity readily. So the most popular one is Dijsktra.&lt;/p&gt;
+&lt;h2 id=&#34;step1-core-principle&#34;&gt;Step1: Core Principle&lt;/h2&gt;
+&lt;p&gt;Dijkstra is very easy to understand in the aspect of principle. We use an array dist[i] to represent the shortest way between vertex i and the initial vertex. So the algorithm is that using the dist[i] to update the connected vertexs&#39; information: dist[i.to]&amp;gt;dist[i]+cost[i][i.to]?&amp;quot;update&amp;quot;:&amp;quot;remain&amp;quot;;&lt;/p&gt;
+&lt;h2 id=&#34;step2-make-it-perfect&#34;&gt;Step2: Make it Perfect&lt;/h2&gt;
+&lt;p&gt;Nevertheless, if we just practice the principle directly, the time complexity is O(n^2)(Here the &amp;quot;O&amp;quot; means theta, I cannot type the symbol easily in my blog) because we repeated N times to find the minimum distance among N distances, which is not acceptable. We can use pile to help us to finish the finding proccess. Because pile can use O(log2N) to find the minimum one among N. The better time complexity is O(nlogn).&lt;/p&gt;
+&lt;h2 id=&#34;step3-code&#34;&gt;Step3: Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+using namespace std;
+struct node{
+    int to;
+    int cost;
+    bool operator &amp;lt;(const node &amp;amp;x)const{
+        return x.cost&amp;lt;cost;
+    } 
+};
+vector&amp;lt;int&amp;gt; dijkstra(int n,int m,int s,vector&amp;lt;vector&amp;lt;node&amp;gt; &amp;gt; &amp;amp;g){
+    vector&amp;lt;int&amp;gt; dist=vector&amp;lt;int&amp;gt;(n+1);
+    for(int i=1;i&amp;lt;=n;++i){
+        dist[i]=2147483647;
+    }
+    dist[s]=0;//initialize the distance
+    priority_queue&amp;lt;node&amp;gt; p;//use a priority_queue to decrease the time on finding the minimum number to log2N
+    map&amp;lt;int,int&amp;gt; h;
+    node tmp={s,0};
+    p.push(tmp);
+    while(!p.empty()){
+        int x=p.top().to;
+        p.pop();
+        if(h[x]==1){
+            continue;
+        }//because each vertex can only be used for one time, this measure can avoid a dead loop
+        h[x]=1;
+        for(int i=0;i&amp;lt;g[x].size();++i){
+            int y=g[x][i].to;
+            if(dist[y]&amp;gt;dist[x]+g[x][i].cost){
+                dist[y]=dist[x]+g[x][i].cost;
+                if(!h[y]){
+                    node tmp={y,dist[y]};
+                    p.push(tmp);
+                }
+            }
+        }//follow the principle, use the best data to update
+    }
+    return dist;
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n;//total number of vertexs
+    int m;//total number of edges
+    int s;//the initial vertex
+    cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m&amp;gt;&amp;gt;s; //input the data
+    vector&amp;lt;vector&amp;lt;node&amp;gt; &amp;gt; g=vector&amp;lt;vector&amp;lt;node&amp;gt; &amp;gt;(n+1);//the graph
+    for(int i=1,x,y,c;i&amp;lt;=m;++i){
+        cin&amp;gt;&amp;gt;x&amp;gt;&amp;gt;y&amp;gt;&amp;gt;c;
+        node tmp={y,c};
+        g[x].push_back(tmp);
+    }//store the graph
+    vector&amp;lt;int&amp;gt; dist=dijkstra(n,m,s,g);//calculate the answer
+    for(int i=1;i&amp;lt;=n;++i){
+        cout&amp;lt;&amp;lt;dist[i]&amp;lt;&amp;lt;&#39; &#39;;
+    }//output the answer
+    cout&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;notice&#34;&gt;Notice&lt;/h2&gt;
+&lt;p&gt;This Dijkstra cannot be used on graphs with minus edges. Although this problem can also be solved by using potential function on the algorithm, it will make it more like a maths problem but not information technology problem. So I will not talk too much on it in this blog but I may use another passage to explain the area.&lt;/p&gt;
+">Dijkstra Algorithm</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/oYNuWB-VD/"" data-c="
+          &lt;h1 id=&#34;first-here-is-my-score-and-rate&#34;&gt;First, here is my score and rate:&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1597394785217.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;a-suborrays&#34;&gt;A. Suborrays&lt;/h1&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1391/problem/A&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;It&#39;s not hard to understand the problem&#39;s true meaning: Give a solution that to all subarrays which have length k, there exist at least one number in the subarray no less than k. There is a fixed solution to this problem: 1, 2, 3, ......, n.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        for(int i=1;i&amp;lt;=n;++i){
+            cout&amp;lt;&amp;lt;i&amp;lt;&amp;lt;&#39; &#39;;
+        }
+        cout&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;b-fix-you&#34;&gt;B. Fix You&lt;/h1&gt;
+&lt;h2 id=&#34;introduction-2&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1391/problem/B&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;analysis-2&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;Because all the places can be chosen, the only way and also the best way to solve it is to change all &#39;D&#39; on the bottom into &#39;R&#39; and change all &#39;R&#39; on the right edge into &#39;D&#39;.&lt;/p&gt;
+&lt;h2 id=&#34;code-2&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        int m;
+        vector&amp;lt;string&amp;gt; g;
+        cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m;
+        g=vector&amp;lt;string&amp;gt;(n);
+        for(auto &amp;amp;i:g){
+            cin&amp;gt;&amp;gt;i;
+        }
+        int ans=0;
+        for(int i=0;i&amp;lt;n;++i){
+            if(i&amp;lt;n-1){
+                g[i][m-1]==&#39;R&#39;?++ans:0;
+            }
+            else{
+                for(auto &amp;amp;j:g[i]){
+                    j==&#39;D&#39;?++ans:0;
+                }
+            }
+        }
+        cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;c-cyclic-permutations&#34;&gt;C. Cyclic Permutations&lt;/h1&gt;
+&lt;h2 id=&#34;introduction-3&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1391/problem/C&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;analysis-3&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;The problem cannot be easily solved straightly. We can find that to any element in this sequence, if it has edge to both left and right, it must be in a circle. It is very easy to verify. So, what we do is to find the number of solution that cannot build a circle and use the number of all solutions n! to minus it. So how we can find the number of solution that cannot build circle? According to the conclusion we get previously, we can put these numbers into a deque by this sequence: n-1, n-2,......, 1, and each number can choose put from the left or from the right. So the answer is n!-2^(n-1).&lt;/p&gt;
+&lt;h2 id=&#34;code-3&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+#define MOD 1000000007
+using namespace std;
+long long qpow(long long _b,long long _e){
+    return _e==0?1:(_e&amp;amp;1?_b:1)*qpow(_b*_b%MOD,_e&amp;gt;&amp;gt;1)%MOD; 
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    LL n;
+    cin&amp;gt;&amp;gt;n;
+    LL ans=1;   
+    for(LL i=2;i&amp;lt;=n;++i){
+        ans=ans*i%MOD;
+    }
+    cout&amp;lt;&amp;lt;(ans+MOD-qpow(2,n-1))%MOD&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Codeforces Round #663 Div2 retrospect</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/i28zPrNp9/"" data-c="
+          &lt;h1 id=&#34;first-here-is-my-score-and-rate&#34;&gt;First, here is my score and rate:&lt;/h1&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1597310459488.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;a-rainbow-dash-fluttershy-and-chess-coloring&#34;&gt;A. Rainbow Dash, Fluttershy and Chess Coloring&lt;/h1&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1393/problem/A&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;It&#39;s very easy, you can find the answer via merely trying 2 to 3 numbers. The answer is n/2+1. That&#39;s all.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        cout&amp;lt;&amp;lt;n/2+1&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;b-applejack-and-storages&#34;&gt;B. Applejack and Storages&lt;/h1&gt;
+&lt;h2 id=&#34;introduction-2&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1393/problem/B&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;analysis-2&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;First, we can record number of each kind of lumber. Then we can count and update the number of types of lumber which is more than 2, 4, 6 and 8. This whole procedure is O(n). Each time the data is renewed, we can use the record to judge that the requirement in the introduction is accpetable or not.&lt;/p&gt;
+&lt;h2 id=&#34;code-2&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int n;
+    cin&amp;gt;&amp;gt;n;
+    map&amp;lt;int,int&amp;gt; h;
+    int cnt2=0;
+    int cnt4=0;
+    int cnt6=0;
+    int cnt8=0; 
+    for(int i=1,tmp;i&amp;lt;=n;++i){
+        cin&amp;gt;&amp;gt;tmp;
+        h[tmp]++;
+        if(h[tmp]==2){
+            ++cnt2;
+        }
+        if(h[tmp]==4){
+            ++cnt4;
+        }
+        if(h[tmp]==6){
+            ++cnt6;
+        }
+        if(h[tmp]==8){
+            ++cnt8;
+        }
+    }
+    int q;
+    cin&amp;gt;&amp;gt;q;
+    while(q--){
+        char c;
+        int tmp;
+        cin&amp;gt;&amp;gt;c&amp;gt;&amp;gt;tmp;
+        if(c==&#39;+&#39;){
+            ++n;
+            ++h[tmp];
+            if(h[tmp]==2){
+                ++cnt2;
+            }
+            if(h[tmp]==4){
+                ++cnt4;
+            }
+            if(h[tmp]==6){
+                ++cnt6;
+            }
+            if(h[tmp]==8){
+                ++cnt8;
+            }
+        }
+        else{
+            --n;
+            --h[tmp];
+            if(h[tmp]==1){
+                --cnt2;
+            }
+            if(h[tmp]==3){
+                --cnt4;
+            }
+            if(h[tmp]==5){
+                --cnt6;
+            }
+            if(h[tmp]==7){
+                --cnt8;
+            }
+        }
+        if(n&amp;lt;8){
+            cout&amp;lt;&amp;lt;&amp;quot;NO&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        if(cnt8){
+            cout&amp;lt;&amp;lt;&amp;quot;YES&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        if(cnt6&amp;amp;&amp;amp;cnt2&amp;gt;=2){
+            cout&amp;lt;&amp;lt;&amp;quot;YES&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        if(cnt4&amp;gt;=2){
+            cout&amp;lt;&amp;lt;&amp;quot;YES&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        if(cnt4&amp;amp;&amp;amp;cnt2&amp;gt;=3){
+            cout&amp;lt;&amp;lt;&amp;quot;YES&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        cout&amp;lt;&amp;lt;&amp;quot;NO&amp;quot;&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;c-pinkie-pie-eats-patty-cakes&#34;&gt;C. Pinkie Pie Eats Patty-cakes&lt;/h1&gt;
+&lt;h2 id=&#34;introduction-3&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1393/problem/C&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;analysis-3&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;At the first glance, we can judge that the answer of this question is linear. It means that there must exist a value that any value lower than it is acceptable and any value higher than it is not acceptable. So the value is the answer we look for. What&#39;s more, the range of answer can up to 2*10^5. Large scale, linear answer, which kind of algorithm or data structure can match these features? Of course, the BINARY SEARCH. It is one of my favourite algorithm and also the first algorithm I learned formally.  With a check function, you can locate an answer in logn time complexity. But how to design the check algorithm? We can use the GREEK strategy. At a specific position, choose the legal type of the cake which has the greatest number. In detail,  we can use SET to implement it. So, the whole time complexity of the problem is O(nlogn), which is acceptable.&lt;/p&gt;
+&lt;h2 id=&#34;code-3&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define LL long long
+using namespace std;
+vector&amp;lt;int&amp;gt; a;
+int n;
+bool check(int x){
+    map&amp;lt;int,int&amp;gt; cnt;
+    for(auto &amp;amp;i:a){
+        ++cnt[i];
+    }
+    vector&amp;lt;int&amp;gt; b;
+    set&amp;lt;pair&amp;lt;int,int&amp;gt;,greater&amp;lt;pair&amp;lt;int,int&amp;gt;&amp;gt;&amp;gt; s;
+    for(int i=1;i&amp;lt;=n;i++){
+        if(cnt[i]){
+            s.insert({cnt[i],i});         
+        }
+    }
+    for(int i=0;i&amp;lt;n;++i){
+        if(i&amp;gt;x&amp;amp;&amp;amp;cnt[b[i-x-1]]){
+            s.insert({cnt[b[i-x-1]],b[i-x-1]});
+        }
+        if(s.empty()){
+            return 0;
+        }
+        b.push_back(s.begin()-&amp;gt;second);
+        s.erase(s.begin());
+        --cnt[b.back()];
+    }
+    return 1;
+}
+int binary_search(int l,int r){
+    if(l==r){
+        return l;
+    }
+    int mid=(l+r)/2+1;
+    if(check(mid)){
+        return binary_search(mid,r);
+    }
+    else{
+        return binary_search(l,mid-1);
+    }
+}
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        cin&amp;gt;&amp;gt;n;
+        a=vector&amp;lt;int&amp;gt;(n);
+        for(auto &amp;amp;i:a){
+            cin&amp;gt;&amp;gt;i;     
+        }
+        cout&amp;lt;&amp;lt;binary_search(0,n)&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Codeforces Round #662 Div2 retrospect</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/BKt7ppc1X/"" data-c="
+          &lt;h2 id=&#34;first-here-is-my-score-and-rate&#34;&gt;First, here is my score and rate:&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1596807580878.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;a-remove-smallest&#34;&gt;A. Remove Smallest&lt;/h2&gt;
+&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1399/problem/A&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;analysis&#34;&gt;Analysis&lt;/h3&gt;
+&lt;p&gt;It&#39;s not hard to find that the answer of the question is not related to the order of the array a[]. The critical fact is whether there exist a gap border than 1. To check it, we can sort the array and list it. Due to the sort function, the time complexity of the solution is O(nlogn), which is acceptable.&lt;/p&gt;
+&lt;h3 id=&#34;code&#34;&gt;Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        int a[100];
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;a[i];
+        }
+        if(n==1){
+            cout&amp;lt;&amp;lt;&amp;quot;Yes&amp;quot;&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        sort(a+1,a+1+n);
+        int ans=1;
+        for(int i=1;i&amp;lt;=n-1;++i){
+            if(a[i+1]-a[i]&amp;gt;1){
+                ans=0;
+                break;
+            }
+        }
+        if(ans){
+            cout&amp;lt;&amp;lt;&amp;quot;Yes&amp;quot;&amp;lt;&amp;lt;endl;
+        }
+        else{
+            cout&amp;lt;&amp;lt;&amp;quot;No&amp;quot;&amp;lt;&amp;lt;endl;
+        }
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;b-gifts-fixing&#34;&gt;B. Gifts Fixing&lt;/h2&gt;
+&lt;h3 id=&#34;introduction-2&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1399/problem/B&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;analysis-2&#34;&gt;Analysis&lt;/h3&gt;
+&lt;p&gt;First, we can use c[i] and o[i] to describe the number of candies and oranges in each gift. According to the description, we can only decrease c[i] and o[i]but not increase them. So it is clear that in the end, the number of candies/oranges will be the smallest one in the initial numbers. Let&#39;s call them min_c and min_o. As the result, the answer is sum(max(c[i]-min_c,o[i]-min_o))(i&amp;gt;=1&amp;amp;&amp;amp;i&amp;lt;=n)&lt;/p&gt;
+&lt;h3 id=&#34;code-2&#34;&gt;Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        int c[100];
+        int o[100];
+        cin&amp;gt;&amp;gt;n;
+        int minc=1e9+1;
+        int mino=1e9+1;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;c[i];
+            minc=min(minc,c[i]);
+        }
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;o[i];
+            mino=min(mino,o[i]);
+        }
+        long long ans=0;
+        for(int i=1;i&amp;lt;=n;++i){
+            ans+=max(c[i]-minc,o[i]-mino);
+        }
+        cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;c-boats-competition&#34;&gt;C. Boats Competition&lt;/h2&gt;
+&lt;h3 id=&#34;introduction-3&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1399/problem/C&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;analysis-3&#34;&gt;Analysis&lt;/h3&gt;
+&lt;p&gt;According to the description, it is not hard to find that the maximum of s is 100. So to each data, we try s from 0 to 100, and record the answer. To a specific s, how we can calculate the maximum number of teams? We can use a map to record all the weights, and to each person, we find whether there exist another one to match it. The total time complexity is O(n).&lt;/p&gt;
+&lt;h3 id=&#34;code-3&#34;&gt;Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        int w[100];
+        map&amp;lt;int,int&amp;gt; h;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;w[i];
+            ++h[w[i]];
+        }
+        if(n==1){
+            cout&amp;lt;&amp;lt;0&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        if(n==2){
+            cout&amp;lt;&amp;lt;1&amp;lt;&amp;lt;endl;
+            continue;
+        }
+        int ans=-1;
+        for(int i=1;i&amp;lt;=101;++i){
+            int cnt=0;
+            map&amp;lt;int,int&amp;gt; p=h;
+            for(int j=1;j&amp;lt;=n;++j){
+                if(i-w[j]==w[j]&amp;amp;&amp;amp;p[w[j]]&amp;lt;=1){
+                    continue;
+                }
+                if(p[w[j]]==0||p[i-w[j]]==0){
+                    continue;
+                }
+                --p[w[j]];
+                --p[i-w[j]];
+                ++cnt;
+            }
+            ans=max(ans,cnt);
+        }
+        cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;d-binary-string-to-subsequences&#34;&gt;D. Binary String To Subsequences&lt;/h2&gt;
+&lt;h3 id=&#34;introduction-4&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1399/problem/D&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;analysis-4&#34;&gt;Analysis&lt;/h3&gt;
+&lt;p&gt;In the problem, we do not really cares the body of each subsequence, instead, the end character is the most important to us. When we meet a &#39;0&#39;,  we need to add it to a &#39;1&#39;-end-subsequence and when we meeet a &#39;1&#39;, we need to add it to a &#39;0&#39;-end-subsequence. So we can use two chains to connect the id of &#39;1&#39;-end-subsequences and &#39;0&#39;-end-subquences. The total time complexity of the solution is O(n).&lt;/p&gt;
+&lt;h3 id=&#34;code-4&#34;&gt;Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    while(T--){
+        int n;
+        cin&amp;gt;&amp;gt;n;
+        string s;
+        cin&amp;gt;&amp;gt;s;
+        int pre[200010];
+        int headz=0;
+        int heado=0;
+        int ans=0;
+        int bl[200010];
+        for(int i=0,len=s.length();i&amp;lt;len;++i){
+            if(s[i]-&#39;0&#39;==0){
+                if(heado==0){
+                    ++ans;
+                    pre[ans]=headz;
+                    headz=ans;
+                    bl[i]=ans;
+                }
+                else{
+                    bl[i]=heado;
+                    int tmp=pre[heado];
+                    pre[heado]=headz;
+                    headz=heado;
+                    heado=tmp;
+                }
+            }
+            else{
+                if(headz==0){
+                    ++ans;
+                    pre[ans]=heado;
+                    heado=ans;
+                    bl[i]=ans;
+                }
+                else{
+                    bl[i]=headz;
+                    int tmp=pre[headz];
+                    pre[headz]=heado;
+                    heado=headz;
+                    headz=tmp;
+                }
+            }
+        }
+        cout&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+        for(int i=0;i&amp;lt;n;++i){
+            cout&amp;lt;&amp;lt;bl[i]&amp;lt;&amp;lt;&#39; &#39;;
+        }
+        cout&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Codeforces Round #661 Div3 retrospect</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/cJ22lJu5P/"" data-c="
+          &lt;h2 id=&#34;official-link&#34;&gt;Official Link&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff08/0000000000387174&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;An alien has just landed on Earth, and really likes our music. Lucky for us.&lt;/p&gt;
+&lt;p&gt;The alien would like to bring home its favorite human songs, but it only has a very strange instrument to do it with: a piano with just 4 keys of different pitches.&lt;/p&gt;
+&lt;p&gt;The alien converts a song by writing it down as a series of keys on the alien piano. Obviously, this piano will not be able to convert our songs completely, as our songs tend to have many more than 4 pitches.&lt;/p&gt;
+&lt;p&gt;The alien will settle for converting our songs with the following rules instead:&lt;/p&gt;
+&lt;p&gt;The first note in our song can be converted to any key on the alien piano.&lt;/p&gt;
+&lt;p&gt;For every note after,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;if its pitch is higher than the previous note, it should be converted into a higher-pitched key than the previous note&#39;s conversion;&lt;/li&gt;
+&lt;li&gt;if lower, it should be converted into a lower-pitched key than the previous note&#39;s conversion;&lt;/li&gt;
+&lt;li&gt;if exactly identical, it should be converted into the same key as the previous note&#39;s conversion.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note: two notes with the same pitch do not need to be converted into the same key if they are not adjacent.&lt;/p&gt;
+&lt;p&gt;What the alien wants to know is: how often will it have to break its rules when converting a particular song?&lt;/p&gt;
+&lt;p&gt;To elaborate, let us describe one of our songs as having K notes. The first note we describe as &amp;quot;note 1&amp;quot;, the second note &amp;quot;note 2&amp;quot;, and the last note &amp;quot;note K.&amp;quot;&lt;br&gt;
+So note 2 comes immediately after note 1.&lt;br&gt;
+Now if note 2 is lower than note 1 in our version of the song, yet converted to an equally-pitched or lower-pitched key (relative to note 2&#39;s conversion) in the alien&#39;s version of the song, then we consider that a single rule break.&lt;br&gt;
+For each test case, return the minimum amount of times the alien must necessarily break one of its rules in converting that song.&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;The first line of the input gives the number of test cases, T. T test cases follow.&lt;br&gt;
+Each test case consists of two lines.&lt;br&gt;
+The first line consists of a single integer, K.&lt;br&gt;
+The second line consists of K space-separated integers, A1, A2 ... AK, where Ai refers to the pitch of the i-th note for this test case.&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the minimum number of times that particular test case will require the alien to break its own rules during the conversion process.&lt;/p&gt;
+&lt;h2 id=&#34;limits&#34;&gt;Limits&lt;/h2&gt;
+&lt;p&gt;Memory limit: 1GB.&lt;br&gt;
+1 ≤ T ≤ 100.&lt;br&gt;
+1 ≤ Ai ≤ 106.&lt;/p&gt;
+&lt;h3 id=&#34;test-set-1&#34;&gt;Test set 1&lt;/h3&gt;
+&lt;p&gt;Time limit: 20 seconds.&lt;br&gt;
+1 ≤ K ≤ 10.&lt;/p&gt;
+&lt;h3 id=&#34;test-set-2&#34;&gt;Test set 2&lt;/h3&gt;
+&lt;p&gt;Time limit: 40 seconds.&lt;br&gt;
+1 ≤ K ≤ 104.&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;O(4^K) Solution: We can generate all possible conversions and choose the one with the smallest number of violations. To a fixed K, there exist 4^K solutions, so the time complexity is O(4^K).&lt;/li&gt;
+&lt;li&gt;O(K) Solution1: When I was finishing this problem, I first came up with DP--&lt;a href=&#34;https://en.wikipedia.org/wiki/Dynamic_programming&#34;&gt;Dynamic programming&lt;/a&gt;. We can consider dp[i][j] as the smallest number of violation when you choose conversion j at the position of i. So dp[i][j] equals to min(dp[i-1][k]+(violate the rule?1:0)). Because we just need one layer of loop, so the time complexity is O(K).&lt;/li&gt;
+&lt;li&gt;O(K) Solution2: We can interpret the problem through this way: record the number of ascending or descending substrings which is longer than 4. We just need to make sure each element is ergodic.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;code-of-ok-solution-1&#34;&gt;Code of O(K) Solution 1:&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n;
+int a[10010];
+int dp[10010][6];
+void initialization(){
+    memset(a,0,sizeof a);
+    memset(dp,0,sizeof dp);
+    return;
+}
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    for(int cas=1;cas&amp;lt;=T;++cas){
+        initialization();
+        cin&amp;gt;&amp;gt;n;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;a[i];
+            if(i!=1&amp;amp;&amp;amp;a[i]==a[i-1]){
+                --i;
+                --n;
+            }
+        }
+        for(int i=1;i&amp;lt;=4;++i){
+            dp[1][i]=0;
+        }
+        for(int i=2;i&amp;lt;=n;++i){
+            for(int j=1;j&amp;lt;=4;++j){
+                dp[i][j]=2147483647;   
+                if(a[i]&amp;gt;a[i-1]){
+                    for(int k=1;k&amp;lt;=4;++k){
+                        if(k&amp;lt;j){
+                            dp[i][j]=min(dp[i][j],dp[i-1][k]);
+                        }
+                        else{
+                            dp[i][j]=min(dp[i][j],dp[i-1][k]+1);
+                        }
+                    }
+                }
+                else{
+                    for(int k=1;k&amp;lt;=4;++k){
+                        if(k&amp;gt;j){
+                            dp[i][j]=min(dp[i][j],dp[i-1][k]);
+                        }
+                        else{
+                            dp[i][j]=min(dp[i][j],dp[i-1][k]+1);
+                        }
+                    }
+                }
+            }
+        }
+        int ans=2147483647;
+        for(int i=1;i&amp;lt;=4;++i){
+            ans=min(ans,dp[n][i]);
+        }
+        cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;cas&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;code-of-ok-solution-2&#34;&gt;Code of O(K) Solution 2:&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    for(int cas=1;cas&amp;lt;=T;++cas){
+        cin&amp;gt;&amp;gt;n;
+        int now;
+        int pre;
+        int ans=0;
+        int upcnt=0;
+        int downcnt=0;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;now;
+            if(i==1||now==pre){
+                pre=now;
+                continue;
+            }
+            if(now&amp;gt;pre){
+                upcnt++;
+                downcnt=0;
+            }
+            else{
+                upcnt=0;
+                downcnt++;
+            }
+            if(upcnt&amp;gt;3||downcnt&amp;gt;3){
+                ++ans;
+                upcnt=0;
+                downcnt=0;
+            }
+            pre=now;
+        }
+        cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;cas&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Kick Start 2020 Round D T2 Alien Piano Analysis</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/76NaE9Spv/"" data-c="
+          &lt;h2 id=&#34;official-link&#34;&gt;Official Link&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff08/0000000000387171&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Isyana is given the number of visitors at her local theme park on N consecutive days. The number of visitors on the i-th day is Vi. A day is record breaking if it satisfies both of the following conditions:&lt;/p&gt;
+&lt;p&gt;The number of visitors on the day is strictly larger than the number of visitors on each of the previous days.&lt;/p&gt;
+&lt;p&gt;Either it is the last day, or the number of visitors on the day is strictly larger than the number of visitors on the following day.&lt;br&gt;
+Note that the very first day could be a record breaking day!&lt;/p&gt;
+&lt;p&gt;Please help Isyana find out the number of record breaking days.&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the integer N. The second line contains N integers. The i-th integer is Vi.&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of record breaking days.&lt;/p&gt;
+&lt;h2 id=&#34;limits&#34;&gt;Limits&lt;/h2&gt;
+&lt;p&gt;Time limit: 20 seconds per test set.&lt;br&gt;
+Memory limit: 1GB.&lt;br&gt;
+1 ≤ T ≤ 100.&lt;br&gt;
+0 ≤ Vi ≤ 2 × 105.&lt;/p&gt;
+&lt;h3 id=&#34;test-set-1&#34;&gt;Test set 1&lt;/h3&gt;
+&lt;p&gt;1 ≤ N ≤ 1000.&lt;/p&gt;
+&lt;h3 id=&#34;test-set-2&#34;&gt;Test set 2&lt;/h3&gt;
+&lt;p&gt;1 ≤ N ≤ 2 × 105 for at most 10 test cases.&lt;br&gt;
+For the remaining cases, 1 ≤ N ≤ 1000.&lt;/p&gt;
+&lt;h2 id=&#34;sample&#34;&gt;Sample&lt;/h2&gt;
+&lt;h3 id=&#34;input-2&#34;&gt;Input&lt;/h3&gt;
+&lt;p&gt;4&lt;/p&gt;
+&lt;p&gt;8&lt;/p&gt;
+&lt;p&gt;1 2 0 7 2 0 2 0&lt;/p&gt;
+&lt;p&gt;6&lt;/p&gt;
+&lt;p&gt;4 8 15 16 23 42&lt;/p&gt;
+&lt;p&gt;9&lt;/p&gt;
+&lt;p&gt;3 1 4 1 5 9 2 6 5&lt;/p&gt;
+&lt;p&gt;6&lt;/p&gt;
+&lt;p&gt;9 9 9 9 9 9&lt;/p&gt;
+&lt;h3 id=&#34;output-2&#34;&gt;Output&lt;/h3&gt;
+&lt;p&gt;Case #1: 2&lt;/p&gt;
+&lt;p&gt;Case #2: 1&lt;/p&gt;
+&lt;p&gt;Case #3: 3&lt;/p&gt;
+&lt;p&gt;Case #4: 0&lt;/p&gt;
+&lt;h3 id=&#34;explanation&#34;&gt;Explanation&lt;/h3&gt;
+&lt;p&gt;In Sample Case #1, the bold and underlined numbers in the following represent the record breaking days: 1 2 0 7 2 0 2 0.&lt;/p&gt;
+&lt;p&gt;In Sample Case #2, only the last day is a record breaking day.&lt;/p&gt;
+&lt;p&gt;In Sample Case #3, the first, the third, and the sixth days are record breaking days.&lt;/p&gt;
+&lt;p&gt;In Sample Case #4, there is no record breaking day.&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;O(n^2) Solution: To every V[i], we can check all the previous numbers to verify whether it breaks the record or not. So it is an O(n^2) Solution,  it is enough to pass the time set one.&lt;/li&gt;
+&lt;li&gt;O(n) Solution: We can list all v[i] and use a varition RECORD to record the existed record(???). When a v[i] break the record, it satisfy the first requirement, thus, we just need to check whether it satisfies the second requirement or not. The total time complexity of the solution is O(n), it is enough to pass the time set two.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;code-of-the-best-solution&#34;&gt;Code of the best solution&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n;
+int v[200010];
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    for(int cas=1;cas&amp;lt;=T;++cas){
+        cin&amp;gt;&amp;gt;n;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;v[i];
+        } 
+        int maxn=-1;
+        int ans=0;
+        for(int i=1;i&amp;lt;=n;++i){
+            if(v[i]&amp;gt;maxn){
+                if(i==n||v[i]&amp;gt;v[i+1]){
+                    ++ans;
+                }
+                maxn=v[i];
+            }
+        }
+        cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;cas&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Kick Start 2020 Round D T1 Record Breaker Analysis</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/r6whUkCyg/"" data-c="
+          &lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Cristobal has an array of N (possibly negative) integers. The i-th integer in his array is Ai. A contiguous non-empty subarray of Cristobal&#39;s array is perfect if its total sum is a perfect square. A perfect square is a number that is the product of a non-negative integer with itself. For example, the first five perfect squares are 0, 1, 4, 9 and 16.&lt;/p&gt;
+&lt;p&gt;How many subarrays are perfect? Two subarrays are different if they start or end at different indices in the array, even if the subarrays contain the same values in the same order.&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;The first line of the input gives the number of test cases, T. T test cases follow. The first line of each test case contains the integer N. The second line contains N integers describing Cristobal&#39;s array. The i-th integer is Ai.&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of perfect subarrays.&lt;/p&gt;
+&lt;h2 id=&#34;limits&#34;&gt;Limits&lt;/h2&gt;
+&lt;p&gt;Memory limit: 1GB.&lt;br&gt;
+1 ≤ T ≤ 100.&lt;br&gt;
+-100 ≤ Ai ≤ 100, for all i.&lt;/p&gt;
+&lt;h3 id=&#34;test-set-1&#34;&gt;Test set 1&lt;/h3&gt;
+&lt;p&gt;Time limit: 20 seconds.&lt;br&gt;
+1 ≤ N ≤ 1000.&lt;/p&gt;
+&lt;h3 id=&#34;test-set-2&#34;&gt;Test set 2&lt;/h3&gt;
+&lt;p&gt;Time limit: 30 seconds.&lt;br&gt;
+For up to 5 cases, 1 ≤ N ≤ 105.&lt;br&gt;
+For the remaining cases, 1 ≤ N ≤ 1000.&lt;/p&gt;
+&lt;h2 id=&#34;sample&#34;&gt;Sample&lt;/h2&gt;
+&lt;h3 id=&#34;input-2&#34;&gt;Input&lt;/h3&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;2 2 6&lt;/p&gt;
+&lt;p&gt;5&lt;/p&gt;
+&lt;p&gt;30 30 9 1 30&lt;/p&gt;
+&lt;p&gt;4&lt;/p&gt;
+&lt;p&gt;4 0 0 16&lt;/p&gt;
+&lt;h3 id=&#34;output-2&#34;&gt;Output&lt;/h3&gt;
+&lt;p&gt;Case #1: 1&lt;/p&gt;
+&lt;p&gt;Case #2: 3&lt;/p&gt;
+&lt;p&gt;Case #3: 9&lt;/p&gt;
+&lt;h3 id=&#34;explanation&#34;&gt;Explanation&lt;/h3&gt;
+&lt;p&gt;In sample case #1, there is one perfect subarray: [2 2] whose sum is 22.&lt;/p&gt;
+&lt;p&gt;In sample case #2, there are three perfect subarrays:&lt;br&gt;
+[9], whose total sum is 32.&lt;br&gt;
+[1], whose total sum is 12.&lt;br&gt;
+[30 30 9 1 30], whose total sum is 102.&lt;/p&gt;
+&lt;p&gt;In sample case #3, there are nine perfect subarrays:&lt;br&gt;
+[4], whose total sum is 22.&lt;br&gt;
+[4 0], whose total sum is 22.&lt;br&gt;
+[4 0 0], whose total sum is 22.&lt;br&gt;
+[0], whose total sum is 02.&lt;br&gt;
+[0 0], whose total sum is 02.&lt;br&gt;
+[0 0 16], whose total sum is 42.&lt;br&gt;
+[0], whose total sum is 02.&lt;br&gt;
+[0 16], whose total sum is 42.&lt;br&gt;
+[16], whose total sum is 42.&lt;/p&gt;
+&lt;h3 id=&#34;note&#34;&gt;Note&lt;/h3&gt;
+&lt;p&gt;We do not recommend using interpreted/slower languages for the test set 2 of this problem.&lt;/p&gt;
+&lt;h2 id=&#34;anaylsis&#34;&gt;Anaylsis&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;O(n^2) Solution: Easily, we only need to check every subarray in it. In an n-length array, there exist n*(n+1)/2 subarrays. So the time complexity of this algorithm is O(n^2).&lt;/li&gt;
+&lt;li&gt;O(n&lt;em&gt;sqrt(1e7) to n&lt;/em&gt;logn*sqrt(1e7)) Solution: First, we use sum[] to record the prefix sum of a[]. So the problem becomes: how many sum[i]-sum[j-1]=x^2(i&amp;gt;=j &amp;amp;&amp;amp; x is an integer). This formula equals to sum[j-1]=sum[i]-x^2. So, all we need to do is to enumerate all possible x and check how many j meet the requirement. To implement it, we can use a hash table to record the number of exist sum[j], which has a O(1) time complexity. This algorithm&#39;s time complexity can be accepted narrowly.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;code-of-the-best-solution&#34;&gt;Code of the best Solution&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+#define BASE 15000000
+#define LL long long
+using namespace std;
+int n;
+int a[100010];
+LL h[70000010];
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    for(int cas=1;cas&amp;lt;=T;++cas){
+        memset(h,0,sizeof h);
+        LL ans=0;
+        cin&amp;gt;&amp;gt;n;
+        h[BASE]=1;
+        a[0]=BASE;
+        for(int i=1;i&amp;lt;=n;++i){
+            cin&amp;gt;&amp;gt;a[i];
+            a[i]+=a[i-1];
+        }
+        int minn=BASE;
+        for(int i=1;i&amp;lt;=n;++i){
+            for(int j=0;j*j&amp;lt;=10000000;++j){
+                if(a[i]-j*j&amp;lt;minn){
+                    break;
+                }
+                ans+=h[a[i]-j*j]; 
+            }
+            minn=min(a[i],minn);
+            h[a[i]]++;
+        }
+        cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;cas&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ps&#34;&gt;P.S.&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;If you use C++ to solve this problem, do not use map, which will add a logn to your time complexity.&lt;/li&gt;
+&lt;li&gt;You should use long long to save the answer.&lt;/li&gt;
+&lt;li&gt;Do not use Python.&lt;/li&gt;
+&lt;/ul&gt;
+">Kick Start 2020 Round C T3 Perfect Subarray Analysis</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/o_E2mKnup/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Many times, the sort of our works are fixed in some degrees: you may be able to change the order of washing your face and brushing your teeth, but you cannot change the order of getting out and dressing up. Yes, many things have a comparative order, which means that they are neither totally fixed nor sheer random. So it is very difficult to determine the sort by normal ways, as a result, here comes the Topological Sort.&lt;/p&gt;
+&lt;h2 id=&#34;defination&#34;&gt;Defination&lt;/h2&gt;
+&lt;p&gt;Topological Sort is linear sort of a Directed Acyclic Graph(DAG). The DAG is often used to represent a complicated dependancy relationship.&lt;/p&gt;
+&lt;h2 id=&#34;implementation&#34;&gt;Implementation&lt;/h2&gt;
+&lt;p&gt;We can use either DFS or BFS to solve it. But the core mechanisms of these two algorithms are same -- find the 0-in-degree vertaxs, add them to the answer, eliminate all the edges from it, and then repeats it until there is no 0-in-degree vertaxs.&lt;/p&gt;
+&lt;h3 id=&#34;dfs-code&#34;&gt;DFS code:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n;
+int m;
+vector&amp;lt;int&amp;gt; mp[200];
+int incnt[200];
+vector&amp;lt;int&amp;gt; ans;
+void Topo(int now){
+    ans.push_back(now);
+    for(int i=0;i&amp;lt;mp[now].size();++i){
+        int y=mp[now][i];
+        --incnt[y];
+        if(incnt[y]==0){
+            Topo(y);
+        }
+    }
+    return;
+}
+int main(){
+    cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m;
+    for(int i=1;i&amp;lt;=m;++i){
+        int x;
+        int y;
+        cin&amp;gt;&amp;gt;x&amp;gt;&amp;gt;y;
+        mp[x].push_back(y);
+        incnt[y]++;
+    }
+    for(int i=1;i&amp;lt;=n;++i){
+        mp[0].push_back(i);
+        incnt[i]++;
+    }
+    Topo(0);
+    for(int i=1;i&amp;lt;ans.size();++i){
+        cout&amp;lt;&amp;lt;ans[i]&amp;lt;&amp;lt;&#39; &#39;;
+    }
+    cout&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;bfs-code&#34;&gt;BFS code:&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n;
+int m;
+vector&amp;lt;int&amp;gt; mp[200];
+vector&amp;lt;int&amp;gt; ans;
+int incnt[200];
+void Topo(){
+    queue&amp;lt;int&amp;gt; q;
+    q.push(0);
+    while(!q.empty()){
+        int x=q.front();
+        ans.push_back(x);
+        q.pop();
+        int y;
+        for(int i=0;i&amp;lt;mp[x].size();++i){
+            y=mp[x][i];
+            incnt[y]--;
+            if(incnt[y]==0){
+                q.push(y);
+            }
+        }
+    }
+    return;
+}
+int main(){
+    cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m;
+    for(int i=1;i&amp;lt;=m;++i){
+        int x;
+        int y;
+        cin&amp;gt;&amp;gt;x&amp;gt;&amp;gt;y;
+        mp[x].push_back(y);
+        incnt[y]++;
+    }
+    for(int i=1;i&amp;lt;=n;++i){
+        mp[0].push_back(i);
+        incnt[i]++;
+    }
+    Topo();
+    for(int i=1;i&amp;lt;ans.size();++i){
+        cout&amp;lt;&amp;lt;ans[i]&amp;lt;&amp;lt;&#39; &#39;;
+    }
+    cout&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;in-the-end&#34;&gt;In the end&lt;/h2&gt;
+&lt;p&gt;Topological sort is one of the basic graph algorithms. I will appreciate you if you think this blog is beneficial. Moreover, &lt;a href=&#34;https://dawn-cmd.github.io/kick-start-2020-round-c-t2-stable_wall-analysis/&#34;&gt;this problem&lt;/a&gt; can serve as a good case in point.&lt;/p&gt;
+">Topological Sort</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/aQhyHFZwS/"" data-c="
+          &lt;ul&gt;
+&lt;li&gt;&#39;s &lt;a href=&#34;https://github.com/dawn-cmd&#34;&gt;github account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&#39;s &lt;a href=&#34;https://codeforces.com/profile/knight5207&#34;&gt;Codeforces account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&#39;s&lt;a href=&#34;https://leetcode-cn.com/u/ezo/&#34;&gt;LeetCode account(Chinese Station)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&#39;s number: +8613376173601&lt;/li&gt;
+&lt;/ul&gt;
+">Ezo</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/kick-start-2020-round-c-t1-countdown-analysis/"" data-c="
+          &lt;h2 id=&#34;official-link&#34;&gt;Official link&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff43/00000000003380d2&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Avery has an array of N positive integers. The i-th integer of the array is Ai.&lt;/p&gt;
+&lt;p&gt;A contiguous subarray is an m-countdown if it is of length m and contains the integers m, m-1, m-2, ..., 2, 1 in that order. For example, [3, 2, 1] is a 3-countdown.&lt;/p&gt;
+&lt;p&gt;Can you help Avery count the number of K-countdowns in her array?&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the integers N and K. The second line contains N integers. The i-th integer is Ai.&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of K-countdowns in her array.&lt;/p&gt;
+&lt;h2 id=&#34;limits&#34;&gt;Limits&lt;/h2&gt;
+&lt;p&gt;Time limit: 20 seconds per test set.&lt;br&gt;
+Memory limit: 1GB.&lt;br&gt;
+1 ≤ T ≤ 100.&lt;br&gt;
+2 ≤ K ≤ N.&lt;br&gt;
+1 ≤ Ai ≤ 2 × 10^5, for all i.&lt;/p&gt;
+&lt;h2 id=&#34;test-set-1&#34;&gt;Test set 1&lt;/h2&gt;
+&lt;p&gt;2 ≤ N ≤ 1000.&lt;/p&gt;
+&lt;h2 id=&#34;test-set-2&#34;&gt;Test set 2&lt;/h2&gt;
+&lt;p&gt;2 ≤ N ≤ 2 × 10^5 for at most 10 test cases.&lt;br&gt;
+For the remaining cases, 2 ≤ N ≤ 1000.&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;O(nk) solution:for each A[i to i+k], we can check it whether meets the requirement in the problem or not.&lt;/li&gt;
+&lt;li&gt;O(n) solution: We can set a variation &amp;quot;head&amp;quot;. At first, head equals to k. If A[i] equals to head, head minus one, otherwise reset head. When head equals to 0, we find a countdown, and then we need to add it to the answer and reset head.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;code-of-the-best-solution&#34;&gt;Code of the best solution&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n;
+int k;
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    for(int P=1;P&amp;lt;=T;++P){
+        cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;k;
+        int head=k;
+        int ans=0;
+        for(int i=1;i&amp;lt;=n;++i){
+            int now;
+            cin&amp;gt;&amp;gt;now;
+            if(now==head){
+                --head;
+            }
+            else{
+                head=now==k?k-1:k;
+            }
+            if(head==0){
+                ++ans;
+                head=k;
+            }
+        }
+        cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;P&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ps&#34;&gt;P.S.&lt;/h2&gt;
+&lt;p&gt;When you reset head, checking adjacent number is necessary.&amp;gt;line 19&lt;/p&gt;
+">Kick Start 2020 Round C T1 Countdown Analysis</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/kick-start-2020-round-c-t2-stable_wall-analysis/"" data-c="
+          &lt;!-- more --&gt;
+&lt;h2 id=&#34;before-the-passage&#34;&gt;Before the passage&lt;/h2&gt;
+&lt;p&gt;I think the data of this problem should be strengthened. Because of the weak data, many people can solve the problem via a very stupid way(&lt;s&gt;me&lt;/s&gt;). the details will be furnished in the following passage. However, the ratio of people who passed the problem is lower than the one in other contemporary rounds, it is unbelievable.&lt;/p&gt;
+&lt;h2 id=&#34;official-link&#34;&gt;Official link&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff43/00000000003379bb&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Apollo is playing a game involving polyominos. A polyomino is a shape made by joining together one or more squares edge to edge to form a single connected shape. The game involves combining N polyominos into a single rectangular shape without any holes. Each polyomino is labeled with a unique character from A to Z.&lt;/p&gt;
+&lt;p&gt;Apollo has finished the game and created a rectangular wall containing R rows and C columns. He took a picture and sent it to his friend Selene. Selene likes pictures of walls, but she likes them even more if they are stable walls. A wall is stable if it can be created by adding polyominos one at a time to the wall so that each polyomino is always supported. A polyomino is supported if each of its squares is either on the ground, or has another square below it.&lt;/p&gt;
+&lt;p&gt;Apollo would like to check if his wall is stable and if it is, prove that fact to Selene by telling her the order in which he added the polyominos.&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;The first line of the input gives the number of test cases, T. T test cases follow. Each test case begins with a line containing the two integers R and C. Then, R lines follow, describing the wall from top to bottom. Each line contains a string of C uppercase characters from A to Z, describing that row of the wall.&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is a string of N uppercase characters, describing the order in which he built them. If there is more than one such order, output any of them. If the wall is not stable, output -1 instead.&lt;/p&gt;
+&lt;h2 id=&#34;limits&#34;&gt;Limits&lt;/h2&gt;
+&lt;p&gt;Time limit: 20 seconds per test set.&lt;br&gt;
+Memory limit: 1GB.&lt;br&gt;
+1 ≤ T ≤ 100.&lt;br&gt;
+1 ≤ R ≤ 30.&lt;br&gt;
+1 ≤ C ≤ 30.&lt;br&gt;
+No two polyominos will be labeled with the same letter.&lt;br&gt;
+The input is guaranteed to be valid according to the rules described in the statement.&lt;/p&gt;
+&lt;h2 id=&#34;test-set-1&#34;&gt;Test set 1&lt;/h2&gt;
+&lt;p&gt;1 ≤ N ≤ 5.&lt;/p&gt;
+&lt;h2 id=&#34;test-set-2&#34;&gt;Test set 2&lt;/h2&gt;
+&lt;p&gt;1 ≤ N ≤ 26.&lt;/p&gt;
+&lt;h2 id=&#34;sample&#34;&gt;Sample&lt;/h2&gt;
+&lt;h3 id=&#34;input-2&#34;&gt;Input&lt;/h3&gt;
+&lt;p&gt;4&lt;/p&gt;
+&lt;p&gt;4 6&lt;/p&gt;
+&lt;p&gt;ZOAAMM&lt;/p&gt;
+&lt;p&gt;ZOAOMM&lt;/p&gt;
+&lt;p&gt;ZOOOOM&lt;/p&gt;
+&lt;p&gt;ZZZZOM&lt;/p&gt;
+&lt;p&gt;4 4&lt;/p&gt;
+&lt;p&gt;XXOO&lt;/p&gt;
+&lt;p&gt;XFFO&lt;/p&gt;
+&lt;p&gt;XFXO&lt;/p&gt;
+&lt;p&gt;XXXO&lt;/p&gt;
+&lt;p&gt;5 3&lt;/p&gt;
+&lt;p&gt;XXX&lt;/p&gt;
+&lt;p&gt;XPX&lt;/p&gt;
+&lt;p&gt;XXX&lt;/p&gt;
+&lt;p&gt;XJX&lt;/p&gt;
+&lt;p&gt;XXX&lt;/p&gt;
+&lt;p&gt;3 10&lt;/p&gt;
+&lt;p&gt;AAABBCCDDE&lt;/p&gt;
+&lt;p&gt;AABBCCDDEE&lt;/p&gt;
+&lt;p&gt;AABBCCDDEE&lt;/p&gt;
+&lt;h3 id=&#34;output-2&#34;&gt;Output&lt;/h3&gt;
+&lt;p&gt;Case #1: ZOAM&lt;/p&gt;
+&lt;p&gt;Case #2: -1&lt;/p&gt;
+&lt;p&gt;Case #3: -1&lt;/p&gt;
+&lt;p&gt;Case #4: EDCBA&lt;/p&gt;
+&lt;h3 id=&#34;explainatoin&#34;&gt;Explainatoin&lt;/h3&gt;
+&lt;p&gt;In sample case #1, note that ZOMA is another possible answer.&lt;/p&gt;
+&lt;p&gt;In sample case #2 and sample case #3, the wall is not stable, so the answer is -1.&lt;/p&gt;
+&lt;p&gt;In sample case #4, the only possible answer is EDCBA.&lt;/p&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;O(n!) solution:We can list all the possible order that the polyominos being set in and then check them one by one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;O(n to n!) solution:&lt;s&gt;this is the stupid way&lt;/s&gt;When I was solving the problem, I used DFS technique(Deep-First-Search) to address it. Specifically, I imitated the process of setting polyomino: I determined which polyomino I should put one by one, when there exist problems, we back to the previous step and try another way. Because N is specially small, this solution can be accepted narrowly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;O(R * C) solution:So this is the best solution. Literally, when a polyomino is totally or partly above another polyomino, the upper one should be set after the lower one restrictly. When it happpens, we can consider these two polyominos as two vertexs, and build an edge directed from the lower one to the upper one. We proceed all the polyominos by this way, in the end, we can get a graph. All we need to do is to find a topological sort of the graph. About topological sort, if you do not know it very well, &lt;a href=&#34;https://dawn-cmd.github.io/o_E2mKnup/&#34;&gt;this passage&lt;/a&gt; may help you.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;code-of-my-solution&#34;&gt;Code of my solution&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int T;
+int r;
+int c;
+string ans;
+string mp[31];
+string lit;
+map&amp;lt;char,int&amp;gt; h;
+bool check(){
+    for(int i=1;i&amp;lt;r;++i){
+        for(int j=0;j&amp;lt;c;++j){
+            if(h[mp[i][j]]==0&amp;amp;&amp;amp;h[mp[i-1][j]]==1){
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+void dfs(string now){
+    if(now.length()==lit.length()){
+        ans=now;
+        return;
+    }
+    if(ans!=&amp;quot;-1&amp;quot;){
+        return;
+    }
+    for(int i=0;i&amp;lt;lit.length();++i){
+        if(h[lit[i]]==1){
+            continue;
+        }
+        h[lit[i]]=1;
+        if(check()){
+            dfs(now+lit[i]);
+        }
+        h[lit[i]]=0; 
+    } 
+}
+int main(){
+    cin&amp;gt;&amp;gt;T;
+    for(int P=1;P&amp;lt;=T;++P){
+        cin&amp;gt;&amp;gt;r&amp;gt;&amp;gt;c;
+        lit=&amp;quot;&amp;quot;;
+        h.erase(h.begin(),h.end());
+        for(int i=0;i&amp;lt;r;++i){
+            cin&amp;gt;&amp;gt;mp[i];
+            for(int j=0;j&amp;lt;c;++j){
+                if(h[mp[i][j]]==0){
+                    h[mp[i][j]]=1;
+                    lit+=mp[i][j];
+                }
+            }
+        }
+        h.erase(h.begin(),h.end());
+        ans=&amp;quot;-1&amp;quot;;
+        dfs(&amp;quot;&amp;quot;);
+        cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;P&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;code-of-the-best-solution&#34;&gt;Code of the best solution&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int r;
+int c;
+string mp[1000];
+vector&amp;lt;int&amp;gt; graph[1000];
+int incnt[1000];
+int n;
+string ans;
+map&amp;lt;char,int&amp;gt; h;
+void topo(){
+    queue&amp;lt;int&amp;gt; q;
+    for(int i=1;i&amp;lt;=30;++i){
+        if(incnt[i]==0&amp;amp;&amp;amp;h[(char)(i+&#39;A&#39;-1)]){
+            q.push(i);
+        }
+    }
+    while(!q.empty()){
+        int x=q.front();
+        ans+=(char)(x+&#39;A&#39;-1);
+        q.pop();
+        for(int i=0;i&amp;lt;graph[x].size();++i){
+            int y=graph[x][i];
+            incnt[y]--;
+            if(incnt[y]==0){
+                q.push(y);
+            }
+        }
+    }
+    return;
+}
+int main(){
+    int T;
+    cin&amp;gt;&amp;gt;T;
+    for(int P=1;P&amp;lt;=T;++P){
+        cin&amp;gt;&amp;gt;r&amp;gt;&amp;gt;c;
+        n=0;
+        h.erase(h.begin(),h.end());
+        for(int i=0;i&amp;lt;r;++i){
+            cin&amp;gt;&amp;gt;mp[i];
+            for(int j=0;j&amp;lt;c;++j){
+                if(h[mp[i][j]]==0){
+                    h[mp[i][j]]=1;
+                    ++n;
+                }
+            }
+        }
+        memset(incnt,0,sizeof incnt);
+        map&amp;lt;pair&amp;lt;int,int&amp;gt;,int&amp;gt; he;
+        for(int i=1;i&amp;lt;=30;++i){
+            graph[i].clear();
+        }
+        for(int i=1;i&amp;lt;r;++i){
+            for(int j=0;j&amp;lt;c;++j){
+                if(mp[i][j]!=mp[i-1][j]){
+                    int x=mp[i][j]-&#39;A&#39;+1;
+                    int y=mp[i-1][j]-&#39;A&#39;+1;
+                    if(he[make_pair(x,y)]==0){
+                        graph[x].push_back(y);
+                        he[make_pair(x,y)]=1;
+                        ++incnt[y];
+                    } 
+                }
+            }
+        }
+        ans=&amp;quot;&amp;quot;;
+        topo();
+        if(ans.length()&amp;lt;n){
+            cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;P&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;&amp;quot;-1&amp;quot;&amp;lt;&amp;lt;endl;
+        }
+        else{
+            cout&amp;lt;&amp;lt;&amp;quot;Case #&amp;quot;&amp;lt;&amp;lt;P&amp;lt;&amp;lt;&amp;quot;: &amp;quot;&amp;lt;&amp;lt;ans&amp;lt;&amp;lt;endl;
+        }
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Kick Start 2020 Round C T2 Stable_Wall Analysis</a>
+      </div>
+      
+    </div>
+    <div class="page">
+      <div id="page_ul"></div>
+    </div>
+  </div>
+</div>
+<script>
+  !function () {
+    let searchMask = document.querySelector('#search_mask');
+    let result = document.querySelector('#result');
+    let items = document.querySelectorAll('.item');
+    let searchBox = document.querySelector('#search');
+    let statCount = document.querySelector('#stat_count');
+    let statTimes = document.querySelector('#stat_times');
+    let pageUl = document.querySelector('#page_ul');
+    let close = document.querySelector('#close');
+    
+    close.addEventListener('click', function() {
+      searchMask.style = 'display: none;'
+    })
+
+    let finds = [];
+    let contents = [];
+    let pageSize = 10;
+    items.forEach(item => {
+      let a = item.querySelector('a');
+      contents.push({
+        title: a.innerText,
+        details: a.dataset.c,
+        link: a.href
+      })
+      item.remove();
+    })
+
+    function insertStr(soure, start, count) {
+      let newStr = soure.substr(start, count);
+      return soure.slice(0, start) + '<em>' + newStr + '</em>' + soure.slice(start + count);
+    }
+
+    pageUl.addEventListener('click', function(event) {
+      let target = event.target;
+      if (target.__proto__ === HTMLSpanElement.prototype) {
+        appendResults(parseInt(target.dataset.i));
+      }
+    })
+
+    function appendResults(index) {
+      let htmlResult = '';
+      let start = index || 0;
+      let end = Math.min(start + pageSize, finds.length);
+      for (let i = start; i < end; i++) {
+        const current = finds[i];
+        let html = current.title;
+        let sum = 0;
+        let positions = current.positions;
+        positions.forEach(position => {
+          html = insertStr(html, position.start + sum, position.count);
+          sum += 9;
+        })
+        htmlResult += `<div class="item"><a class="result-title" href="${current.link}">${html}</a></div>`;
+      }
+      result.innerHTML = htmlResult;
+      pageUl.innerHTML = '';
+      let count = finds.length / pageSize;
+      let lis = '';
+      if (start !== 0) {
+        lis += `<span class="fa fa-angle-left" data-i='${start - 1}'></span>`;
+      }
+      for (let i = 0; i < count; i++) {
+        lis += `<span class='${i === start?'current':''}' data-i='${i}'>${i+1}</span>`;     
+      }
+      if (start+1 < count) {
+        lis += `<span class="fa fa-angle-right" data-i='${start+1}'></span>`;  
+      }
+      pageUl.innerHTML = lis;
+    }
+
+    function search(delay) {
+      let timer = null
+      return function () {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          let start = Date.now();
+          let segments = searchBox.value.split(' ').filter(c => c != '');
+          if (segments.length <= 0) {
+            return;
+          }
+          finds = [];
+          let htmlResult = '';
+          contents.forEach(content => {
+            let title = content.title;
+            let positions = [];
+            let find = false;
+            segments.forEach((segment) => {
+              if (content.title.includes(segment)) {
+                find = true;
+                positions.push({
+                  start: content.title.indexOf(segment),
+                  count: segment.length
+                })
+              } else if (content.details.includes(segment)) {
+                find = true;
+              }
+            });
+            if (find) {
+              finds.push({
+                title: content.title,
+                link: content.link,
+                positions
+              });
+            }
+          })
+          appendResults(0);
+          statCount.textContent = finds.length;
+          statTimes.textContent = Date.now() - start;
+        }, delay)
+      }
+    }
+    searchBox.addEventListener('input', search(200));
+  }()
+</script>
+
+<input hidden id="copy" />
+<script>
+  !function () {
+    let times = document.querySelectorAll('.publish-time');
+    for (let i = 0; i < times.length; i++) {
+      let date = times[i].dataset.t;
+      let time = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+      if (time < 60) {
+        str = time + '秒之前';
+      } else if (time < 3600) {
+        str = Math.floor(time / 60) + '分钟之前';
+      } else if (time >= 3600 && time < 86400) {
+        str = Math.floor(time / 3600) + '小时之前';
+      } else if (time >= 86400 && time < 259200) {
+        str = Math.floor(time / 86400) + '天之前';
+      } else {
+        str = times[i].textContent;
+      }
+      times[i].textContent = str;
+    }
+  }();
+</script>
+
+<script>
+  let language = 'en';
+  if (language !== '') {
+    let map = new Map();
+    if (language === 'en') {
+      map.set('search', 'Search');
+      map.set('category', 'Categories');
+      map.set('article', 'Articles');
+      map.set('tag', 'Tags');
+      map.set('top', 'Top');
+      map.set('publish', 'published');
+      map.set('minute', ' minutes');
+      map.set('read-more', 'Read More');
+      map.set('view', 'View');
+      map.set('words', ' words');
+      map.set('category-in', 'category in');
+      map.set('preview', 'Meta');
+      map.set('index', 'Toc');
+      map.set('no-archives', "You haven't created yet");
+      map.set('archives', " articles in total");
+      map.set('cloud-tags', " tags in total");
+      map.set('copyright', "Copyright: ");
+      map.set('author', "Author: ");
+      map.set('link', "Link: ");
+      map.set('leave-message', "Leave a message");
+      map.set('format', "Links Format");
+      map.set('site-name', "Name: ");
+      map.set('site-link', "Link: ");
+      map.set('site-desc', "Desc: ");
+      map.set('stat', " related results, taking ");
+      map.set('stat-time', " ms");
+      map.set('site-img', "Image: ");
+    }
+
+    if (map.size > 0) {
+      let lanElems = document.querySelectorAll('.language');
+      lanElems.forEach(elem => {
+        let lan = elem.dataset.lan, text = map.get(lan);
+        if (elem.__proto__ === HTMLInputElement.prototype) {
+          elem.placeholder = text
+        } else {
+          if (elem.dataset.count) {
+            text = elem.dataset.count + text;
+          }
+          elem.textContent = text;
+        }
+      })
+    }
+  }
+  //拿来主义(真香)^_^，Clipboard 实现摘自掘金 https://juejin.im/post/5aefeb6e6fb9a07aa43c20af
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+
+</script>
+<script src="/media/js/motion.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script>
+  var scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 200
+  });
 </script>
 
 
 
 
-  </body>
+
 </html>
