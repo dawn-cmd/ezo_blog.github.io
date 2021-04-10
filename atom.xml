@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-04-10T01:02:43.040Z</updated>
+    <updated>2021-04-10T01:07:27.892Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -11,6 +11,15 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Introduction of Dynamic Programming]]></title>
+        <id>https://dawn-cmd.github.io/post/introduction-of-dynamic-programming/</id>
+        <link href="https://dawn-cmd.github.io/post/introduction-of-dynamic-programming/">
+        </link>
+        <updated>2021-04-10T01:05:39.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="about-dpdynamic-programming">About DP(Dynamic Programming)</h2>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Manacher]]></title>
         <id>https://dawn-cmd.github.io/post/ntYB0fMZm/</id>
@@ -998,40 +1007,6 @@ int main(){
 </code></pre>
 <h2 id="whats-more">What's more</h2>
 <p>Although the data structure is quite plastic, it is a little bit hard to realize sepecially when you try to integrate many functions into one segment tree. So I suggests that when you try to make more than one function, use a segment tree to finish a sepcific funtion. And if the function is just concern about the sum of a sequence, you can use binary indexed tree because it is much easier to be finished than segment tree.</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Binary Indexed Tree]]></title>
-        <id>https://dawn-cmd.github.io/post/pnJxhbchQ/</id>
-        <link href="https://dawn-cmd.github.io/post/pnJxhbchQ/">
-        </link>
-        <updated>2020-10-19T12:57:25.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>Before we start to talk about Binary Indexed Tree, let me introduce the segment tree first. In a segment tree, each vertex represents a segment on the original sequence. So when we want to make some modifications on the sequence, like add x to ai-aj in the sequence, we can record the modification in the vertex to represent that all the elements in this part has been changed but not change them one by one. Obviously, it is a very agile data structure. It supports addtion, minus, and many other measures on sequence. Compared to Segment Tree, Binary Indexed Tree is quite limited because it only supports addtion and finding specific data and it can be totally replaced by segment tree in the aspect of function. So why it still exists? Because it is easy. A segment tree may takes hundreds of lines of code while Binary Indexed Tree only takes no more than fifty lines.</p>
-<h2 id="details">Details</h2>
-<p>As we just metioned, Binary Indexed Tree (BIT) supports two functions: finding the sum of a1~x and adding a specific number to an element in sequence. We use an array c[i] to represent the tree.<br>
-<img src="https://dawn-cmd.github.io/post-images/1603116425209.jpg" alt="" loading="lazy"><br>
-When we change the id i into its binary version, like 5 to 0101, each '1' in the binary number reprsents a child of the vertex, and the data in the vertex is the sum of these childs' data, like id=4 and id=1 is id=5's children. So how can we visit these children effectively? We can use Lowbit function. Lowbit(x) = x &amp; (-x). It can return the smallest '1' in the binary number by using the trait of computer which is used to record the numbers, like lowbit(6) = 2. When we add a number x to an element, we are supposed to not only add it to c[x], but also need to add it to its fathers -- c[x + lowbit(x)], c[x + lowbit(x) + lowbit(x + lowbit(x))] ...... until x exceeds the sequence. When we need the data in element x, we just need to do it in a reversed direction.</p>
-<h2 id="code">Code</h2>
-<pre><code class="language-python">class BIT: #Binary Indexed Tree
-    __c = [0]
-    def __init__(self, n):#initialization
-        self.__c *= n + 2
-    def __lowbit(self, x):
-        return x &amp; (-x)
-    def Add(self, pos, x):# Add x to the data at pos
-        while pos &lt; len(self.__c):
-            self.__c[pos] += x
-            pos += self.__lowbit(pos)
-    def Sum(self, pos):# the sum of data before pos
-        ans = 0
-        while pos &gt; 0:
-            ans += self.__c[pos]
-            pos -= self.__lowbit(pos)
-        return ans
-</code></pre>
-<h2 id="whats-more">What's more:</h2>
-<p>If we can use this data structure effectively, it can replace many function of segment tree readly. In my opinion, it is one of the most useful data structures I have ever used.</p>
 ]]></content>
     </entry>
 </feed>

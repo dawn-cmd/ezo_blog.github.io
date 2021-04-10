@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Deep Analysis: Fancy Sequence | Blog</title>
+<title>Introduction of Dynamic Programming | Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1618016840922">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Deep Analysis: Fancy Sequence" />
-  <meta name="keywords" content="Leetcode,Algorithm,Data Structure" />
+  <meta name="description" content="Introduction of Dynamic Programming" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -191,10 +191,7 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#problem-description">Problem Description</a></li>
-<li><a href="#constrains">Constrains</a></li>
-<li><a href="#solution-1-binary-indexed-tree">Solution 1: Binary Indexed Tree:</a></li>
-<li><a href="#solution-2-multiplicative-inverse-modulomim">Solution 2: Multiplicative inverse modulo(MIM)</a></li>
+<li><a href="#about-dpdynamic-programming">About DP(Dynamic Programming)</a></li>
 </ul>
 </li>
 </ul>
@@ -462,8 +459,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/post/FYQ2RAKvZ/">
-      Deep Analysis: Fancy Sequence
+    <a class="post-title-link" href="https://dawn-cmd.github.io/post/introduction-of-dynamic-programming/">
+      Introduction of Dynamic Programming
     </a>
   </h1>
   <div class="post-meta">
@@ -471,48 +468,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-12-22 20:46:18">2020-12-22</span>
+      <span class="publish-time" data-t="2021-04-10 09:05:39">2021-04-10</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://dawn-cmd.github.io/tag/EXSZJTPrn/">
-        <span>Leetcode</span>
-      </a>、
-      
-      
-      
-      <a href="https://dawn-cmd.github.io/tag/S6macCZkQ/">
-        <span>Algorithm</span>
-      </a>、
-      
-      
-      
-      <a href="https://dawn-cmd.github.io/tag/wRT9h1jy0/">
-        <span>Data Structure</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>5<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>783<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>4<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/FYQ2RAKvZ/" data-flag-title="Deep Analysis: Fancy Sequence" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/introduction-of-dynamic-programming/" data-flag-title="Introduction of Dynamic Programming" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -521,101 +493,7 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="problem-description">Problem Description</h2>
-<p>Write an API that generates fancy sequences using the append, addAll, and multAll operations.<br>
-Implement the Fancy class:</p>
-<ul>
-<li>Fancy() Initializes the object with an empty sequence.</li>
-<li>void append(val) Appends an integer val to the end of the sequence.</li>
-<li>void addAll(inc) Increments all existing values in the sequence by an integer inc.</li>
-<li>void multAll(m) Multiplies all existing values in the sequence by an integer m.</li>
-<li>int getIndex(idx) Gets the current value at index idx (0-indexed) of the sequence modulo 109 + 7. If the index is greater or equal than the length of the sequence, return -1.</li>
-</ul>
-<h2 id="constrains">Constrains</h2>
-<p>1 &lt;= val, inc, m &lt;= 100<br>
-0 &lt;= idx &lt;= 10^5<br>
-At most 10^5 calls total will be made to append, addAll, multAll, and getIndex.</p>
-<h2 id="solution-1-binary-indexed-tree">Solution 1: Binary Indexed Tree:</h2>
-<p>This time, I will not list the violent solution because it is too apperant.  First, we can find that all the operations are add and multiply. This two modifications can add up under a mod. So this problem can be understanded in this way: each add and multiply demand can be seem as a node on a list and each node just affect the numbers before it. So when numbers come in, it will not be affected by previous buffs. When you try to get a specific number in the list, you just add all the previous buffs onto the number.</p>
-<p>Obviously, prefix sum can satisfied our needs. So what's the most direct and simple data structure that can achieve prefix sum? Binary Indexed Tree. Because I have already write an article to talk about the realization of Binary Indexed Tree, I will just choose some key points to mention here. The problem is, how to &quot;add&quot; buffs. Can we just add them up simply? Of course not. Let's assume f(x) = ax + b, g(x) = cx + d, and the f + g is a*cx + b * c + d. Although the two functions cannot be reversed, it will not affect the final answer.</p>
-<pre><code class="language-python">class Fancy:
-
-    mod = 10 ** 9 + 7
-
-    class expression:  # f(x) = a * x + b
-        mod = 10 ** 9 + 7
-        def __init__(self, x = 1, y = 0):
-            self.a, self.b = x, y
-        def __add__(self, other):
-            self.a = self.a * other.a % self.mod
-            self.b = (self.b * other.a + other.b) % self.mod
-            return self
-
-    lowbit = lambda self, x: x &amp; -x
-
-    def __init__(self):
-        self.nums = []
-        self.c = [self.expression() for _ in range(200000)]
-
-    def doit(self, demand):
-        i = 100000 - len(self.nums)
-        while i &lt; 200000:
-            self.c[i] = self.c[i] + demand
-            i += self.lowbit(i)
-
-    def append(self, val: int) -&gt; None:
-        self.nums.append(val)
-
-    def addAll(self, inc: int) -&gt; None:
-        if len(self.nums) == 0:
-            return
-        demand = self.expression(1, inc)
-        self.doit(demand)
-
-    def multAll(self, m: int) -&gt; None:
-        if len(self.nums) == 0:
-            return
-        demand = self.expression(m, 0)
-        self.doit(demand)
-
-    def getIndex(self, idx: int) -&gt; int:
-        if idx &gt;= len(self.nums):
-            return -1
-        op = self.expression()
-        i = 100000 - idx - 1
-        while i &gt;= 1:
-            op = op + self.c[i]
-            i -= self.lowbit(i)
-        return (self.nums[idx] * op.a % self.mod + op.b) % self.mod
-</code></pre>
-<h2 id="solution-2-multiplicative-inverse-modulomim">Solution 2: Multiplicative inverse modulo(MIM)</h2>
-<p>There also existed a more elegant way to solve the problem. If we just use a and b to record all the behaviour, we just need to minus b and divide a before a number adds into the list. But here comes a question, this minus and divide can not be supported under a mod. So we need to use an MIM. MIM can help us use add and multiply to realize minus and divide under a mod: (x / b) % mod = (b ^ (mod - 2) * x) % mod, x - b = (x + mod - b) % mod.. With the two equations, we can solve the problem easily.</p>
-<pre><code class="language-python">class Fancy:
-
-    mult = 1
-    add = 0
-    mod = 10 ** 9 + 7
-
-    def qpow(self, num, power):
-        return 1 if power == 0 else self.qpow(num ** 2 % self.mod, power &gt;&gt; 1) % self.mod * (num if power &amp; 1 == 1 else 1)
-
-    def __init__(self):
-        self.val = []
-
-    def append(self, val: int) -&gt; None:
-        val = (val - self.add + self.mod) * self.qpow(self.mult, self.mod - 2) % self.mod
-        self.val.append(val)
-
-    def addAll(self, inc: int) -&gt; None:
-        self.add = (self.add + inc) % self.mod
-
-    def multAll(self, m: int) -&gt; None:
-        self.mult = self.mult * m % self.mod
-        self.add = self.add * m % self.mod
-
-    def getIndex(self, idx: int) -&gt; int:
-        return -1 if idx &gt;= len(self.val) else (self.val[idx] * self.mult % self.mod + self.add) % self.mod 
-</code></pre>
+              <h2 id="about-dpdynamic-programming">About DP(Dynamic Programming)</h2>
 
             </div>
             
@@ -628,7 +506,7 @@ At most 10^5 calls total will be made to append, addAll, multAll, and getIndex.<
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/post/FYQ2RAKvZ/" title="Deep Analysis: Fancy Sequence">https://dawn-cmd.github.io/post/FYQ2RAKvZ/</a>
+      <a href="https://dawn-cmd.github.io/post/introduction-of-dynamic-programming/" title="Introduction of Dynamic Programming">https://dawn-cmd.github.io/post/introduction-of-dynamic-programming/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -637,25 +515,15 @@ At most 10^5 calls total will be made to append, addAll, multAll, and getIndex.<
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/tag/EXSZJTPrn/"># Leetcode</a>
-    
-      <a href="https://dawn-cmd.github.io/tag/S6macCZkQ/"># Algorithm</a>
-    
-      <a href="https://dawn-cmd.github.io/tag/wRT9h1jy0/"># Data Structure</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Circle-Based Tree" href="https://dawn-cmd.github.io/post/5vxYJM5Nd/">Circle-Based Tree</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Circle-Based Tree" href="https://dawn-cmd.github.io/post/5vxYJM5Nd/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Deep Analysis: Count Primes" href="https://dawn-cmd.github.io/post/Fo59-fr0V/">Deep Analysis: Count Primes</a>
-        <a class="nav-mobile-next" title="Deep Analysis: Count Primes" href="https://dawn-cmd.github.io/post/Fo59-fr0V/">下一篇</a>
+        <a class="nav-pc-next" title="Manacher" href="https://dawn-cmd.github.io/post/ntYB0fMZm/">Manacher</a>
+        <a class="nav-mobile-next" title="Manacher" href="https://dawn-cmd.github.io/post/ntYB0fMZm/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
