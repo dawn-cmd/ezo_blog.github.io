@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Introduction of Dynamic Programming | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1618016840922">
+<link rel="shortcut icon" href="/favicon.ico?v=1618149843594">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -40,7 +40,7 @@
 
 
   <meta name="description" content="Introduction of Dynamic Programming" />
-  <meta name="keywords" content="" />
+  <meta name="keywords" content="Algorithm" />
 </head>
 
 <body>
@@ -191,7 +191,11 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#about-dpdynamic-programming">About DP(Dynamic Programming)</a></li>
+<li><a href="#about-this-article">About this article</a></li>
+<li><a href="#basic-introduction">Basic introduction</a></li>
+<li><a href="#common-structure">Common structure</a></li>
+<li><a href="#example-fibonacci-sequence">Example: Fibonacci Sequence</a></li>
+<li><a href="#the-end">The end</a></li>
 </ul>
 </li>
 </ul>
@@ -473,13 +477,26 @@
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://dawn-cmd.github.io/tag/S6macCZkQ/">
+        <span>Algorithm</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>4<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>598<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -493,7 +510,59 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="about-dpdynamic-programming">About DP(Dynamic Programming)</h2>
+              <h2 id="about-this-article">About this article</h2>
+<p>This time let's talk about a critical part of algorithm: Dynamic Programming(DP). Actually, I wanted to write about it for a long time. However, its complexity makes me cannot start writing until now. Cause instead of a specific method, DP is more like a system of methods, or a special angle to see the problems. This time we will introduce DP in general and unfold each specific point in the future.</p>
+<h2 id="basic-introduction">Basic introduction</h2>
+<p>We often see problems that seems periodic or consisted of several similar sub-problems are hard to solve directly, like the famous Fibonacci Sequence. Although we all know that the sequence has a direct function, most people are more familiar with this: f(n) = f(n - 1) + f(n - 2), which is more clear and practicable. This is a typical example of DP, which has direct <code>&quot;optimal substructures&quot;</code> and <code>&quot;recursive sub-problems&quot;</code>. &quot;Optimal substructure&quot; means the optimal solution of this problem can totally inferred from its subproblems optimal solutions. &quot;Recursive subproblems&quot; means the problem itself is similar to its subproblems in general.</p>
+<h2 id="common-structure">Common structure</h2>
+<p>Before we actually practice it in problems, we need to understand the common steps to make sure we have a clear direction.</p>
+<p>All DP solutions are consisted of three parts: <code>Level</code>, <code>State</code>, and <code>State Transformation Functions</code>:</p>
+<ul>
+<li>
+<p>Level: The basic unit we want to divide the problem into. In Fibonacci Sequence problem, each position in the sequence is the level we define. Interestingly, many problems have several different DP solution depended on the choice of level, and the time compexity and difficulty of practicing will change as well.</p>
+</li>
+<li>
+<p>State: Specific data the level has. In equations, we often use varibles like i, j, and k to represent state. Yet in some special situations, the state will give a answer that does not follow the other's rule, for example, the border limitation.</p>
+</li>
+<li>
+<p>State Transformation Function: The core function of a DP solution. It directly represents how optimal solution of the problem can be inferred from the optimal solutions of its subproblems.</p>
+</li>
+</ul>
+<h2 id="example-fibonacci-sequence">Example: Fibonacci Sequence</h2>
+<p>In this example, I will show two basic methods of actualizing DP.</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int dp(int k) {
+    if(k == 0) return 0;
+    if(k == 1) return 1;
+    return dp(k - 1) + dp(k - 2);
+} 
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    cout &lt;&lt; dp(n) &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<p>The first way, just showed above, is using a function to imitate the process. However, obviously it is an ineffective way because there exist too many repeated steps. Of course there are ways to solve it, but let's see the next method first.</p>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;long long&gt; dp(n + 1);
+    dp[0] = 0;
+    dp[1] = 1;
+    for(int i = 2; i &lt;= n; ++i) {
+        dp[i] = dp[i - 1] + dp[i - 2];
+    }
+    cout &lt;&lt; dp[n] &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<p>The next way is using a array to imitate the solution. It seems faster than the previous method. But it has a fatal shortcoming: you must make sure that the state will increase or decrease in a fixed direction. Otherwise you cannot use this method.</p>
+<h2 id="the-end">The end</h2>
+<p>So this is the end of the introduction. Of course, it is just a beginning of this series. DP is an interesting subject to study. It can also be used in mathmatics, biology, economic and so on.</p>
 
             </div>
             
@@ -514,6 +583,8 @@
     </li>
   </ul>
   <div class="tags">
+    
+      <a href="https://dawn-cmd.github.io/tag/S6macCZkQ/"># Algorithm</a>
     
   </div>
   <div class="nav">
@@ -1008,7 +1079,59 @@
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/introduction-of-dynamic-programming/"" data-c="
-          &lt;h2 id=&#34;about-dpdynamic-programming&#34;&gt;About DP(Dynamic Programming)&lt;/h2&gt;
+          &lt;h2 id=&#34;about-this-article&#34;&gt;About this article&lt;/h2&gt;
+&lt;p&gt;This time let&#39;s talk about a critical part of algorithm: Dynamic Programming(DP). Actually, I wanted to write about it for a long time. However, its complexity makes me cannot start writing until now. Cause instead of a specific method, DP is more like a system of methods, or a special angle to see the problems. This time we will introduce DP in general and unfold each specific point in the future.&lt;/p&gt;
+&lt;h2 id=&#34;basic-introduction&#34;&gt;Basic introduction&lt;/h2&gt;
+&lt;p&gt;We often see problems that seems periodic or consisted of several similar sub-problems are hard to solve directly, like the famous Fibonacci Sequence. Although we all know that the sequence has a direct function, most people are more familiar with this: f(n) = f(n - 1) + f(n - 2), which is more clear and practicable. This is a typical example of DP, which has direct &lt;code&gt;&amp;quot;optimal substructures&amp;quot;&lt;/code&gt; and &lt;code&gt;&amp;quot;recursive sub-problems&amp;quot;&lt;/code&gt;. &amp;quot;Optimal substructure&amp;quot; means the optimal solution of this problem can totally inferred from its subproblems optimal solutions. &amp;quot;Recursive subproblems&amp;quot; means the problem itself is similar to its subproblems in general.&lt;/p&gt;
+&lt;h2 id=&#34;common-structure&#34;&gt;Common structure&lt;/h2&gt;
+&lt;p&gt;Before we actually practice it in problems, we need to understand the common steps to make sure we have a clear direction.&lt;/p&gt;
+&lt;p&gt;All DP solutions are consisted of three parts: &lt;code&gt;Level&lt;/code&gt;, &lt;code&gt;State&lt;/code&gt;, and &lt;code&gt;State Transformation Functions&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Level: The basic unit we want to divide the problem into. In Fibonacci Sequence problem, each position in the sequence is the level we define. Interestingly, many problems have several different DP solution depended on the choice of level, and the time compexity and difficulty of practicing will change as well.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;State: Specific data the level has. In equations, we often use varibles like i, j, and k to represent state. Yet in some special situations, the state will give a answer that does not follow the other&#39;s rule, for example, the border limitation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;State Transformation Function: The core function of a DP solution. It directly represents how optimal solution of the problem can be inferred from the optimal solutions of its subproblems.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;example-fibonacci-sequence&#34;&gt;Example: Fibonacci Sequence&lt;/h2&gt;
+&lt;p&gt;In this example, I will show two basic methods of actualizing DP.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int dp(int k) {
+    if(k == 0) return 0;
+    if(k == 1) return 1;
+    return dp(k - 1) + dp(k - 2);
+} 
+int main() {
+    int n;
+    cin &amp;gt;&amp;gt; n;
+    cout &amp;lt;&amp;lt; dp(n) &amp;lt;&amp;lt; endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first way, just showed above, is using a function to imitate the process. However, obviously it is an ineffective way because there exist too many repeated steps. Of course there are ways to solve it, but let&#39;s see the next method first.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main() {
+    int n;
+    cin &amp;gt;&amp;gt; n;
+    vector&amp;lt;long long&amp;gt; dp(n + 1);
+    dp[0] = 0;
+    dp[1] = 1;
+    for(int i = 2; i &amp;lt;= n; ++i) {
+        dp[i] = dp[i - 1] + dp[i - 2];
+    }
+    cout &amp;lt;&amp;lt; dp[n] &amp;lt;&amp;lt; endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The next way is using a array to imitate the solution. It seems faster than the previous method. But it has a fatal shortcoming: you must make sure that the state will increase or decrease in a fixed direction. Otherwise you cannot use this method.&lt;/p&gt;
+&lt;h2 id=&#34;the-end&#34;&gt;The end&lt;/h2&gt;
+&lt;p&gt;So this is the end of the introduction. Of course, it is just a beginning of this series. DP is an interesting subject to study. It can also be used in mathmatics, biology, economic and so on.&lt;/p&gt;
 ">Introduction of Dynamic Programming</a>
       </div>
       
