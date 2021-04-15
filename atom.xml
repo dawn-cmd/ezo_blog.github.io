@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-04-15T16:07:25.128Z</updated>
+    <updated>2021-04-15T16:08:26.572Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -18,7 +18,7 @@
         </link>
         <updated>2021-04-15T15:54:24.000Z</updated>
         <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-<p><a href="">https://www.luogu.com.cn/problem/P1216</a><br>
+<p><a href="https://www.luogu.com.cn/problem/P1216">Raw Link</a><br>
 Write a program to find the path from the highest point to the bottom anywhere, so that the path passes through the largest sum of numbers. Each step can go to the bottom left point or the bottom right point.<br>
 7<br>
 3   8<br>
