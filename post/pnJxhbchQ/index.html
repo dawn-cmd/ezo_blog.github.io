@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Binary Indexed Tree | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1618503321595">
+<link rel="shortcut icon" href="/favicon.ico?v=1618529788895">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1060,6 +1060,100 @@ When we change the id i into its binary version, like 5 to 0101, each '1' in the
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/luogu-p2196-noip1996-senior-dig-landmines/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.luogu.com.cn/problem/P2196&#34;&gt;Raw Link&lt;/a&gt;&lt;br&gt;
+There are N cellars (N≤20) on a map, and a certain number of mines are buried in each cellar. At the same time, give the connection path between the cellars. After the data of the cellar and its connection are given, someone can start digging mines from any place, and then dig down along the indicated connection (only one path can be selected), and the mine digging work ends when there is no connection. Design a plan for digging mines so that someone can dig the most mines.&lt;/p&gt;
+&lt;h2 id=&#34;input-form&#34;&gt;Input Form&lt;/h2&gt;
+&lt;p&gt;There are several lines.&lt;/p&gt;
+&lt;p&gt;There is only one number in the first line, which represents the number of cellars N.&lt;/p&gt;
+&lt;p&gt;There are N numbers in the second line, which respectively indicate the number of mines in each cellar.&lt;/p&gt;
+&lt;p&gt;Lines 3 to N+1 indicate the connection between the cellars:&lt;/p&gt;
+&lt;p&gt;There are n−1 numbers (0 or 1) in the third row, indicating whether there is a path connection from the first cellar to the second, third, ..., nth cellar. For example, the third line is 11000...0, it means that there is a path from the first cellar to the second cellar, there is a path to the third cellar, and there is no path to the fourth cellar, the fifth, ..., the nth cellar.&lt;/p&gt;
+&lt;p&gt;There are n−2 numbers in the 4th row, indicating whether there is a path connection from the second cellar to the third, fourth, ..., nth cellar.&lt;/p&gt;
+&lt;p&gt;There is 1 number in the n+1th row, indicating whether there is a path connection between the n−1th cellar and the nth cellar. (0 means there is no path, 1 means there is a path).&lt;/p&gt;
+&lt;h2 id=&#34;output-form&#34;&gt;Output Form&lt;/h2&gt;
+&lt;p&gt;There are two lines&lt;/p&gt;
+&lt;p&gt;The first line indicates the order of mine digging when the most mines are dug. The serial numbers of each cell are separated by a space, and there must be no extra spaces.&lt;/p&gt;
+&lt;p&gt;There is only one number in the second row, indicating the maximum number of mines that can be dug.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+void init(int &amp;amp;n, int (&amp;amp;g)[50][50], int (&amp;amp;v)[50], int sum) {
+    cin &amp;gt;&amp;gt; n;
+    for(int i =1; i &amp;lt;= n; ++i) {
+        cin &amp;gt;&amp;gt; v[i];
+    }
+    for(int i = 1; i &amp;lt;= n - 1; ++i)
+        for(int j = i + 1; j &amp;lt;= n; ++j){
+            int tmp;
+            cin &amp;gt;&amp;gt; tmp;
+            g[i][j] = tmp;
+        }
+    for(int i = 1; i &amp;lt;= n; ++i) {
+        g[0][i] = 1;
+    }
+    v[0] = 0;
+}
+struct Data {
+    int h[50];
+    int g[50][50];
+    int v[50];
+    int n;
+    int sum = 0;
+    int max_sum = -1;
+    vector&amp;lt;int&amp;gt; path;
+    vector&amp;lt;int&amp;gt; ans_path;
+};
+int dp(int now, Data &amp;amp;data) {
+    if(data.h[now] == 1) {
+        return 0;
+    }
+    data.h[now] = 1;
+    int maxn = -1;
+    data.sum += data.v[now];
+    data.path.push_back(now);
+    for (int i = 1; i &amp;lt;= data.n; ++i) {
+        if(data.g[now][i] == 0 || i == now || data.h[i] == 1) {
+            continue;
+        }
+        int tmp = dp(i, data);
+        maxn = max(maxn, tmp);
+    }
+    if(maxn == -1 &amp;amp;&amp;amp; data.sum &amp;gt; data.max_sum) {
+        data.max_sum = data.sum;
+        data.ans_path = data.path;
+    }
+    data.sum -= data.v[now];
+    data.h[now] = 0;
+    data.path.pop_back();
+    return data.v[now] + max(maxn, 0);
+}
+int main() {
+    Data data;
+    init(data.n,data.g,data.v, data.sum);
+    int ans = dp(0, data);
+    for(int i = 1; i &amp;lt; data.ans_path.size(); ++i) {
+        cout &amp;lt;&amp;lt; data.ans_path[i] &amp;lt;&amp;lt; &#39; &#39;;
+    }
+    cout &amp;lt;&amp;lt; endl;
+    cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;explanation&#34;&gt;Explanation&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;It has the characteristics of graph theory.&lt;/li&gt;
+&lt;li&gt;The data range is very small (N \le 20) (N ≤ 20), and you can make &amp;quot;exotic&amp;quot; attempts.&lt;/li&gt;
+&lt;li&gt;It is necessary to output the route and the maximum solution result, which can be combined to reduce the amount of code.&lt;/li&gt;
+&lt;li&gt;Use pre to record the predecessor of the selected point in the reasonable scheme, and recursively output. (You can also use a while loop, given in the next method)&lt;/li&gt;
+&lt;li&gt;Obviously it is impossible to find the answer simply, so the state is designed to facilitate the transfer. Let f[i]f[i] represent the maximum number of mines dug from the starting point to the point ii. When i and j are connected, f[j ] (Another point, enumerate it) When the maximum value is reached, the recursive formula f[i]=max(f[j])+mine&lt;a href=&#34;map%5Bj,i%5D=1&#34;&gt;i&lt;/a&gt; is obtained.&lt;/li&gt;
+&lt;li&gt;Be sure to note the last point on the path to output it recursively.&lt;/li&gt;
+&lt;/ol&gt;
+">Luogu P2196 [NOIP1996 senior] Dig Landmines</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/luogu-p1216-number-triangles/"" data-c="

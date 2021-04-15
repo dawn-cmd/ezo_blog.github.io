@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-04-15T16:15:51.817Z</updated>
+    <updated>2021-04-15T23:36:34.616Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -11,6 +11,103 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Luogu P2196 [NOIP1996 senior] Dig Landmines]]></title>
+        <id>https://dawn-cmd.github.io/post/luogu-p2196-noip1996-senior-dig-landmines/</id>
+        <link href="https://dawn-cmd.github.io/post/luogu-p2196-noip1996-senior-dig-landmines/">
+        </link>
+        <updated>2021-04-15T23:26:09.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p><a href="https://www.luogu.com.cn/problem/P2196">Raw Link</a><br>
+There are N cellars (N≤20) on a map, and a certain number of mines are buried in each cellar. At the same time, give the connection path between the cellars. After the data of the cellar and its connection are given, someone can start digging mines from any place, and then dig down along the indicated connection (only one path can be selected), and the mine digging work ends when there is no connection. Design a plan for digging mines so that someone can dig the most mines.</p>
+<h2 id="input-form">Input Form</h2>
+<p>There are several lines.</p>
+<p>There is only one number in the first line, which represents the number of cellars N.</p>
+<p>There are N numbers in the second line, which respectively indicate the number of mines in each cellar.</p>
+<p>Lines 3 to N+1 indicate the connection between the cellars:</p>
+<p>There are n−1 numbers (0 or 1) in the third row, indicating whether there is a path connection from the first cellar to the second, third, ..., nth cellar. For example, the third line is 11000...0, it means that there is a path from the first cellar to the second cellar, there is a path to the third cellar, and there is no path to the fourth cellar, the fifth, ..., the nth cellar.</p>
+<p>There are n−2 numbers in the 4th row, indicating whether there is a path connection from the second cellar to the third, fourth, ..., nth cellar.</p>
+<p>There is 1 number in the n+1th row, indicating whether there is a path connection between the n−1th cellar and the nth cellar. (0 means there is no path, 1 means there is a path).</p>
+<h2 id="output-form">Output Form</h2>
+<p>There are two lines</p>
+<p>The first line indicates the order of mine digging when the most mines are dug. The serial numbers of each cell are separated by a space, and there must be no extra spaces.</p>
+<p>There is only one number in the second row, indicating the maximum number of mines that can be dug.</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+void init(int &amp;n, int (&amp;g)[50][50], int (&amp;v)[50], int sum) {
+    cin &gt;&gt; n;
+    for(int i =1; i &lt;= n; ++i) {
+        cin &gt;&gt; v[i];
+    }
+    for(int i = 1; i &lt;= n - 1; ++i)
+        for(int j = i + 1; j &lt;= n; ++j){
+            int tmp;
+            cin &gt;&gt; tmp;
+            g[i][j] = tmp;
+        }
+    for(int i = 1; i &lt;= n; ++i) {
+        g[0][i] = 1;
+    }
+    v[0] = 0;
+}
+struct Data {
+    int h[50];
+    int g[50][50];
+    int v[50];
+    int n;
+    int sum = 0;
+    int max_sum = -1;
+    vector&lt;int&gt; path;
+    vector&lt;int&gt; ans_path;
+};
+int dp(int now, Data &amp;data) {
+    if(data.h[now] == 1) {
+        return 0;
+    }
+    data.h[now] = 1;
+    int maxn = -1;
+    data.sum += data.v[now];
+    data.path.push_back(now);
+    for (int i = 1; i &lt;= data.n; ++i) {
+        if(data.g[now][i] == 0 || i == now || data.h[i] == 1) {
+            continue;
+        }
+        int tmp = dp(i, data);
+        maxn = max(maxn, tmp);
+    }
+    if(maxn == -1 &amp;&amp; data.sum &gt; data.max_sum) {
+        data.max_sum = data.sum;
+        data.ans_path = data.path;
+    }
+    data.sum -= data.v[now];
+    data.h[now] = 0;
+    data.path.pop_back();
+    return data.v[now] + max(maxn, 0);
+}
+int main() {
+    Data data;
+    init(data.n,data.g,data.v, data.sum);
+    int ans = dp(0, data);
+    for(int i = 1; i &lt; data.ans_path.size(); ++i) {
+        cout &lt;&lt; data.ans_path[i] &lt;&lt; ' ';
+    }
+    cout &lt;&lt; endl;
+    cout &lt;&lt; ans &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<ol>
+<li>It has the characteristics of graph theory.</li>
+<li>The data range is very small (N \le 20) (N ≤ 20), and you can make &quot;exotic&quot; attempts.</li>
+<li>It is necessary to output the route and the maximum solution result, which can be combined to reduce the amount of code.</li>
+<li>Use pre to record the predecessor of the selected point in the reasonable scheme, and recursively output. (You can also use a while loop, given in the next method)</li>
+<li>Obviously it is impossible to find the answer simply, so the state is designed to facilitate the transfer. Let f[i]f[i] represent the maximum number of mines dug from the starting point to the point ii. When i and j are connected, f[j ] (Another point, enumerate it) When the maximum value is reached, the recursive formula f[i]=max(f[j])+mine<a href="map%5Bj,i%5D=1">i</a> is obtained.</li>
+<li>Be sure to note the last point on the path to output it recursively.</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Luogu P1216 Number Triangles]]></title>
         <id>https://dawn-cmd.github.io/post/luogu-p1216-number-triangles/</id>
@@ -816,109 +913,6 @@ def main():
 
 main()
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Prim & Kruskal]]></title>
-        <id>https://dawn-cmd.github.io/post/cLmXwc5OE/</id>
-        <link href="https://dawn-cmd.github.io/post/cLmXwc5OE/">
-        </link>
-        <updated>2020-11-03T13:18:50.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>Today let's talk about Minimum Spanning Tree (MST) problem. In  a MST problem, you usually have n points, and what you need to do is to use or choose n - 1 edges to connect them and minimize the sum of the length of the edges. There exist two basic algorithms to solve it: Kruskal and Prim. Both of them are adapted from the Greedy Algorithm and Kruskal considers edges as units while Prim considers points as units. I will show how they realize and explain them in the following code.</p>
-<h2 id="code">Code</h2>
-<h3 id="kruskal">Kruskal</h3>
-<pre><code class="language-python">#Kruskal is better when the egdes are less than points, which means it is a sparse graph
-class edge:
-    fr = 0 #from
-    to = 0 #to
-    c = 0 #cost
-    def __init__(self, fr, to, c):
-        self.fr = fr
-        self.to = to
-        self.c = c
-    def __lt__(self, oth):
-        return self.c &lt; oth.c #reload '&lt;'
-
-class dsuf:#disjoint sets/union find
-    fa = [0]
-    def __init__(self, n):
-        self.fa *= n + 1
-        for i in range(n + 1):
-            self.fa[i] = i#if we find fa[x] == x then x is a source point
-    def merge(self, a, b):
-        self.fa[self.find(b)] = a# let a becomes b's father
-    def find(self, a):
-        if a == self.fa[a]:
-            return a
-        self.fa[a] = self.find(self.fa[a]) #compress the path to decrease the depth of tree
-        return self.fa[a]
-
-def kruskal(e, n, u):
-    ans = 0
-    for i in e:#pick egdes in order of cost
-        if u.find(i.to) == u.find(i.fr):#check the two vertexs are in a same union or not
-            continue
-        ans += i.c #you can use an array to record all of them as well
-        u.merge(i.to, i.fr)
-    return ans
-
-def main():
-    n, m = map(int, input().split())#input the number of edge and vertexs
-    e = []
-    u = dsuf(n)
-    for i in range(m):#input edges
-        fr, to, c = map(int, input().split())
-        e += [edge(fr, to, c)]
-    e.sort()#sort edges by their cost
-    print(kruskal(e, n, u))
-
-main()
-</code></pre>
-<h3 id="prim">Prim</h3>
-<pre><code class="language-python"># Prim is better when the points in graph is more than edges in the graph
-import queue
-
-class point:
-    x = y = -1
-    def __init__(self, pos):
-        self.x = pos[0]
-        self.y = pos[1]
-    def dis(self, other):
-        return (self.x - other.x) ** 2 + (self.y - other.y) ** 2# the distance between two points
-
-def prim(p, c):
-    ans = 0
-    q = queue.PriorityQueue() # use priority_queue to make it better
-    q.put([0, 0])
-    h = {}
-    for i in range(len(p)):
-        h[i] = 0#to record whether it has been visited or not
-    while not q.empty():
-        now = q.get()
-        if h[now[1]] == 1:
-            continue# if the point has already been visited, ignore it
-        h[now[1]] = 1
-        ans += now[0]
-        for i in range(len(p)):
-            if h[i] == 0 and p[now[1]].dis(p[i]) &gt;= c:#you can eliminate the second limitaion when you use it
-                q.put((p[now[1]].dis(p[i]), i))
-    for i in range(len(p)):
-        if h[i] == 0:
-            return -1# you can ignore this loop as well
-    return ans
-
-def main():
-    n, c = map(int, input().split()) # n is number of points, c is a limitaiton when I was doing a test, you can ignore it
-    p = []
-    for i in range(n):
-        p += [point(list(map(int, input().split())))]
-    print(prim(p, c))
-
-main()
-</code></pre>
-<h2 id="moreover">Moreover</h2>
-<p>The two main stream algorithms can be adapted into different versions to cope with different problems. We may talk about it in the other passages.</p>
 ]]></content>
     </entry>
 </feed>
