@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Topological Sort | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1618301126442">
+<link rel="shortcut icon" href="/favicon.ico?v=1618502651330">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1126,6 +1126,65 @@ int main(){
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/luogu-p1216-number-triangles/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Write a program to find the path from the highest point to the bottom anywhere, so that the path passes through the largest sum of numbers. Each step can go to the bottom left point or the bottom right point.&lt;br&gt;
+7&lt;br&gt;
+3   8&lt;br&gt;
+8   1   0&lt;br&gt;
+2   7   4   4&lt;br&gt;
+4   5   2   6   5&lt;br&gt;
+In the above example, the path from 7→3→8→7→7→3→8→7→5 produces the largest one.&lt;/p&gt;
+&lt;h2 id=&#34;input-form&#34;&gt;Input Form&lt;/h2&gt;
+&lt;p&gt;The first line is a positive integer rr, which indicates the number of lines.&lt;/p&gt;
+&lt;h2 id=&#34;output-form&#34;&gt;Output Form&lt;/h2&gt;
+&lt;p&gt;A single line containing the largest sum possible.&lt;/p&gt;
+&lt;h2 id=&#34;notice&#34;&gt;Notice&lt;/h2&gt;
+&lt;p&gt;For 100% data,1≤r≤1000, all inputs are in the range of [0,100].&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main() {
+    int r;
+    cin &amp;gt;&amp;gt; r;
+    vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; graph(r);
+    for (int i = 0; i &amp;lt; r; ++i) {
+        graph[i] = vector&amp;lt;int&amp;gt;(i + 1);
+        for (int j = 0; j &amp;lt; i + 1; ++j) 
+            cin &amp;gt;&amp;gt; graph[i][j];
+    }
+    vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; dp(r);
+    for (int i = 0; i &amp;lt; r; ++i)
+        for (int j = 0; j &amp;lt; i + 1; ++j) 
+            dp[i].push_back(0);
+    dp[0][0] = graph[0][0];
+    for (int i = 1; i &amp;lt; r; ++i)
+        for (int j = 0; j &amp;lt; i + 1; ++j) {
+            if (j == 0) {
+                dp[i][j] = dp[i - 1][j] + graph[i][j];
+                continue;
+            }
+            if (j == i) {
+                dp[i][j] = dp[i - 1][j - 1] + graph[i][j];
+                continue;
+            }
+            dp[i][j] = graph[i][j] + max(dp[i - 1][j], dp[i - 1][j - 1]);
+        }
+    int ans = 0;
+    for (int i = 0; i &amp;lt; r; ++i)
+        ans = max(ans, dp[r - 1][i]);
+    cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;explanation&#34;&gt;Explanation&lt;/h2&gt;
+&lt;p&gt;This question is a dp introductory mention in many textbooks, and the idea is that it is a naked dp.&lt;/p&gt;
+&lt;p&gt;Let f[i][j] represent the maximum sum from (1,1) to (i,j), then f[i][j]=max(f[i-1][j],f[i- 1][j-1])+a[i][j] Because the point (i,j) can only come from two points (i-1,j) and (i-1,j-1), So take the maximum of the two of them + the number at this point.&lt;/p&gt;
+&lt;p&gt;In fact, the dp array f of this question can be optimized to O(n), but it doesn&#39;t make much sense: the first will not exceed the memory anyway, and the second a must already be two-dimensional. In fact, the a array can also be optimized as a one-dimensional, but it won&#39;t exceed the memory anyway, just ignore it.&lt;/p&gt;
+">Luogu P1216 Number Triangles</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/introduction-of-dynamic-programming/"" data-c="

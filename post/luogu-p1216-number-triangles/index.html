@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Circle-Based Tree | Blog</title>
+<title>Luogu P1216 Number Triangles | Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1618502651330">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Circle-Based Tree" />
-  <meta name="keywords" content="Data Structure,Note,Solution" />
+  <meta name="description" content="Luogu P1216 Number Triangles" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -191,12 +191,12 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#basic-definition-two-main-principle">Basic Definition &amp; Two Main Principle</a></li>
-<li><a href="#practise">Practise</a>
-<ul>
-<li><a href="#cf711d">CF711D</a></li>
-</ul>
-</li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#input-form">Input Form</a></li>
+<li><a href="#output-form">Output Form</a></li>
+<li><a href="#notice">Notice</a></li>
+<li><a href="#code">Code</a></li>
+<li><a href="#explanation">Explanation</a></li>
 </ul>
 </li>
 </ul>
@@ -464,8 +464,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/post/5vxYJM5Nd/">
-      Circle-Based Tree
+    <a class="post-title-link" href="https://dawn-cmd.github.io/post/luogu-p1216-number-triangles/">
+      Luogu P1216 Number Triangles
     </a>
   </h1>
   <div class="post-meta">
@@ -473,48 +473,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-01-31 10:58:42">2021-01-31</span>
+      <span class="publish-time" data-t="2021-04-15 23:54:24">2021-04-15</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://dawn-cmd.github.io/tag/wRT9h1jy0/">
-        <span>Data Structure</span>
-      </a>、
-      
-      
-      
-      <a href="https://dawn-cmd.github.io/tag/T9dinVrg_/">
-        <span>Note</span>
-      </a>、
-      
-      
-      
-      <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/">
-        <span>Solution</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>4<span class="language" data-lan="minute">分钟</span></span>
+      <span>3<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>558<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>449<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/5vxYJM5Nd/" data-flag-title="Circle-Based Tree" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/luogu-p1216-number-triangles/" data-flag-title="Luogu P1216 Number Triangles" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -523,102 +498,60 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="basic-definition-two-main-principle">Basic Definition &amp; Two Main Principle</h2>
-<p>Just like zero point is not a point, circle-based tree is not a tree as well.<br>
-Circle-based Tree, a graph with n vertexs and n edges, has one or more circles in it.</p>
-<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1612143955427.png" alt="" loading="lazy"></figure>
-<p>The graph has only one circle when the whole graph is connected. In other cases, it will form a &quot;Circle-Based Forest&quot;.</p>
-<figure data-type="image" tabindex="2"><img src="https://dawn-cmd.github.io/post-images/1612143997831.png" alt="" loading="lazy"></figure>
-<p>When we deal with problems relate to it, we can follow two main idea:</p>
-<ul>
-<li>Refine the circle from graph, then the graph will be like that some child - trees hang on the circle. Process the data on child-trees and return data to vertexs on circle. Finally, solve the circle problem.</li>
-</ul>
-<figure data-type="image" tabindex="3"><img src="https://dawn-cmd.github.io/post-images/1612144344053.png" alt="" loading="lazy"></figure>
-<ul>
-<li>Choosing to overlook an edge is also a direction. If we ignore an edge in the graph, it will become a simple tree.</li>
-</ul>
-<figure data-type="image" tabindex="4"><img src="https://dawn-cmd.github.io/post-images/1612146199022.png" alt="" loading="lazy"></figure>
-<h2 id="practise">Practise</h2>
-<h3 id="cf711d">CF711D</h3>
-<ul>
-<li>
-<p>Describe:<br>
-Give you a graph with n edges without directions and n vertexs. You can define every edge's direction. Calculate there are how many solutions that can let the graph have no circle.</p>
-</li>
-<li>
-<p>Solution:<br>
-First, as all we known, there existed 2^n solutions. Then we need to minus the solution that has circles from it. This is a graph with n edges and n vertexs. Actually, it is a circle-based tree. The edges in the circle must point in the same way. Otherwise, it is not a circle.</p>
-</li>
-</ul>
-<figure data-type="image" tabindex="5"><img src="https://dawn-cmd.github.io/post-images/1612358736984.png" alt="" loading="lazy"></figure>
-<p>Other edges' direction are indifferent. Cause it will neither break existed circles, nor add new circles.</p>
-<p>Obviously, the illegal number of illegal solutions is 2^(n - len) * 2, len is the length of the circle. Hence, there are (2 ^ len - 2) * 2 ^ (n - len) legal solutions. And we successfully beat the problem ......</p>
-<p>Not yet.</p>
-<p>The problem didn't mention that the graph is connected. So there may not be only one circle. To each isolated graph, we need to add them all.</p>
-<ul>
-<li>Code:</li>
-</ul>
+              <h2 id="introduction">Introduction</h2>
+<p>Write a program to find the path from the highest point to the bottom anywhere, so that the path passes through the largest sum of numbers. Each step can go to the bottom left point or the bottom right point.<br>
+7<br>
+3   8<br>
+8   1   0<br>
+2   7   4   4<br>
+4   5   2   6   5<br>
+In the above example, the path from 7→3→8→7→7→3→8→7→5 produces the largest one.</p>
+<h2 id="input-form">Input Form</h2>
+<p>The first line is a positive integer rr, which indicates the number of lines.</p>
+<h2 id="output-form">Output Form</h2>
+<p>A single line containing the largest sum possible.</p>
+<h2 id="notice">Notice</h2>
+<p>For 100% data,1≤r≤1000, all inputs are in the range of [0,100].</p>
+<h2 id="code">Code</h2>
 <pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-#define ll long long
-#define MOD ((int)1e9 + 7)
 using namespace std;
-vector &lt;int&gt; graph[(int)2e5 + 1];
-int vis[(int)2e5 + 1];
-int dfs(int now, int fa, int depth, int &amp;cnt) {
-    if (vis[now] &amp;&amp; vis[fa] == 1) {
-        vis[now] += 1;
-        return -depth;   
-    }
-    if (vis[now] &amp;&amp; vis[fa] == 2) {
-        return 0;
-    }
-    if (vis[now] == 2) {
-        return 0;
-    }
-    vis[now] += 1;
-    cnt += 1;
-    if (graph[now].size() == 1) {
-       return 1;
-    }
-    int ans = 1;
-    for (int i = 0, l = graph[now].size(); i &lt; l; ++i) {
-         int t = graph[now][i];
-         if (t == fa) continue;
-         ans += dfs(t, now, depth + 1, cnt);
-    }
-    return ans;
-}
-ll qpow(ll x, ll b) {
-    if (b == 0) return 1;
-    if (b &amp; 1) return x * qpow(x * x % MOD, b &gt;&gt; 1) % MOD;
-    else return qpow(x * x % MOD, b &gt;&gt; 1);
-}
 int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    int n;
-    cin &gt;&gt; n;
-    for (int i = 1; i &lt;= n; ++i) {
-        int tmp;
-        cin &gt;&gt; tmp;
-        graph[tmp].push_back(i);
-        graph[i].push_back(tmp);
+    int r;
+    cin &gt;&gt; r;
+    vector&lt;vector&lt;int&gt;&gt; graph(r);
+    for (int i = 0; i &lt; r; ++i) {
+        graph[i] = vector&lt;int&gt;(i + 1);
+        for (int j = 0; j &lt; i + 1; ++j) 
+            cin &gt;&gt; graph[i][j];
     }
-    memset(vis, 0, sizeof vis);
-    ll ans = 0;
-    for (int i = 1; i &lt;= n; ++i) {
-        if (vis[i]) {
-            continue;
+    vector&lt;vector&lt;int&gt;&gt; dp(r);
+    for (int i = 0; i &lt; r; ++i)
+        for (int j = 0; j &lt; i + 1; ++j) 
+            dp[i].push_back(0);
+    dp[0][0] = graph[0][0];
+    for (int i = 1; i &lt; r; ++i)
+        for (int j = 0; j &lt; i + 1; ++j) {
+            if (j == 0) {
+                dp[i][j] = dp[i - 1][j] + graph[i][j];
+                continue;
+            }
+            if (j == i) {
+                dp[i][j] = dp[i - 1][j - 1] + graph[i][j];
+                continue;
+            }
+            dp[i][j] = graph[i][j] + max(dp[i - 1][j], dp[i - 1][j - 1]);
         }
-        int cnt = 0;
-        int s = dfs(i, -1, 0, cnt);
-        ans = (ans + (qpow(2, cnt) - qpow(2, s) * 2 % MOD + MOD) % MOD) % MOD;
-    }
+    int ans = 0;
+    for (int i = 0; i &lt; r; ++i)
+        ans = max(ans, dp[r - 1][i]);
     cout &lt;&lt; ans &lt;&lt; endl;
     return 0;
 }
 </code></pre>
+<h2 id="explanation">Explanation</h2>
+<p>This question is a dp introductory mention in many textbooks, and the idea is that it is a naked dp.</p>
+<p>Let f[i][j] represent the maximum sum from (1,1) to (i,j), then f[i][j]=max(f[i-1][j],f[i- 1][j-1])+a[i][j] Because the point (i,j) can only come from two points (i-1,j) and (i-1,j-1), So take the maximum of the two of them + the number at this point.</p>
+<p>In fact, the dp array f of this question can be optimized to O(n), but it doesn't make much sense: the first will not exceed the memory anyway, and the second a must already be two-dimensional. In fact, the a array can also be optimized as a one-dimensional, but it won't exceed the memory anyway, just ignore it.</p>
 
             </div>
             
@@ -631,7 +564,7 @@ int main() {
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/post/5vxYJM5Nd/" title="Circle-Based Tree">https://dawn-cmd.github.io/post/5vxYJM5Nd/</a>
+      <a href="https://dawn-cmd.github.io/post/luogu-p1216-number-triangles/" title="Luogu P1216 Number Triangles">https://dawn-cmd.github.io/post/luogu-p1216-number-triangles/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -640,25 +573,15 @@ int main() {
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/tag/wRT9h1jy0/"># Data Structure</a>
-    
-      <a href="https://dawn-cmd.github.io/tag/T9dinVrg_/"># Note</a>
-    
-      <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/"># Solution</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Manacher" href="https://dawn-cmd.github.io/post/ntYB0fMZm/">Manacher</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Manacher" href="https://dawn-cmd.github.io/post/ntYB0fMZm/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Deep Analysis: Fancy Sequence" href="https://dawn-cmd.github.io/post/FYQ2RAKvZ/">Deep Analysis: Fancy Sequence</a>
-        <a class="nav-mobile-next" title="Deep Analysis: Fancy Sequence" href="https://dawn-cmd.github.io/post/FYQ2RAKvZ/">下一篇</a>
+        <a class="nav-pc-next" title="Introduction of Dynamic Programming" href="https://dawn-cmd.github.io/post/introduction-of-dynamic-programming/">Introduction of Dynamic Programming</a>
+        <a class="nav-mobile-next" title="Introduction of Dynamic Programming" href="https://dawn-cmd.github.io/post/introduction-of-dynamic-programming/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
