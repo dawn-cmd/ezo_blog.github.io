@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-04-15T23:43:09.952Z</updated>
+    <updated>2021-04-17T00:58:23.738Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -11,6 +11,68 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Codeforces Round #715 (Div. 2) Problem A]]></title>
+        <id>https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-a/</id>
+        <link href="https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-a/">
+        </link>
+        <updated>2021-04-17T00:43:09.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1618620382440.png" alt="" loading="lazy"></figure>
+<h2 id="introduction">Introduction</h2>
+<p><a href="https://codeforces.com/contest/1509/problem/A">Raw Link</a><br>
+Sayaka Saeki is a member of the student council, which has n other members (excluding Sayaka). The i-th member has a height of ai millimeters.</p>
+<p>It's the end of the school year and Sayaka wants to take a picture of all other members of the student council. Being the hard-working and perfectionist girl as she is, she wants to arrange all the members in a line such that the amount of photogenic consecutive pairs of members is as large as possible.</p>
+<p>A pair of two consecutive members u and v on a line is considered photogenic if their average height is an integer, (u + v) / 2 is an integer.</p>
+<p>Help Sayaka arrange the other members to maximize the number of photogenic consecutive pairs.</p>
+<h2 id="input-form">Input Form</h2>
+<p>The first line contains a single integer t (1≤t≤500) — the number of test cases.</p>
+<p>The first line of each test case contains a single integer n (2≤n≤2000)  — the number of other council members.</p>
+<p>The second line of each test case contains n integers a1, a2, ..., an (1≤ai≤2⋅10^5)  — the heights of each of the other members in millimeters.</p>
+<p>It is guaranteed that the sum of n over all test cases does not exceed 2000.</p>
+<h2 id="output-form">Output Form</h2>
+<p>For each test case, output on one line n integers representing the heights of the other members in the order, which gives the largest number of photogenic consecutive pairs. If there are multiple such orders, output any of them.</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+struct Data {
+    int n;
+    vector&lt;int&gt; h_odd;
+    vector&lt;int&gt; h_even;
+};
+void init(Data &amp;d) {
+    cin &gt;&gt; d.n;
+    for(int i = 0; i &lt; d.n; ++i) {
+        int tmp;
+        cin &gt;&gt; tmp;
+        if(tmp &amp; 1) {
+            d.h_odd.push_back(tmp);
+        }
+        else{
+            d.h_even.push_back(tmp);
+        }
+    }
+}
+int main() {
+    int t;
+    cin &gt;&gt; t;
+    while(t--) {
+        Data d;
+        init(d);
+        for(auto i : d.h_odd) {
+            cout &lt;&lt; i &lt;&lt; ' ';            
+        }
+        for (auto i : d.h_even) {
+            cout &lt;&lt; i &lt;&lt; ' '; 
+        }
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p>Obviously, if a consecutive pair of members is considered photogenic, their heights must be all odd or even, otherwise u + v cannot divided by 2 with a integer. Hence, we just need to do is to make sure that all men with odd heights were stand together, even as well.</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Luogu P2196 [NOIP1996 senior] Dig Landmines]]></title>
         <id>https://dawn-cmd.github.io/post/luogu-p2196-noip1996-senior-dig-landmines/</id>
@@ -852,67 +914,6 @@ class pairing_heap:
 push: Binary O(nlogn) | Pairing O(1)<br>
 get_min: Binary O(1) | Pairing O(1)<br>
 merge: Binary doesn't support | Pairing O(1)</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Heap]]></title>
-        <id>https://dawn-cmd.github.io/post/dENZkdKd3/</id>
-        <link href="https://dawn-cmd.github.io/post/dENZkdKd3/">
-        </link>
-        <updated>2020-11-10T13:53:47.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>Well, let's talk about something simple in this passage. I believe most of you must have learnt pile when you just start to learn data structure. But I will still repeat this part again in this passage because it is quite important for the next passage. If we can really understand the inner system of pile, we will be able to make other algorithms that based on it better as well.</p>
-<h2 id="code">Code</h2>
-<pre><code class="language-python">class pile:
-    def __init__(self):
-        self.p = [-1]  # because we use binary tree to actclize the pile, the root node must be 1, so we fill p[0]with -1
-
-    def add(self, x):
-        self.p += [x]  # put the number at the end of the pile
-        pos = len(self.p) - 1  # locate it 
-        while pos &gt; 1:  # when pos is not at root 
-            if self.p[pos] &lt; self.p[pos &gt;&gt; 1]:  # pos &gt;&gt; 1(same as pos // 2) is p[pos]'s father node's id
-                self.p[pos], self.p[pos &gt;&gt; 1] = self.p[pos &gt;&gt; 1], self.p[pos]  # swap them
-                pos &gt;&gt;= 1  # update pos
-            else:
-                break  # we find a ideal place, so there is no need to go on
-
-    def pop(self):
-        if len(self.p) == 1:
-            return -1  # there is nothing in the pile, so we return -1 to represent there is something wrong
-        if len(self.p) == 2:
-            return self.p.pop()  # there is only one element, so we just need to return it and delete it
-        ans = self.p[1]  # store the answer
-        self.p[1] = self.p.pop()  # replace the place with the last element
-        pos = 1
-        while pos &lt;&lt; 1 &lt;= len(self.p) - 1:
-            if self.p[pos] &gt; self.p[pos * 2]:  # pos &lt;&lt; 1(same as pos * 2) is pos's left son
-                self.p[pos], self.p[pos &lt;&lt; 1] = self.p[pos &lt;&lt; 1], self.p[pos]  # swap them
-                pos &lt;&lt;= 1  # update pos
-                continue
-            elif pos &lt;&lt; 1 | 1 &lt;= len(self.p) - 1:  # to ensure pos's right son's id will not exceed the range
-                if self.p[pos] &gt; self.p[pos &lt;&lt; 1 | 1]:
-                    self.p[pos], self.p[pos &lt;&lt; 1 | 1] = self.p[pos &lt;&lt; 1 | 1], self.p[pos]  # swap them
-                    pos = pos &lt;&lt; 1 | 1  # update pos
-                    continue
-                else:
-                    break
-            else:
-                break
-        return ans
-
-def main():
-    a = list(map(int, input('elements:').split())) # input the data
-    n = len(a)
-    pl = pile()
-    for i in range(len(a)):
-        pl.add(a[i])  # put all the things into pile and they will be sorted automatically :)
-    print('sorted:', end = '')
-    for i in range(n):
-        print(pl.pop(), end = '\n' if i == n - 1 else ' ')  # output the answer
-
-main()
-</code></pre>
 ]]></content>
     </entry>
 </feed>
