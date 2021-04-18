@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-04-17T01:01:35.868Z</updated>
+    <updated>2021-04-18T00:40:35.447Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -11,6 +11,98 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Codeforces Round #715 (Div. 2) Problem B]]></title>
+        <id>https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-b/</id>
+        <link href="https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-b/">
+        </link>
+        <updated>2021-04-18T00:29:43.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1618705814373.png" alt="" loading="lazy"></figure>
+<h2 id="introduction">Introduction</h2>
+<p><a href="https://codeforces.com/contest/1509/problem/B">Raw Link</a><br>
+The student council has a shared document file. Every day, some members of the student council write the sequence TMT (short for Towa Maji Tenshi) in it.</p>
+<p>However, one day, the members somehow entered the sequence into the document at the same time, creating a jumbled mess. Therefore, it is Suguru Doujima's task to figure out whether the document has malfunctioned. Specifically, he is given a string of length n whose characters are all either T or M, and he wants to figure out if it is possible to partition it into some number of disjoint subsequences, all of which are equal to TMT. That is, each character of the string should belong to exactly one of the subsequences.</p>
+<p>A string a is a subsequence of a string b if a can be obtained from b by deletion of several (possibly, zero) characters.</p>
+<h2 id="input-form">Input Form</h2>
+<p>The first line contains an integer t (1 ≤ t ≤ 5000)  — the number of test cases.</p>
+<p>The first line of each test case contains an integer n (3 ≤ n &lt; 10^5), the number of characters in the string entered in the document. It is guaranteed that n is divisible by 3.</p>
+<p>The second line of each test case contains a string of length n consisting of only the characters T and M.</p>
+<p>It is guaranteed that the sum of n over all test cases does not exceed 10^5.</p>
+<h2 id="output-form">Output Form</h2>
+<p>For each test case, print a single line containing <code>YES</code> if the described partition exists, and a single line containing <code>NO</code> otherwise.</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+struct Data {
+    int n;
+    string s;
+    int m_num;
+    int t_num;
+};
+void init(Data &amp;d) {
+    cin &gt;&gt; d.n;
+    cin &gt;&gt; d.s;
+    d.m_num = 0;
+    d.t_num = 0;
+}
+int main() {
+    int t;
+    cin &gt;&gt; t;
+    while(t--) {
+        Data d;
+        init(d);
+        bool ans = 1;
+        for(int i = 0; i &lt; d.s.size(); ++i) {
+            if(d.s[i] == 'M') {
+                d.m_num += 1;
+            }
+            else{
+                d.t_num += 1;
+            }
+            if(d.m_num &gt; d.t_num) {
+                ans = 0;
+                break;
+            }
+        }
+        if(!ans) {
+            cout &lt;&lt; &quot;NO&quot; &lt;&lt; endl;
+            continue;
+        }
+        d.m_num = 0;
+        d.t_num = 0;
+        for(int i = d.s.size() - 1; i &gt;= 0; --i) {
+            if(d.s[i] == 'M') {
+                d.m_num += 1;
+            }
+            else{
+                d.t_num += 1;
+            }
+            if(d.m_num &gt; d.t_num) {
+                ans = 0;
+                break;
+            }
+        }
+        if(d.m_num * 2 != d.t_num) {
+            ans = 0;
+        }
+        if(!ans) {
+            cout &lt;&lt; &quot;NO&quot; &lt;&lt; endl;
+        }
+        else{
+            cout &lt;&lt; &quot;YES&quot; &lt;&lt; endl;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p>If we translate the problem, we will find that all the requirements turns into two rules:</p>
+<ol>
+<li>Check the string from left to right and right to left, the number of M should not exceed the number of T at any time.</li>
+<li>The number of T should be the double of number of M</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Codeforces Round #715 (Div. 2) Problem A]]></title>
         <id>https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-a/</id>
@@ -851,69 +943,6 @@ class Solution:
                 min_end = i[1]
         return ans
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Pairing Heap]]></title>
-        <id>https://dawn-cmd.github.io/post/4msqBIkRn/</id>
-        <link href="https://dawn-cmd.github.io/post/4msqBIkRn/">
-        </link>
-        <updated>2020-11-17T13:20:04.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>Well, in the previous passage, we have talked about normal heaps, also called binary heap. In this passage, we will discuss a new kind of heap. It is much more effective than binary heap in many aspects, and it's not hard to practice it as well. Let's see the code first and at the end of the passage, I will compare their efficiency.</p>
-<h2 id="code">Code</h2>
-<pre><code class="language-python">class node:  # the item class
-
-    def __init__(self, value):
-        self.value = value  # value(priority)
-        self.bro = self.ch = None  # brother node and child node
-
-class pairing_heap:
-
-    def __init__(self):
-        self.root = None  # There is no node
-        self.node_number = 0  # It has 0 node
-
-    def __merge(self, a, b):  # Core API 1
-        if a is None or b is None:
-            return a if b is None else b  # return the one that is not None
-        if a.value &gt; b.value:  
-            a, b = b, a  # make sure that a is the smaller one
-        a.ch, b.bro = b, a.ch  # let b becomes a's child
-        return a
-        
-    def __pair_merge(self, now):  # Core API 2
-        if now is None or now.bro is None:  # It has no brother node to break
-            return now
-        bro1, bro2 = now.bro, now.bro.bro  # save its brother and its brother's brother
-        now.bro = bro1.bro = None  # break them
-        return self.__merge(self.__merge(now, bro1), self.__pair_merge(bro2))  # merge these two and continue the next two
-
-    def push(self, new):
-        if self.root is None:
-            self.root = node(new)  # there is no node here, so just let the new one be the root
-        else:
-            self.root = self.__merge(self.root, node(new))  # consider the new one as a single heap, and merge them
-        self.node_number += 1
-
-    def merge(self, new):
-        self.root = self.__merge(self.root, new.root)  # just merge the root of the two heap
-        self.node_number += new.node_number
-
-    def pop(self):
-        if self.root is None:
-            return None  # if there is nothing, than it is an error
-        self.root = self.__pair_merge(self.root.ch)
-        self.node_number -= 1
-
-    def top(self):
-        return None if self.root is None else self.root.value
-</code></pre>
-<h2 id="about-efficiency">About efficiency</h2>
-<p>pop: Binary O(nlogn) | Pairing O(h(n))<br>
-push: Binary O(nlogn) | Pairing O(1)<br>
-get_min: Binary O(1) | Pairing O(1)<br>
-merge: Binary doesn't support | Pairing O(1)</p>
 ]]></content>
     </entry>
 </feed>
