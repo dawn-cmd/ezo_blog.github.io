@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1618706431815">
+<link rel="shortcut icon" href="/favicon.ico?v=1618839625534">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -185,7 +185,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">26</span>
+        <span class="site-item-stat-count">27</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -248,6 +248,10 @@
           <small class="language" data-lan="tag">标签</small>
         </h2>
       </div>
+      
+      
+      
+      
       
       
       
@@ -609,6 +613,62 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-3/"" data-c="
+          &lt;h2 id=&#34;introdution&#34;&gt;Introdution&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeforces.com/contest/1509/problem/C&#34;&gt;Raw Link&lt;/a&gt;&lt;br&gt;
+The student council is preparing for the relay race at the sports festival.&lt;/p&gt;
+&lt;p&gt;The council consists of n members. They will run one after the other in the race, the speed of member i is si. The discrepancy di of the i-th stage is the difference between the maximum and the minimum running speed among the first i members who ran. Formally, if ai denotes the speed of the i-th member who participated in the race, then di=max(a1,a2,…,ai)−min(a1,a2,…,ai).&lt;/p&gt;
+&lt;p&gt;You want to minimize the sum of the discrepancies d1+d2+⋯+dn. To do this, you are allowed to change the order in which the members run. What is the minimum possible sum that can be achieved?&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;The first line contains a single integer n (1≤n≤2000)  — the number of members of the student council.&lt;/p&gt;
+&lt;p&gt;The second line contains n integers s1,s2,…,sn (1≤si≤109)  – the running speeds of the members.&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;Print a single integer  — the minimum possible value of d1+d2+⋯+dn after choosing the order of the members.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+struct Data {
+    int n;
+    vector&amp;lt;long long&amp;gt; s;
+    vector&amp;lt;vector&amp;lt;long long&amp;gt; &amp;gt; mem;
+};
+void init(Data &amp;amp;d) {
+    cin &amp;gt;&amp;gt; d.n;
+    d.s = vector&amp;lt;long long&amp;gt;(d.n);
+    for(int i = 0; i &amp;lt; d.n; ++i) {
+        cin &amp;gt;&amp;gt; d.s[i];
+    }
+    sort(d.s.begin(), d.s.end());
+    d.mem = vector&amp;lt;vector&amp;lt;long long&amp;gt; &amp;gt;(d.n);
+    for(int i = 0; i &amp;lt; d.n; ++i) {
+        d.mem[i] = vector&amp;lt;long long&amp;gt;(d.n);
+        fill(d.mem[i].begin(), d.mem[i].end(), -1);
+    }
+}
+long long dp(int l, int r, Data &amp;amp;d) {
+    if(d.mem[l][r] != -1) {
+        return d.mem[l][r];
+    }
+    if(l == r) {
+        return 0;
+    }
+    return d.mem[l][r] = d.s[r] - d.s[l] + min(dp(l + 1, r, d), dp(l, r - 1, d));
+}
+int main() {
+    Data d;
+    init(d);
+    cout &amp;lt;&amp;lt; dp(0, d.n - 1, d) &amp;lt;&amp;lt; endl; 
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;explanation&#34;&gt;Explanation&lt;/h2&gt;
+&lt;p&gt;To solve the problem, we need a handle to enter it. If we try to play this process from end to the beginning, we will find that the last one added is the largest or smallest one among them. Cause it will increase di earlier if it is put in a early time.&lt;/p&gt;
+&lt;p&gt;So we can get the dp function that dp(i, j) = sj - si + max(dp(i + 1, j), dp(i, j - 1)), dp(i, i) = 0.&lt;/p&gt;
+&lt;p&gt;We can use memorization to make sure that the time complexity is in O(n^2).&lt;/p&gt;
+">Codeforces Round #715 (Div. 2) Problem C</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-b/"" data-c="

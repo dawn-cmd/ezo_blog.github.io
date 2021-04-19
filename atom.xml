@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-04-18T01:03:22.701Z</updated>
+    <updated>2021-04-19T13:40:28.461Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -11,6 +11,65 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Codeforces Round #715 (Div. 2) Problem C]]></title>
+        <id>https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-3/</id>
+        <link href="https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-3/">
+        </link>
+        <updated>2021-04-19T13:23:33.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="introdution">Introdution</h2>
+<p><a href="https://codeforces.com/contest/1509/problem/C">Raw Link</a><br>
+The student council is preparing for the relay race at the sports festival.</p>
+<p>The council consists of n members. They will run one after the other in the race, the speed of member i is si. The discrepancy di of the i-th stage is the difference between the maximum and the minimum running speed among the first i members who ran. Formally, if ai denotes the speed of the i-th member who participated in the race, then di=max(a1,a2,…,ai)−min(a1,a2,…,ai).</p>
+<p>You want to minimize the sum of the discrepancies d1+d2+⋯+dn. To do this, you are allowed to change the order in which the members run. What is the minimum possible sum that can be achieved?</p>
+<h2 id="input">Input</h2>
+<p>The first line contains a single integer n (1≤n≤2000)  — the number of members of the student council.</p>
+<p>The second line contains n integers s1,s2,…,sn (1≤si≤109)  – the running speeds of the members.</p>
+<h2 id="output">Output</h2>
+<p>Print a single integer  — the minimum possible value of d1+d2+⋯+dn after choosing the order of the members.</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+struct Data {
+    int n;
+    vector&lt;long long&gt; s;
+    vector&lt;vector&lt;long long&gt; &gt; mem;
+};
+void init(Data &amp;d) {
+    cin &gt;&gt; d.n;
+    d.s = vector&lt;long long&gt;(d.n);
+    for(int i = 0; i &lt; d.n; ++i) {
+        cin &gt;&gt; d.s[i];
+    }
+    sort(d.s.begin(), d.s.end());
+    d.mem = vector&lt;vector&lt;long long&gt; &gt;(d.n);
+    for(int i = 0; i &lt; d.n; ++i) {
+        d.mem[i] = vector&lt;long long&gt;(d.n);
+        fill(d.mem[i].begin(), d.mem[i].end(), -1);
+    }
+}
+long long dp(int l, int r, Data &amp;d) {
+    if(d.mem[l][r] != -1) {
+        return d.mem[l][r];
+    }
+    if(l == r) {
+        return 0;
+    }
+    return d.mem[l][r] = d.s[r] - d.s[l] + min(dp(l + 1, r, d), dp(l, r - 1, d));
+}
+int main() {
+    Data d;
+    init(d);
+    cout &lt;&lt; dp(0, d.n - 1, d) &lt;&lt; endl; 
+    return 0;
+}
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p>To solve the problem, we need a handle to enter it. If we try to play this process from end to the beginning, we will find that the last one added is the largest or smallest one among them. Cause it will increase di earlier if it is put in a early time.</p>
+<p>So we can get the dp function that dp(i, j) = sj - si + max(dp(i + 1, j), dp(i, j - 1)), dp(i, i) = 0.</p>
+<p>We can use memorization to make sure that the time complexity is in O(n^2).</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Codeforces Round #715 (Div. 2) Problem B]]></title>
         <id>https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-b/</id>
@@ -825,122 +884,6 @@ class Solution:
         ans = 0
         for i in range(n):
             ans += h[i]
-        return ans
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Deep Analysis: Minimum Number of Arrows to Burst Balloons]]></title>
-        <id>https://dawn-cmd.github.io/post/guwS0s3Te/</id>
-        <link href="https://dawn-cmd.github.io/post/guwS0s3Te/">
-        </link>
-        <updated>2020-11-25T12:43:40.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="problem-description">Problem Description</h2>
-<p>There are some spherical balloons spread in two-dimensional space. For each balloon, provided input is the start and end coordinates of the horizontal diameter. Since it's horizontal, y-coordinates don't matter, and hence the x-coordinates of start and end of the diameter suffice. The start is always smaller than the end.</p>
-<p>An arrow can be shot up exactly vertically from different points along the x-axis. A balloon with xstart and xend bursts by an arrow shot at x if xstart ≤ x ≤ xend. There is no limit to the number of arrows that can be shot. An arrow once shot keeps traveling up infinitely.</p>
-<p>Given an array points where points[i] = [xstart, xend], return the minimum number of arrows that must be shot to burst all balloons.</p>
-<h2 id="constraints">Constraints</h2>
-<p>0 &lt;= points.length &lt;= 104<br>
-points[i].length == 2<br>
--2^31 &lt;= xstart &lt; xend &lt;= 2^31 - 1</p>
-<h2 id="solution-1-violent-try">Solution 1: Violent Try</h2>
-<p>No algorithms! No data structure! Just try all the possibilities. For         each point on x-axis, it has two conditions: has arrow or not. We can          represent it by 0 and 1. Under the most terrible situation, we have 2^        (2^32) possibilities. But it does not matter at all! Because many             excellent solution, algorithms and data structures starts from it.</p>
-<pre><code class="language-python">class Solution:
-    ans = 2 ** 32 - 1
-    def dfs(self, now, end, h):
-        if now == end:
-            if check(h):
-                ans = min(ans, sum(h))
-            return
-        self.dfs(now + 1, end, h + [0])
-        self.dfs(now + 1, end, h + [1])
-    def findMinArrowShots(self, points: List[List[int]]) -&gt; int: 
-        start = min(list(map(lambda x: x[0], points)))
-        end = max(list(map(lambda x: x[1], points)))
-        self.dfs(start, end, [])
-        return self.ans
-</code></pre>
-<h2 id="solution-2-greedy-algorithm">Solution 2: Greedy algorithm</h2>
-<p>Obviously, we wasted a lot of arrows in the previous trying. So we will try our best to save our arrows. What we do is still judge it from left or right(reverse is okay), but we only use the arrow when we really need it otherwise we have no chance. Let me explain it, for example, there is a balloon is from 5 to 8, and we find position 8 is the last point in its cover. That is to say if we just let it go, we will not be able to shoot the balloon again. So we use the arrow here.</p>
-<pre><code class="language-python">class Solution:
-    def findMinArrowShots(self, points: List[List[int]]) -&gt; int:
-        ans += 0 
-        for i in range(left, right + 1):
-            if i is a balloon's right bound:
-                # realize a function to shoot a arrow at x[i]
-                ans += 1
-        return ans        
-</code></pre>
-<h2 id="solution-3-a-small-improvement">Solution 3: A small improvement</h2>
-<p>Up to now, we have build a prototype of the final solution. Let's see whether there is anything can be improved or not. We find that the loop in the previous code has many superfluous visit to irrevelent positions. Because we can see only at the right bound of a balloon, we may do something and the points between two bounds won't be used at all. Self-evidently, we only need to visit the bound points. What's more, we have to visit it by the sequence of its position on x-axis. So we need to sort them with their right bound positions and visit them.</p>
-<pre><code class="language-python">class item:
-    
-    def __init__(self, start, end):
-        self.start, self.end = start, end
-
-    def __lt__(self, other):
-        return self.end &lt; other.end
-
-class Solution:
-    def findMinArrowShots(self, points: List[List[int]]) -&gt; int: 
-        p = []
-        for i in range(len(points)):
-            p.append(item(points[i][0], points[i][1]))
-        p.sort()
-        ans = 0
-        h = [0] * len(p)
-        for i in range(len(p)):
-            if h[i] == 1:
-                continue
-            ans += 1
-            for j in range(i, len(p)):
-                if h[j] == 1:
-                    continue
-                elif p[j].start &lt;= p[i].end:
-                    h[j] = 1
-        return ans
-</code></pre>
-<h2 id="solution-4-a-large-step-to-the-best-one">Solution 4: A large step to the best one</h2>
-<p>The solution 3 is excellent enough in most cases, but it is still not stable. In some special cases, the time complexity of the solution will raise to O(n^2). In some restrictedly developing environments, we need a more stable algorithm. Let's see the line 24: when the computer find that this arrow cannot shoot this ballon, it chooses to continue visiting the rest balloons, but it is not necessary. When we find this arrow cannot shoot a balloon for the first time, we can quit the loop. Why? Because if this arrow cannot shoot the balloon, the other arrows will shoot it later, so the following balloons that this arrow can shoot, the other arrows can do it as well.</p>
-<pre><code class="language-python">class item:
-    
-    def __init__(self, start, end):
-        self.start, self.end = start, end
-
-    def __lt__(self, other):
-        return self.end &lt; other.end
-
-class Solution:
-    def findMinArrowShots(self, points: List[List[int]]) -&gt; int: 
-        p = []
-        for i in range(len(points)):
-            p.append(item(points[i][0], points[i][1]))
-        p.sort()
-        ans = 0
-        h = [0] * len(p)
-        for i in range(len(p)):
-            if h[i] == 1:
-                continue
-            ans += 1
-            for j in range(i, len(p)):
-                if h[j] == 1:
-                    continue
-                elif p[j].start &lt;= p[i].end:
-                    h[j] = 1
-                else:
-                    break
-        return ans
-</code></pre>
-<h2 id="solution-5-make-it-beautiful">Solution 5: Make it beautiful</h2>
-<pre><code class="language-python">class Solution:
-    def findMinArrowShots(self, points: List[List[int]]) -&gt; int: 
-        points = sorted(points, key = lambda x: x[1])
-        ans = 0
-        min_end = -2 ** 31 - 1
-        for i in points:
-            if i[0] &gt; min_end:
-                ans += 1
-                min_end = i[1]
         return ans
 </code></pre>
 ]]></content>

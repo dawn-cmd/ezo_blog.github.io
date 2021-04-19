@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Codeforces Round #662 Div2 retrospect | Blog</title>
+<title>Codeforces Round #715 (Div. 2) Problem C | Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1618839625534">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Codeforces Round #662 Div2 retrospect" />
-  <meta name="keywords" content="Contest Retrospect,Solution" />
+  <meta name="description" content="Codeforces Round #715 (Div. 2) Problem C" />
+  <meta name="keywords" content="Solution" />
 </head>
 
 <body>
@@ -246,26 +246,13 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li><a href="#first-here-is-my-score-and-rate">First, here is my score and rate:</a></li>
-<li><a href="#a-rainbow-dash-fluttershy-and-chess-coloring">A. Rainbow Dash, Fluttershy and Chess Coloring</a>
+<li>
 <ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#analysis">Analysis</a></li>
+<li><a href="#introdution">Introdution</a></li>
+<li><a href="#input">Input</a></li>
+<li><a href="#output">Output</a></li>
 <li><a href="#code">Code</a></li>
-</ul>
-</li>
-<li><a href="#b-applejack-and-storages">B. Applejack and Storages</a>
-<ul>
-<li><a href="#introduction-2">Introduction</a></li>
-<li><a href="#analysis-2">Analysis</a></li>
-<li><a href="#code-2">Code</a></li>
-</ul>
-</li>
-<li><a href="#c-pinkie-pie-eats-patty-cakes">C. Pinkie Pie Eats Patty-cakes</a>
-<ul>
-<li><a href="#introduction-3">Introduction</a></li>
-<li><a href="#analysis-3">Analysis</a></li>
-<li><a href="#code-3">Code</a></li>
+<li><a href="#explanation">Explanation</a></li>
 </ul>
 </li>
 </ul>
@@ -533,8 +520,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/post/i28zPrNp9/">
-      Codeforces Round #662 Div2 retrospect
+    <a class="post-title-link" href="https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-3/">
+      Codeforces Round #715 (Div. 2) Problem C
     </a>
   </h1>
   <div class="post-meta">
@@ -542,19 +529,13 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-08-13 17:15:54">2020-08-13</span>
+      <span class="publish-time" data-t="2021-04-19 21:23:33">2021-04-19</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-folder-o"></i>
       <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://dawn-cmd.github.io/tag/P8XbJiAxi/">
-        <span>Contest Retrospect</span>
-      </a>、
-      
       
       
       <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/">
@@ -567,17 +548,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>5<span class="language" data-lan="minute">分钟</span></span>
+      <span>3<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>746<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>461<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/i28zPrNp9/" data-flag-title="Codeforces Round #662 Div2 retrospect" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/codeforces-round-715-div-2-problem-3/" data-flag-title="Codeforces Round #715 (Div. 2) Problem C" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -586,187 +567,57 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="first-here-is-my-score-and-rate">First, here is my score and rate:</h1>
-<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1597310459488.png" alt="" loading="lazy"></figure>
-<h1 id="a-rainbow-dash-fluttershy-and-chess-coloring">A. Rainbow Dash, Fluttershy and Chess Coloring</h1>
-<h2 id="introduction">Introduction</h2>
-<p><a href="https://codeforces.com/contest/1393/problem/A">Here</a></p>
-<h2 id="analysis">Analysis</h2>
-<p>It's very easy, you can find the answer via merely trying 2 to 3 numbers. The answer is n/2+1. That's all.</p>
+              <h2 id="introdution">Introdution</h2>
+<p><a href="https://codeforces.com/contest/1509/problem/C">Raw Link</a><br>
+The student council is preparing for the relay race at the sports festival.</p>
+<p>The council consists of n members. They will run one after the other in the race, the speed of member i is si. The discrepancy di of the i-th stage is the difference between the maximum and the minimum running speed among the first i members who ran. Formally, if ai denotes the speed of the i-th member who participated in the race, then di=max(a1,a2,…,ai)−min(a1,a2,…,ai).</p>
+<p>You want to minimize the sum of the discrepancies d1+d2+⋯+dn. To do this, you are allowed to change the order in which the members run. What is the minimum possible sum that can be achieved?</p>
+<h2 id="input">Input</h2>
+<p>The first line contains a single integer n (1≤n≤2000)  — the number of members of the student council.</p>
+<p>The second line contains n integers s1,s2,…,sn (1≤si≤109)  – the running speeds of the members.</p>
+<h2 id="output">Output</h2>
+<p>Print a single integer  — the minimum possible value of d1+d2+⋯+dn after choosing the order of the members.</p>
 <h2 id="code">Code</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
 using namespace std;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    while(T--){
-        int n;
-        cin&gt;&gt;n;
-        cout&lt;&lt;n/2+1&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre>
-<h1 id="b-applejack-and-storages">B. Applejack and Storages</h1>
-<h2 id="introduction-2">Introduction</h2>
-<p><a href="https://codeforces.com/contest/1393/problem/B">Here</a></p>
-<h2 id="analysis-2">Analysis</h2>
-<p>First, we can record number of each kind of lumber. Then we can count and update the number of types of lumber which is more than 2, 4, 6 and 8. This whole procedure is O(n). Each time the data is renewed, we can use the record to judge that the requirement in the introduction is accpetable or not.</p>
-<h2 id="code-2">Code</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int main(){
+struct Data {
     int n;
-    cin&gt;&gt;n;
-    map&lt;int,int&gt; h;
-    int cnt2=0;
-    int cnt4=0;
-    int cnt6=0;
-    int cnt8=0; 
-    for(int i=1,tmp;i&lt;=n;++i){
-        cin&gt;&gt;tmp;
-        h[tmp]++;
-        if(h[tmp]==2){
-            ++cnt2;
-        }
-        if(h[tmp]==4){
-            ++cnt4;
-        }
-        if(h[tmp]==6){
-            ++cnt6;
-        }
-        if(h[tmp]==8){
-            ++cnt8;
-        }
+    vector&lt;long long&gt; s;
+    vector&lt;vector&lt;long long&gt; &gt; mem;
+};
+void init(Data &amp;d) {
+    cin &gt;&gt; d.n;
+    d.s = vector&lt;long long&gt;(d.n);
+    for(int i = 0; i &lt; d.n; ++i) {
+        cin &gt;&gt; d.s[i];
     }
-    int q;
-    cin&gt;&gt;q;
-    while(q--){
-        char c;
-        int tmp;
-        cin&gt;&gt;c&gt;&gt;tmp;
-        if(c=='+'){
-            ++n;
-            ++h[tmp];
-            if(h[tmp]==2){
-                ++cnt2;
-            }
-            if(h[tmp]==4){
-                ++cnt4;
-            }
-            if(h[tmp]==6){
-                ++cnt6;
-            }
-            if(h[tmp]==8){
-                ++cnt8;
-            }
-        }
-        else{
-            --n;
-            --h[tmp];
-            if(h[tmp]==1){
-                --cnt2;
-            }
-            if(h[tmp]==3){
-                --cnt4;
-            }
-            if(h[tmp]==5){
-                --cnt6;
-            }
-            if(h[tmp]==7){
-                --cnt8;
-            }
-        }
-        if(n&lt;8){
-            cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
-            continue;
-        }
-        if(cnt8){
-            cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
-            continue;
-        }
-        if(cnt6&amp;&amp;cnt2&gt;=2){
-            cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
-            continue;
-        }
-        if(cnt4&gt;=2){
-            cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
-            continue;
-        }
-        if(cnt4&amp;&amp;cnt2&gt;=3){
-            cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
-            continue;
-        }
-        cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+    sort(d.s.begin(), d.s.end());
+    d.mem = vector&lt;vector&lt;long long&gt; &gt;(d.n);
+    for(int i = 0; i &lt; d.n; ++i) {
+        d.mem[i] = vector&lt;long long&gt;(d.n);
+        fill(d.mem[i].begin(), d.mem[i].end(), -1);
     }
+}
+long long dp(int l, int r, Data &amp;d) {
+    if(d.mem[l][r] != -1) {
+        return d.mem[l][r];
+    }
+    if(l == r) {
+        return 0;
+    }
+    return d.mem[l][r] = d.s[r] - d.s[l] + min(dp(l + 1, r, d), dp(l, r - 1, d));
+}
+int main() {
+    Data d;
+    init(d);
+    cout &lt;&lt; dp(0, d.n - 1, d) &lt;&lt; endl; 
     return 0;
 }
 </code></pre>
-<h1 id="c-pinkie-pie-eats-patty-cakes">C. Pinkie Pie Eats Patty-cakes</h1>
-<h2 id="introduction-3">Introduction</h2>
-<p><a href="https://codeforces.com/contest/1393/problem/C">Here</a></p>
-<h2 id="analysis-3">Analysis</h2>
-<p>At the first glance, we can judge that the answer of this question is linear. It means that there must exist a value that any value lower than it is acceptable and any value higher than it is not acceptable. So the value is the answer we look for. What's more, the range of answer can up to 2*10^5. Large scale, linear answer, which kind of algorithm or data structure can match these features? Of course, the BINARY SEARCH. It is one of my favourite algorithm and also the first algorithm I learned formally.  With a check function, you can locate an answer in logn time complexity. But how to design the check algorithm? We can use the GREEK strategy. At a specific position, choose the legal type of the cake which has the greatest number. In detail,  we can use SET to implement it. So, the whole time complexity of the problem is O(nlogn), which is acceptable.</p>
-<h2 id="code-3">Code</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-#define LL long long
-using namespace std;
-vector&lt;int&gt; a;
-int n;
-bool check(int x){
-    map&lt;int,int&gt; cnt;
-    for(auto &amp;i:a){
-        ++cnt[i];
-    }
-    vector&lt;int&gt; b;
-    set&lt;pair&lt;int,int&gt;,greater&lt;pair&lt;int,int&gt;&gt;&gt; s;
-    for(int i=1;i&lt;=n;i++){
-        if(cnt[i]){
-            s.insert({cnt[i],i});         
-        }
-    }
-    for(int i=0;i&lt;n;++i){
-        if(i&gt;x&amp;&amp;cnt[b[i-x-1]]){
-            s.insert({cnt[b[i-x-1]],b[i-x-1]});
-        }
-        if(s.empty()){
-            return 0;
-        }
-        b.push_back(s.begin()-&gt;second);
-        s.erase(s.begin());
-        --cnt[b.back()];
-    }
-    return 1;
-}
-int binary_search(int l,int r){
-    if(l==r){
-        return l;
-    }
-    int mid=(l+r)/2+1;
-    if(check(mid)){
-        return binary_search(mid,r);
-    }
-    else{
-        return binary_search(l,mid-1);
-    }
-}
-int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    int T;
-    cin&gt;&gt;T;
-    while(T--){
-        cin&gt;&gt;n;
-        a=vector&lt;int&gt;(n);
-        for(auto &amp;i:a){
-            cin&gt;&gt;i;     
-        }
-        cout&lt;&lt;binary_search(0,n)&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p>To solve the problem, we need a handle to enter it. If we try to play this process from end to the beginning, we will find that the last one added is the largest or smallest one among them. Cause it will increase di earlier if it is put in a early time.</p>
+<p>So we can get the dp function that dp(i, j) = sj - si + max(dp(i + 1, j), dp(i, j - 1)), dp(i, i) = 0.</p>
+<p>We can use memorization to make sure that the time complexity is in O(n^2).</p>
 
             </div>
             
@@ -779,7 +630,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/post/i28zPrNp9/" title="Codeforces Round #662 Div2 retrospect">https://dawn-cmd.github.io/post/i28zPrNp9/</a>
+      <a href="https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-3/" title="Codeforces Round #715 (Div. 2) Problem C">https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-3/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -788,23 +639,17 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/tag/P8XbJiAxi/"># Contest Retrospect</a>
-    
       <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/"># Solution</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Codeforces Round #663 Div2 retrospect" href="https://dawn-cmd.github.io/post/oYNuWB-VD/">Codeforces Round #663 Div2 retrospect</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Codeforces Round #663 Div2 retrospect" href="https://dawn-cmd.github.io/post/oYNuWB-VD/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Codeforces Round #661 Div3 retrospect" href="https://dawn-cmd.github.io/post/BKt7ppc1X/">Codeforces Round #661 Div3 retrospect</a>
-        <a class="nav-mobile-next" title="Codeforces Round #661 Div3 retrospect" href="https://dawn-cmd.github.io/post/BKt7ppc1X/">下一篇</a>
+        <a class="nav-pc-next" title="Codeforces Round #715 (Div. 2) Problem B" href="https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-b/">Codeforces Round #715 (Div. 2) Problem B</a>
+        <a class="nav-mobile-next" title="Codeforces Round #715 (Div. 2) Problem B" href="https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-b/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
