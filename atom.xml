@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-04-19T13:40:28.461Z</updated>
+    <updated>2021-04-19T13:43:09.170Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -17,7 +17,8 @@
         <link href="https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-3/">
         </link>
         <updated>2021-04-19T13:23:33.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="introdution">Introdution</h2>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1618839656366.png" alt="" loading="lazy"></figure>
+<h2 id="introdution">Introdution</h2>
 <p><a href="https://codeforces.com/contest/1509/problem/C">Raw Link</a><br>
 The student council is preparing for the relay race at the sports festival.</p>
 <p>The council consists of n members. They will run one after the other in the race, the speed of member i is si. The discrepancy di of the i-th stage is the difference between the maximum and the minimum running speed among the first i members who ran. Formally, if ai denotes the speed of the i-th member who participated in the race, then di=max(a1,a2,…,ai)−min(a1,a2,…,ai).</p>
