@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Introduction of Dynamic Programming | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1618841380896">
+<link rel="shortcut icon" href="/favicon.ico?v=1618995458816">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -203,7 +203,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">27</span>
+        <span class="site-item-stat-count">28</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1137,6 +1137,74 @@ int main() {
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/luogu-p1020-noip1999-junior-missile-interception-system/"" data-c="
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.luogu.com.cn/problem/P1020&#34;&gt;Raw Link&lt;/a&gt;&lt;br&gt;
+A country has developed a missile interception system in order to defend against enemy missile attacks. However, this system has a flaw: although its first shell can reach any height, each subsequent shell cannot be higher than the previous one. One day, the radar caught an enemy missile attack. Since the system is still in the trial phase, there is only one system, so it may not be able to intercept all missiles.&lt;/p&gt;
+&lt;p&gt;Enter the altitude of the missiles in turn (the altitude data given by the radar is a positive integer ≤50,000), calculate the maximum number of missiles that this system can intercept, and how many sets of such missile interception systems are required to intercept all missiles.&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;1 line, several integers (number ≤ 100000)&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;2 lines, each line contains an integer. The first number indicates the maximum number of missiles that this system can intercept, and the second number indicates the minimum number of missile interception systems required to intercept all missiles.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+struct Data {
+    vector&amp;lt;int&amp;gt; h;
+    int n;
+};
+void init(Data &amp;amp;d) {
+    int tmp;
+    d.n = 0;
+    while(cin &amp;gt;&amp;gt; tmp) {
+        d.n++;
+        d.h.push_back(tmp);
+    }
+}
+int problem1(Data &amp;amp;d) {
+    vector&amp;lt;int&amp;gt; mst;  // Monotone-Stack 
+    mst.push_back(d.h[0]);
+    for(int i = 1; i &amp;lt; d.n; ++i) {
+        if(mst[mst.size() - 1] &amp;gt;= d.h[i]) {
+            mst.push_back(d.h[i]);
+            continue;
+        }
+        int p = upper_bound(mst.begin(), mst.end(), d.h[i], greater&amp;lt;int&amp;gt; ()) - mst.begin();
+        mst[p] = d.h[i];
+    }
+    return mst.size();
+}
+int problem2(Data &amp;amp;d) {
+    vector&amp;lt;int&amp;gt; mst;
+    mst.push_back(d.h[0]);
+    for(int i = 1; i &amp;lt; d.n; ++i) {
+        if(d.h[i] &amp;gt; mst[mst.size() - 1]) {
+            mst.push_back(d.h[i]);
+        }
+        int p = lower_bound(mst.begin(), mst.end(), d.h[i]) - mst.begin();
+        mst[p] = d.h[i];
+    }
+    return mst.size();
+}
+int main() {
+    Data d;
+    init(d);
+    cout &amp;lt;&amp;lt; problem1(d) &amp;lt;&amp;lt; endl;
+    cout &amp;lt;&amp;lt; problem2(d) &amp;lt;&amp;lt; endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;tutorial&#34;&gt;Tutorial&lt;/h2&gt;
+&lt;p&gt;Actually, it is a well-known DP problem in Chinese competition cause it is the first linear DP in NOIP junior. From my perspective, it is an excellent problem in that it combines several practical technologys in computer science and control the amount of code so competitors can focus on their ideas.&lt;/p&gt;
+&lt;p&gt;First, we need a main idea, or structure of the solution. In this problem, we use dp[i] to represent if the last missile the syetem intercept is i, the number of missiles it can intercept. We can get this transformation function:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;dp[i] = max(dp[j] + 1) (1 &amp;lt;= j &amp;lt;= i - 1, h[j] &amp;gt;= h[i]),&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;dp[i] = 1 (h[i] &amp;gt; h[j], j is in [1, i - 1] or i = 1)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;However, if we just actualize this function, we will find that the time compexity is O(n^2). With the range of 50,000, it is not swift enough to make sure it can get the answer in 1s. There is a burden that to each i we need to use O(n) to find the largest dp[j] that h[j] &amp;gt;= h[i]. We can imitate &lt;code&gt;Bucket Sort&lt;/code&gt; to use dp[i] as the subscript of an array and mantain it as an descending sequence. So we just need to find from the behind each time.&lt;/p&gt;
+&lt;p&gt;But in some extreme situation, this method will deteriorate to O(n^2) again. Hence, we need a determinate optimization. We can use &lt;code&gt;binary search&lt;/code&gt; on the perivous step to actually make the time complexity be shortened into O(logn). For convenience, I use C++ stl&#39;s lower_bound and upper_bound functions. In the end, the solution will have an O(nlogn) time complexity, this is want we want.&lt;/p&gt;
+">Luogu P1020 [NOIP1999 Junior] Missile interception system</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-3/"" data-c="
