@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Prim &amp; Kruskal | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1618995458816">
+<link rel="shortcut icon" href="/favicon.ico?v=1619423459342">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1256,7 +1256,7 @@ int main() {
 &lt;code&gt;dp[i] = 1 (h[i] &amp;gt; h[j], j is in [1, i - 1] or i = 1)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;However, if we just actualize this function, we will find that the time compexity is O(n^2). With the range of 50,000, it is not swift enough to make sure it can get the answer in 1s. There is a burden that to each i we need to use O(n) to find the largest dp[j] that h[j] &amp;gt;= h[i]. We can imitate &lt;code&gt;Bucket Sort&lt;/code&gt; to use dp[i] as the subscript of an array and mantain it as an descending sequence. So we just need to find from the behind each time.&lt;/p&gt;
 &lt;p&gt;But in some extreme situation, this method will deteriorate to O(n^2) again. Hence, we need a determinate optimization. We can use &lt;code&gt;binary search&lt;/code&gt; on the perivous step to actually make the time complexity be shortened into O(logn). For convenience, I use C++ stl&#39;s lower_bound and upper_bound functions. In the end, the solution will have an O(nlogn) time complexity, this is want we want.&lt;/p&gt;
-">Luogu P1020 [NOIP1999 Junior] Missile interception system</a>
+">Luogu P1020 [NOIP1999 Junior] System</a>
       </div>
       
       <div class="item">

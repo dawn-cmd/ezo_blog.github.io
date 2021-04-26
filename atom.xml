@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-04-21T09:01:35.665Z</updated>
+    <updated>2021-04-26T07:51:03.333Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -12,7 +12,7 @@
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Blog</rights>
     <entry>
-        <title type="html"><![CDATA[Luogu P1020 [NOIP1999 Junior] Missile interception system]]></title>
+        <title type="html"><![CDATA[Luogu P1020 [NOIP1999 Junior] System]]></title>
         <id>https://dawn-cmd.github.io/post/luogu-p1020-noip1999-junior-missile-interception-system/</id>
         <link href="https://dawn-cmd.github.io/post/luogu-p1020-noip1999-junior-missile-interception-system/">
         </link>
