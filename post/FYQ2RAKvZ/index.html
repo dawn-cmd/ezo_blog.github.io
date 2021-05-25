@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Deep Analysis: Fancy Sequence | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1621929889642">
+<link rel="shortcut icon" href="/favicon.ico?v=1621950174609">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -203,19 +203,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">28</span>
+        <span class="site-item-stat-count">29</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">6</span>
+        <span class="site-item-stat-count">8</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">6</span>
+        <span class="site-item-stat-count">8</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -1194,6 +1194,219 @@ At most 10^5 calls total will be made to append, addAll, multAll, and getIndex.<
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/cs50-web50-week0-html-css/"" data-c="
+          &lt;h1 id=&#34;content-of-the-serious-of-class&#34;&gt;Content of the serious of class:&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;HTML, CSS (make a web page)&lt;/li&gt;
+&lt;li&gt;Git (version control, team project)&lt;/li&gt;
+&lt;li&gt;Python (one of two main languages)&lt;/li&gt;
+&lt;li&gt;Django (frame of web application)&lt;/li&gt;
+&lt;li&gt;SQL, Models and Migration (data control)&lt;/li&gt;
+&lt;li&gt;JavaScript (two of two main languages)&lt;/li&gt;
+&lt;li&gt;Testing and CI/CD&lt;/li&gt;
+&lt;li&gt;Scalability and Security&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;html&#34;&gt;HTML&lt;/h1&gt;
+&lt;h2 id=&#34;the-very-first-html-code&#34;&gt;The very first HTML code&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!--My very first HTML code--&amp;gt;
+&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Hello, html!&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    Hello, html!
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt; means this code should be interpreted by html5(the lasted version) syntax.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt; tag means it is the code we need to explain.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lang=en&lt;/code&gt; means this page is written in English, which can help search engine to locate the page.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; means this part is some additional information of the web page&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt; means here is the title&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt; means it is the visible part for users of the web page&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tree-like-html-structure&#34;&gt;Tree-like HTML structure:&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1621931651507.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;headings&#34;&gt;Headings&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Headings&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;h1&amp;gt;This is a heading.&amp;lt;/h1&amp;gt;
+    &amp;lt;h2&amp;gt;This is a smaller heading.&amp;lt;/h2&amp;gt;
+    &amp;lt;h6&amp;gt;The smallest heading.&amp;lt;/h6&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;h#&amp;gt;&lt;/code&gt; means the specific size of heading&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lists&#34;&gt;Lists&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Lists&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    An ordered List:
+    &amp;lt;ol&amp;gt;
+        &amp;lt;li&amp;gt;First item&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;Second item&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;Third item&amp;lt;/li&amp;gt;
+    &amp;lt;/ol&amp;gt;
+    An unordered List:
+    &amp;lt;ul&amp;gt;
+        &amp;lt;li&amp;gt;One item&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;Another item&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;Yet another item&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;ol&amp;gt;&lt;/code&gt; means ordered list; &lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt; means unordered list; &lt;code&gt;&amp;lt;li&amp;gt;&lt;/code&gt; means list item.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;image&#34;&gt;Image&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;images&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;img src=&amp;quot;https://tse2-mm.cn.bing.net/th/id/OIP.xEBcf_EEanvjFL_ChBHndgHaEK?pid=ImgDet&amp;amp;rs=1&amp;quot; alt=&amp;quot;Cat&amp;quot; width=300&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; means it is an image&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src&lt;/code&gt; means the url of the picture&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt&lt;/code&gt; means the information displayed to audences&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;width&lt;/code&gt; means the width of the picture&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;link&#34;&gt;Link&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Link&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;a href=&amp;quot;https://www.bing.com&amp;quot;&amp;gt;Click here&amp;lt;/a&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt; means it is a super link&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;href&lt;/code&gt; represents the url of the link&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;table&#34;&gt;Table&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Table&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;table&amp;gt;
+        &amp;lt;thead&amp;gt;
+            &amp;lt;tr&amp;gt;
+                &amp;lt;th&amp;gt;Ocean&amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;Average Depth&amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;Maximum Depth&amp;lt;/th&amp;gt;
+            &amp;lt;/tr&amp;gt;
+        &amp;lt;/thead&amp;gt;
+        &amp;lt;tbody&amp;gt;
+            &amp;lt;tr&amp;gt;
+                &amp;lt;td&amp;gt;Pacific Ocean&amp;lt;/td&amp;gt;
+                &amp;lt;td&amp;gt;2121 m&amp;lt;/td&amp;gt;
+                &amp;lt;td&amp;gt;8848 m&amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr&amp;gt;
+                &amp;lt;td&amp;gt;Atlantic Ocean&amp;lt;/td&amp;gt;
+                &amp;lt;td&amp;gt;1000 m&amp;lt;/td&amp;gt;
+                &amp;lt;td&amp;gt;114514 m&amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+        &amp;lt;/tbody&amp;gt;
+    &amp;lt;/table&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt; of course, a table&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;thead&amp;gt;&lt;/code&gt; the first row of the table, include some introductory information&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;tbody&amp;gt;&lt;/code&gt; information&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;tr&amp;gt;&lt;/code&gt; table row&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;td&amp;gt;&lt;/code&gt; table data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;form&#34;&gt;Form&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Form&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;form&amp;gt;
+        &amp;lt;div&amp;gt;
+            &amp;lt;input type=&amp;quot;text&amp;quot; placeholder=&amp;quot;Full name&amp;quot; name=&amp;quot;name&amp;quot;&amp;gt;
+            &amp;lt;input type=&amp;quot;password&amp;quot; placeholder=&amp;quot;Password&amp;quot; name=&amp;quot;password&amp;quot;&amp;gt;
+        &amp;lt;/div&amp;gt;
+        &amp;lt;div&amp;gt;
+            Favourite color?
+            &amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;color&amp;quot; value=&amp;quot;red&amp;quot;&amp;gt; Red
+            &amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;color&amp;quot; value=&amp;quot;green&amp;quot;&amp;gt; Green
+            &amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;color&amp;quot; value=&amp;quot;blue&amp;quot;&amp;gt; Blue
+        &amp;lt;/div&amp;gt;
+        &amp;lt;div&amp;gt;
+            &amp;lt;input name=&amp;quot;country&amp;quot; list=&amp;quot;countries&amp;quot; placeholder=&amp;quot;country&amp;quot;&amp;gt;
+            &amp;lt;datalist id=&amp;quot;countries&amp;quot;&amp;gt;
+                &amp;lt;option value=&amp;quot;A country&amp;quot;&amp;gt;&amp;lt;/option&amp;gt;
+                &amp;lt;option value=&amp;quot;B country&amp;quot;&amp;gt;&amp;lt;/option&amp;gt;
+                &amp;lt;option value=&amp;quot;C counrty&amp;quot;&amp;gt;&amp;lt;/option&amp;gt;
+                &amp;lt;option value=&amp;quot;D country&amp;quot;&amp;gt;&amp;lt;/option&amp;gt;
+            &amp;lt;/datalist&amp;gt;
+        &amp;lt;/div&amp;gt;
+        &amp;lt;div&amp;gt;
+            &amp;lt;input type=&amp;quot;submit&amp;quot;&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/form&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;form&amp;gt;&lt;/code&gt; form&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;input&amp;gt;&lt;/code&gt; the place where users input informaiton to the website&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;type&lt;/code&gt; show what the user will input&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;placeholder&lt;/code&gt; let users know how to do with the textbox&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt; the variable that hold the information&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;radio&lt;/code&gt; means the choosing one among these answers&lt;/li&gt;
+&lt;/ul&gt;
+">CS50 Web50 Week0: HTML, CSS Notebook</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/luogu-p1020-noip1999-junior-missile-interception-system/"" data-c="

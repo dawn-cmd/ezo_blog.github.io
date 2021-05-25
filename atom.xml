@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-05-25T08:04:57.841Z</updated>
+    <updated>2021-05-25T13:42:59.715Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -11,6 +11,222 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[CS50 Web50 Week0: HTML, CSS Notebook]]></title>
+        <id>https://dawn-cmd.github.io/post/cs50-web50-week0-html-css/</id>
+        <link href="https://dawn-cmd.github.io/post/cs50-web50-week0-html-css/">
+        </link>
+        <updated>2021-05-25T08:05:12.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="content-of-the-serious-of-class">Content of the serious of class:</h1>
+<ul>
+<li>HTML, CSS (make a web page)</li>
+<li>Git (version control, team project)</li>
+<li>Python (one of two main languages)</li>
+<li>Django (frame of web application)</li>
+<li>SQL, Models and Migration (data control)</li>
+<li>JavaScript (two of two main languages)</li>
+<li>Testing and CI/CD</li>
+<li>Scalability and Security</li>
+</ul>
+<h1 id="html">HTML</h1>
+<h2 id="the-very-first-html-code">The very first HTML code</h2>
+<pre><code class="language-html">&lt;!--My very first HTML code--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Hello, html!&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    Hello, html!
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li><code>&lt;!DOCTYPE html&gt;</code> means this code should be interpreted by html5(the lasted version) syntax.</li>
+<li><code>&lt;html&gt;</code> tag means it is the code we need to explain.</li>
+<li><code>lang=en</code> means this page is written in English, which can help search engine to locate the page.</li>
+<li><code>&lt;head&gt;</code> means this part is some additional information of the web page</li>
+<li><code>&lt;title&gt;</code> means here is the title</li>
+<li><code>&lt;body&gt;</code> means it is the visible part for users of the web page</li>
+</ul>
+<h2 id="tree-like-html-structure">Tree-like HTML structure:</h2>
+<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1621931651507.png" alt="" loading="lazy"></figure>
+<h2 id="headings">Headings</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Headings&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;This is a heading.&lt;/h1&gt;
+    &lt;h2&gt;This is a smaller heading.&lt;/h2&gt;
+    &lt;h6&gt;The smallest heading.&lt;/h6&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li><code>&lt;h#&gt;</code> means the specific size of heading</li>
+</ul>
+<h2 id="lists">Lists</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Lists&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    An ordered List:
+    &lt;ol&gt;
+        &lt;li&gt;First item&lt;/li&gt;
+        &lt;li&gt;Second item&lt;/li&gt;
+        &lt;li&gt;Third item&lt;/li&gt;
+    &lt;/ol&gt;
+    An unordered List:
+    &lt;ul&gt;
+        &lt;li&gt;One item&lt;/li&gt;
+        &lt;li&gt;Another item&lt;/li&gt;
+        &lt;li&gt;Yet another item&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li><code>&lt;ol&gt;</code> means ordered list; <code>&lt;ul&gt;</code> means unordered list; <code>&lt;li&gt;</code> means list item.</li>
+</ul>
+<h2 id="image">Image</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;images&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;img src=&quot;https://tse2-mm.cn.bing.net/th/id/OIP.xEBcf_EEanvjFL_ChBHndgHaEK?pid=ImgDet&amp;rs=1&quot; alt=&quot;Cat&quot; width=300&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li><code>&lt;img&gt;</code> means it is an image</li>
+<li><code>src</code> means the url of the picture</li>
+<li><code>alt</code> means the information displayed to audences</li>
+<li><code>width</code> means the width of the picture</li>
+</ul>
+<h2 id="link">Link</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Link&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;a href=&quot;https://www.bing.com&quot;&gt;Click here&lt;/a&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li><code>&lt;a&gt;</code> means it is a super link</li>
+<li><code>href</code> represents the url of the link</li>
+</ul>
+<h2 id="table">Table</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Table&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;table&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Ocean&lt;/th&gt;
+                &lt;th&gt;Average Depth&lt;/th&gt;
+                &lt;th&gt;Maximum Depth&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Pacific Ocean&lt;/td&gt;
+                &lt;td&gt;2121 m&lt;/td&gt;
+                &lt;td&gt;8848 m&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Atlantic Ocean&lt;/td&gt;
+                &lt;td&gt;1000 m&lt;/td&gt;
+                &lt;td&gt;114514 m&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li><code>&lt;table&gt;</code> of course, a table</li>
+<li><code>&lt;thead&gt;</code> the first row of the table, include some introductory information</li>
+<li><code>&lt;tbody&gt;</code> information</li>
+<li><code>&lt;tr&gt;</code> table row</li>
+<li><code>&lt;td&gt;</code> table data</li>
+</ul>
+<h2 id="form">Form</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Form&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form&gt;
+        &lt;div&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Full name&quot; name=&quot;name&quot;&gt;
+            &lt;input type=&quot;password&quot; placeholder=&quot;Password&quot; name=&quot;password&quot;&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            Favourite color?
+            &lt;input type=&quot;radio&quot; name=&quot;color&quot; value=&quot;red&quot;&gt; Red
+            &lt;input type=&quot;radio&quot; name=&quot;color&quot; value=&quot;green&quot;&gt; Green
+            &lt;input type=&quot;radio&quot; name=&quot;color&quot; value=&quot;blue&quot;&gt; Blue
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;input name=&quot;country&quot; list=&quot;countries&quot; placeholder=&quot;country&quot;&gt;
+            &lt;datalist id=&quot;countries&quot;&gt;
+                &lt;option value=&quot;A country&quot;&gt;&lt;/option&gt;
+                &lt;option value=&quot;B country&quot;&gt;&lt;/option&gt;
+                &lt;option value=&quot;C counrty&quot;&gt;&lt;/option&gt;
+                &lt;option value=&quot;D country&quot;&gt;&lt;/option&gt;
+            &lt;/datalist&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;input type=&quot;submit&quot;&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li><code>&lt;form&gt;</code> form</li>
+<li><code>&lt;input&gt;</code> the place where users input informaiton to the website</li>
+<li><code>type</code> show what the user will input</li>
+<li><code>placeholder</code> let users know how to do with the textbox</li>
+<li><code>name</code> the variable that hold the information</li>
+<li><code>radio</code> means the choosing one among these answers</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Luogu P1020 [NOIP1999 Junior] System]]></title>
         <id>https://dawn-cmd.github.io/post/luogu-p1020-noip1999-junior-missile-interception-system/</id>
@@ -750,109 +966,6 @@ int main() {
     cout &lt;&lt; ans &lt;&lt; endl;
     return 0;
 }
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Deep Analysis: Fancy Sequence]]></title>
-        <id>https://dawn-cmd.github.io/post/FYQ2RAKvZ/</id>
-        <link href="https://dawn-cmd.github.io/post/FYQ2RAKvZ/">
-        </link>
-        <updated>2020-12-22T12:46:18.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="problem-description">Problem Description</h2>
-<p>Write an API that generates fancy sequences using the append, addAll, and multAll operations.<br>
-Implement the Fancy class:</p>
-<ul>
-<li>Fancy() Initializes the object with an empty sequence.</li>
-<li>void append(val) Appends an integer val to the end of the sequence.</li>
-<li>void addAll(inc) Increments all existing values in the sequence by an integer inc.</li>
-<li>void multAll(m) Multiplies all existing values in the sequence by an integer m.</li>
-<li>int getIndex(idx) Gets the current value at index idx (0-indexed) of the sequence modulo 109 + 7. If the index is greater or equal than the length of the sequence, return -1.</li>
-</ul>
-<h2 id="constrains">Constrains</h2>
-<p>1 &lt;= val, inc, m &lt;= 100<br>
-0 &lt;= idx &lt;= 10^5<br>
-At most 10^5 calls total will be made to append, addAll, multAll, and getIndex.</p>
-<h2 id="solution-1-binary-indexed-tree">Solution 1: Binary Indexed Tree:</h2>
-<p>This time, I will not list the violent solution because it is too apperant.  First, we can find that all the operations are add and multiply. This two modifications can add up under a mod. So this problem can be understanded in this way: each add and multiply demand can be seem as a node on a list and each node just affect the numbers before it. So when numbers come in, it will not be affected by previous buffs. When you try to get a specific number in the list, you just add all the previous buffs onto the number.</p>
-<p>Obviously, prefix sum can satisfied our needs. So what's the most direct and simple data structure that can achieve prefix sum? Binary Indexed Tree. Because I have already write an article to talk about the realization of Binary Indexed Tree, I will just choose some key points to mention here. The problem is, how to &quot;add&quot; buffs. Can we just add them up simply? Of course not. Let's assume f(x) = ax + b, g(x) = cx + d, and the f + g is a*cx + b * c + d. Although the two functions cannot be reversed, it will not affect the final answer.</p>
-<pre><code class="language-python">class Fancy:
-
-    mod = 10 ** 9 + 7
-
-    class expression:  # f(x) = a * x + b
-        mod = 10 ** 9 + 7
-        def __init__(self, x = 1, y = 0):
-            self.a, self.b = x, y
-        def __add__(self, other):
-            self.a = self.a * other.a % self.mod
-            self.b = (self.b * other.a + other.b) % self.mod
-            return self
-
-    lowbit = lambda self, x: x &amp; -x
-
-    def __init__(self):
-        self.nums = []
-        self.c = [self.expression() for _ in range(200000)]
-
-    def doit(self, demand):
-        i = 100000 - len(self.nums)
-        while i &lt; 200000:
-            self.c[i] = self.c[i] + demand
-            i += self.lowbit(i)
-
-    def append(self, val: int) -&gt; None:
-        self.nums.append(val)
-
-    def addAll(self, inc: int) -&gt; None:
-        if len(self.nums) == 0:
-            return
-        demand = self.expression(1, inc)
-        self.doit(demand)
-
-    def multAll(self, m: int) -&gt; None:
-        if len(self.nums) == 0:
-            return
-        demand = self.expression(m, 0)
-        self.doit(demand)
-
-    def getIndex(self, idx: int) -&gt; int:
-        if idx &gt;= len(self.nums):
-            return -1
-        op = self.expression()
-        i = 100000 - idx - 1
-        while i &gt;= 1:
-            op = op + self.c[i]
-            i -= self.lowbit(i)
-        return (self.nums[idx] * op.a % self.mod + op.b) % self.mod
-</code></pre>
-<h2 id="solution-2-multiplicative-inverse-modulomim">Solution 2: Multiplicative inverse modulo(MIM)</h2>
-<p>There also existed a more elegant way to solve the problem. If we just use a and b to record all the behaviour, we just need to minus b and divide a before a number adds into the list. But here comes a question, this minus and divide can not be supported under a mod. So we need to use an MIM. MIM can help us use add and multiply to realize minus and divide under a mod: (x / b) % mod = (b ^ (mod - 2) * x) % mod, x - b = (x + mod - b) % mod.. With the two equations, we can solve the problem easily.</p>
-<pre><code class="language-python">class Fancy:
-
-    mult = 1
-    add = 0
-    mod = 10 ** 9 + 7
-
-    def qpow(self, num, power):
-        return 1 if power == 0 else self.qpow(num ** 2 % self.mod, power &gt;&gt; 1) % self.mod * (num if power &amp; 1 == 1 else 1)
-
-    def __init__(self):
-        self.val = []
-
-    def append(self, val: int) -&gt; None:
-        val = (val - self.add + self.mod) * self.qpow(self.mult, self.mod - 2) % self.mod
-        self.val.append(val)
-
-    def addAll(self, inc: int) -&gt; None:
-        self.add = (self.add + inc) % self.mod
-
-    def multAll(self, m: int) -&gt; None:
-        self.mult = self.mult * m % self.mod
-        self.add = self.add * m % self.mod
-
-    def getIndex(self, idx: int) -&gt; int:
-        return -1 if idx &gt;= len(self.val) else (self.val[idx] * self.mult % self.mod + self.add) % self.mod 
 </code></pre>
 ]]></content>
     </entry>
