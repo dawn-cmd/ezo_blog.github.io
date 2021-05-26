@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-05-25T15:12:43.637Z</updated>
+    <updated>2021-05-26T05:04:43.387Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -17,7 +17,7 @@
         <link href="https://dawn-cmd.github.io/post/cs50-web50-week0-html-css/">
         </link>
         <updated>2021-05-25T08:05:12.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="content-of-the-serious-of-class">Content of the serious of class:</h1>
+        <content type="html"><![CDATA[<h1 id="content-of-the-series-of-class">Content of the series of class:</h1>
 <ul>
 <li>HTML, CSS (make a web page)</li>
 <li>Git (version control, team project)</li>
