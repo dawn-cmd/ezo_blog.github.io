@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>CS50 Web50 Week0: HTML, CSS Notebook | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1622018383782">
+<link rel="shortcut icon" href="/favicon.ico?v=1622022572508">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -262,6 +262,7 @@
 <li><a href="#css">CSS</a>
 <ul>
 <li><a href="#style">Style</a></li>
+<li><a href="#size">Size</a></li>
 </ul>
 </li>
 </ul>
@@ -569,12 +570,12 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>7<span class="language" data-lan="minute">分钟</span></span>
+      <span>9<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1039<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1288<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -823,6 +824,87 @@
 <ul>
 <li><code>style</code> means the style attribute of this tag</li>
 </ul>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Hello, html!&lt;/title&gt;
+    &lt;style&gt;
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Welcome to my page!&lt;/h1&gt;
+    &lt;h1&gt;This is another title.&lt;/h1&gt;
+    Hello, html!
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>We can also use <code>&lt;style&gt;</code> tag in <code>&lt;head&gt;</code> tag to simplify the process like this.</li>
+</ul>
+<ol>
+<li>styles.css:</li>
+</ol>
+<pre><code class="language-css">h1 {
+    color: red;
+    text-align: center;
+}
+</code></pre>
+<ol start="2">
+<li>style.html:</li>
+</ol>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Hello, html!&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Welcome to my page!&lt;/h1&gt;
+    &lt;h1&gt;This is another title.&lt;/h1&gt;
+    Hello, html!
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>We can use this method to simplify the code body even more.</li>
+</ul>
+<h2 id="size">Size</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Hello, html!&lt;/title&gt;
+    &lt;style&gt;
+        div {
+            background-color: aqua;
+            width: 300px;
+            height: 400px;
+            padding: 20px;
+            margin: 20px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div&gt;
+        hello world!!!
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p><img src="https://dawn-cmd.github.io/post-images/1622022480535.png" alt="" loading="lazy"><br>
+This code shows some attributes that control the size in CSS.</p>
 
             </div>
             
@@ -1578,6 +1660,87 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;style&lt;/code&gt; means the style attribute of this tag&lt;/li&gt;
 &lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Hello, html!&amp;lt;/title&amp;gt;
+    &amp;lt;style&amp;gt;
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+    &amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;h1&amp;gt;Welcome to my page!&amp;lt;/h1&amp;gt;
+    &amp;lt;h1&amp;gt;This is another title.&amp;lt;/h1&amp;gt;
+    Hello, html!
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;We can also use &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; tag in &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; tag to simplify the process like this.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;styles.css:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;h1 {
+    color: red;
+    text-align: center;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;style.html:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Hello, html!&amp;lt;/title&amp;gt;
+    &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;styles.css&amp;quot;&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;h1&amp;gt;Welcome to my page!&amp;lt;/h1&amp;gt;
+    &amp;lt;h1&amp;gt;This is another title.&amp;lt;/h1&amp;gt;
+    Hello, html!
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;We can use this method to simplify the code body even more.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;size&#34;&gt;Size&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Hello, html!&amp;lt;/title&amp;gt;
+    &amp;lt;style&amp;gt;
+        div {
+            background-color: aqua;
+            width: 300px;
+            height: 400px;
+            padding: 20px;
+            margin: 20px;
+        }
+    &amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;div&amp;gt;
+        hello world!!!
+    &amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622022480535.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+This code shows some attributes that control the size in CSS.&lt;/p&gt;
 ">CS50 Web50 Week0: HTML, CSS Notebook</a>
       </div>
       

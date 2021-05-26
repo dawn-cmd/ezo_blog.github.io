@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-05-26T08:39:46.356Z</updated>
+    <updated>2021-05-26T09:49:35.049Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -252,6 +252,87 @@
 <ul>
 <li><code>style</code> means the style attribute of this tag</li>
 </ul>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Hello, html!&lt;/title&gt;
+    &lt;style&gt;
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Welcome to my page!&lt;/h1&gt;
+    &lt;h1&gt;This is another title.&lt;/h1&gt;
+    Hello, html!
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>We can also use <code>&lt;style&gt;</code> tag in <code>&lt;head&gt;</code> tag to simplify the process like this.</li>
+</ul>
+<ol>
+<li>styles.css:</li>
+</ol>
+<pre><code class="language-css">h1 {
+    color: red;
+    text-align: center;
+}
+</code></pre>
+<ol start="2">
+<li>style.html:</li>
+</ol>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Hello, html!&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Welcome to my page!&lt;/h1&gt;
+    &lt;h1&gt;This is another title.&lt;/h1&gt;
+    Hello, html!
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>We can use this method to simplify the code body even more.</li>
+</ul>
+<h2 id="size">Size</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Hello, html!&lt;/title&gt;
+    &lt;style&gt;
+        div {
+            background-color: aqua;
+            width: 300px;
+            height: 400px;
+            padding: 20px;
+            margin: 20px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div&gt;
+        hello world!!!
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p><img src="https://dawn-cmd.github.io/post-images/1622022480535.png" alt="" loading="lazy"><br>
+This code shows some attributes that control the size in CSS.</p>
 ]]></content>
     </entry>
     <entry>
