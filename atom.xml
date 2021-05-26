@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-05-26T08:19:12.828Z</updated>
+    <updated>2021-05-26T08:20:11.955Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -44,7 +44,8 @@
 
 &lt;/html&gt;
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1621954884125.png" alt="" loading="lazy"></figure>
+<p><img src="https://dawn-cmd.github.io/post-images/1621954884125.png" alt="" loading="lazy"><br>
+<a href="hellohtml.html">Click Here</a></p>
 <ul>
 <li><code>&lt;!DOCTYPE html&gt;</code> means this code should be interpreted by html5(the lasted version) syntax.</li>
 <li><code>&lt;html&gt;</code> tag means it is the code we need to explain.</li>
@@ -54,7 +55,7 @@
 <li><code>&lt;body&gt;</code> means it is the visible part for users of the web page</li>
 </ul>
 <h2 id="tree-like-html-structure">Tree-like HTML structure:</h2>
-<figure data-type="image" tabindex="2"><img src="https://dawn-cmd.github.io/post-images/1621931651507.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1621931651507.png" alt="" loading="lazy"></figure>
 <h2 id="headings">Headings</h2>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -71,7 +72,7 @@
 
 &lt;/html&gt;
 </code></pre>
-<figure data-type="image" tabindex="3"><img src="https://dawn-cmd.github.io/post-images/1621954959058.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://dawn-cmd.github.io/post-images/1621954959058.png" alt="" loading="lazy"></figure>
 <ul>
 <li><code>&lt;h#&gt;</code> means the specific size of heading</li>
 </ul>
@@ -100,7 +101,7 @@
 
 &lt;/html&gt;
 </code></pre>
-<figure data-type="image" tabindex="4"><img src="https://dawn-cmd.github.io/post-images/1621955018807.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://dawn-cmd.github.io/post-images/1621955018807.png" alt="" loading="lazy"></figure>
 <ul>
 <li><code>&lt;ol&gt;</code> means ordered list; <code>&lt;ul&gt;</code> means unordered list; <code>&lt;li&gt;</code> means list item.</li>
 </ul>
@@ -118,7 +119,7 @@
 
 &lt;/html&gt;
 </code></pre>
-<figure data-type="image" tabindex="5"><img src="https://dawn-cmd.github.io/post-images/1621955072233.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://dawn-cmd.github.io/post-images/1621955072233.png" alt="" loading="lazy"></figure>
 <ul>
 <li><code>&lt;img&gt;</code> means it is an image</li>
 <li><code>src</code> means the url of the picture</li>
@@ -139,7 +140,7 @@
 
 &lt;/html&gt;
 </code></pre>
-<figure data-type="image" tabindex="6"><img src="https://dawn-cmd.github.io/post-images/1621955131953.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://dawn-cmd.github.io/post-images/1621955131953.png" alt="" loading="lazy"></figure>
 <ul>
 <li><code>&lt;a&gt;</code> means it is a super link</li>
 <li><code>href</code> represents the url of the link</li>
@@ -178,7 +179,7 @@
 
 &lt;/html&gt;
 </code></pre>
-<figure data-type="image" tabindex="7"><img src="https://dawn-cmd.github.io/post-images/1621955186743.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://dawn-cmd.github.io/post-images/1621955186743.png" alt="" loading="lazy"></figure>
 <ul>
 <li><code>&lt;table&gt;</code> of course, a table</li>
 <li><code>&lt;thead&gt;</code> the first row of the table, include some introductory information</li>
@@ -223,7 +224,7 @@
 
 &lt;/html&gt;
 </code></pre>
-<figure data-type="image" tabindex="8"><img src="https://dawn-cmd.github.io/post-images/1621955243781.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://dawn-cmd.github.io/post-images/1621955243781.png" alt="" loading="lazy"></figure>
 <ul>
 <li><code>&lt;form&gt;</code> form</li>
 <li><code>&lt;input&gt;</code> the place where users input informaiton to the website</li>
