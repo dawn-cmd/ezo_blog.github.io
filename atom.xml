@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-05-26T12:58:23.034Z</updated>
+    <updated>2021-05-26T13:30:21.484Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -444,6 +444,39 @@ This code shows some attributes that control the size in CSS.</p>
 <figure data-type="image" tabindex="12"><img src="https://dawn-cmd.github.io/post-images/1622033816305.png" alt="" loading="lazy"></figure>
 <ul>
 <li>It tells us how to use id, class and type and their priorities.</li>
+</ul>
+<h2 id="selectors">Selectors</h2>
+<figure data-type="image" tabindex="13"><img src="https://dawn-cmd.github.io/post-images/1622035016803.png" alt="" loading="lazy"></figure>
+<h3 id="1-descedant-selector">1. descedant selector</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Hello, html!&lt;/title&gt;
+    &lt;style&gt;
+        ul li {
+            color: red;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;ol&gt;
+        &lt;li&gt;list item 1&lt;/li&gt;
+        &lt;li&gt;list item 2&lt;/li&gt;
+        &lt;ul&gt;
+            &lt;li&gt;ul item A&lt;/li&gt;
+            &lt;li&gt;ul item B&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;li&gt;list item 3&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<figure data-type="image" tabindex="14"><img src="https://dawn-cmd.github.io/post-images/1622035815525.png" alt="" loading="lazy"></figure>
+<ul>
+<li>Descedant selector will also choose the son tag and grandson tag and so on, which child selector will not do.</li>
 </ul>
 ]]></content>
     </entry>
