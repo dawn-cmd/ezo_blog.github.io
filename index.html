@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1622035817522">
+<link rel="shortcut icon" href="/favicon.ico?v=1622104972074">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -284,12 +284,12 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>12<span class="language" data-lan="minute">分钟</span></span>
+      <span>13<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1768<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1968<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
@@ -1674,6 +1674,73 @@ This code shows some attributes that control the size in CSS.&lt;/p&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622035815525.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ul&gt;
 &lt;li&gt;Descedant selector will also choose the son tag and grandson tag and so on, which child selector will not do.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-attribute-selector&#34;&gt;2. attribute selector&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Hello, html!&amp;lt;/title&amp;gt;
+    &amp;lt;style&amp;gt;
+        a {
+            color: blue;
+        }
+
+        a[href=&amp;quot;https://youtube.com&amp;quot;] {
+            color: red;
+        }
+    &amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;ul&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;https://google.com&amp;quot;&amp;gt;Google&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;https://youtube.com&amp;quot;&amp;gt;YouTube&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;https://amazon.com&amp;quot;&amp;gt;Amazon&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622104334166.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;We can write &lt;code&gt;tag[attribute]&lt;/code&gt; to select a tag with specific attribute.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-hover-selector&#34;&gt;3. hover selector&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Hello, html!&amp;lt;/title&amp;gt;
+    &amp;lt;style&amp;gt;
+        button {
+            width: 200px;
+            height: 50px;
+            font-size: 24px;
+            background-color: aqua;
+        }
+
+        button:hover {
+            background-color: purple;
+        }
+    &amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;button&amp;gt;Click me!!!&amp;lt;/button&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Not Hovered&lt;br&gt;
+&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622104850799.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hovered&lt;br&gt;
+&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622104871893.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 ">CS50 Web50 Week0: HTML, CSS Notebook</a>
       </div>

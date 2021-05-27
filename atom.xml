@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-05-26T13:30:21.484Z</updated>
+    <updated>2021-05-27T08:42:55.679Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -477,6 +477,73 @@ This code shows some attributes that control the size in CSS.</p>
 <figure data-type="image" tabindex="14"><img src="https://dawn-cmd.github.io/post-images/1622035815525.png" alt="" loading="lazy"></figure>
 <ul>
 <li>Descedant selector will also choose the son tag and grandson tag and so on, which child selector will not do.</li>
+</ul>
+<h3 id="2-attribute-selector">2. attribute selector</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Hello, html!&lt;/title&gt;
+    &lt;style&gt;
+        a {
+            color: blue;
+        }
+
+        a[href=&quot;https://youtube.com&quot;] {
+            color: red;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;https://google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;https://youtube.com&quot;&gt;YouTube&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;https://amazon.com&quot;&gt;Amazon&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<figure data-type="image" tabindex="15"><img src="https://dawn-cmd.github.io/post-images/1622104334166.png" alt="" loading="lazy"></figure>
+<ul>
+<li>We can write <code>tag[attribute]</code> to select a tag with specific attribute.</li>
+</ul>
+<h3 id="3-hover-selector">3. hover selector</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Hello, html!&lt;/title&gt;
+    &lt;style&gt;
+        button {
+            width: 200px;
+            height: 50px;
+            font-size: 24px;
+            background-color: aqua;
+        }
+
+        button:hover {
+            background-color: purple;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;button&gt;Click me!!!&lt;/button&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>
+<p>Not Hovered<br>
+<img src="https://dawn-cmd.github.io/post-images/1622104850799.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Hovered<br>
+<img src="https://dawn-cmd.github.io/post-images/1622104871893.png" alt="" loading="lazy"></p>
+</li>
 </ul>
 ]]></content>
     </entry>
