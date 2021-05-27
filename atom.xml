@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-05-27T08:42:55.679Z</updated>
+    <updated>2021-05-27T08:52:24.493Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -545,6 +545,36 @@ This code shows some attributes that control the size in CSS.</p>
 <img src="https://dawn-cmd.github.io/post-images/1622104871893.png" alt="" loading="lazy"></p>
 </li>
 </ul>
+<h2 id="responsive">Responsive</h2>
+<h3 id="1-media-queries">1. Media Queries</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Hello, html!&lt;/title&gt;
+    &lt;style&gt;
+        @media (min-width: 600px) {
+            body {
+                background-color: red;
+            }
+        }
+
+        @media (max-width: 599px) {
+            body {
+                background-color: blue;
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Welcome to my web page.&lt;/h1&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p><img src="https://dawn-cmd.github.io/post-images/1622105519517.png" alt="" loading="lazy"><br>
+<img src="https://dawn-cmd.github.io/post-images/1622105526707.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
