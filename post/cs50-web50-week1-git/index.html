@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>CS50 Web50 Week1: Git | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1622424570856">
+<link rel="shortcut icon" href="/favicon.ico?v=1622432717125">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -249,6 +249,18 @@
 <li><a href="#git">Git</a>
 <ul>
 <li><a href="#function">Function</a></li>
+<li><a href="#command">Command</a>
+<ul>
+<li><a href="#1-git-clone">1. Git Clone</a></li>
+<li><a href="#2-git-add">2. Git Add</a></li>
+<li><a href="#3-git-commit">3. Git Commit</a></li>
+<li><a href="#4-git-status">4. Git Status</a></li>
+<li><a href="#5-git-push">5. Git Push</a></li>
+<li><a href="#6-git-addcommit">6. Git Add+Commit</a></li>
+<li><a href="#7-git-pull">7. Git Pull</a></li>
+<li><a href="#8-merge-conflict">8. Merge Conflict</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -561,7 +573,7 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>28<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>150<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -583,6 +595,52 @@
 <li>Test changes to code without losing the original.</li>
 <li>Revert back to old versions of code.</li>
 </ul>
+<h2 id="command">Command</h2>
+<h3 id="1-git-clone">1. Git Clone</h3>
+<pre><code class="language-git">git clone &lt;url&gt;
+</code></pre>
+<ul>
+<li>It can help you download a repository from Github to your computer.</li>
+</ul>
+<h3 id="2-git-add">2. Git Add</h3>
+<pre><code class="language-git">git add &lt;filename&gt;
+</code></pre>
+<ul>
+<li>It can help you add one or more changes to the repository.</li>
+</ul>
+<h3 id="3-git-commit">3. Git Commit</h3>
+<pre><code class="language-git">git commit -m &quot;&lt;message&gt;&quot;
+</code></pre>
+<ul>
+<li>Make a commit to be pushed later.</li>
+<li><code>&lt;message&gt;</code> is a description of the change</li>
+</ul>
+<h3 id="4-git-status">4. Git Status</h3>
+<pre><code class="language-git">git status
+</code></pre>
+<ul>
+<li>It can tell you the current situation.</li>
+</ul>
+<h3 id="5-git-push">5. Git Push</h3>
+<pre><code class="language-git">git push
+</code></pre>
+<ul>
+<li>Upload all changes online.</li>
+</ul>
+<h3 id="6-git-addcommit">6. Git Add+Commit</h3>
+<pre><code class="language-git">git commit -am &quot;&lt;message&gt;&quot;
+</code></pre>
+<ul>
+<li>Two in one.</li>
+</ul>
+<h3 id="7-git-pull">7. Git Pull</h3>
+<pre><code class="language-git">git pull
+</code></pre>
+<ul>
+<li>It can help you download the latest version from Internet.</li>
+</ul>
+<h3 id="8-merge-conflict">8. Merge Conflict</h3>
+<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1622430120514.png" alt="" loading="lazy"></figure>
 
             </div>
             
@@ -1111,6 +1169,52 @@
 &lt;li&gt;Test changes to code without losing the original.&lt;/li&gt;
 &lt;li&gt;Revert back to old versions of code.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;command&#34;&gt;Command&lt;/h2&gt;
+&lt;h3 id=&#34;1-git-clone&#34;&gt;1. Git Clone&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git clone &amp;lt;url&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;It can help you download a repository from Github to your computer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-git-add&#34;&gt;2. Git Add&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git add &amp;lt;filename&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;It can help you add one or more changes to the repository.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-git-commit&#34;&gt;3. Git Commit&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git commit -m &amp;quot;&amp;lt;message&amp;gt;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Make a commit to be pushed later.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;message&amp;gt;&lt;/code&gt; is a description of the change&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-git-status&#34;&gt;4. Git Status&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git status
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;It can tell you the current situation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-git-push&#34;&gt;5. Git Push&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git push
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Upload all changes online.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;6-git-addcommit&#34;&gt;6. Git Add+Commit&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git commit -am &amp;quot;&amp;lt;message&amp;gt;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Two in one.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;7-git-pull&#34;&gt;7. Git Pull&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-git&#34;&gt;git pull
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;It can help you download the latest version from Internet.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;8-merge-conflict&#34;&gt;8. Merge Conflict&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622430120514.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 ">CS50 Web50 Week1: Git</a>
       </div>
       

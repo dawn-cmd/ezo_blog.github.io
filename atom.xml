@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-05-31T01:33:35.092Z</updated>
+    <updated>2021-05-31T03:45:20.543Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -25,6 +25,52 @@
 <li>Test changes to code without losing the original.</li>
 <li>Revert back to old versions of code.</li>
 </ul>
+<h2 id="command">Command</h2>
+<h3 id="1-git-clone">1. Git Clone</h3>
+<pre><code class="language-git">git clone &lt;url&gt;
+</code></pre>
+<ul>
+<li>It can help you download a repository from Github to your computer.</li>
+</ul>
+<h3 id="2-git-add">2. Git Add</h3>
+<pre><code class="language-git">git add &lt;filename&gt;
+</code></pre>
+<ul>
+<li>It can help you add one or more changes to the repository.</li>
+</ul>
+<h3 id="3-git-commit">3. Git Commit</h3>
+<pre><code class="language-git">git commit -m &quot;&lt;message&gt;&quot;
+</code></pre>
+<ul>
+<li>Make a commit to be pushed later.</li>
+<li><code>&lt;message&gt;</code> is a description of the change</li>
+</ul>
+<h3 id="4-git-status">4. Git Status</h3>
+<pre><code class="language-git">git status
+</code></pre>
+<ul>
+<li>It can tell you the current situation.</li>
+</ul>
+<h3 id="5-git-push">5. Git Push</h3>
+<pre><code class="language-git">git push
+</code></pre>
+<ul>
+<li>Upload all changes online.</li>
+</ul>
+<h3 id="6-git-addcommit">6. Git Add+Commit</h3>
+<pre><code class="language-git">git commit -am &quot;&lt;message&gt;&quot;
+</code></pre>
+<ul>
+<li>Two in one.</li>
+</ul>
+<h3 id="7-git-pull">7. Git Pull</h3>
+<pre><code class="language-git">git pull
+</code></pre>
+<ul>
+<li>It can help you download the latest version from Internet.</li>
+</ul>
+<h3 id="8-merge-conflict">8. Merge Conflict</h3>
+<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1622430120514.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
