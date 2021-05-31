@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-05-27T14:13:01.878Z</updated>
+    <updated>2021-05-31T01:29:37.153Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -11,6 +11,22 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[CS50 Web50 Week1: Git]]></title>
+        <id>https://dawn-cmd.github.io/post/cs50-web50-week1-git/</id>
+        <link href="https://dawn-cmd.github.io/post/cs50-web50-week1-git/">
+        </link>
+        <updated>2021-05-31T01:15:18.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="git">Git</h1>
+<h2 id="function">Function</h2>
+<ul>
+<li>Keep track of changes to code.</li>
+<li>Synchronizes code between different people.</li>
+<li>Test changes to code without losing the original.</li>
+<li>Revert back to old versions of code.</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CS50 Web50 Week0: HTML, CSS Notebook]]></title>
         <id>https://dawn-cmd.github.io/post/cs50-web50-week0-html-css/</id>
@@ -1339,110 +1355,6 @@ int main () {
 <figure data-type="image" tabindex="3"><img src="https://dawn-cmd.github.io/post-images/1613638344217.png" alt="" loading="lazy"></figure>
 <h2 id="about-time-complexity">About time complexity</h2>
 <p>This algorithm is O(n): when i cannot update max_right, we can get the answer in O(1); when i can update max_right, we need O(n) to update it.</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Circle-Based Tree]]></title>
-        <id>https://dawn-cmd.github.io/post/5vxYJM5Nd/</id>
-        <link href="https://dawn-cmd.github.io/post/5vxYJM5Nd/">
-        </link>
-        <updated>2021-01-31T02:58:42.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="basic-definition-two-main-principle">Basic Definition &amp; Two Main Principle</h2>
-<p>Just like zero point is not a point, circle-based tree is not a tree as well.<br>
-Circle-based Tree, a graph with n vertexs and n edges, has one or more circles in it.</p>
-<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1612143955427.png" alt="" loading="lazy"></figure>
-<p>The graph has only one circle when the whole graph is connected. In other cases, it will form a &quot;Circle-Based Forest&quot;.</p>
-<figure data-type="image" tabindex="2"><img src="https://dawn-cmd.github.io/post-images/1612143997831.png" alt="" loading="lazy"></figure>
-<p>When we deal with problems relate to it, we can follow two main idea:</p>
-<ul>
-<li>Refine the circle from graph, then the graph will be like that some child - trees hang on the circle. Process the data on child-trees and return data to vertexs on circle. Finally, solve the circle problem.</li>
-</ul>
-<figure data-type="image" tabindex="3"><img src="https://dawn-cmd.github.io/post-images/1612144344053.png" alt="" loading="lazy"></figure>
-<ul>
-<li>Choosing to overlook an edge is also a direction. If we ignore an edge in the graph, it will become a simple tree.</li>
-</ul>
-<figure data-type="image" tabindex="4"><img src="https://dawn-cmd.github.io/post-images/1612146199022.png" alt="" loading="lazy"></figure>
-<h2 id="practise">Practise</h2>
-<h3 id="cf711d">CF711D</h3>
-<ul>
-<li>
-<p>Describe:<br>
-Give you a graph with n edges without directions and n vertexs. You can define every edge's direction. Calculate there are how many solutions that can let the graph have no circle.</p>
-</li>
-<li>
-<p>Solution:<br>
-First, as all we known, there existed 2^n solutions. Then we need to minus the solution that has circles from it. This is a graph with n edges and n vertexs. Actually, it is a circle-based tree. The edges in the circle must point in the same way. Otherwise, it is not a circle.</p>
-</li>
-</ul>
-<figure data-type="image" tabindex="5"><img src="https://dawn-cmd.github.io/post-images/1612358736984.png" alt="" loading="lazy"></figure>
-<p>Other edges' direction are indifferent. Cause it will neither break existed circles, nor add new circles.</p>
-<p>Obviously, the illegal number of illegal solutions is 2^(n - len) * 2, len is the length of the circle. Hence, there are (2 ^ len - 2) * 2 ^ (n - len) legal solutions. And we successfully beat the problem ......</p>
-<p>Not yet.</p>
-<p>The problem didn't mention that the graph is connected. So there may not be only one circle. To each isolated graph, we need to add them all.</p>
-<ul>
-<li>Code:</li>
-</ul>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-#define ll long long
-#define MOD ((int)1e9 + 7)
-using namespace std;
-vector &lt;int&gt; graph[(int)2e5 + 1];
-int vis[(int)2e5 + 1];
-int dfs(int now, int fa, int depth, int &amp;cnt) {
-    if (vis[now] &amp;&amp; vis[fa] == 1) {
-        vis[now] += 1;
-        return -depth;   
-    }
-    if (vis[now] &amp;&amp; vis[fa] == 2) {
-        return 0;
-    }
-    if (vis[now] == 2) {
-        return 0;
-    }
-    vis[now] += 1;
-    cnt += 1;
-    if (graph[now].size() == 1) {
-       return 1;
-    }
-    int ans = 1;
-    for (int i = 0, l = graph[now].size(); i &lt; l; ++i) {
-         int t = graph[now][i];
-         if (t == fa) continue;
-         ans += dfs(t, now, depth + 1, cnt);
-    }
-    return ans;
-}
-ll qpow(ll x, ll b) {
-    if (b == 0) return 1;
-    if (b &amp; 1) return x * qpow(x * x % MOD, b &gt;&gt; 1) % MOD;
-    else return qpow(x * x % MOD, b &gt;&gt; 1);
-}
-int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    int n;
-    cin &gt;&gt; n;
-    for (int i = 1; i &lt;= n; ++i) {
-        int tmp;
-        cin &gt;&gt; tmp;
-        graph[tmp].push_back(i);
-        graph[i].push_back(tmp);
-    }
-    memset(vis, 0, sizeof vis);
-    ll ans = 0;
-    for (int i = 1; i &lt;= n; ++i) {
-        if (vis[i]) {
-            continue;
-        }
-        int cnt = 0;
-        int s = dfs(i, -1, 0, cnt);
-        ans = (ans + (qpow(2, cnt) - qpow(2, s) * 2 % MOD + MOD) % MOD) % MOD;
-    }
-    cout &lt;&lt; ans &lt;&lt; endl;
-    return 0;
-}
-</code></pre>
 ]]></content>
     </entry>
 </feed>

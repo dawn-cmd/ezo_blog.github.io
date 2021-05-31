@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Codeforces Round #661 Div3 retrospect | Blog</title>
+<title>CS50 Web50 Week1: Git | Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1622424570856">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Codeforces Round #661 Div3 retrospect" />
-  <meta name="keywords" content="Contest Retrospect,Solution" />
+  <meta name="description" content="CS50 Web50 Week1: Git" />
+  <meta name="keywords" content="CS50,Web50,Note" />
 </head>
 
 <body>
@@ -246,37 +246,9 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li>
+<li><a href="#git">Git</a>
 <ul>
-<li><a href="#first-here-is-my-score-and-rate">First, here is my score and rate:</a></li>
-<li><a href="#a-remove-smallest">A. Remove Smallest</a>
-<ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#analysis">Analysis</a></li>
-<li><a href="#code">Code</a></li>
-</ul>
-</li>
-<li><a href="#b-gifts-fixing">B. Gifts Fixing</a>
-<ul>
-<li><a href="#introduction-2">Introduction</a></li>
-<li><a href="#analysis-2">Analysis</a></li>
-<li><a href="#code-2">Code</a></li>
-</ul>
-</li>
-<li><a href="#c-boats-competition">C. Boats Competition</a>
-<ul>
-<li><a href="#introduction-3">Introduction</a></li>
-<li><a href="#analysis-3">Analysis</a></li>
-<li><a href="#code-3">Code</a></li>
-</ul>
-</li>
-<li><a href="#d-binary-string-to-subsequences">D. Binary String To Subsequences</a>
-<ul>
-<li><a href="#introduction-4">Introduction</a></li>
-<li><a href="#analysis-4">Analysis</a></li>
-<li><a href="#code-4">Code</a></li>
-</ul>
-</li>
+<li><a href="#function">Function</a></li>
 </ul>
 </li>
 </ul>
@@ -544,8 +516,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/post/BKt7ppc1X/">
-      Codeforces Round #661 Div3 retrospect
+    <a class="post-title-link" href="https://dawn-cmd.github.io/post/cs50-web50-week1-git/">
+      CS50 Web50 Week1: Git
     </a>
   </h1>
   <div class="post-meta">
@@ -553,7 +525,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-08-07 21:18:45">2020-08-07</span>
+      <span class="publish-time" data-t="2021-05-31 09:15:18">2021-05-31</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -562,14 +534,20 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://dawn-cmd.github.io/tag/P8XbJiAxi/">
-        <span>Contest Retrospect</span>
+      <a href="https://dawn-cmd.github.io/tag/cs50/">
+        <span>CS50</span>
       </a>、
       
       
       
-      <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/">
-        <span>Solution</span>
+      <a href="https://dawn-cmd.github.io/tag/web50/">
+        <span>Web50</span>
+      </a>、
+      
+      
+      
+      <a href="https://dawn-cmd.github.io/tag/T9dinVrg_/">
+        <span>Note</span>
       </a>
       
       
@@ -578,17 +556,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>6<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>847<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>28<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/BKt7ppc1X/" data-flag-title="Codeforces Round #661 Div3 retrospect" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/cs50-web50-week1-git/" data-flag-title="CS50 Web50 Week1: Git" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -597,195 +575,14 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="first-here-is-my-score-and-rate">First, here is my score and rate:</h2>
-<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1596807580878.png" alt="" loading="lazy"></figure>
-<h2 id="a-remove-smallest">A. Remove Smallest</h2>
-<h3 id="introduction">Introduction</h3>
-<p><a href="https://codeforces.com/contest/1399/problem/A">Here</a></p>
-<h3 id="analysis">Analysis</h3>
-<p>It's not hard to find that the answer of the question is not related to the order of the array a[]. The critical fact is whether there exist a gap border than 1. To check it, we can sort the array and list it. Due to the sort function, the time complexity of the solution is O(nlogn), which is acceptable.</p>
-<h3 id="code">Code</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    while(T--){
-        int n;
-        cin&gt;&gt;n;
-        int a[100];
-        for(int i=1;i&lt;=n;++i){
-            cin&gt;&gt;a[i];
-        }
-        if(n==1){
-            cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;
-            continue;
-        }
-        sort(a+1,a+1+n);
-        int ans=1;
-        for(int i=1;i&lt;=n-1;++i){
-            if(a[i+1]-a[i]&gt;1){
-                ans=0;
-                break;
-            }
-        }
-        if(ans){
-            cout&lt;&lt;&quot;Yes&quot;&lt;&lt;endl;
-        }
-        else{
-            cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;
-        }
-    }
-    return 0;
-}
-</code></pre>
-<h2 id="b-gifts-fixing">B. Gifts Fixing</h2>
-<h3 id="introduction-2">Introduction</h3>
-<p><a href="https://codeforces.com/contest/1399/problem/B">Here</a></p>
-<h3 id="analysis-2">Analysis</h3>
-<p>First, we can use c[i] and o[i] to describe the number of candies and oranges in each gift. According to the description, we can only decrease c[i] and o[i]but not increase them. So it is clear that in the end, the number of candies/oranges will be the smallest one in the initial numbers. Let's call them min_c and min_o. As the result, the answer is sum(max(c[i]-min_c,o[i]-min_o))(i&gt;=1&amp;&amp;i&lt;=n)</p>
-<h3 id="code-2">Code</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    while(T--){
-        int n;
-        int c[100];
-        int o[100];
-        cin&gt;&gt;n;
-        int minc=1e9+1;
-        int mino=1e9+1;
-        for(int i=1;i&lt;=n;++i){
-            cin&gt;&gt;c[i];
-            minc=min(minc,c[i]);
-        }
-        for(int i=1;i&lt;=n;++i){
-            cin&gt;&gt;o[i];
-            mino=min(mino,o[i]);
-        }
-        long long ans=0;
-        for(int i=1;i&lt;=n;++i){
-            ans+=max(c[i]-minc,o[i]-mino);
-        }
-        cout&lt;&lt;ans&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre>
-<h2 id="c-boats-competition">C. Boats Competition</h2>
-<h3 id="introduction-3">Introduction</h3>
-<p><a href="https://codeforces.com/contest/1399/problem/C">Here</a></p>
-<h3 id="analysis-3">Analysis</h3>
-<p>According to the description, it is not hard to find that the maximum of s is 100. So to each data, we try s from 0 to 100, and record the answer. To a specific s, how we can calculate the maximum number of teams? We can use a map to record all the weights, and to each person, we find whether there exist another one to match it. The total time complexity is O(n).</p>
-<h3 id="code-3">Code</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    while(T--){
-        int n;
-        cin&gt;&gt;n;
-        int w[100];
-        map&lt;int,int&gt; h;
-        for(int i=1;i&lt;=n;++i){
-            cin&gt;&gt;w[i];
-            ++h[w[i]];
-        }
-        if(n==1){
-            cout&lt;&lt;0&lt;&lt;endl;
-            continue;
-        }
-        if(n==2){
-            cout&lt;&lt;1&lt;&lt;endl;
-            continue;
-        }
-        int ans=-1;
-        for(int i=1;i&lt;=101;++i){
-            int cnt=0;
-            map&lt;int,int&gt; p=h;
-            for(int j=1;j&lt;=n;++j){
-                if(i-w[j]==w[j]&amp;&amp;p[w[j]]&lt;=1){
-                    continue;
-                }
-                if(p[w[j]]==0||p[i-w[j]]==0){
-                    continue;
-                }
-                --p[w[j]];
-                --p[i-w[j]];
-                ++cnt;
-            }
-            ans=max(ans,cnt);
-        }
-        cout&lt;&lt;ans&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre>
-<h2 id="d-binary-string-to-subsequences">D. Binary String To Subsequences</h2>
-<h3 id="introduction-4">Introduction</h3>
-<p><a href="https://codeforces.com/contest/1399/problem/D">Here</a></p>
-<h3 id="analysis-4">Analysis</h3>
-<p>In the problem, we do not really cares the body of each subsequence, instead, the end character is the most important to us. When we meet a '0',  we need to add it to a '1'-end-subsequence and when we meeet a '1', we need to add it to a '0'-end-subsequence. So we can use two chains to connect the id of '1'-end-subsequences and '0'-end-subquences. The total time complexity of the solution is O(n).</p>
-<h3 id="code-4">Code</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    while(T--){
-        int n;
-        cin&gt;&gt;n;
-        string s;
-        cin&gt;&gt;s;
-        int pre[200010];
-        int headz=0;
-        int heado=0;
-        int ans=0;
-        int bl[200010];
-        for(int i=0,len=s.length();i&lt;len;++i){
-            if(s[i]-'0'==0){
-                if(heado==0){
-                    ++ans;
-                    pre[ans]=headz;
-                    headz=ans;
-                    bl[i]=ans;
-                }
-                else{
-                    bl[i]=heado;
-                    int tmp=pre[heado];
-                    pre[heado]=headz;
-                    headz=heado;
-                    heado=tmp;
-                }
-            }
-            else{
-                if(headz==0){
-                    ++ans;
-                    pre[ans]=heado;
-                    heado=ans;
-                    bl[i]=ans;
-                }
-                else{
-                    bl[i]=headz;
-                    int tmp=pre[headz];
-                    pre[headz]=heado;
-                    heado=headz;
-                    headz=tmp;
-                }
-            }
-        }
-        cout&lt;&lt;ans&lt;&lt;endl;
-        for(int i=0;i&lt;n;++i){
-            cout&lt;&lt;bl[i]&lt;&lt;' ';
-        }
-        cout&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre>
+              <h1 id="git">Git</h1>
+<h2 id="function">Function</h2>
+<ul>
+<li>Keep track of changes to code.</li>
+<li>Synchronizes code between different people.</li>
+<li>Test changes to code without losing the original.</li>
+<li>Revert back to old versions of code.</li>
+</ul>
 
             </div>
             
@@ -798,7 +595,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/post/BKt7ppc1X/" title="Codeforces Round #661 Div3 retrospect">https://dawn-cmd.github.io/post/BKt7ppc1X/</a>
+      <a href="https://dawn-cmd.github.io/post/cs50-web50-week1-git/" title="CS50 Web50 Week1: Git">https://dawn-cmd.github.io/post/cs50-web50-week1-git/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -807,23 +604,21 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/tag/P8XbJiAxi/"># Contest Retrospect</a>
+      <a href="https://dawn-cmd.github.io/tag/cs50/"># CS50</a>
     
-      <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/"># Solution</a>
+      <a href="https://dawn-cmd.github.io/tag/web50/"># Web50</a>
+    
+      <a href="https://dawn-cmd.github.io/tag/T9dinVrg_/"># Note</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Codeforces Round #662 Div2 retrospect" href="https://dawn-cmd.github.io/post/i28zPrNp9/">Codeforces Round #662 Div2 retrospect</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Codeforces Round #662 Div2 retrospect" href="https://dawn-cmd.github.io/post/i28zPrNp9/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Kick Start 2020 Round D T2 Alien Piano Analysis" href="https://dawn-cmd.github.io/post/cJ22lJu5P/">Kick Start 2020 Round D T2 Alien Piano Analysis</a>
-        <a class="nav-mobile-next" title="Kick Start 2020 Round D T2 Alien Piano Analysis" href="https://dawn-cmd.github.io/post/cJ22lJu5P/">下一篇</a>
+        <a class="nav-pc-next" title="CS50 Web50 Week0: HTML, CSS Notebook" href="https://dawn-cmd.github.io/post/cs50-web50-week0-html-css/">CS50 Web50 Week0: HTML, CSS Notebook</a>
+        <a class="nav-mobile-next" title="CS50 Web50 Week0: HTML, CSS Notebook" href="https://dawn-cmd.github.io/post/cs50-web50-week0-html-css/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
