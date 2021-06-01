@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-06-01T07:37:24.421Z</updated>
+    <updated>2021-06-01T07:38:27.684Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -172,7 +172,7 @@ git reset --hard oringin/master
 <ul>
 <li><a href="https://dawn-cmd.github.io/post/cs50-web50-week0-html-css/">HTML, CSS (make a web page)</a></li>
 <li><a href="https://dawn-cmd.github.io/post/cs50-web50-week1-git/">Git (version control, team project)</a></li>
-<li>Python (one of two main languages)</li>
+<li><a href="https://dawn-cmd.github.io/post/cs50-web50-week2-python/">Python (one of two main languages)</a></li>
 <li>Django (frame of web application)</li>
 <li>SQL, Models and Migration (data control)</li>
 <li>JavaScript (two of two main languages)</li>
