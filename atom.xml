@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-06-01T07:23:48.995Z</updated>
+    <updated>2021-06-01T07:37:24.421Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -47,6 +47,44 @@ except(SystemExit):
 <figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1622531559923.png" alt="" loading="lazy"></figure>
 <ul>
 <li>Some basic types of variables.</li>
+</ul>
+<pre><code class="language-python">def main():
+    name = input(&quot;name:&quot;)
+    print(f&quot;Hello, {name}&quot;)
+    print(&quot;Hello, &quot; + name)
+
+
+try:
+    if __name__ == &quot;__main__&quot;:
+        main()
+except(SystemExit):
+    pass
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://dawn-cmd.github.io/post-images/1622532421415.png" alt="" loading="lazy"></figure>
+<ul>
+<li>How to use variables.</li>
+<li>Two ways to combine strings. (fstring can only be used after python3.0)</li>
+</ul>
+<h1 id="conditions">Conditions</h1>
+<pre><code class="language-python">def main():
+    n = int(input(&quot;Number: &quot;))
+    if n &gt; 0:
+        print(&quot;The number is positive.&quot;)
+    elif n &lt; 0:
+        print(&quot;The number is negative.&quot;)
+    else:
+        print(&quot;The number is neither positive nor negative.&quot;)
+
+
+try:
+    if __name__ == &quot;__main__&quot;:
+        main()
+except(SystemExit):
+    pass
+</code></pre>
+<ul>
+<li>The use of &quot;if&quot; condition.</li>
+<li>Take care the input function will return a string variable, not an int one. We need to use <code>int()</code> to change it.</li>
 </ul>
 ]]></content>
     </entry>

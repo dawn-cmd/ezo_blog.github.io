@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>CS50 Web50 Week2: Python | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1622531783483">
+<link rel="shortcut icon" href="/favicon.ico?v=1622533038828">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -40,7 +40,7 @@
 
 
   <meta name="description" content="CS50 Web50 Week2: Python" />
-  <meta name="keywords" content="" />
+  <meta name="keywords" content="CS50,Web50,Note" />
 </head>
 
 <body>
@@ -248,6 +248,7 @@
     <ul class="markdownIt-TOC">
 <li><a href="#hello-world">Hello, world</a></li>
 <li><a href="#variables">Variables</a></li>
+<li><a href="#conditions">Conditions</a></li>
 </ul>
 
   </div>
@@ -527,13 +528,38 @@
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://dawn-cmd.github.io/tag/cs50/">
+        <span>CS50</span>
+      </a>、
+      
+      
+      
+      <a href="https://dawn-cmd.github.io/tag/web50/">
+        <span>Web50</span>
+      </a>、
+      
+      
+      
+      <a href="https://dawn-cmd.github.io/tag/T9dinVrg_/">
+        <span>Note</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>2<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>70<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>196<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -578,6 +604,44 @@ except(SystemExit):
 <ul>
 <li>Some basic types of variables.</li>
 </ul>
+<pre><code class="language-python">def main():
+    name = input(&quot;name:&quot;)
+    print(f&quot;Hello, {name}&quot;)
+    print(&quot;Hello, &quot; + name)
+
+
+try:
+    if __name__ == &quot;__main__&quot;:
+        main()
+except(SystemExit):
+    pass
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://dawn-cmd.github.io/post-images/1622532421415.png" alt="" loading="lazy"></figure>
+<ul>
+<li>How to use variables.</li>
+<li>Two ways to combine strings. (fstring can only be used after python3.0)</li>
+</ul>
+<h1 id="conditions">Conditions</h1>
+<pre><code class="language-python">def main():
+    n = int(input(&quot;Number: &quot;))
+    if n &gt; 0:
+        print(&quot;The number is positive.&quot;)
+    elif n &lt; 0:
+        print(&quot;The number is negative.&quot;)
+    else:
+        print(&quot;The number is neither positive nor negative.&quot;)
+
+
+try:
+    if __name__ == &quot;__main__&quot;:
+        main()
+except(SystemExit):
+    pass
+</code></pre>
+<ul>
+<li>The use of &quot;if&quot; condition.</li>
+<li>Take care the input function will return a string variable, not an int one. We need to use <code>int()</code> to change it.</li>
+</ul>
 
             </div>
             
@@ -598,6 +662,12 @@ except(SystemExit):
     </li>
   </ul>
   <div class="tags">
+    
+      <a href="https://dawn-cmd.github.io/tag/cs50/"># CS50</a>
+    
+      <a href="https://dawn-cmd.github.io/tag/web50/"># Web50</a>
+    
+      <a href="https://dawn-cmd.github.io/tag/T9dinVrg_/"># Note</a>
     
   </div>
   <div class="nav">
@@ -1122,6 +1192,44 @@ except(SystemExit):
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622531559923.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ul&gt;
 &lt;li&gt;Some basic types of variables.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def main():
+    name = input(&amp;quot;name:&amp;quot;)
+    print(f&amp;quot;Hello, {name}&amp;quot;)
+    print(&amp;quot;Hello, &amp;quot; + name)
+
+
+try:
+    if __name__ == &amp;quot;__main__&amp;quot;:
+        main()
+except(SystemExit):
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622532421415.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;How to use variables.&lt;/li&gt;
+&lt;li&gt;Two ways to combine strings. (fstring can only be used after python3.0)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;conditions&#34;&gt;Conditions&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def main():
+    n = int(input(&amp;quot;Number: &amp;quot;))
+    if n &amp;gt; 0:
+        print(&amp;quot;The number is positive.&amp;quot;)
+    elif n &amp;lt; 0:
+        print(&amp;quot;The number is negative.&amp;quot;)
+    else:
+        print(&amp;quot;The number is neither positive nor negative.&amp;quot;)
+
+
+try:
+    if __name__ == &amp;quot;__main__&amp;quot;:
+        main()
+except(SystemExit):
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;The use of &amp;quot;if&amp;quot; condition.&lt;/li&gt;
+&lt;li&gt;Take care the input function will return a string variable, not an int one. We need to use &lt;code&gt;int()&lt;/code&gt; to change it.&lt;/li&gt;
 &lt;/ul&gt;
 ">CS50 Web50 Week2: Python</a>
       </div>
