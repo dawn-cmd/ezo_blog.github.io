@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Kick Start 2020 Round D T2 Alien Piano Analysis | Blog</title>
+<title>CS50 Web50 Week2: Python | Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1622531783483">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Kick Start 2020 Round D T2 Alien Piano Analysis" />
-  <meta name="keywords" content="Solution" />
+  <meta name="description" content="CS50 Web50 Week2: Python" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -246,23 +246,8 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#official-link">Official Link</a></li>
-<li><a href="#problem">Problem</a></li>
-<li><a href="#input">Input</a></li>
-<li><a href="#output">Output</a></li>
-<li><a href="#limits">Limits</a>
-<ul>
-<li><a href="#test-set-1">Test set 1</a></li>
-<li><a href="#test-set-2">Test set 2</a></li>
-</ul>
-</li>
-<li><a href="#analysis">Analysis</a></li>
-<li><a href="#code-of-ok-solution-1">Code of O(K) Solution 1:</a></li>
-<li><a href="#code-of-ok-solution-2">Code of O(K) Solution 2:</a></li>
-</ul>
-</li>
+<li><a href="#hello-world">Hello, world</a></li>
+<li><a href="#variables">Variables</a></li>
 </ul>
 
   </div>
@@ -528,8 +513,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/post/cJ22lJu5P/">
-      Kick Start 2020 Round D T2 Alien Piano Analysis
+    <a class="post-title-link" href="https://dawn-cmd.github.io/post/cs50-web50-week2-python/">
+      CS50 Web50 Week2: Python
     </a>
   </h1>
   <div class="post-meta">
@@ -537,36 +522,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-08-03 16:21:23">2020-08-03</span>
+      <span class="publish-time" data-t="2021-06-01 14:50:29">2021-06-01</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/">
-        <span>Solution</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>7<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>971<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>70<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/cJ22lJu5P/" data-flag-title="Kick Start 2020 Round D T2 Alien Piano Analysis" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/cs50-web50-week2-python/" data-flag-title="CS50 Web50 Week2: Python" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -575,150 +547,37 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="official-link">Official Link</h2>
-<p><a href="https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff08/0000000000387174">Here</a></p>
-<h2 id="problem">Problem</h2>
-<p>An alien has just landed on Earth, and really likes our music. Lucky for us.</p>
-<p>The alien would like to bring home its favorite human songs, but it only has a very strange instrument to do it with: a piano with just 4 keys of different pitches.</p>
-<p>The alien converts a song by writing it down as a series of keys on the alien piano. Obviously, this piano will not be able to convert our songs completely, as our songs tend to have many more than 4 pitches.</p>
-<p>The alien will settle for converting our songs with the following rules instead:</p>
-<p>The first note in our song can be converted to any key on the alien piano.</p>
-<p>For every note after,</p>
-<ul>
-<li>if its pitch is higher than the previous note, it should be converted into a higher-pitched key than the previous note's conversion;</li>
-<li>if lower, it should be converted into a lower-pitched key than the previous note's conversion;</li>
-<li>if exactly identical, it should be converted into the same key as the previous note's conversion.</li>
-</ul>
-<p>Note: two notes with the same pitch do not need to be converted into the same key if they are not adjacent.</p>
-<p>What the alien wants to know is: how often will it have to break its rules when converting a particular song?</p>
-<p>To elaborate, let us describe one of our songs as having K notes. The first note we describe as &quot;note 1&quot;, the second note &quot;note 2&quot;, and the last note &quot;note K.&quot;<br>
-So note 2 comes immediately after note 1.<br>
-Now if note 2 is lower than note 1 in our version of the song, yet converted to an equally-pitched or lower-pitched key (relative to note 2's conversion) in the alien's version of the song, then we consider that a single rule break.<br>
-For each test case, return the minimum amount of times the alien must necessarily break one of its rules in converting that song.</p>
-<h2 id="input">Input</h2>
-<p>The first line of the input gives the number of test cases, T. T test cases follow.<br>
-Each test case consists of two lines.<br>
-The first line consists of a single integer, K.<br>
-The second line consists of K space-separated integers, A1, A2 ... AK, where Ai refers to the pitch of the i-th note for this test case.</p>
-<h2 id="output">Output</h2>
-<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the minimum number of times that particular test case will require the alien to break its own rules during the conversion process.</p>
-<h2 id="limits">Limits</h2>
-<p>Memory limit: 1GB.<br>
-1 ≤ T ≤ 100.<br>
-1 ≤ Ai ≤ 106.</p>
-<h3 id="test-set-1">Test set 1</h3>
-<p>Time limit: 20 seconds.<br>
-1 ≤ K ≤ 10.</p>
-<h3 id="test-set-2">Test set 2</h3>
-<p>Time limit: 40 seconds.<br>
-1 ≤ K ≤ 104.</p>
-<h2 id="analysis">Analysis</h2>
-<ul>
-<li>O(4^K) Solution: We can generate all possible conversions and choose the one with the smallest number of violations. To a fixed K, there exist 4^K solutions, so the time complexity is O(4^K).</li>
-<li>O(K) Solution1: When I was finishing this problem, I first came up with DP--<a href="https://en.wikipedia.org/wiki/Dynamic_programming">Dynamic programming</a>. We can consider dp[i][j] as the smallest number of violation when you choose conversion j at the position of i. So dp[i][j] equals to min(dp[i-1][k]+(violate the rule?1:0)). Because we just need one layer of loop, so the time complexity is O(K).</li>
-<li>O(K) Solution2: We can interpret the problem through this way: record the number of ascending or descending substrings which is longer than 4. We just need to make sure each element is ergodic.</li>
-</ul>
-<h2 id="code-of-ok-solution-1">Code of O(K) Solution 1:</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int n;
-int a[10010];
-int dp[10010][6];
-void initialization(){
-    memset(a,0,sizeof a);
-    memset(dp,0,sizeof dp);
-    return;
-}
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    for(int cas=1;cas&lt;=T;++cas){
-        initialization();
-        cin&gt;&gt;n;
-        for(int i=1;i&lt;=n;++i){
-            cin&gt;&gt;a[i];
-            if(i!=1&amp;&amp;a[i]==a[i-1]){
-                --i;
-                --n;
-            }
-        }
-        for(int i=1;i&lt;=4;++i){
-            dp[1][i]=0;
-        }
-        for(int i=2;i&lt;=n;++i){
-            for(int j=1;j&lt;=4;++j){
-                dp[i][j]=2147483647;   
-                if(a[i]&gt;a[i-1]){
-                    for(int k=1;k&lt;=4;++k){
-                        if(k&lt;j){
-                            dp[i][j]=min(dp[i][j],dp[i-1][k]);
-                        }
-                        else{
-                            dp[i][j]=min(dp[i][j],dp[i-1][k]+1);
-                        }
-                    }
-                }
-                else{
-                    for(int k=1;k&lt;=4;++k){
-                        if(k&gt;j){
-                            dp[i][j]=min(dp[i][j],dp[i-1][k]);
-                        }
-                        else{
-                            dp[i][j]=min(dp[i][j],dp[i-1][k]+1);
-                        }
-                    }
-                }
-            }
-        }
-        int ans=2147483647;
-        for(int i=1;i&lt;=4;++i){
-            ans=min(ans,dp[n][i]);
-        }
-        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;cas&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
-    }
-    return 0;
-}
+              <h1 id="hello-world">Hello, world</h1>
+<pre><code class="language-python">print(&quot;hello world&quot;)
 </code></pre>
-<h2 id="code-of-ok-solution-2">Code of O(K) Solution 2:</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int n;
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    for(int cas=1;cas&lt;=T;++cas){
-        cin&gt;&gt;n;
-        int now;
-        int pre;
-        int ans=0;
-        int upcnt=0;
-        int downcnt=0;
-        for(int i=1;i&lt;=n;++i){
-            cin&gt;&gt;now;
-            if(i==1||now==pre){
-                pre=now;
-                continue;
-            }
-            if(now&gt;pre){
-                upcnt++;
-                downcnt=0;
-            }
-            else{
-                upcnt=0;
-                downcnt++;
-            }
-            if(upcnt&gt;3||downcnt&gt;3){
-                ++ans;
-                upcnt=0;
-                downcnt=0;
-            }
-            pre=now;
-        }
-        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;cas&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
-    }
-    return 0;
-}
+<ul>
+<li>A holy ritual all the programmers need to do when they are learning a new programming laguage.<br>
+<img src="https://dawn-cmd.github.io/post-images/1622530737137.png" alt="" loading="lazy"></li>
+</ul>
+<h1 id="variables">Variables</h1>
+<pre><code class="language-python">def main():
+    a = 28
+    print(type(a))
+    b = 1.5
+    print(type(b))
+    c = &quot;Hello&quot;
+    print(type(c))
+    d = True
+    print(type(d))
+    e = None
+    print(type(e))
+
+
+try:
+    if (__name__ == &quot;__main__&quot;):
+        main()
+except(SystemExit):
+    pass
 </code></pre>
+<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1622531559923.png" alt="" loading="lazy"></figure>
+<ul>
+<li>Some basic types of variables.</li>
+</ul>
 
             </div>
             
@@ -731,7 +590,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/post/cJ22lJu5P/" title="Kick Start 2020 Round D T2 Alien Piano Analysis">https://dawn-cmd.github.io/post/cJ22lJu5P/</a>
+      <a href="https://dawn-cmd.github.io/post/cs50-web50-week2-python/" title="CS50 Web50 Week2: Python">https://dawn-cmd.github.io/post/cs50-web50-week2-python/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -740,21 +599,15 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/"># Solution</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Codeforces Round #661 Div3 retrospect" href="https://dawn-cmd.github.io/post/BKt7ppc1X/">Codeforces Round #661 Div3 retrospect</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Codeforces Round #661 Div3 retrospect" href="https://dawn-cmd.github.io/post/BKt7ppc1X/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Kick Start 2020 Round D T1 Record Breaker Analysis" href="https://dawn-cmd.github.io/post/76NaE9Spv/">Kick Start 2020 Round D T1 Record Breaker Analysis</a>
-        <a class="nav-mobile-next" title="Kick Start 2020 Round D T1 Record Breaker Analysis" href="https://dawn-cmd.github.io/post/76NaE9Spv/">下一篇</a>
+        <a class="nav-pc-next" title="CS50 Web50 Week1: Git" href="https://dawn-cmd.github.io/post/cs50-web50-week1-git/">CS50 Web50 Week1: Git</a>
+        <a class="nav-mobile-next" title="CS50 Web50 Week1: Git" href="https://dawn-cmd.github.io/post/cs50-web50-week1-git/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

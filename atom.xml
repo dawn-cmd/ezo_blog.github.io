@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-06-01T06:52:23.863Z</updated>
+    <updated>2021-06-01T07:16:27.469Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -11,6 +11,45 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[CS50 Web50 Week2: Python]]></title>
+        <id>https://dawn-cmd.github.io/post/cs50-web50-week2-python/</id>
+        <link href="https://dawn-cmd.github.io/post/cs50-web50-week2-python/">
+        </link>
+        <updated>2021-06-01T06:50:29.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="hello-world">Hello, world</h1>
+<pre><code class="language-python">print(&quot;hello world&quot;)
+</code></pre>
+<ul>
+<li>A holy ritual all the programmers need to do when they are learning a new programming laguage.<br>
+<img src="https://dawn-cmd.github.io/post-images/1622530737137.png" alt="" loading="lazy"></li>
+</ul>
+<h1 id="variables">Variables</h1>
+<pre><code class="language-python">def main():
+    a = 28
+    print(type(a))
+    b = 1.5
+    print(type(b))
+    c = &quot;Hello&quot;
+    print(type(c))
+    d = True
+    print(type(d))
+    e = None
+    print(type(e))
+
+
+try:
+    if (__name__ == &quot;__main__&quot;):
+        main()
+except(SystemExit):
+    pass
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1622531559923.png" alt="" loading="lazy"></figure>
+<ul>
+<li>Some basic types of variables.</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CS50 Web50 Week1: Git]]></title>
         <id>https://dawn-cmd.github.io/post/cs50-web50-week1-git/</id>
@@ -1281,138 +1320,6 @@ int main() {
 <p>The next way is using a array to imitate the solution. It seems faster than the previous method. But it has a fatal shortcoming: you must make sure that the state will increase or decrease in a fixed direction. Otherwise you cannot use this method.</p>
 <h2 id="the-end">The end</h2>
 <p>So this is the end of the introduction. Of course, it is just a beginning of this series. DP is an interesting subject to study. It can also be used in mathmatics, biology, economic and so on.</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Manacher]]></title>
-        <id>https://dawn-cmd.github.io/post/ntYB0fMZm/</id>
-        <link href="https://dawn-cmd.github.io/post/ntYB0fMZm/">
-        </link>
-        <updated>2021-02-17T02:31:22.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="description">Description</h2>
-<p>Manacher algorithm can be used in most palindrome string problems. It provides a solution with O(n) time complexity.</p>
-<h2 id="sample-problem">Sample problem</h2>
-<p><a href="https://www.luogu.com.cn/problem/P3805">LuoguP3805</a><br>
-Give you a string S. Calculate the length of the longest palindrome substring in it.<br>
-1 &lt; length &lt; 1.1e7</p>
-<h2 id="solution-1">Solution 1:</h2>
-<p>Try every subtring and scan all of them to update the answer. Because we enumerate the left bound and right bound and check each character in the substring. Its time complexity is O(n^3). Actually, it is far from optimal condition.</p>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-#define ll long long
-using namespace std;
-bool check(int st, int ed, string s) {
-    while (st &lt;= ed) {
-        if (s[st] != s[ed]) return 0;
-        st++, ed--;
-    }
-    return 1;
-}
-int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    string s;
-    cin &gt;&gt; s;
-    int ans = -1;
-    for (int i = 0, l = s.size(); i &lt; l; ++i) {
-        for (int j = i; j &lt; l; ++j) {
-            if (check(i, j, s)) ans = max(ans, j - i + 1);
-        }
-    }
-    cout &lt;&lt; ans &lt;&lt; endl;
-    return 0;
-}
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1613568323104.png" alt="" loading="lazy"></figure>
-<h2 id="solution-2">Solution 2:</h2>
-<p>Let's try to improve it. After observation, we find that we can enumerate the mid point of the palindrome string. Then expand until it touch its bound. The time complexity will become O(n^2), much faster. However, sometimes the mid point is between two characters. If we deal with the strings with odd number of characters and even number of characters separately, the code will become tedious. Using &quot;temp character&quot; can solve it elegantly. We can fill '#' (or some other characters that does not exist in the string) in the position between characters to simplify the code.</p>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-#define ll long long
-using namespace std;
-string change (string s) {
-    string ans = &quot;+#&quot;;
-    for (auto &amp;i: s) {
-        ans += i;
-        ans += '#';
-    }
-    ans += &quot;-&quot;;
-    return ans;
-}
-int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    string s;
-    cin &gt;&gt; s;
-    s = change(s);
-    int ans = -1;
-    for (int i = 1, len = s.size() - 1; i &lt; len; ++i) {
-        int tmp = 0;
-        while (s[i + tmp + 1] == s[i - tmp - 1]) ++tmp;
-        ans = max(ans, tmp);
-    }
-    cout &lt;&lt; ans &lt;&lt; endl;
-    return 0;
-}
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://dawn-cmd.github.io/post-images/1613614637904.png" alt="" loading="lazy"></figure>
-<p>As we see, it really made some progress. But still cannot satisfy the need.</p>
-<h2 id="solution-3">Solution 3</h2>
-<p>Here comes our leading role, the manacher algorithm. In fact, its core idea is quite easy to understand:<br>
-<img src="https://dawn-cmd.github.io/post-images/1613615453237.png" alt="" loading="lazy"><br>
-When you find a palindrome string in the half of another palindrome, it is obvious that there exist a totally same palindrome at the symmetry position. When we meet this situation, we can give the length of the palindrome in O(1).</p>
-<p>So we can maximize this idea. We choose the largest palindrome string that reach the most far position as the base palindrome and record its mid point and right bound (because we just need these, we call them max_right and max_mid in the following passage). When the mid point i's id is small than max_right, we can immediately know its radius is at least radius[mid * 2 - i].</p>
-<p>But here is a point, why we use &quot;at least&quot; but not &quot;exactly is&quot;? Sometimes i + radius[i] may touch max_right and the excceeding part will not follow the role, so we need update. Moreover, when this happen, we need to update max_right and max_mid as well.</p>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-#define ll long long
-using namespace std;
-string change (string base) {
-    string ans = &quot;+#&quot;;
-    for (auto &amp;i: base) {
-        ans += i;
-        ans += '#';
-    }
-    ans += &quot;-&quot;;
-    // The string will be in the form like &quot;+#a#b#c#-&quot;. Adding '#' between characters
-    // can help us standardize strings with odd length and even length. The '+' and '-'
-    // are marks of ending that can help us end loops easily. I will explain it in detail later.
-    return ans;
-}
-void manacher (string &amp;s, vector &lt;int&gt; &amp;p) {
-    int max_right = 0;  // the right bound we have calculated
-    int max_mid = 0;  // the mid point of the largest palindrome string that contains max_right
-    for (int i = 1, l = s.size(); i &lt; l; ++i) {
-        p[i] = i &lt;= max_right  // if i is still in range
-               ? min(max_right - i, p[(max_mid &lt;&lt; 1) - i])  // we can use its bro's data directly
-               : 0;  // otherwise, we can just calculate it from beginning
-        while (s[i + p[i] + 1] == s[i - p[i] - 1]) ++p[i];  // expand the length, the loop will end automacally.
-        if (max_right &lt; i + p[i]) max_right = i + p[i], max_mid = i;  // update max_right and max_mid
-    }
-    return;
-}
-int main () {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    string s;
-    cin &gt;&gt; s;
-    s = change(s);  // pretreatment
-    vector &lt;int&gt; p (s.size());  // p[i] means the radius of the palindrome string with a mid point at i (exclude i itself).
-    manacher(s, p);
-    int ans = -1;
-    for(int i = 0, l = p.size(); i &lt; l; ++i) {
-        ans = max(ans, p[i]);  
-        // Cause we have pretreated s, its length is 2 times larger than before.
-        // So, p[i] itself represents the actually length of its palindrome string.
-        // But not the radius.
-    }
-    cout &lt;&lt; ans &lt;&lt; endl;
-    return 0;
-}
-</code></pre>
-<figure data-type="image" tabindex="3"><img src="https://dawn-cmd.github.io/post-images/1613638344217.png" alt="" loading="lazy"></figure>
-<h2 id="about-time-complexity">About time complexity</h2>
-<p>This algorithm is O(n): when i cannot update max_right, we can get the answer in O(1); when i can update max_right, we need O(n) to update it.</p>
 ]]></content>
     </entry>
 </feed>
