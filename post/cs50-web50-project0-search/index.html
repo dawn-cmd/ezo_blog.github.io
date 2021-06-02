@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Kick Start 2020 Round C T3 Perfect Subarray Analysis | Blog</title>
+<title>CS50 Web50 Project0: Search | Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1622643490579">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Kick Start 2020 Round C T3 Perfect Subarray Analysis" />
-  <meta name="keywords" content="Solution" />
+  <meta name="description" content="CS50 Web50 Project0: Search" />
+  <meta name="keywords" content="CS50,Web50,Solution" />
 </head>
 
 <body>
@@ -246,30 +246,8 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#problem">Problem</a></li>
-<li><a href="#input">Input</a></li>
-<li><a href="#output">Output</a></li>
-<li><a href="#limits">Limits</a>
-<ul>
-<li><a href="#test-set-1">Test set 1</a></li>
-<li><a href="#test-set-2">Test set 2</a></li>
-</ul>
-</li>
-<li><a href="#sample">Sample</a>
-<ul>
-<li><a href="#input-2">Input</a></li>
-<li><a href="#output-2">Output</a></li>
-<li><a href="#explanation">Explanation</a></li>
-<li><a href="#note">Note</a></li>
-</ul>
-</li>
-<li><a href="#anaylsis">Anaylsis</a></li>
-<li><a href="#code-of-the-best-solution">Code of the best Solution</a></li>
-<li><a href="#ps">P.S.</a></li>
-</ul>
-</li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#the-google-search-page">The Google Search Page</a></li>
 </ul>
 
   </div>
@@ -535,8 +513,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/post/r6whUkCyg/">
-      Kick Start 2020 Round C T3 Perfect Subarray Analysis
+    <a class="post-title-link" href="https://dawn-cmd.github.io/post/cs50-web50-project0-search/">
+      CS50 Web50 Project0: Search
     </a>
   </h1>
   <div class="post-meta">
@@ -544,13 +522,25 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-07-31 22:39:31">2020-07-31</span>
+      <span class="publish-time" data-t="2021-06-02 21:04:03">2021-06-02</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
       <i class="fa fa-folder-o"></i>
       <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://dawn-cmd.github.io/tag/cs50/">
+        <span>CS50</span>
+      </a>、
+      
+      
+      
+      <a href="https://dawn-cmd.github.io/tag/web50/">
+        <span>Web50</span>
+      </a>、
+      
       
       
       <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/">
@@ -563,17 +553,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>5<span class="language" data-lan="minute">分钟</span></span>
+      <span>7<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>706<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1103<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/r6whUkCyg/" data-flag-title="Kick Start 2020 Round C T3 Perfect Subarray Analysis" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/cs50-web50-project0-search/" data-flag-title="CS50 Web50 Project0: Search" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -582,103 +572,166 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="problem">Problem</h2>
-<p>Cristobal has an array of N (possibly negative) integers. The i-th integer in his array is Ai. A contiguous non-empty subarray of Cristobal's array is perfect if its total sum is a perfect square. A perfect square is a number that is the product of a non-negative integer with itself. For example, the first five perfect squares are 0, 1, 4, 9 and 16.</p>
-<p>How many subarrays are perfect? Two subarrays are different if they start or end at different indices in the array, even if the subarrays contain the same values in the same order.</p>
-<h2 id="input">Input</h2>
-<p>The first line of the input gives the number of test cases, T. T test cases follow. The first line of each test case contains the integer N. The second line contains N integers describing Cristobal's array. The i-th integer is Ai.</p>
-<h2 id="output">Output</h2>
-<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of perfect subarrays.</p>
-<h2 id="limits">Limits</h2>
-<p>Memory limit: 1GB.<br>
-1 ≤ T ≤ 100.<br>
--100 ≤ Ai ≤ 100, for all i.</p>
-<h3 id="test-set-1">Test set 1</h3>
-<p>Time limit: 20 seconds.<br>
-1 ≤ N ≤ 1000.</p>
-<h3 id="test-set-2">Test set 2</h3>
-<p>Time limit: 30 seconds.<br>
-For up to 5 cases, 1 ≤ N ≤ 105.<br>
-For the remaining cases, 1 ≤ N ≤ 1000.</p>
-<h2 id="sample">Sample</h2>
-<h3 id="input-2">Input</h3>
-<p>3</p>
-<p>3</p>
-<p>2 2 6</p>
-<p>5</p>
-<p>30 30 9 1 30</p>
-<p>4</p>
-<p>4 0 0 16</p>
-<h3 id="output-2">Output</h3>
-<p>Case #1: 1</p>
-<p>Case #2: 3</p>
-<p>Case #3: 9</p>
-<h3 id="explanation">Explanation</h3>
-<p>In sample case #1, there is one perfect subarray: [2 2] whose sum is 22.</p>
-<p>In sample case #2, there are three perfect subarrays:<br>
-[9], whose total sum is 32.<br>
-[1], whose total sum is 12.<br>
-[30 30 9 1 30], whose total sum is 102.</p>
-<p>In sample case #3, there are nine perfect subarrays:<br>
-[4], whose total sum is 22.<br>
-[4 0], whose total sum is 22.<br>
-[4 0 0], whose total sum is 22.<br>
-[0], whose total sum is 02.<br>
-[0 0], whose total sum is 02.<br>
-[0 0 16], whose total sum is 42.<br>
-[0], whose total sum is 02.<br>
-[0 16], whose total sum is 42.<br>
-[16], whose total sum is 42.</p>
-<h3 id="note">Note</h3>
-<p>We do not recommend using interpreted/slower languages for the test set 2 of this problem.</p>
-<h2 id="anaylsis">Anaylsis</h2>
-<ol>
-<li>O(n^2) Solution: Easily, we only need to check every subarray in it. In an n-length array, there exist n*(n+1)/2 subarrays. So the time complexity of this algorithm is O(n^2).</li>
-<li>O(n<em>sqrt(1e7) to n</em>logn*sqrt(1e7)) Solution: First, we use sum[] to record the prefix sum of a[]. So the problem becomes: how many sum[i]-sum[j-1]=x^2(i&gt;=j &amp;&amp; x is an integer). This formula equals to sum[j-1]=sum[i]-x^2. So, all we need to do is to enumerate all possible x and check how many j meet the requirement. To implement it, we can use a hash table to record the number of exist sum[j], which has a O(1) time complexity. This algorithm's time complexity can be accepted narrowly.</li>
-</ol>
-<h2 id="code-of-the-best-solution">Code of the best Solution</h2>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-#define BASE 15000000
-#define LL long long
-using namespace std;
-int n;
-int a[100010];
-LL h[70000010];
-int main(){
-    int T;
-    cin&gt;&gt;T;
-    for(int cas=1;cas&lt;=T;++cas){
-        memset(h,0,sizeof h);
-        LL ans=0;
-        cin&gt;&gt;n;
-        h[BASE]=1;
-        a[0]=BASE;
-        for(int i=1;i&lt;=n;++i){
-            cin&gt;&gt;a[i];
-            a[i]+=a[i-1];
-        }
-        int minn=BASE;
-        for(int i=1;i&lt;=n;++i){
-            for(int j=0;j*j&lt;=10000000;++j){
-                if(a[i]-j*j&lt;minn){
-                    break;
-                }
-                ans+=h[a[i]-j*j]; 
-            }
-            minn=min(a[i],minn);
-            h[a[i]]++;
-        }
-        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;cas&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre>
-<h2 id="ps">P.S.</h2>
+              <h1 id="introduction">Introduction</h1>
+<p>Imitate Google Search's home page, which contains Google search, Googe image search and Google Advanced Search.<br>
+Here are the requirements the edx official description:</p>
 <ul>
-<li>If you use C++ to solve this problem, do not use map, which will add a logn to your time complexity.</li>
-<li>You should use long long to save the answer.</li>
-<li>Do not use Python.</li>
+<li>Pages. Your website should have at least three pages: one for Google Search,one for Google Image Search, and one for Google Advanced Search.</li>
+<li>On the Google Search page, there should be links in the upper-right of the page to go to Image Search or Advanced Search. On each of the other two pages, there should be a link in the upper-right to go back to Google Search.</li>
+<li>Query Text. On the Google Search page, the user should be able to type in a query, click “Google Search”, and be taken to the Google search results for that page.</li>
+<li>Like Google’s own, your search bar should be centered with rounded corners. + The search button should also be centered, and should be beneath the search bar.</li>
+<li>Query Images. On the Google Image Search page, the user should be able to type in a query, click a search button, and be taken to the Google Image search results for that page.</li>
+<li>Query Advanced. On the Google Advanced Search page, the user should be able to provide input for the following four fields (taken from Google's own advanced search options)</li>
+<li>Find pages with… “all these words:”</li>
+<li>Find pages with… “this exact word or phrase:”</li>
+<li>Find pages with… “any of these words:”</li>
+<li>Find pages with… “none of these words:”</li>
+<li>Appearance. Like Google’s own Advanced Search page, the four options should be stacked vertically, and all of the text fields should be left aligned.</li>
+<li>Consistent with Google’s own CSS, the “Advanced Search” button should be blue with white text. When the “Advanced Search” button is clicked, the user should be taken to search results page for their given query.</li>
+<li>Lucky. Add an “I’m Feeling Lucky” button to the main Google Search page.    + Consistent with Google’s own behavior, clicking this link should take users directly to the first Google search result for the query, bypassing the normal results page.</li>
+<li>Aesthetics. The CSS you write should match Google's own aesthetics as best as possible.</li>
 </ul>
+<h1 id="the-google-search-page">The Google Search Page</h1>
+<p>First, let's see the goal we need to achieve:<br>
+<img src="https://dawn-cmd.github.io/post-images/1622640303621.png" alt="" loading="lazy"><br>
+And here is my code:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Search&lt;/title&gt;
+    &lt;style&gt;
+        #base-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            text-align: center;
+        }
+
+        .box {
+            margin: 15px;
+        }
+
+        #text-box {
+            width: 500px;
+            height: 30px;
+            border-radius: 30px;
+            font-size: 15px;
+        }
+
+        #header {
+            width: 98%;
+            height: 30%;
+            font-size: 25px;
+            text-align: right;
+        }
+
+        .btn {
+            margin: 10px;
+            width: 200px;
+            height: 30px;
+            border-radius: 20px;
+            background-color: white;
+            font-size: 20px;
+        }
+
+        .friend-link-btn {
+            border-radius: 5px;
+            background-color: white;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id=&quot;base-container&quot;&gt;
+        &lt;div id=&quot;header&quot;&gt;
+            &lt;button class=&quot;friend-link-btn&quot;&gt;
+                &lt;a href=&quot;index_ad.html&quot;&gt;Google Advanced Search&lt;/a&gt;
+            &lt;/button&gt;
+            &lt;button class=&quot;friend-link-btn&quot;&gt;
+                &lt;a href=&quot;index_img.html&quot;&gt;Google Image Search&lt;/a&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;img src=&quot;https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png&quot; alt=&quot;Google&quot;&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;form action=&quot;http://google.com/search?&quot;&gt;
+                &lt;div class=&quot;box&quot;&gt;
+                    &lt;input type=&quot;text&quot; name=&quot;q&quot; id=&quot;text-box&quot;&gt;
+                &lt;/div&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;hl&quot; value=&quot;zh-CN&quot;&gt;
+                &lt;div class=&quot;box&quot;&gt;
+                    &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Google Search&lt;/button&gt;
+                    &lt;button type=&quot;submit&quot; class=&quot;btn&quot; name=&quot;btnI&quot; value=&quot;q&quot;&gt;I am feeling lucky&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>Now, let's talk about my idea.<br>
+To begin with, we need to solve the problem of the background first. Some browsers' background color is white already, but it is not fit for all users. However, the HTML self did not provide the set of background color. (at least I do not know) So I choose to use a div tag to serve as background.</p>
+<pre><code class="language-html">&lt;style&gt;
+#base-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            text-align: center;
+        }
+&lt;/style&gt;
+&lt;div id=&quot;base-container&quot;&gt;
+</code></pre>
+<p>Next, let's see the layout.<br>
+<img src="https://dawn-cmd.github.io/post-images/1622642250911.png" alt="" loading="lazy"><br>
+From my perspective, the section we need to solve can be divided into two parts, div1 and div2.<br>
+Div1: Div1 contains two links point to Google Advanced Search and Google Image Search at the right up corner. The main use of the div is make div2 middle in the screen.</p>
+<pre><code class="language-html">&lt;style&gt;
+         .box {
+            margin: 15px;
+        }
+         #header {
+            width: 98%;
+            height: 30%;
+            font-size: 25px;
+            text-align: right;
+        }
+         .friend-link-btn {
+            border-radius: 5px;
+            background-color: white;
+        }
+&lt;/style&gt;
+
+    &lt;div id=&quot;header&quot;&gt;
+        &lt;button class=&quot;friend-link-btn&quot;&gt;
+            &lt;a href=&quot;index_ad.html&quot;&gt;Google Advanced Search&lt;/a&gt;
+        &lt;/button&gt;
+        &lt;button class=&quot;friend-link-btn&quot;&gt;
+            &lt;a href=&quot;index_img.html&quot;&gt;Google Image Search&lt;/a&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box&quot;&gt;
+        &lt;img src=&quot;https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png&quot; alt=&quot;Google&quot;&gt;
+    &lt;/div&gt;
+</code></pre>
+<p>Dvi2: The edx has already provide us with the form, all I do is just make it look better.</p>
+<pre><code class="language-html">&lt;div&gt;
+    &lt;form action=&quot;http://google.com/search?&quot;&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;input type=&quot;text&quot; name=&quot;q&quot; id=&quot;text-box&quot;&gt;
+        &lt;/div&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;hl&quot; value=&quot;zh-CN&quot;&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Google Search&lt;/button&gt;
+            &lt;button type=&quot;submit&quot; class=&quot;btn&quot; name=&quot;btnI&quot; value=&quot;q&quot;&gt;I am feeling lucky&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+</code></pre>
 
             </div>
             
@@ -691,7 +744,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/post/r6whUkCyg/" title="Kick Start 2020 Round C T3 Perfect Subarray Analysis">https://dawn-cmd.github.io/post/r6whUkCyg/</a>
+      <a href="https://dawn-cmd.github.io/post/cs50-web50-project0-search/" title="CS50 Web50 Project0: Search">https://dawn-cmd.github.io/post/cs50-web50-project0-search/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -700,21 +753,21 @@ int main(){
   </ul>
   <div class="tags">
     
+      <a href="https://dawn-cmd.github.io/tag/cs50/"># CS50</a>
+    
+      <a href="https://dawn-cmd.github.io/tag/web50/"># Web50</a>
+    
       <a href="https://dawn-cmd.github.io/tag/OPRCr9F-Y/"># Solution</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Kick Start 2020 Round D T1 Record Breaker Analysis" href="https://dawn-cmd.github.io/post/76NaE9Spv/">Kick Start 2020 Round D T1 Record Breaker Analysis</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Kick Start 2020 Round D T1 Record Breaker Analysis" href="https://dawn-cmd.github.io/post/76NaE9Spv/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Topological Sort" href="https://dawn-cmd.github.io/post/o_E2mKnup/">Topological Sort</a>
-        <a class="nav-mobile-next" title="Topological Sort" href="https://dawn-cmd.github.io/post/o_E2mKnup/">下一篇</a>
+        <a class="nav-pc-next" title="CS50 Web50 Week2: Python" href="https://dawn-cmd.github.io/post/cs50-web50-week2-python/">CS50 Web50 Week2: Python</a>
+        <a class="nav-mobile-next" title="CS50 Web50 Week2: Python" href="https://dawn-cmd.github.io/post/cs50-web50-week2-python/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1622626837466">
+<link rel="shortcut icon" href="/favicon.ico?v=1622643490579">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -187,7 +187,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">31</span>
+        <span class="site-item-stat-count">32</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -247,7 +247,7 @@
   <div class="archive-timeline-box">
     <div class="archive-timeline-title">
       
-        <h2 class="language" data-lan="archives" data-count="31">非常好！目前共计31篇日志，继续努力！</h2>
+        <h2 class="language" data-lan="archives" data-count="32">非常好！目前共计32篇日志，继续努力！</h2>
       
     </div>
     
@@ -257,6 +257,19 @@
           <h2 class="tag-year">2021</h2>
         </div>    
         
+      
+      <a href="https://dawn-cmd.github.io/post/cs50-web50-project0-search/">
+        <div class="motion-warpper tag-archive-node">
+          <div class="tag-node">
+            <h1>
+              06-02
+              <small>CS50 Web50 Project0: Search</small>
+            </h1>
+          </div>  
+      </div>
+      </a>
+    
+      
       
       <a href="https://dawn-cmd.github.io/post/cs50-web50-week2-python/">
         <div class="motion-warpper tag-archive-node">
@@ -887,6 +900,171 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/cs50-web50-project0-search/"" data-c="
+          &lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Imitate Google Search&#39;s home page, which contains Google search, Googe image search and Google Advanced Search.&lt;br&gt;
+Here are the requirements the edx official description:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pages. Your website should have at least three pages: one for Google Search,one for Google Image Search, and one for Google Advanced Search.&lt;/li&gt;
+&lt;li&gt;On the Google Search page, there should be links in the upper-right of the page to go to Image Search or Advanced Search. On each of the other two pages, there should be a link in the upper-right to go back to Google Search.&lt;/li&gt;
+&lt;li&gt;Query Text. On the Google Search page, the user should be able to type in a query, click “Google Search”, and be taken to the Google search results for that page.&lt;/li&gt;
+&lt;li&gt;Like Google’s own, your search bar should be centered with rounded corners. + The search button should also be centered, and should be beneath the search bar.&lt;/li&gt;
+&lt;li&gt;Query Images. On the Google Image Search page, the user should be able to type in a query, click a search button, and be taken to the Google Image search results for that page.&lt;/li&gt;
+&lt;li&gt;Query Advanced. On the Google Advanced Search page, the user should be able to provide input for the following four fields (taken from Google&#39;s own advanced search options)&lt;/li&gt;
+&lt;li&gt;Find pages with… “all these words:”&lt;/li&gt;
+&lt;li&gt;Find pages with… “this exact word or phrase:”&lt;/li&gt;
+&lt;li&gt;Find pages with… “any of these words:”&lt;/li&gt;
+&lt;li&gt;Find pages with… “none of these words:”&lt;/li&gt;
+&lt;li&gt;Appearance. Like Google’s own Advanced Search page, the four options should be stacked vertically, and all of the text fields should be left aligned.&lt;/li&gt;
+&lt;li&gt;Consistent with Google’s own CSS, the “Advanced Search” button should be blue with white text. When the “Advanced Search” button is clicked, the user should be taken to search results page for their given query.&lt;/li&gt;
+&lt;li&gt;Lucky. Add an “I’m Feeling Lucky” button to the main Google Search page.    + Consistent with Google’s own behavior, clicking this link should take users directly to the first Google search result for the query, bypassing the normal results page.&lt;/li&gt;
+&lt;li&gt;Aesthetics. The CSS you write should match Google&#39;s own aesthetics as best as possible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;the-google-search-page&#34;&gt;The Google Search Page&lt;/h1&gt;
+&lt;p&gt;First, let&#39;s see the goal we need to achieve:&lt;br&gt;
+&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622640303621.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+And here is my code:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Search&amp;lt;/title&amp;gt;
+    &amp;lt;style&amp;gt;
+        #base-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            text-align: center;
+        }
+
+        .box {
+            margin: 15px;
+        }
+
+        #text-box {
+            width: 500px;
+            height: 30px;
+            border-radius: 30px;
+            font-size: 15px;
+        }
+
+        #header {
+            width: 98%;
+            height: 30%;
+            font-size: 25px;
+            text-align: right;
+        }
+
+        .btn {
+            margin: 10px;
+            width: 200px;
+            height: 30px;
+            border-radius: 20px;
+            background-color: white;
+            font-size: 20px;
+        }
+
+        .friend-link-btn {
+            border-radius: 5px;
+            background-color: white;
+        }
+    &amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;div id=&amp;quot;base-container&amp;quot;&amp;gt;
+        &amp;lt;div id=&amp;quot;header&amp;quot;&amp;gt;
+            &amp;lt;button class=&amp;quot;friend-link-btn&amp;quot;&amp;gt;
+                &amp;lt;a href=&amp;quot;index_ad.html&amp;quot;&amp;gt;Google Advanced Search&amp;lt;/a&amp;gt;
+            &amp;lt;/button&amp;gt;
+            &amp;lt;button class=&amp;quot;friend-link-btn&amp;quot;&amp;gt;
+                &amp;lt;a href=&amp;quot;index_img.html&amp;quot;&amp;gt;Google Image Search&amp;lt;/a&amp;gt;
+            &amp;lt;/button&amp;gt;
+        &amp;lt;/div&amp;gt;
+        &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
+            &amp;lt;img src=&amp;quot;https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png&amp;quot; alt=&amp;quot;Google&amp;quot;&amp;gt;
+        &amp;lt;/div&amp;gt;
+        &amp;lt;div&amp;gt;
+            &amp;lt;form action=&amp;quot;http://google.com/search?&amp;quot;&amp;gt;
+                &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
+                    &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;q&amp;quot; id=&amp;quot;text-box&amp;quot;&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;input type=&amp;quot;hidden&amp;quot; name=&amp;quot;hl&amp;quot; value=&amp;quot;zh-CN&amp;quot;&amp;gt;
+                &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
+                    &amp;lt;button type=&amp;quot;submit&amp;quot; class=&amp;quot;btn&amp;quot;&amp;gt;Google Search&amp;lt;/button&amp;gt;
+                    &amp;lt;button type=&amp;quot;submit&amp;quot; class=&amp;quot;btn&amp;quot; name=&amp;quot;btnI&amp;quot; value=&amp;quot;q&amp;quot;&amp;gt;I am feeling lucky&amp;lt;/button&amp;gt;
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/form&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, let&#39;s talk about my idea.&lt;br&gt;
+To begin with, we need to solve the problem of the background first. Some browsers&#39; background color is white already, but it is not fit for all users. However, the HTML self did not provide the set of background color. (at least I do not know) So I choose to use a div tag to serve as background.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;style&amp;gt;
+#base-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            text-align: center;
+        }
+&amp;lt;/style&amp;gt;
+&amp;lt;div id=&amp;quot;base-container&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, let&#39;s see the layout.&lt;br&gt;
+&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622642250911.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+From my perspective, the section we need to solve can be divided into two parts, div1 and div2.&lt;br&gt;
+Div1: Div1 contains two links point to Google Advanced Search and Google Image Search at the right up corner. The main use of the div is make div2 middle in the screen.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;style&amp;gt;
+         .box {
+            margin: 15px;
+        }
+         #header {
+            width: 98%;
+            height: 30%;
+            font-size: 25px;
+            text-align: right;
+        }
+         .friend-link-btn {
+            border-radius: 5px;
+            background-color: white;
+        }
+&amp;lt;/style&amp;gt;
+
+    &amp;lt;div id=&amp;quot;header&amp;quot;&amp;gt;
+        &amp;lt;button class=&amp;quot;friend-link-btn&amp;quot;&amp;gt;
+            &amp;lt;a href=&amp;quot;index_ad.html&amp;quot;&amp;gt;Google Advanced Search&amp;lt;/a&amp;gt;
+        &amp;lt;/button&amp;gt;
+        &amp;lt;button class=&amp;quot;friend-link-btn&amp;quot;&amp;gt;
+            &amp;lt;a href=&amp;quot;index_img.html&amp;quot;&amp;gt;Google Image Search&amp;lt;/a&amp;gt;
+        &amp;lt;/button&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
+        &amp;lt;img src=&amp;quot;https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png&amp;quot; alt=&amp;quot;Google&amp;quot;&amp;gt;
+    &amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Dvi2: The edx has already provide us with the form, all I do is just make it look better.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div&amp;gt;
+    &amp;lt;form action=&amp;quot;http://google.com/search?&amp;quot;&amp;gt;
+        &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
+            &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;q&amp;quot; id=&amp;quot;text-box&amp;quot;&amp;gt;
+        &amp;lt;/div&amp;gt;
+        &amp;lt;input type=&amp;quot;hidden&amp;quot; name=&amp;quot;hl&amp;quot; value=&amp;quot;zh-CN&amp;quot;&amp;gt;
+        &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;
+            &amp;lt;button type=&amp;quot;submit&amp;quot; class=&amp;quot;btn&amp;quot;&amp;gt;Google Search&amp;lt;/button&amp;gt;
+            &amp;lt;button type=&amp;quot;submit&amp;quot; class=&amp;quot;btn&amp;quot; name=&amp;quot;btnI&amp;quot; value=&amp;quot;q&amp;quot;&amp;gt;I am feeling lucky&amp;lt;/button&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/form&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+">CS50 Web50 Project0: Search</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/cs50-web50-week2-python/"" data-c="
