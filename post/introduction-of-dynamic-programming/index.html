@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Introduction of Dynamic Programming | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1622534590903">
+<link rel="shortcut icon" href="/favicon.ico?v=1622626018150">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1241,7 +1241,232 @@ main()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622534532775.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ul&gt;
-&lt;li&gt;Some function of list.&lt;/li&gt;
+&lt;li&gt;We can use &lt;code&gt;append&lt;/code&gt; to add things into a list.&lt;/li&gt;
+&lt;li&gt;A list can store different types of variables&lt;/li&gt;
+&lt;li&gt;If a list has different types of variables, we cannot use its &lt;code&gt;sort&lt;/code&gt; function.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;set&#34;&gt;Set&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def main():
+    s = set()  # Creat an empty set
+    s.add(1)  # Add some numbers into it
+    s.add(2)
+    s.add(3)
+    s.add(4)
+    print(s)
+    s.add(3)  # Add 3 again
+    print(s)
+    s.remove(2)
+    print(s)
+    print(f&amp;quot;The set has {len(s)} elements&amp;quot;)  # Show the use of len()
+
+
+try:
+    if __name__ == &amp;quot;__main__&amp;quot;:
+        main()
+except(SystemExit):
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622615106709.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;The element in set cannot be repeated.&lt;/li&gt;
+&lt;li&gt;We can use &lt;code&gt;add()&lt;/code&gt; and &lt;code&gt;remove()&lt;/code&gt; functions to change sets.&lt;/li&gt;
+&lt;li&gt;We can use &lt;code&gt;len()&lt;/code&gt; to know the number of elements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;loop&#34;&gt;Loop&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def main():
+    for i in [0, 1, 2, 3, 4]:
+        print(i, end = &amp;quot; &amp;quot;)
+    print()
+    for i in range(5):
+        print(i, end = &amp;quot; &amp;quot;)
+    print()
+    names = [&amp;quot;Amy&amp;quot;, &amp;quot;Klee&amp;quot;, &amp;quot;Jean&amp;quot;]
+    for i in names:
+        print(i)
+    print()
+    name = &amp;quot;Diluc&amp;quot;
+    for i in name:
+        print(i, end = &#39; &#39;)
+    print()
+    c = set()
+    c.add(&#39;a&#39;)
+    c.add(&#39;b&#39;)
+    c.add(&#39;c&#39;)
+    for i in c:
+        print(i, end = &#39; &#39;)
+    print()
+
+try:
+    if __name__ == &#39;__main__&#39;:
+        main()
+except(SystemExit):
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622616390620.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;Loop can be used in any kinds of sequence.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;dictionary&#34;&gt;Dictionary&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def main():
+    area = {&amp;quot;Venti&amp;quot;: &amp;quot;Monstared&amp;quot;, &amp;quot;Zhongli&amp;quot;: &amp;quot;Liyue&amp;quot;}
+    area[&amp;quot;Keqing&amp;quot;] = &amp;quot;Liyue&amp;quot;
+    print(area[&amp;quot;Venti&amp;quot;])
+    print(area[&amp;quot;Zhongli&amp;quot;])
+    print(area[&amp;quot;Keqing&amp;quot;])
+
+try:
+    if __name__ == &amp;quot;__main__&amp;quot;:
+        main()
+except SystemExit:
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Each dict element has a key and a value. When we input the key, the dictionary can return us the proper value.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;function&#34;&gt;Function&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def square(x: int):
+    return x * x
+
+def main():
+    for i in range(10):
+        print(square(i), end = &#39; &#39;)
+    
+
+try:
+    if __name__ == &amp;quot;__main__&amp;quot;:
+        main()
+except SystemExit:
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Function.py&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from function import square
+
+def main():
+    for i in range(10):
+        print(square(i))
+
+try:
+    if __name__ == &amp;quot;__main__&amp;quot;:
+        main()
+except SystemExit:
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Square.py&lt;br&gt;
+&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622621864453.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It shows how to define a function and how to import it into another code.&lt;/li&gt;
+&lt;li&gt;If we import a whole file but not just a function, we need to add the file&#39;s name before we use it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;class&#34;&gt;Class&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class point():
+    
+    def __init__(self, x, y) -&amp;gt; None:
+        self.x = x
+        self.y = y
+
+class Flight():
+
+    def __init__(self, capacity) -&amp;gt; None:
+        self.capacity = capacity
+        self.passengers = []
+
+    def add_passengers(self, name):
+        if self.open_seats() &amp;gt; 0:
+            self.passengers.append(name)
+            return True
+        return False
+
+    def open_seats(self):
+        return self.capacity - len(self.passengers)
+
+def main():
+    p = point(3.5, 4.0)
+    print(p.x, p.y)
+    abolo = Flight(3)
+    visiters = [&amp;quot;Diluc&amp;quot;, &amp;quot;Venti&amp;quot;, &amp;quot;Zhongli&amp;quot;, &amp;quot;Barer&amp;quot;]
+    for i in visiters:
+        if abolo.add_passengers(i):
+            print(f&amp;quot;{i} has been in the flight.&amp;quot;)
+        else:
+            print(&amp;quot;There is no seats left.&amp;quot;)
+
+try:
+    if __name__ == &amp;quot;__main__&amp;quot;:
+        main()
+except SystemExit:
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622621854098.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;The class with run the &lt;code&gt;__init__&lt;/code&gt; function first when it is defined.&lt;/li&gt;
+&lt;li&gt;All the attributes start with &lt;code&gt;__&lt;/code&gt; is not available outside the class itself (even its child classes)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;decorator&#34;&gt;Decorator&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def announcement(f):
+    def wrapper():
+        print(&amp;quot;About to run the function...&amp;quot;)
+        f()
+        print(&amp;quot;Done with the function.&amp;quot;)
+    return wrapper
+
+@announcement
+def main():
+    print(&amp;quot;Hello World!!!&amp;quot;)
+
+try:
+    if __name__ == &amp;quot;__main__&amp;quot;:
+        main()
+except SystemExit:
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1622622599997.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;A decorator can be used in a web application to check a user is log in or not, or to make sure that the Internet connection is stable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;lambda&#34;&gt;Lambda&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def main():
+    people = [
+        {&amp;quot;name&amp;quot;: &amp;quot;Venti&amp;quot;, &amp;quot;area&amp;quot;: &amp;quot;Mondstadt&amp;quot;},
+        {&amp;quot;name&amp;quot;: &amp;quot;Diluc&amp;quot;, &amp;quot;area&amp;quot;: &amp;quot;Mondstadt&amp;quot;},
+        {&amp;quot;name&amp;quot;: &amp;quot;Hutao&amp;quot;, &amp;quot;area&amp;quot;: &amp;quot;Liyue&amp;quot;},
+        {&amp;quot;name&amp;quot;: &amp;quot;Ganyu&amp;quot;, &amp;quot;area&amp;quot;: &amp;quot;Liyue&amp;quot;}
+    ]
+    people.sort(key = lambda person: person[&amp;quot;name&amp;quot;])
+    print(people)
+
+try:
+    if __name__ == &amp;quot;__main__&amp;quot;:
+        main()
+except SystemExit:
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Lambda function can be used to displace some small functions, like functions just return a value or expression, which can make the code clear and comprehensible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;exception&#34;&gt;Exception&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from sys import exit
+
+def main():
+    try:
+        x = int(input(&amp;quot;x:&amp;quot;))
+        y = int(input(&amp;quot;y:&amp;quot;))
+    except ValueError:
+        print(&amp;quot;Error: Invaild value.&amp;quot;)
+        exit(1)
+    try:
+        print(f&amp;quot;x / y = {x / y}&amp;quot;)
+    except ZeroDivisionError:
+        print(&amp;quot;Error: cannot divide 0.&amp;quot;)
+        exit(1)
+
+try:
+    if __name__ == &amp;quot;__main__&amp;quot;:
+        main()
+except SystemExit:
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;From my perspective, &lt;code&gt;try-except&lt;/code&gt; command is used to inform users their problems in a human-understandable language. After all, not all users can understand the information given by the computer.&lt;/li&gt;
 &lt;/ul&gt;
 ">CS50 Web50 Week2: Python</a>
       </div>
