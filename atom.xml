@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-06-12T00:41:23.038Z</updated>
+    <updated>2021-06-13T00:35:48.808Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -11,6 +11,81 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[CS50 Web50 Week4: SQL, Models, and Migrations]]></title>
+        <id>https://dawn-cmd.github.io/post/cs50-web50-week4-sql-models-and-migrations/</id>
+        <link href="https://dawn-cmd.github.io/post/cs50-web50-week4-sql-models-and-migrations/">
+        </link>
+        <updated>2021-06-12T00:54:42.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="sql">SQL</h1>
+<p>A kind of Database language acted in management systems, like</p>
+<ul>
+<li>MySQL</li>
+<li>PostureSQL</li>
+<li>SQLite</li>
+<li>...</li>
+</ul>
+<h2 id="type">Type</h2>
+<p>SQLite Types:</p>
+<ul>
+<li>TEXT</li>
+<li>NUMERIC</li>
+<li>INTEGER</li>
+<li>REAL</li>
+<li>BLOB (binary data)</li>
+<li>...</li>
+</ul>
+<p>MySQL Types:</p>
+<ul>
+<li>Char (size)</li>
+<li>Varchar (size)</li>
+<li>Smallint</li>
+<li>Int</li>
+<li>Bigint</li>
+<li>Float</li>
+<li>Double</li>
+<li>...</li>
+</ul>
+<h2 id="create-table">Create Table</h2>
+<pre><code class="language-sql">CREATE TABLE flights {
+    id INTEGER PRIMARY KEY AUTOINCERMENT,
+    oringin TEXT NOT NULL,
+    destination TEXT NOT NULL,
+    duration INTEGER NOT NULL
+}
+</code></pre>
+<h3 id="constrains">Constrains</h3>
+<ul>
+<li>CHECK (make sure a value obeys a vertain condition)</li>
+<li>DEFAULT (give a default value)</li>
+<li>NOT NULL</li>
+<li>PRIMARY KEY</li>
+<li>UNIQUE (make sure a value will now appear twice)</li>
+<li>...</li>
+</ul>
+<h2 id="insert">Insert</h2>
+<pre><code class="language-sql">INSERT INTO flights
+    (oringin, destination, duration)
+    VALUES (&quot;New York&quot;, &quot;London&quot;, 415);
+</code></pre>
+<h2 id="select">SELECT</h2>
+<pre><code class="language-sql">SELECT * FROM flights;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1623461539101.png" alt="" loading="lazy"></figure>
+<pre><code class="language-sql">SELECT * FROM flights;
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://dawn-cmd.github.io/post-images/1623462246949.png" alt="" loading="lazy"></figure>
+<pre><code class="language-sql">SELECT * FROM WHERE id = 3;
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://dawn-cmd.github.io/post-images/1623462363937.png" alt="" loading="lazy"></figure>
+<pre><code class="language-sql">SELECT * FROM flights where oringin = &quot;New York&quot;;
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://dawn-cmd.github.io/post-images/1623462500723.png" alt="" loading="lazy"></figure>
+<pre><code class="language-sql">select * from flights where duration &gt; 500;
+</code></pre>
+<figure data-type="image" tabindex="5"><img src="https://dawn-cmd.github.io/post-images/1623464310718.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CS50 Web50 Project0: Search]]></title>
         <id>https://dawn-cmd.github.io/post/cs50-web50-project0-search/</id>
@@ -1736,69 +1811,6 @@ int main() {
 <li>Obviously it is impossible to find the answer simply, so the state is designed to facilitate the transfer. Let f[i]f[i] represent the maximum number of mines dug from the starting point to the point ii. When i and j are connected, f[j ] (Another point, enumerate it) When the maximum value is reached, the recursive formula f[i]=max(f[j])+mine<a href="map%5Bj,i%5D=1">i</a> is obtained.</li>
 <li>Be sure to note the last point on the path to output it recursively.</li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Luogu P1216 Number Triangles]]></title>
-        <id>https://dawn-cmd.github.io/post/luogu-p1216-number-triangles/</id>
-        <link href="https://dawn-cmd.github.io/post/luogu-p1216-number-triangles/">
-        </link>
-        <updated>2021-04-15T15:54:24.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-<p><a href="https://www.luogu.com.cn/problem/P1216">Raw Link</a><br>
-Write a program to find the path from the highest point to the bottom anywhere, so that the path passes through the largest sum of numbers. Each step can go to the bottom left point or the bottom right point.<br>
-7<br>
-3   8<br>
-8   1   0<br>
-2   7   4   4<br>
-4   5   2   6   5<br>
-In the above example, the path from 7→3→8→7→7→3→8→7→5 produces the largest one.</p>
-<h2 id="input-form">Input Form</h2>
-<p>The first line is a positive integer rr, which indicates the number of lines.</p>
-<h2 id="output-form">Output Form</h2>
-<p>A single line containing the largest sum possible.</p>
-<h2 id="notice">Notice</h2>
-<p>For 100% data,1≤r≤1000, all inputs are in the range of [0,100].</p>
-<h2 id="code">Code</h2>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-using namespace std;
-int main() {
-    int r;
-    cin &gt;&gt; r;
-    vector&lt;vector&lt;int&gt;&gt; graph(r);
-    for (int i = 0; i &lt; r; ++i) {
-        graph[i] = vector&lt;int&gt;(i + 1);
-        for (int j = 0; j &lt; i + 1; ++j) 
-            cin &gt;&gt; graph[i][j];
-    }
-    vector&lt;vector&lt;int&gt;&gt; dp(r);
-    for (int i = 0; i &lt; r; ++i)
-        for (int j = 0; j &lt; i + 1; ++j) 
-            dp[i].push_back(0);
-    dp[0][0] = graph[0][0];
-    for (int i = 1; i &lt; r; ++i)
-        for (int j = 0; j &lt; i + 1; ++j) {
-            if (j == 0) {
-                dp[i][j] = dp[i - 1][j] + graph[i][j];
-                continue;
-            }
-            if (j == i) {
-                dp[i][j] = dp[i - 1][j - 1] + graph[i][j];
-                continue;
-            }
-            dp[i][j] = graph[i][j] + max(dp[i - 1][j], dp[i - 1][j - 1]);
-        }
-    int ans = 0;
-    for (int i = 0; i &lt; r; ++i)
-        ans = max(ans, dp[r - 1][i]);
-    cout &lt;&lt; ans &lt;&lt; endl;
-    return 0;
-}
-</code></pre>
-<h2 id="explanation">Explanation</h2>
-<p>This question is a dp introductory mention in many textbooks, and the idea is that it is a naked dp.</p>
-<p>Let f[i][j] represent the maximum sum from (1,1) to (i,j), then f[i][j]=max(f[i-1][j],f[i- 1][j-1])+a[i][j] Because the point (i,j) can only come from two points (i-1,j) and (i-1,j-1), So take the maximum of the two of them + the number at this point.</p>
-<p>In fact, the dp array f of this question can be optimized to O(n), but it doesn't make much sense: the first will not exceed the memory anyway, and the second a must already be two-dimensional. In fact, the a array can also be optimized as a one-dimensional, but it won't exceed the memory anyway, just ignore it.</p>
 ]]></content>
     </entry>
 </feed>

@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>CS50 Web50 Project0: Search | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1623458479229">
+<link rel="shortcut icon" href="/favicon.ico?v=1623544545445">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -203,7 +203,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">32</span>
+        <span class="site-item-stat-count">33</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -838,6 +838,10 @@ Div1: Div1 contains two links point to Google Advanced Search and Google Image S
   <div class="nav">
     <div class="nav-prev">
       
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="CS50 Web50 Week4: SQL, Models, and Migrations" href="https://dawn-cmd.github.io/post/cs50-web50-week4-sql-models-and-migrations/">CS50 Web50 Week4: SQL, Models, and Migrations</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="CS50 Web50 Week4: SQL, Models, and Migrations" href="https://dawn-cmd.github.io/post/cs50-web50-week4-sql-models-and-migrations/">上一篇</a>
+      
     </div>
     <div class="nav-next">
       
@@ -1324,6 +1328,78 @@ Div1: Div1 contains two links point to Google Advanced Search and Google Image S
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/cs50-web50-week4-sql-models-and-migrations/"" data-c="
+          &lt;h1 id=&#34;sql&#34;&gt;SQL&lt;/h1&gt;
+&lt;p&gt;A kind of Database language acted in management systems, like&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MySQL&lt;/li&gt;
+&lt;li&gt;PostureSQL&lt;/li&gt;
+&lt;li&gt;SQLite&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;type&#34;&gt;Type&lt;/h2&gt;
+&lt;p&gt;SQLite Types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TEXT&lt;/li&gt;
+&lt;li&gt;NUMERIC&lt;/li&gt;
+&lt;li&gt;INTEGER&lt;/li&gt;
+&lt;li&gt;REAL&lt;/li&gt;
+&lt;li&gt;BLOB (binary data)&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;MySQL Types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Char (size)&lt;/li&gt;
+&lt;li&gt;Varchar (size)&lt;/li&gt;
+&lt;li&gt;Smallint&lt;/li&gt;
+&lt;li&gt;Int&lt;/li&gt;
+&lt;li&gt;Bigint&lt;/li&gt;
+&lt;li&gt;Float&lt;/li&gt;
+&lt;li&gt;Double&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;create-table&#34;&gt;Create Table&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;CREATE TABLE flights {
+    id INTEGER PRIMARY KEY AUTOINCERMENT,
+    oringin TEXT NOT NULL,
+    destination TEXT NOT NULL,
+    duration INTEGER NOT NULL
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;constrains&#34;&gt;Constrains&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;CHECK (make sure a value obeys a vertain condition)&lt;/li&gt;
+&lt;li&gt;DEFAULT (give a default value)&lt;/li&gt;
+&lt;li&gt;NOT NULL&lt;/li&gt;
+&lt;li&gt;PRIMARY KEY&lt;/li&gt;
+&lt;li&gt;UNIQUE (make sure a value will now appear twice)&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;insert&#34;&gt;Insert&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;INSERT INTO flights
+    (oringin, destination, duration)
+    VALUES (&amp;quot;New York&amp;quot;, &amp;quot;London&amp;quot;, 415);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;select&#34;&gt;SELECT&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT * FROM flights;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1623461539101.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT * FROM flights;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1623462246949.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT * FROM WHERE id = 3;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1623462363937.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;SELECT * FROM flights where oringin = &amp;quot;New York&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1623462500723.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select * from flights where duration &amp;gt; 500;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://dawn-cmd.github.io/post-images/1623464310718.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+">CS50 Web50 Week4: SQL, Models, and Migrations</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://dawn-cmd.github.io/post/cs50-web50-project0-search/"" data-c="

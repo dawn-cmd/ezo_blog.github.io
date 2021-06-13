@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Prim &amp; Kruskal | Blog</title>
+<title>CS50 Web50 Week4: SQL, Models, and Migrations | Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1623544545445">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Prim & Kruskal" />
-  <meta name="keywords" content="Algorithm,Note" />
+  <meta name="description" content="CS50 Web50 Week4: SQL, Models, and Migrations" />
+  <meta name="keywords" content="CS50,Web50,Note" />
 </head>
 
 <body>
@@ -246,16 +246,16 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li>
+<li><a href="#sql">SQL</a>
 <ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#code">Code</a>
+<li><a href="#type">Type</a></li>
+<li><a href="#create-table">Create Table</a>
 <ul>
-<li><a href="#kruskal">Kruskal</a></li>
-<li><a href="#prim">Prim</a></li>
+<li><a href="#constrains">Constrains</a></li>
 </ul>
 </li>
-<li><a href="#moreover">Moreover</a></li>
+<li><a href="#insert">Insert</a></li>
+<li><a href="#select">SELECT</a></li>
 </ul>
 </li>
 </ul>
@@ -523,8 +523,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/post/cLmXwc5OE/">
-      Prim &amp; Kruskal
+    <a class="post-title-link" href="https://dawn-cmd.github.io/post/cs50-web50-week4-sql-models-and-migrations/">
+      CS50 Web50 Week4: SQL, Models, and Migrations
     </a>
   </h1>
   <div class="post-meta">
@@ -532,7 +532,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-11-03 21:18:50">2020-11-03</span>
+      <span class="publish-time" data-t="2021-06-12 08:54:42">2021-06-12</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -541,8 +541,14 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://dawn-cmd.github.io/tag/S6macCZkQ/">
-        <span>Algorithm</span>
+      <a href="https://dawn-cmd.github.io/tag/cs50/">
+        <span>CS50</span>
+      </a>、
+      
+      
+      
+      <a href="https://dawn-cmd.github.io/tag/web50/">
+        <span>Web50</span>
       </a>、
       
       
@@ -557,17 +563,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>4<span class="language" data-lan="minute">分钟</span></span>
+      <span>1<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>600<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>129<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/cLmXwc5OE/" data-flag-title="Prim &amp; Kruskal" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/cs50-web50-week4-sql-models-and-migrations/" data-flag-title="CS50 Web50 Week4: SQL, Models, and Migrations" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -576,101 +582,73 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="introduction">Introduction</h2>
-<p>Today let's talk about Minimum Spanning Tree (MST) problem. In  a MST problem, you usually have n points, and what you need to do is to use or choose n - 1 edges to connect them and minimize the sum of the length of the edges. There exist two basic algorithms to solve it: Kruskal and Prim. Both of them are adapted from the Greedy Algorithm and Kruskal considers edges as units while Prim considers points as units. I will show how they realize and explain them in the following code.</p>
-<h2 id="code">Code</h2>
-<h3 id="kruskal">Kruskal</h3>
-<pre><code class="language-python">#Kruskal is better when the egdes are less than points, which means it is a sparse graph
-class edge:
-    fr = 0 #from
-    to = 0 #to
-    c = 0 #cost
-    def __init__(self, fr, to, c):
-        self.fr = fr
-        self.to = to
-        self.c = c
-    def __lt__(self, oth):
-        return self.c &lt; oth.c #reload '&lt;'
-
-class dsuf:#disjoint sets/union find
-    fa = [0]
-    def __init__(self, n):
-        self.fa *= n + 1
-        for i in range(n + 1):
-            self.fa[i] = i#if we find fa[x] == x then x is a source point
-    def merge(self, a, b):
-        self.fa[self.find(b)] = a# let a becomes b's father
-    def find(self, a):
-        if a == self.fa[a]:
-            return a
-        self.fa[a] = self.find(self.fa[a]) #compress the path to decrease the depth of tree
-        return self.fa[a]
-
-def kruskal(e, n, u):
-    ans = 0
-    for i in e:#pick egdes in order of cost
-        if u.find(i.to) == u.find(i.fr):#check the two vertexs are in a same union or not
-            continue
-        ans += i.c #you can use an array to record all of them as well
-        u.merge(i.to, i.fr)
-    return ans
-
-def main():
-    n, m = map(int, input().split())#input the number of edge and vertexs
-    e = []
-    u = dsuf(n)
-    for i in range(m):#input edges
-        fr, to, c = map(int, input().split())
-        e += [edge(fr, to, c)]
-    e.sort()#sort edges by their cost
-    print(kruskal(e, n, u))
-
-main()
+              <h1 id="sql">SQL</h1>
+<p>A kind of Database language acted in management systems, like</p>
+<ul>
+<li>MySQL</li>
+<li>PostureSQL</li>
+<li>SQLite</li>
+<li>...</li>
+</ul>
+<h2 id="type">Type</h2>
+<p>SQLite Types:</p>
+<ul>
+<li>TEXT</li>
+<li>NUMERIC</li>
+<li>INTEGER</li>
+<li>REAL</li>
+<li>BLOB (binary data)</li>
+<li>...</li>
+</ul>
+<p>MySQL Types:</p>
+<ul>
+<li>Char (size)</li>
+<li>Varchar (size)</li>
+<li>Smallint</li>
+<li>Int</li>
+<li>Bigint</li>
+<li>Float</li>
+<li>Double</li>
+<li>...</li>
+</ul>
+<h2 id="create-table">Create Table</h2>
+<pre><code class="language-sql">CREATE TABLE flights {
+    id INTEGER PRIMARY KEY AUTOINCERMENT,
+    oringin TEXT NOT NULL,
+    destination TEXT NOT NULL,
+    duration INTEGER NOT NULL
+}
 </code></pre>
-<h3 id="prim">Prim</h3>
-<pre><code class="language-python"># Prim is better when the points in graph is more than edges in the graph
-import queue
-
-class point:
-    x = y = -1
-    def __init__(self, pos):
-        self.x = pos[0]
-        self.y = pos[1]
-    def dis(self, other):
-        return (self.x - other.x) ** 2 + (self.y - other.y) ** 2# the distance between two points
-
-def prim(p, c):
-    ans = 0
-    q = queue.PriorityQueue() # use priority_queue to make it better
-    q.put([0, 0])
-    h = {}
-    for i in range(len(p)):
-        h[i] = 0#to record whether it has been visited or not
-    while not q.empty():
-        now = q.get()
-        if h[now[1]] == 1:
-            continue# if the point has already been visited, ignore it
-        h[now[1]] = 1
-        ans += now[0]
-        for i in range(len(p)):
-            if h[i] == 0 and p[now[1]].dis(p[i]) &gt;= c:#you can eliminate the second limitaion when you use it
-                q.put((p[now[1]].dis(p[i]), i))
-    for i in range(len(p)):
-        if h[i] == 0:
-            return -1# you can ignore this loop as well
-    return ans
-
-def main():
-    n, c = map(int, input().split()) # n is number of points, c is a limitaiton when I was doing a test, you can ignore it
-    p = []
-    for i in range(n):
-        p += [point(list(map(int, input().split())))]
-    print(prim(p, c))
-
-main()
+<h3 id="constrains">Constrains</h3>
+<ul>
+<li>CHECK (make sure a value obeys a vertain condition)</li>
+<li>DEFAULT (give a default value)</li>
+<li>NOT NULL</li>
+<li>PRIMARY KEY</li>
+<li>UNIQUE (make sure a value will now appear twice)</li>
+<li>...</li>
+</ul>
+<h2 id="insert">Insert</h2>
+<pre><code class="language-sql">INSERT INTO flights
+    (oringin, destination, duration)
+    VALUES (&quot;New York&quot;, &quot;London&quot;, 415);
 </code></pre>
-<h2 id="moreover">Moreover</h2>
-<p>The two main stream algorithms can be adapted into different versions to cope with different problems. We may talk about it in the other passages.</p>
+<h2 id="select">SELECT</h2>
+<pre><code class="language-sql">SELECT * FROM flights;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://dawn-cmd.github.io/post-images/1623461539101.png" alt="" loading="lazy"></figure>
+<pre><code class="language-sql">SELECT * FROM flights;
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://dawn-cmd.github.io/post-images/1623462246949.png" alt="" loading="lazy"></figure>
+<pre><code class="language-sql">SELECT * FROM WHERE id = 3;
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://dawn-cmd.github.io/post-images/1623462363937.png" alt="" loading="lazy"></figure>
+<pre><code class="language-sql">SELECT * FROM flights where oringin = &quot;New York&quot;;
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://dawn-cmd.github.io/post-images/1623462500723.png" alt="" loading="lazy"></figure>
+<pre><code class="language-sql">select * from flights where duration &gt; 500;
+</code></pre>
+<figure data-type="image" tabindex="5"><img src="https://dawn-cmd.github.io/post-images/1623464310718.png" alt="" loading="lazy"></figure>
 
             </div>
             
@@ -683,7 +661,7 @@ main()
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/post/cLmXwc5OE/" title="Prim &amp; Kruskal">https://dawn-cmd.github.io/post/cLmXwc5OE/</a>
+      <a href="https://dawn-cmd.github.io/post/cs50-web50-week4-sql-models-and-migrations/" title="CS50 Web50 Week4: SQL, Models, and Migrations">https://dawn-cmd.github.io/post/cs50-web50-week4-sql-models-and-migrations/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -692,7 +670,9 @@ main()
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/tag/S6macCZkQ/"># Algorithm</a>
+      <a href="https://dawn-cmd.github.io/tag/cs50/"># CS50</a>
+    
+      <a href="https://dawn-cmd.github.io/tag/web50/"># Web50</a>
     
       <a href="https://dawn-cmd.github.io/tag/T9dinVrg_/"># Note</a>
     
@@ -700,15 +680,11 @@ main()
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="Heap" href="https://dawn-cmd.github.io/post/dENZkdKd3/">Heap</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="Heap" href="https://dawn-cmd.github.io/post/dENZkdKd3/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Segment Tree" href="https://dawn-cmd.github.io/post/lGXuyC3uR/">Segment Tree</a>
-        <a class="nav-mobile-next" title="Segment Tree" href="https://dawn-cmd.github.io/post/lGXuyC3uR/">下一篇</a>
+        <a class="nav-pc-next" title="CS50 Web50 Project0: Search" href="https://dawn-cmd.github.io/post/cs50-web50-project0-search/">CS50 Web50 Project0: Search</a>
+        <a class="nav-mobile-next" title="CS50 Web50 Project0: Search" href="https://dawn-cmd.github.io/post/cs50-web50-project0-search/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
