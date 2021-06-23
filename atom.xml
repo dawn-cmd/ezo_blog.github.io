@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-06-23T09:21:52.561Z</updated>
+    <updated>2021-06-23T09:32:47.947Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -38,6 +38,86 @@
 <li>Categories: Users should be able to visit a page that displays a list of all listing categories. Clicking on the name of any category should take the user to a page that displays all of the active listings in that category.</li>
 <li>Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.</li>
 </ul>
+<h1 id="models">Models</h1>
+<h2 id="modelspy">models.py</h2>
+<pre><code class="language-python">from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+
+class User(AbstractUser):
+    watchlist = models.ManyToManyField('Auction_listing', related_name='watch_user', blank=True)
+
+class Categories(models.Model):
+    name = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.name
+
+class Auction_listing(models.Model):
+    title = models.CharField(max_length=64)
+    description = models.CharField(max_length=10000)
+    cover_url = models.CharField(max_length=2000)
+    provider = models.ForeignKey(User, on_delete=models.PROTECT, related_name=&quot;items&quot;, default=None)
+    category = models.ForeignKey(Categories, on_delete=models.PROTECT,related_name=&quot;items&quot;, default=None)
+    bidder = models.ForeignKey(User, on_delete=models.PROTECT, related_name=&quot;bid_items&quot;, default=None)
+    bid = models.IntegerField(default=0)
+    active = models.BooleanField(default=True) 
+
+class Comment(models.Model):
+    content = models.CharField(max_length=999999)
+    commenter = models.ForeignKey(User, on_delete=models.PROTECT, related_name=&quot;comment&quot;, default=None)
+    item = models.ForeignKey(Auction_listing, on_delete=models.PROTECT, related_name=&quot;comment&quot;, default=None)
+    
+    def __str__(self) -&gt; str:
+        return self.content
+</code></pre>
+<p>There are four models in my project: User, Categories, Auction_listing and Comment. User model inherit abstract user, which contains login, logout and many other information-check funcitons.</p>
+<h1 id="create-listing">Create Listing</h1>
+<h2 id="viewspy">views.py:</h2>
+<pre><code class="language-python">@ login_required
+def create_listing(request):
+    if request.method == &quot;POST&quot;:
+        listing = Auction_listing(
+            title=request.POST[&quot;title&quot;],
+            description=request.POST[&quot;description&quot;],
+            cover_url=request.POST[&quot;cover&quot;],
+            provider=request.user,
+            bidder = request.user,
+            category=Categories.objects.get(pk=int(request.POST[&quot;category&quot;])),
+            bid=request.POST[&quot;bid&quot;],
+            active=True
+        )
+        listing.save()
+        return HttpResponseRedirect(reverse(&quot;index&quot;))
+    else:
+        return render(request, &quot;auctions/create_listing.html&quot;, {
+            &quot;categories&quot;: Categories.objects.all()
+        })
+</code></pre>
+<h2 id="create_listinghtml">Create_listing.html</h2>
+<pre><code class="language-html">{% extends &quot;auctions/layout.html&quot; %}
+
+{% block body %}
+    &lt;form action=&quot;{% url 'create_listing' %}&quot; method=&quot;POST&quot;&gt;
+        {% csrf_token %}
+        &lt;ul&gt;
+            &lt;li&gt;Title: &lt;input type=&quot;text&quot; name=&quot;title&quot;&gt;&lt;/li&gt;
+            &lt;li&gt;Description: &lt;input type=&quot;text&quot; name=&quot;description&quot;&gt;&lt;/li&gt;
+            &lt;li&gt;Cover Url: &lt;input type=&quot;text&quot; name=&quot;cover&quot;&gt;&lt;/li&gt;
+            &lt;li&gt;
+                Categories: 
+                &lt;select name=&quot;category&quot; required&gt;
+                    {% for category in categories %}
+                        &lt;option value=&quot;{{ category.id }}&quot;&gt;{{ category }}&lt;/option&gt;
+                    {% endfor %}
+                &lt;/select&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Starting bid($): &lt;input type=&quot;number&quot; name=&quot;bid&quot;&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;input type=&quot;submit&quot;&gt;
+    &lt;/form&gt;
+{% endblock %}
+</code></pre>
 ]]></content>
     </entry>
     <entry>

@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>CS50 Web50 Week1: Git | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624440109338">
+<link rel="shortcut icon" href="/favicon.ico?v=1624440763062">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1201,6 +1201,86 @@ git reset --hard oringin/master
 &lt;li&gt;Categories: Users should be able to visit a page that displays a list of all listing categories. Clicking on the name of any category should take the user to a page that displays all of the active listings in that category.&lt;/li&gt;
 &lt;li&gt;Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h1 id=&#34;models&#34;&gt;Models&lt;/h1&gt;
+&lt;h2 id=&#34;modelspy&#34;&gt;models.py&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+
+class User(AbstractUser):
+    watchlist = models.ManyToManyField(&#39;Auction_listing&#39;, related_name=&#39;watch_user&#39;, blank=True)
+
+class Categories(models.Model):
+    name = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.name
+
+class Auction_listing(models.Model):
+    title = models.CharField(max_length=64)
+    description = models.CharField(max_length=10000)
+    cover_url = models.CharField(max_length=2000)
+    provider = models.ForeignKey(User, on_delete=models.PROTECT, related_name=&amp;quot;items&amp;quot;, default=None)
+    category = models.ForeignKey(Categories, on_delete=models.PROTECT,related_name=&amp;quot;items&amp;quot;, default=None)
+    bidder = models.ForeignKey(User, on_delete=models.PROTECT, related_name=&amp;quot;bid_items&amp;quot;, default=None)
+    bid = models.IntegerField(default=0)
+    active = models.BooleanField(default=True) 
+
+class Comment(models.Model):
+    content = models.CharField(max_length=999999)
+    commenter = models.ForeignKey(User, on_delete=models.PROTECT, related_name=&amp;quot;comment&amp;quot;, default=None)
+    item = models.ForeignKey(Auction_listing, on_delete=models.PROTECT, related_name=&amp;quot;comment&amp;quot;, default=None)
+    
+    def __str__(self) -&amp;gt; str:
+        return self.content
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are four models in my project: User, Categories, Auction_listing and Comment. User model inherit abstract user, which contains login, logout and many other information-check funcitons.&lt;/p&gt;
+&lt;h1 id=&#34;create-listing&#34;&gt;Create Listing&lt;/h1&gt;
+&lt;h2 id=&#34;viewspy&#34;&gt;views.py:&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;@ login_required
+def create_listing(request):
+    if request.method == &amp;quot;POST&amp;quot;:
+        listing = Auction_listing(
+            title=request.POST[&amp;quot;title&amp;quot;],
+            description=request.POST[&amp;quot;description&amp;quot;],
+            cover_url=request.POST[&amp;quot;cover&amp;quot;],
+            provider=request.user,
+            bidder = request.user,
+            category=Categories.objects.get(pk=int(request.POST[&amp;quot;category&amp;quot;])),
+            bid=request.POST[&amp;quot;bid&amp;quot;],
+            active=True
+        )
+        listing.save()
+        return HttpResponseRedirect(reverse(&amp;quot;index&amp;quot;))
+    else:
+        return render(request, &amp;quot;auctions/create_listing.html&amp;quot;, {
+            &amp;quot;categories&amp;quot;: Categories.objects.all()
+        })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;create_listinghtml&#34;&gt;Create_listing.html&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{% extends &amp;quot;auctions/layout.html&amp;quot; %}
+
+{% block body %}
+    &amp;lt;form action=&amp;quot;{% url &#39;create_listing&#39; %}&amp;quot; method=&amp;quot;POST&amp;quot;&amp;gt;
+        {% csrf_token %}
+        &amp;lt;ul&amp;gt;
+            &amp;lt;li&amp;gt;Title: &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;title&amp;quot;&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;Description: &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;description&amp;quot;&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;Cover Url: &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;cover&amp;quot;&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;
+                Categories: 
+                &amp;lt;select name=&amp;quot;category&amp;quot; required&amp;gt;
+                    {% for category in categories %}
+                        &amp;lt;option value=&amp;quot;{{ category.id }}&amp;quot;&amp;gt;{{ category }}&amp;lt;/option&amp;gt;
+                    {% endfor %}
+                &amp;lt;/select&amp;gt;
+            &amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;Starting bid($): &amp;lt;input type=&amp;quot;number&amp;quot; name=&amp;quot;bid&amp;quot;&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+        &amp;lt;input type=&amp;quot;submit&amp;quot;&amp;gt;
+    &amp;lt;/form&amp;gt;
+{% endblock %}
+&lt;/code&gt;&lt;/pre&gt;
 ">CS50 Web50 Project2: Commerce</a>
       </div>
       
