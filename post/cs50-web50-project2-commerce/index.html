@@ -9,7 +9,7 @@
 <meta name="description" content="People who know nothing repeat it.
 ">
 <meta name="theme-color" content="#000">
-<title>Ezo | Blog</title>
+<title>CS50 Web50 Project2: Commerce | Blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1624440109338">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -39,8 +39,8 @@
 
 
 
-  <meta name="description" content="Ezo" />
-  <meta name="keywords" content="Self Introduction" />
+  <meta name="description" content="CS50 Web50 Project2: Commerce" />
+  <meta name="keywords" content="CS50,Web50" />
 </head>
 
 <body>
@@ -191,7 +191,8 @@
       <div class="sidebar-body pisces" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -239,6 +240,192 @@
   </div>
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#display-viedo">Display viedo</a></li>
+<li><a href="#requirements">Requirements</a></li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -326,8 +513,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://dawn-cmd.github.io/post/aQhyHFZwS/">
-      Ezo
+    <a class="post-title-link" href="https://dawn-cmd.github.io/post/cs50-web50-project2-commerce/">
+      CS50 Web50 Project2: Commerce
     </a>
   </h1>
   <div class="post-meta">
@@ -335,7 +522,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-07-30 20:08:02">2020-07-30</span>
+      <span class="publish-time" data-t="2021-06-23 15:57:50">2021-06-23</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -344,8 +531,14 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://dawn-cmd.github.io/tag/Q9Iss7bCR/">
-        <span>Self Introduction</span>
+      <a href="https://dawn-cmd.github.io/tag/cs50/">
+        <span>CS50</span>
+      </a>、
+      
+      
+      
+      <a href="https://dawn-cmd.github.io/tag/web50/">
+        <span>Web50</span>
       </a>
       
       
@@ -354,17 +547,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>13<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>513<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/aQhyHFZwS/" data-flag-title="Ezo" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/cs50-web50-project2-commerce/" data-flag-title="CS50 Web50 Project2: Commerce" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -373,11 +566,26 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <ul>
-<li>'s <a href="https://github.com/dawn-cmd">github account</a></li>
-<li>'s <a href="https://codeforces.com/profile/knight5207">Codeforces account</a></li>
-<li>'s<a href="https://leetcode-cn.com/u/ezo/">LeetCode account(Chinese Station)</a></li>
-<li>'s number: +8613376173601</li>
+              <h1 id="display-viedo">Display viedo</h1>
+<p><a href="https://www.youtube.com/watch?v=DJCUXO1Urnk">YouTube Link</a></p>
+<h1 id="requirements">Requirements</h1>
+<ul>
+<li>Models: Your application should have at least three models in addition to the User model: one for auction listings, one for bids, and one for comments made on auction listings. It’s up to you to decide what fields each model should have, and what the types of those fields should be. You may have additional models if you would like.</li>
+<li>Create Listing: Users should be able to visit a page to create a new listing. They should be able to specify a title for the listing, a text-based description, and what the starting bid should be. Users should also optionally be able to provide a URL for an image for the listing and/or a category (e.g. Fashion, Toys, Electronics, Home, etc.).</li>
+<li>Active Listings Page: The default route of your web application should let users view all of the currently active auction listings. For each active listing, this page should display (at minimum) the title, description, current price, and photo (if one exists for the listing).</li>
+<li>Listing Page: Clicking on a listing should take users to a page specific to that listing. On that page, users should be able to view all details about the listing, including the current price for the listing.
+<ul>
+<li>If the user is signed in, the user should be able to add the item to their “Watchlist.”</li>
+<li>If the item is already on the watchlist, the user should be able to remove it.</li>
+<li>If the user is signed in, the user should be able to bid on the item. The bid must be at least as large as the starting bid, and must be greater than any other bids that have been placed (if any). If the bid doesn’t meet those criteria, the user should be presented with an error.</li>
+<li>If the user is signed in and is the one who created the listing, the user should have the ability to “close” the auction from this page, which makes the highest bidder the winner of the auction and makes the listing no longer active.</li>
+<li>If a user is signed in on a closed listing page, and the user has won that auction, the page should say so.</li>
+<li>Users who are signed in should be able to add comments to the listing page. The listing page should display all comments that have been made on the listing.</li>
+</ul>
+</li>
+<li>Watchlist: Users who are signed in should be able to visit a Watchlist page, which should display all of the listings that a user has added to their watchlist. Clicking on any of those listings should take the user to that listing’s page.</li>
+<li>Categories: Users should be able to visit a page that displays a list of all listing categories. Clicking on the name of any category should take the user to a page that displays all of the active listings in that category.</li>
+<li>Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.</li>
 </ul>
 
             </div>
@@ -391,7 +599,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://dawn-cmd.github.io/post/aQhyHFZwS/" title="Ezo">https://dawn-cmd.github.io/post/aQhyHFZwS/</a>
+      <a href="https://dawn-cmd.github.io/post/cs50-web50-project2-commerce/" title="CS50 Web50 Project2: Commerce">https://dawn-cmd.github.io/post/cs50-web50-project2-commerce/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -400,7 +608,9 @@
   </ul>
   <div class="tags">
     
-      <a href="https://dawn-cmd.github.io/tag/Q9Iss7bCR/"># Self Introduction</a>
+      <a href="https://dawn-cmd.github.io/tag/cs50/"># CS50</a>
+    
+      <a href="https://dawn-cmd.github.io/tag/web50/"># Web50</a>
     
   </div>
   <div class="nav">
@@ -408,6 +618,10 @@
       
     </div>
     <div class="nav-next">
+      
+        <a class="nav-pc-next" title="CS50 Web50 Week4: SQL, Models, and Migrations" href="https://dawn-cmd.github.io/post/cs50-web50-week4-sql-models-and-migrations/">CS50 Web50 Week4: SQL, Models, and Migrations</a>
+        <a class="nav-mobile-next" title="CS50 Web50 Week4: SQL, Models, and Migrations" href="https://dawn-cmd.github.io/post/cs50-web50-week4-sql-models-and-migrations/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>

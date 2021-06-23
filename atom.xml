@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-06-13T00:40:48.644Z</updated>
+    <updated>2021-06-23T09:21:52.561Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -11,6 +11,35 @@
     <logo>https://dawn-cmd.github.io/images/avatar.png</logo>
     <icon>https://dawn-cmd.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[CS50 Web50 Project2: Commerce]]></title>
+        <id>https://dawn-cmd.github.io/post/cs50-web50-project2-commerce/</id>
+        <link href="https://dawn-cmd.github.io/post/cs50-web50-project2-commerce/">
+        </link>
+        <updated>2021-06-23T07:57:50.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="display-viedo">Display viedo</h1>
+<p><a href="https://www.youtube.com/watch?v=DJCUXO1Urnk">YouTube Link</a></p>
+<h1 id="requirements">Requirements</h1>
+<ul>
+<li>Models: Your application should have at least three models in addition to the User model: one for auction listings, one for bids, and one for comments made on auction listings. It’s up to you to decide what fields each model should have, and what the types of those fields should be. You may have additional models if you would like.</li>
+<li>Create Listing: Users should be able to visit a page to create a new listing. They should be able to specify a title for the listing, a text-based description, and what the starting bid should be. Users should also optionally be able to provide a URL for an image for the listing and/or a category (e.g. Fashion, Toys, Electronics, Home, etc.).</li>
+<li>Active Listings Page: The default route of your web application should let users view all of the currently active auction listings. For each active listing, this page should display (at minimum) the title, description, current price, and photo (if one exists for the listing).</li>
+<li>Listing Page: Clicking on a listing should take users to a page specific to that listing. On that page, users should be able to view all details about the listing, including the current price for the listing.
+<ul>
+<li>If the user is signed in, the user should be able to add the item to their “Watchlist.”</li>
+<li>If the item is already on the watchlist, the user should be able to remove it.</li>
+<li>If the user is signed in, the user should be able to bid on the item. The bid must be at least as large as the starting bid, and must be greater than any other bids that have been placed (if any). If the bid doesn’t meet those criteria, the user should be presented with an error.</li>
+<li>If the user is signed in and is the one who created the listing, the user should have the ability to “close” the auction from this page, which makes the highest bidder the winner of the auction and makes the listing no longer active.</li>
+<li>If a user is signed in on a closed listing page, and the user has won that auction, the page should say so.</li>
+<li>Users who are signed in should be able to add comments to the listing page. The listing page should display all comments that have been made on the listing.</li>
+</ul>
+</li>
+<li>Watchlist: Users who are signed in should be able to visit a Watchlist page, which should display all of the listings that a user has added to their watchlist. Clicking on any of those listings should take the user to that listing’s page.</li>
+<li>Categories: Users should be able to visit a page that displays a list of all listing categories. Clicking on the name of any category should take the user to a page that displays all of the active listings in that category.</li>
+<li>Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CS50 Web50 Week4: SQL, Models, and Migrations]]></title>
         <id>https://dawn-cmd.github.io/post/cs50-web50-week4-sql-models-and-migrations/</id>
@@ -1714,103 +1743,6 @@ int main() {
 </code></pre>
 <h2 id="explanation">Explanation</h2>
 <p>Obviously, if a consecutive pair of members is considered photogenic, their heights must be all odd or even, otherwise u + v cannot divided by 2 with a integer. Hence, we just need to do is to make sure that all men with odd heights were stand together, even as well.</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Luogu P2196 [NOIP1996 senior] Dig Landmines]]></title>
-        <id>https://dawn-cmd.github.io/post/luogu-p2196-noip1996-senior-dig-landmines/</id>
-        <link href="https://dawn-cmd.github.io/post/luogu-p2196-noip1996-senior-dig-landmines/">
-        </link>
-        <updated>2021-04-15T23:26:09.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-<p><a href="https://www.luogu.com.cn/problem/P2196">Raw Link</a><br>
-There are N cellars (N≤20) on a map, and a certain number of mines are buried in each cellar. At the same time, give the connection path between the cellars. After the data of the cellar and its connection are given, someone can start digging mines from any place, and then dig down along the indicated connection (only one path can be selected), and the mine digging work ends when there is no connection. Design a plan for digging mines so that someone can dig the most mines.</p>
-<h2 id="input-form">Input Form</h2>
-<p>There are several lines.</p>
-<p>There is only one number in the first line, which represents the number of cellars N.</p>
-<p>There are N numbers in the second line, which respectively indicate the number of mines in each cellar.</p>
-<p>Lines 3 to N+1 indicate the connection between the cellars:</p>
-<p>There are n−1 numbers (0 or 1) in the third row, indicating whether there is a path connection from the first cellar to the second, third, ..., nth cellar. For example, the third line is 11000...0, it means that there is a path from the first cellar to the second cellar, there is a path to the third cellar, and there is no path to the fourth cellar, the fifth, ..., the nth cellar.</p>
-<p>There are n−2 numbers in the 4th row, indicating whether there is a path connection from the second cellar to the third, fourth, ..., nth cellar.</p>
-<p>There is 1 number in the n+1th row, indicating whether there is a path connection between the n−1th cellar and the nth cellar. (0 means there is no path, 1 means there is a path).</p>
-<h2 id="output-form">Output Form</h2>
-<p>There are two lines</p>
-<p>The first line indicates the order of mine digging when the most mines are dug. The serial numbers of each cell are separated by a space, and there must be no extra spaces.</p>
-<p>There is only one number in the second row, indicating the maximum number of mines that can be dug.</p>
-<h2 id="code">Code</h2>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-using namespace std;
-void init(int &amp;n, int (&amp;g)[50][50], int (&amp;v)[50], int sum) {
-    cin &gt;&gt; n;
-    for(int i =1; i &lt;= n; ++i) {
-        cin &gt;&gt; v[i];
-    }
-    for(int i = 1; i &lt;= n - 1; ++i)
-        for(int j = i + 1; j &lt;= n; ++j){
-            int tmp;
-            cin &gt;&gt; tmp;
-            g[i][j] = tmp;
-        }
-    for(int i = 1; i &lt;= n; ++i) {
-        g[0][i] = 1;
-    }
-    v[0] = 0;
-}
-struct Data {
-    int h[50];
-    int g[50][50];
-    int v[50];
-    int n;
-    int sum = 0;
-    int max_sum = -1;
-    vector&lt;int&gt; path;
-    vector&lt;int&gt; ans_path;
-};
-int dp(int now, Data &amp;data) {
-    if(data.h[now] == 1) {
-        return 0;
-    }
-    data.h[now] = 1;
-    int maxn = -1;
-    data.sum += data.v[now];
-    data.path.push_back(now);
-    for (int i = 1; i &lt;= data.n; ++i) {
-        if(data.g[now][i] == 0 || i == now || data.h[i] == 1) {
-            continue;
-        }
-        int tmp = dp(i, data);
-        maxn = max(maxn, tmp);
-    }
-    if(maxn == -1 &amp;&amp; data.sum &gt; data.max_sum) {
-        data.max_sum = data.sum;
-        data.ans_path = data.path;
-    }
-    data.sum -= data.v[now];
-    data.h[now] = 0;
-    data.path.pop_back();
-    return data.v[now] + max(maxn, 0);
-}
-int main() {
-    Data data;
-    init(data.n,data.g,data.v, data.sum);
-    int ans = dp(0, data);
-    for(int i = 1; i &lt; data.ans_path.size(); ++i) {
-        cout &lt;&lt; data.ans_path[i] &lt;&lt; ' ';
-    }
-    cout &lt;&lt; endl;
-    cout &lt;&lt; ans &lt;&lt; endl;
-    return 0;
-}
-</code></pre>
-<h2 id="explanation">Explanation</h2>
-<ol>
-<li>It has the characteristics of graph theory.</li>
-<li>The data range is very small (N \le 20) (N ≤ 20), and you can make &quot;exotic&quot; attempts.</li>
-<li>It is necessary to output the route and the maximum solution result, which can be combined to reduce the amount of code.</li>
-<li>Use pre to record the predecessor of the selected point in the reasonable scheme, and recursively output. (You can also use a while loop, given in the next method)</li>
-<li>Obviously it is impossible to find the answer simply, so the state is designed to facilitate the transfer. Let f[i]f[i] represent the maximum number of mines dug from the starting point to the point ii. When i and j are connected, f[j ] (Another point, enumerate it) When the maximum value is reached, the recursive formula f[i]=max(f[j])+mine<a href="map%5Bj,i%5D=1">i</a> is obtained.</li>
-<li>Be sure to note the last point on the path to output it recursively.</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
