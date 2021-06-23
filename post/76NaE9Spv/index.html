@@ -10,7 +10,7 @@
 ">
 <meta name="theme-color" content="#000">
 <title>Kick Start 2020 Round D T1 Record Breaker Analysis | Blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1624440763062">
+<link rel="shortcut icon" href="/favicon.ico?v=1624441934437">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1199,7 +1199,7 @@ int main(){
 &lt;li&gt;Django Admin Interface: Via the Django admin interface, a site administrator should be able to view, add, edit, and delete any listings, comments, and bids made on the site.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;models&#34;&gt;Models&lt;/h1&gt;
-&lt;h2 id=&#34;modelspy&#34;&gt;models.py&lt;/h2&gt;
+&lt;h3 id=&#34;modelspy&#34;&gt;models.py&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -1233,7 +1233,7 @@ class Comment(models.Model):
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;There are four models in my project: User, Categories, Auction_listing and Comment. User model inherit abstract user, which contains login, logout and many other information-check funcitons.&lt;/p&gt;
 &lt;h1 id=&#34;create-listing&#34;&gt;Create Listing&lt;/h1&gt;
-&lt;h2 id=&#34;viewspy&#34;&gt;views.py:&lt;/h2&gt;
+&lt;h3 id=&#34;viewspy&#34;&gt;views.py:&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;@ login_required
 def create_listing(request):
     if request.method == &amp;quot;POST&amp;quot;:
@@ -1254,7 +1254,7 @@ def create_listing(request):
             &amp;quot;categories&amp;quot;: Categories.objects.all()
         })
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;create_listinghtml&#34;&gt;Create_listing.html&lt;/h2&gt;
+&lt;h3 id=&#34;create_listinghtml&#34;&gt;Create_listing.html&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{% extends &amp;quot;auctions/layout.html&amp;quot; %}
 
 {% block body %}
@@ -1277,6 +1277,227 @@ def create_listing(request):
         &amp;lt;input type=&amp;quot;submit&amp;quot;&amp;gt;
     &amp;lt;/form&amp;gt;
 {% endblock %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;active-listings-page&#34;&gt;Active Listings Page&lt;/h1&gt;
+&lt;h3 id=&#34;viewspy-2&#34;&gt;views.py&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def index(request):
+    return render(request, &amp;quot;auctions/index.html&amp;quot;,{
+        &amp;quot;listings&amp;quot;: Auction_listing.objects.all() 
+    })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;indexhtml&#34;&gt;index.html&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{% extends &amp;quot;auctions/layout.html&amp;quot; %}
+
+{% block style %}
+    &amp;lt;style&amp;gt;
+        .basebox {
+            height: 30%;
+            width: 80%;
+            border: 1px solid;
+        }
+
+        .img_std {
+            height: 250px;
+            width: 400px; 
+        }
+
+        .auction_link {
+            color: black;
+        }
+    &amp;lt;/style&amp;gt;
+{% endblock %}
+
+{% block body %}
+    &amp;lt;h2&amp;gt;Active Listings&amp;lt;/h2&amp;gt;
+    {% for listing in listings %}
+        {% if listing.active == True %}
+            &amp;lt;a href=&amp;quot;{% url &#39;auction_display&#39; listing.id %}&amp;quot; class=&amp;quot;auction_link&amp;quot;&amp;gt;
+                &amp;lt;div class=&amp;quot;basebox&amp;quot;&amp;gt;
+                    &amp;lt;table&amp;gt;
+                        &amp;lt;tr&amp;gt;
+                            &amp;lt;td&amp;gt;
+                                &amp;lt;img class=&amp;quot;img_std&amp;quot; src=&amp;quot;{{ listing.cover_url|safe }}&amp;quot; alt=&amp;quot;{{ listing.title }}&amp;quot;&amp;gt;
+                            &amp;lt;/td&amp;gt;
+                            &amp;lt;td style=&amp;quot;width: 20px;&amp;quot;&amp;gt;&amp;lt;/td&amp;gt;
+                            &amp;lt;td&amp;gt;
+                                &amp;lt;div&amp;gt;
+                                    &amp;lt;h2&amp;gt;{{ listing.title }}&amp;lt;/h2&amp;gt;
+                                    &amp;lt;h4&amp;gt;Price: {{ listing.bid }} $&amp;lt;/h4&amp;gt; 
+                                    &amp;lt;div&amp;gt;
+                                         {{ listing.description }}
+                                    &amp;lt;/div&amp;gt;
+                                    &amp;lt;div&amp;gt;
+                                           Provided by {{ listing.provider.username }}
+                                   &amp;lt;/div&amp;gt;
+                                &amp;lt;/div&amp;gt;
+                            &amp;lt;/td&amp;gt;
+                        &amp;lt;/tr&amp;gt;
+                    &amp;lt;/table&amp;gt;
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/a&amp;gt;
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;watchlist&#34;&gt;Watchlist&lt;/h1&gt;
+&lt;h3 id=&#34;viewspy-3&#34;&gt;views.py&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;@login_required
+def watchlist(request):
+    return render(request, &amp;quot;auctions/watchlist.html&amp;quot;, {
+        &amp;quot;watchlist&amp;quot;: request.user.watchlist.all()
+    })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;watchlisthtml&#34;&gt;watchlist.html&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{% extends &amp;quot;auctions/layout.html&amp;quot; %}
+
+{% block style %}
+    &amp;lt;style&amp;gt;
+        .basebox {
+            height: 30%;
+            width: 80%;
+            border: 1px solid;
+        }
+
+        .img_std {
+            height: 250px;
+            width: 400px; 
+        }
+
+        .auction_link {
+            color: black;
+        }
+    &amp;lt;/style&amp;gt;
+{% endblock %}
+
+{% block body %}
+    &amp;lt;h2&amp;gt;Watchlist&amp;lt;/h2&amp;gt;
+    {% for listing in watchlist %}
+        &amp;lt;a href=&amp;quot;{% url &#39;auction_display&#39; listing.id %}&amp;quot; class=&amp;quot;auction_link&amp;quot;&amp;gt;
+            &amp;lt;div class=&amp;quot;basebox&amp;quot;&amp;gt;
+                &amp;lt;table&amp;gt;
+                    &amp;lt;tr&amp;gt;
+                        &amp;lt;td&amp;gt;
+                            &amp;lt;img class=&amp;quot;img_std&amp;quot; src=&amp;quot;{{ listing.cover_url|safe}}&amp;quot; alt=&amp;quot;{{ listing.title }}&amp;quot;&amp;gt;
+                        &amp;lt;/td&amp;gt;
+                        &amp;lt;td style=&amp;quot;width: 20px;&amp;quot;&amp;gt;&amp;lt;/td&amp;gt;
+                        &amp;lt;td&amp;gt;
+                            &amp;lt;div&amp;gt;
+                                &amp;lt;h2&amp;gt;{{ listing.title }}&amp;lt;/h2&amp;gt;
+                                &amp;lt;h4&amp;gt;Price: {{ listing.bid }} $&amp;lt;/h4&amp;gt; 
+                                &amp;lt;div&amp;gt;
+                                    {{ listing.description }}
+                                &amp;lt;/div&amp;gt;
+                                &amp;lt;div&amp;gt;
+                                        Provided by {{ listing.provider.username }}
+                                &amp;lt;/div&amp;gt;
+                            &amp;lt;/div&amp;gt;
+                        &amp;lt;/td&amp;gt;
+                    &amp;lt;/tr&amp;gt;
+                &amp;lt;/table&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/a&amp;gt;
+    {% endfor %}
+{% endblock %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;categories&#34;&gt;Categories&lt;/h1&gt;
+&lt;h3 id=&#34;viewspy-4&#34;&gt;views.py&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def categories_list(request):
+    return render(request, &amp;quot;auctions/categories_list.html&amp;quot;, {
+        &amp;quot;categories&amp;quot;: Categories.objects.all()
+    })
+
+def category_display(request, category_id):
+    category = Categories.objects.get(pk=category_id)
+    return render(request, &amp;quot;auctions/category_display.html&amp;quot;, {
+        &amp;quot;list&amp;quot;: Auction_listing.objects.filter(category=category),
+        &amp;quot;category&amp;quot;: category
+    })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;category_listinghtml&#34;&gt;category_listing.html&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{% extends &amp;quot;auctions/layout.html&amp;quot; %}
+
+{% block body %}
+    &amp;lt;form action=&amp;quot;{% url &#39;create_listing&#39; %}&amp;quot; method=&amp;quot;POST&amp;quot;&amp;gt;
+        {% csrf_token %}
+        &amp;lt;ul&amp;gt;
+            &amp;lt;li&amp;gt;Title: &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;title&amp;quot;&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;Description: &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;description&amp;quot;&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;Cover Url: &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;cover&amp;quot;&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;
+                Categories: 
+                &amp;lt;select name=&amp;quot;category&amp;quot; required&amp;gt;
+                    {% for category in categories %}
+                        &amp;lt;option value=&amp;quot;{{ category.id }}&amp;quot;&amp;gt;{{ category }}&amp;lt;/option&amp;gt;
+                    {% endfor %}
+                &amp;lt;/select&amp;gt;
+            &amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;Starting bid($): &amp;lt;input type=&amp;quot;number&amp;quot; name=&amp;quot;bid&amp;quot;&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+        &amp;lt;input type=&amp;quot;submit&amp;quot;&amp;gt;
+    &amp;lt;/form&amp;gt;
+{% endblock %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;category_displayhtml&#34;&gt;category_display.html&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{% extends &amp;quot;auctions/layout.html&amp;quot; %}
+
+{% block style %}
+    &amp;lt;style&amp;gt;
+        .basebox {
+            height: 30%;
+            width: 80%;
+            border: 1px solid;
+        }
+
+        .img_std {
+            height: 250px;
+            width: 400px; 
+        }
+
+        .auction_link {
+            color: black;
+        }
+    &amp;lt;/style&amp;gt;
+{% endblock %}
+
+{% block body %}
+    &amp;lt;h2&amp;gt;{{ category.name }}&amp;lt;/h2&amp;gt;
+    {% for listing in list %}
+        &amp;lt;a href=&amp;quot;{% url &#39;auction_display&#39; listing.id %}&amp;quot; class=&amp;quot;auction_link&amp;quot;&amp;gt;
+            &amp;lt;div class=&amp;quot;basebox&amp;quot;&amp;gt;
+                &amp;lt;table&amp;gt;
+                    &amp;lt;tr&amp;gt;
+                        &amp;lt;td&amp;gt;
+                            &amp;lt;img class=&amp;quot;img_std&amp;quot; src=&amp;quot;{{ listing.cover_url|safe}}&amp;quot; alt=&amp;quot;{{ listing.title }}&amp;quot;&amp;gt;
+                        &amp;lt;/td&amp;gt;
+                        &amp;lt;td style=&amp;quot;width: 20px;&amp;quot;&amp;gt;&amp;lt;/td&amp;gt;
+                        &amp;lt;td&amp;gt;
+                            &amp;lt;div&amp;gt;
+                                &amp;lt;h2&amp;gt;{{ listing.title }}&amp;lt;/h2&amp;gt;
+                                &amp;lt;h4&amp;gt;Price: {{ listing.bid }} $&amp;lt;/h4&amp;gt; 
+                                &amp;lt;div&amp;gt;
+                                    {{ listing.description }}
+                                &amp;lt;/div&amp;gt;
+                                &amp;lt;div&amp;gt;
+                                        Provided by {{ listing.provider.username }}
+                                &amp;lt;/div&amp;gt;
+                            &amp;lt;/div&amp;gt;
+                        &amp;lt;/td&amp;gt;
+                    &amp;lt;/tr&amp;gt;
+                &amp;lt;/table&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/a&amp;gt;
+    {% endfor %}
+{% endblock %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;user-admin-interface&#34;&gt;User admin interface&lt;/h1&gt;
+&lt;h3 id=&#34;adminpy&#34;&gt;admin.py&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from django.contrib import admin
+from .models import User, Categories, Auction_listing, Comment
+# Register your models here.
+admin.site.register(User)
+admin.site.register(Categories)
+admin.site.register(Auction_listing)
+admin.site.register(Comment)
 &lt;/code&gt;&lt;/pre&gt;
 ">CS50 Web50 Project2: Commerce</a>
       </div>
