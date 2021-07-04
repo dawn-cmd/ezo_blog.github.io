@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dawn-cmd.github.io</id>
     <title>Blog</title>
-    <updated>2021-06-23T09:52:22.483Z</updated>
+    <updated>2021-07-04T00:08:37.781Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dawn-cmd.github.io"/>
     <link rel="self" href="https://dawn-cmd.github.io/atom.xml"/>
@@ -1762,77 +1762,6 @@ This code shows some attributes that control the size in CSS.</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Luogu P1020 [NOIP1999 Junior] System]]></title>
-        <id>https://dawn-cmd.github.io/post/luogu-p1020-noip1999-junior-missile-interception-system/</id>
-        <link href="https://dawn-cmd.github.io/post/luogu-p1020-noip1999-junior-missile-interception-system/">
-        </link>
-        <updated>2021-04-21T07:52:55.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-<p><a href="https://www.luogu.com.cn/problem/P1020">Raw Link</a><br>
-A country has developed a missile interception system in order to defend against enemy missile attacks. However, this system has a flaw: although its first shell can reach any height, each subsequent shell cannot be higher than the previous one. One day, the radar caught an enemy missile attack. Since the system is still in the trial phase, there is only one system, so it may not be able to intercept all missiles.</p>
-<p>Enter the altitude of the missiles in turn (the altitude data given by the radar is a positive integer ≤50,000), calculate the maximum number of missiles that this system can intercept, and how many sets of such missile interception systems are required to intercept all missiles.</p>
-<h2 id="input">Input</h2>
-<p>1 line, several integers (number ≤ 100000)</p>
-<h2 id="output">Output</h2>
-<p>2 lines, each line contains an integer. The first number indicates the maximum number of missiles that this system can intercept, and the second number indicates the minimum number of missile interception systems required to intercept all missiles.</p>
-<h2 id="code">Code</h2>
-<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
-using namespace std;
-struct Data {
-    vector&lt;int&gt; h;
-    int n;
-};
-void init(Data &amp;d) {
-    int tmp;
-    d.n = 0;
-    while(cin &gt;&gt; tmp) {
-        d.n++;
-        d.h.push_back(tmp);
-    }
-}
-int problem1(Data &amp;d) {
-    vector&lt;int&gt; mst;  // Monotone-Stack 
-    mst.push_back(d.h[0]);
-    for(int i = 1; i &lt; d.n; ++i) {
-        if(mst[mst.size() - 1] &gt;= d.h[i]) {
-            mst.push_back(d.h[i]);
-            continue;
-        }
-        int p = upper_bound(mst.begin(), mst.end(), d.h[i], greater&lt;int&gt; ()) - mst.begin();
-        mst[p] = d.h[i];
-    }
-    return mst.size();
-}
-int problem2(Data &amp;d) {
-    vector&lt;int&gt; mst;
-    mst.push_back(d.h[0]);
-    for(int i = 1; i &lt; d.n; ++i) {
-        if(d.h[i] &gt; mst[mst.size() - 1]) {
-            mst.push_back(d.h[i]);
-        }
-        int p = lower_bound(mst.begin(), mst.end(), d.h[i]) - mst.begin();
-        mst[p] = d.h[i];
-    }
-    return mst.size();
-}
-int main() {
-    Data d;
-    init(d);
-    cout &lt;&lt; problem1(d) &lt;&lt; endl;
-    cout &lt;&lt; problem2(d) &lt;&lt; endl;
-    return 0;
-}
-</code></pre>
-<h2 id="tutorial">Tutorial</h2>
-<p>Actually, it is a well-known DP problem in Chinese competition cause it is the first linear DP in NOIP junior. From my perspective, it is an excellent problem in that it combines several practical technologys in computer science and control the amount of code so competitors can focus on their ideas.</p>
-<p>First, we need a main idea, or structure of the solution. In this problem, we use dp[i] to represent if the last missile the syetem intercept is i, the number of missiles it can intercept. We can get this transformation function:</p>
-<p><code>dp[i] = max(dp[j] + 1) (1 &lt;= j &lt;= i - 1, h[j] &gt;= h[i]),</code><br>
-<code>dp[i] = 1 (h[i] &gt; h[j], j is in [1, i - 1] or i = 1)</code></p>
-<p>However, if we just actualize this function, we will find that the time compexity is O(n^2). With the range of 50,000, it is not swift enough to make sure it can get the answer in 1s. There is a burden that to each i we need to use O(n) to find the largest dp[j] that h[j] &gt;= h[i]. We can imitate <code>Bucket Sort</code> to use dp[i] as the subscript of an array and mantain it as an descending sequence. So we just need to find from the behind each time.</p>
-<p>But in some extreme situation, this method will deteriorate to O(n^2) again. Hence, we need a determinate optimization. We can use <code>binary search</code> on the perivous step to actually make the time complexity be shortened into O(logn). For convenience, I use C++ stl's lower_bound and upper_bound functions. In the end, the solution will have an O(nlogn) time complexity, this is want we want.</p>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Codeforces Round #715 (Div. 2) Problem C]]></title>
         <id>https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-3/</id>
         <link href="https://dawn-cmd.github.io/post/codeforces-round-715-div-2-problem-3/">
@@ -2044,6 +1973,103 @@ int main() {
 </code></pre>
 <h2 id="explanation">Explanation</h2>
 <p>Obviously, if a consecutive pair of members is considered photogenic, their heights must be all odd or even, otherwise u + v cannot divided by 2 with a integer. Hence, we just need to do is to make sure that all men with odd heights were stand together, even as well.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Luogu P2196 [NOIP1996 senior] Dig Landmines]]></title>
+        <id>https://dawn-cmd.github.io/post/luogu-p2196-noip1996-senior-dig-landmines/</id>
+        <link href="https://dawn-cmd.github.io/post/luogu-p2196-noip1996-senior-dig-landmines/">
+        </link>
+        <updated>2021-04-15T23:26:09.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p><a href="https://www.luogu.com.cn/problem/P2196">Raw Link</a><br>
+There are N cellars (N≤20) on a map, and a certain number of mines are buried in each cellar. At the same time, give the connection path between the cellars. After the data of the cellar and its connection are given, someone can start digging mines from any place, and then dig down along the indicated connection (only one path can be selected), and the mine digging work ends when there is no connection. Design a plan for digging mines so that someone can dig the most mines.</p>
+<h2 id="input-form">Input Form</h2>
+<p>There are several lines.</p>
+<p>There is only one number in the first line, which represents the number of cellars N.</p>
+<p>There are N numbers in the second line, which respectively indicate the number of mines in each cellar.</p>
+<p>Lines 3 to N+1 indicate the connection between the cellars:</p>
+<p>There are n−1 numbers (0 or 1) in the third row, indicating whether there is a path connection from the first cellar to the second, third, ..., nth cellar. For example, the third line is 11000...0, it means that there is a path from the first cellar to the second cellar, there is a path to the third cellar, and there is no path to the fourth cellar, the fifth, ..., the nth cellar.</p>
+<p>There are n−2 numbers in the 4th row, indicating whether there is a path connection from the second cellar to the third, fourth, ..., nth cellar.</p>
+<p>There is 1 number in the n+1th row, indicating whether there is a path connection between the n−1th cellar and the nth cellar. (0 means there is no path, 1 means there is a path).</p>
+<h2 id="output-form">Output Form</h2>
+<p>There are two lines</p>
+<p>The first line indicates the order of mine digging when the most mines are dug. The serial numbers of each cell are separated by a space, and there must be no extra spaces.</p>
+<p>There is only one number in the second row, indicating the maximum number of mines that can be dug.</p>
+<h2 id="code">Code</h2>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+void init(int &amp;n, int (&amp;g)[50][50], int (&amp;v)[50], int sum) {
+    cin &gt;&gt; n;
+    for(int i =1; i &lt;= n; ++i) {
+        cin &gt;&gt; v[i];
+    }
+    for(int i = 1; i &lt;= n - 1; ++i)
+        for(int j = i + 1; j &lt;= n; ++j){
+            int tmp;
+            cin &gt;&gt; tmp;
+            g[i][j] = tmp;
+        }
+    for(int i = 1; i &lt;= n; ++i) {
+        g[0][i] = 1;
+    }
+    v[0] = 0;
+}
+struct Data {
+    int h[50];
+    int g[50][50];
+    int v[50];
+    int n;
+    int sum = 0;
+    int max_sum = -1;
+    vector&lt;int&gt; path;
+    vector&lt;int&gt; ans_path;
+};
+int dp(int now, Data &amp;data) {
+    if(data.h[now] == 1) {
+        return 0;
+    }
+    data.h[now] = 1;
+    int maxn = -1;
+    data.sum += data.v[now];
+    data.path.push_back(now);
+    for (int i = 1; i &lt;= data.n; ++i) {
+        if(data.g[now][i] == 0 || i == now || data.h[i] == 1) {
+            continue;
+        }
+        int tmp = dp(i, data);
+        maxn = max(maxn, tmp);
+    }
+    if(maxn == -1 &amp;&amp; data.sum &gt; data.max_sum) {
+        data.max_sum = data.sum;
+        data.ans_path = data.path;
+    }
+    data.sum -= data.v[now];
+    data.h[now] = 0;
+    data.path.pop_back();
+    return data.v[now] + max(maxn, 0);
+}
+int main() {
+    Data data;
+    init(data.n,data.g,data.v, data.sum);
+    int ans = dp(0, data);
+    for(int i = 1; i &lt; data.ans_path.size(); ++i) {
+        cout &lt;&lt; data.ans_path[i] &lt;&lt; ' ';
+    }
+    cout &lt;&lt; endl;
+    cout &lt;&lt; ans &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<ol>
+<li>It has the characteristics of graph theory.</li>
+<li>The data range is very small (N \le 20) (N ≤ 20), and you can make &quot;exotic&quot; attempts.</li>
+<li>It is necessary to output the route and the maximum solution result, which can be combined to reduce the amount of code.</li>
+<li>Use pre to record the predecessor of the selected point in the reasonable scheme, and recursively output. (You can also use a while loop, given in the next method)</li>
+<li>Obviously it is impossible to find the answer simply, so the state is designed to facilitate the transfer. Let f[i]f[i] represent the maximum number of mines dug from the starting point to the point ii. When i and j are connected, f[j ] (Another point, enumerate it) When the maximum value is reached, the recursive formula f[i]=max(f[j])+mine<a href="map%5Bj,i%5D=1">i</a> is obtained.</li>
+<li>Be sure to note the last point on the path to output it recursively.</li>
+</ol>
 ]]></content>
     </entry>
 </feed>
